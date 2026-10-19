@@ -70,7 +70,7 @@ The toy is the easy part. If you have not talked about toys before, read our gui
           label: 'Best Vibrating Ring',
           note: 'Hands-free clitoral stimulation during sex with a ring that also helps him stay firm. The single easiest couples toy to start with.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature', minPrice: 30, maxPrice: 180 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls', minPrice: 30, maxPrice: 180 },
             { hubs: ['penis-rings'], title: 'vibrat' },
           ],
         },
