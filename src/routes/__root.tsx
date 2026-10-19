@@ -5,6 +5,8 @@ import { AgeGate } from '@/components/AgeGate'
 import { SITE } from '@/config/site'
 import '../styles.css'
 
+const GA_MEASUREMENT_ID = 'G-QQ0NJL2W40'
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -37,6 +39,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en" className="dark scroll-smooth">
       <head>
         <HeadContent />
+        {/* Google tag (gtag.js) */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`,
+          }}
+        />
       </head>
       <body className="bg-[#0A0B10] text-slate-100 antialiased min-h-screen flex flex-col">
         <Navbar />
