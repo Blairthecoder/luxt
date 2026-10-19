@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { createFileRoute, notFound } from '@tanstack/react-router'
-import { CheckCircle2, MinusCircle, PlusCircle, ShieldCheck, Truck } from 'lucide-react'
+import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BuyButton } from '@/components/BuyButton'
-import { ProductCard } from '@/components/ProductCard'
+import { ProductGrid } from '@/components/ProductCard'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { HUBS_BY_SLUG } from '@/content/hubs'
+import { postsForHub } from '@/content/posts'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getProgram } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
@@ -85,55 +85,58 @@ function ProductPage() {
   const [imageIndex, setImageIndex] = useState(0)
   const merchant = getProgram(product.program).merchantName
   const options = product.variants.filter((v) => v.title !== 'Default Title')
+  const guides = postsForHub(hub.slug)
 
   const facts: [string, string][] = [
     ['Brand', product.brand],
     ['Category', hub.name],
     ...(product.productType ? ([['Type', product.productType]] as [string, string][]) : []),
     ...(options.length ? ([['Options', options.map((v) => v.title).join(', ')]] as [string, string][]) : []),
-    ['Price', formatPrice(product.price)],
-    ['Availability', product.available ? 'In stock' : 'Out of stock'],
-    ['Sold and shipped by', merchant],
+    ['Availability', product.available ? 'In Stock' : 'Sold Out'],
+    ['Sold and Shipped By', merchant],
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-14">
-      <Breadcrumbs
-        items={[
-          { name: 'Home', path: '/' },
-          { name: hub.name, path: `/category/${hub.slug}` },
-          { name: product.title, path: `/products/${product.handle}` },
-        ]}
-      />
+    <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+      <div className="pt-10">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', path: '/' },
+            { name: hub.name, path: `/category/${hub.slug}` },
+            { name: product.title, path: `/products/${product.handle}` },
+          ]}
+        />
+      </div>
 
-      <div className="grid lg:grid-cols-2 gap-10">
+      <div className="mt-10 grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-20">
         <div className="space-y-3">
-          <div className="aspect-square rounded-3xl overflow-hidden bg-white">
+          <div className="relative aspect-square bg-tile">
             <img
-              src={getOptimizedImageUrl(product.images[imageIndex]?.src, 1000)}
+              src={getOptimizedImageUrl(product.images[imageIndex]?.src, 1100)}
               alt={`${product.title} by ${product.brand}`}
-              width={1000}
-              height={1000}
-              className="w-full h-full object-contain"
+              width={1100}
+              height={1100}
+              className="absolute inset-0 w-full h-full object-contain p-10 mix-blend-multiply"
             />
           </div>
           {product.images.length > 1 && (
-            <div className="flex gap-2 overflow-x-auto">
+            <div className="grid grid-cols-5 sm:grid-cols-6 gap-3">
               {product.images.map((img, i) => (
                 <button
                   key={img.src}
                   type="button"
                   onClick={() => setImageIndex(i)}
                   aria-label={`Show image ${i + 1}`}
-                  className={`w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-white border-2 ${
-                    i === imageIndex ? 'border-amber-300' : 'border-transparent'
+                  aria-pressed={i === imageIndex}
+                  className={`relative aspect-square bg-tile border ${
+                    i === imageIndex ? 'border-gold' : 'border-transparent hover:border-line'
                   }`}
                 >
                   <img
-                    src={getOptimizedImageUrl(img.src, 160)}
+                    src={getOptimizedImageUrl(img.src, 200)}
                     alt=""
                     loading="lazy"
-                    className="w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-contain p-2 mix-blend-multiply"
                   />
                 </button>
               ))}
@@ -141,81 +144,70 @@ function ProductPage() {
           )}
         </div>
 
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <p className="text-xs uppercase tracking-wider text-amber-200/90">{product.brand}</p>
-            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white">{product.title}</h1>
-          </div>
+        <div className="lg:pt-6">
+          <p className="eyebrow text-gold">{product.brand}</p>
+          <h1 className="mt-4 text-4xl sm:text-5xl text-ivory leading-[1.08]">{product.title}</h1>
 
-          <div className="flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-white">{formatPrice(product.price)}</span>
+          <p className="mt-6 text-2xl text-ivory">
+            {formatPrice(product.price)}
             {product.compareAtPrice && (
-              <span className="text-base line-through text-slate-500">
-                {formatPrice(product.compareAtPrice)}
-              </span>
+              <span className="ml-3 text-base text-faint line-through">{formatPrice(product.compareAtPrice)}</span>
             )}
-          </div>
+          </p>
 
-          {copy ? (
-            <p className="text-slate-300 leading-relaxed">{copy.summary}</p>
-          ) : (
-            <p className="text-slate-300 leading-relaxed">
-              The {product.title} from {product.brand} is part of our {hub.name.toLowerCase()} collection.
-              Check the details below, compare it with similar picks, and buy securely from {merchant}.
+          <p className="mt-8 text-muted leading-relaxed">
+            {copy
+              ? copy.summary
+              : `The ${product.title} from ${product.brand} is part of our ${hub.name.toLowerCase()} collection. Review the details below, compare similar pieces, and buy securely from ${merchant}.`}
+          </p>
+
+          <div className="mt-10 space-y-4">
+            <BuyButton handle={product.handle} program={product.program} available={product.available} className="w-full" />
+            <p className="text-xs text-faint text-center">
+              Secure checkout and discreet shipping from {merchant}
             </p>
-          )}
-
-          <div className="space-y-3">
-            <BuyButton handle={product.handle} program={product.program} available={product.available} className="w-full sm:w-auto" />
-            <ul className="text-xs text-slate-400 space-y-1.5">
-              <li className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-emerald-400" /> Ships discreetly from {merchant}
-              </li>
-              <li className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Secure checkout on {merchant}'s site
-              </li>
-            </ul>
-            <AffiliateNotice />
           </div>
 
-          <dl className="rounded-2xl border border-[#232535] divide-y divide-[#232535] text-sm">
+          <dl className="mt-12 border-t border-line">
             {facts.map(([label, value]) => (
-              <div key={label} className="grid grid-cols-3 gap-4 px-4 py-3">
-                <dt className="text-slate-400">{label}</dt>
-                <dd className="col-span-2 text-slate-200">{value}</dd>
+              <div key={label} className="grid grid-cols-[140px_1fr] gap-4 py-4 border-b border-line text-sm">
+                <dt className="eyebrow text-faint pt-0.5">{label}</dt>
+                <dd className="text-ivory/90">{value}</dd>
               </div>
             ))}
           </dl>
+
+          <AffiliateNotice className="mt-6" />
         </div>
       </div>
 
       {copy && (
-        <section className="max-w-3xl space-y-6">
+        <section className="mt-20 max-w-3xl space-y-6 border-t border-line pt-14">
+          <p className="eyebrow text-gold">Our Take</p>
           {copy.body?.map((paragraph) => (
-            <p key={paragraph} className="text-slate-300 leading-relaxed">
+            <p key={paragraph} className="text-muted leading-relaxed text-lg">
               {paragraph}
             </p>
           ))}
           {copy.bestFor && (
-            <p className="text-slate-200">
-              <strong>Best for:</strong> {copy.bestFor}
+            <p className="text-ivory">
+              <span className="eyebrow text-gold-deep mr-3">Best For</span>
+              {copy.bestFor}
             </p>
           )}
           {(copy.pros?.length || copy.cons?.length) && (
-            <div className="grid sm:grid-cols-2 gap-6">
-              {copy.pros?.length ? (
-                <ProsCons title="What we like" items={copy.pros} positive />
-              ) : null}
-              {copy.cons?.length ? <ProsCons title="Keep in mind" items={copy.cons} /> : null}
+            <div className="grid sm:grid-cols-2 gap-10 pt-4">
+              {copy.pros?.length ? <Notes title="What We Like" items={copy.pros} /> : null}
+              {copy.cons?.length ? <Notes title="Keep in Mind" items={copy.cons} /> : null}
             </div>
           )}
           {copy.faqs?.length ? (
-            <div className="space-y-4">
-              <h2 className="text-xl font-serif font-bold text-white">Questions people ask</h2>
+            <div className="pt-6 space-y-6">
+              <h2 className="text-3xl text-ivory">Questions People Ask</h2>
               {copy.faqs.map((faq) => (
-                <div key={faq.q}>
-                  <h3 className="font-semibold text-slate-100">{faq.q}</h3>
-                  <p className="text-slate-300 mt-1">{faq.a}</p>
+                <div key={faq.q} className="border-b border-line pb-6">
+                  <h3 className="text-xl text-ivory">{faq.q}</h3>
+                  <p className="text-muted mt-2 leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -223,45 +215,58 @@ function ProductPage() {
         </section>
       )}
 
-      <section aria-labelledby="tips" className="rounded-3xl bg-[#10121B] border border-[#212332] p-6 max-w-3xl">
-        <h2 id="tips" className="text-lg font-serif font-bold text-white mb-3">
-          Buying a {hub.singular.toLowerCase()}? What to know
-        </h2>
-        <ul className="space-y-2">
-          {hub.buyingTips.map((tip) => (
-            <li key={tip} className="flex gap-2 text-sm text-slate-300">
-              <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-400" />
-              {tip}
-            </li>
-          ))}
-        </ul>
+      <section className="mt-20 border-t border-line pt-14 grid lg:grid-cols-2 gap-14">
+        <div>
+          <p className="eyebrow text-gold">Before You Buy</p>
+          <h2 className="mt-3 text-3xl text-ivory">Choosing a {hub.singular}</h2>
+          <ol className="mt-6 space-y-4">
+            {hub.buyingTips.map((tip, i) => (
+              <li key={tip} className="flex gap-5 text-muted leading-relaxed">
+                <span className="font-display text-2xl text-gold-deep leading-none">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                {tip}
+              </li>
+            ))}
+          </ol>
+        </div>
+        {guides.length > 0 && (
+          <div>
+            <p className="eyebrow text-gold">Nightstand Notes</p>
+            <h2 className="mt-3 text-3xl text-ivory">Read the Guide</h2>
+            <ul className="mt-6 divide-y divide-line border-y border-line">
+              {guides.map((post) => (
+                <li key={post.slug}>
+                  <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block py-5">
+                    <span className="font-display text-xl text-ivory group-hover:text-gold transition-colors">
+                      {post.title}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
 
       {related.length > 0 && (
-        <section aria-labelledby="related">
-          <h2 id="related" className="text-xl font-serif font-bold text-white mb-5">
-            Similar {hub.name.toLowerCase()}
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {related.map((p) => (
-              <ProductCard key={p.handle} product={p} />
-            ))}
-          </div>
+        <section className="mt-20 border-t border-line pt-14">
+          <p className="eyebrow text-gold">You May Also Consider</p>
+          <h2 className="mt-3 mb-10 text-4xl text-ivory">Similar {hub.name}</h2>
+          <ProductGrid products={related} />
         </section>
       )}
     </div>
   )
 }
 
-function ProsCons({ title, items, positive = false }: { title: string; items: string[]; positive?: boolean }) {
-  const Icon = positive ? PlusCircle : MinusCircle
+function Notes({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <h3 className="font-semibold text-white mb-2">{title}</h3>
-      <ul className="space-y-1.5">
+      <h3 className="eyebrow text-gold-deep mb-4">{title}</h3>
+      <ul className="space-y-2">
         {items.map((item) => (
-          <li key={item} className="flex gap-2 text-sm text-slate-300">
-            <Icon className={`w-4 h-4 mt-0.5 flex-shrink-0 ${positive ? 'text-emerald-400' : 'text-amber-300'}`} />
+          <li key={item} className="text-muted leading-relaxed border-b border-line pb-2">
             {item}
           </li>
         ))}

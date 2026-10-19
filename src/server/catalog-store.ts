@@ -3,6 +3,7 @@
 import catalogData from '@/data/catalog.json'
 import { PRODUCT_COPY } from '@/content/product-copy'
 import type { Catalog, CatalogProduct } from '@/types/catalog'
+import type { CollectionRule } from '@/content/collections'
 
 const catalog = catalogData as Catalog
 
@@ -42,4 +43,25 @@ export function hasCopy(handle: string): boolean {
 
 export function catalogSyncedAt(): string | null {
   return catalog.syncedAt
+}
+
+const ruleCache = new Map<string, CatalogProduct[]>()
+
+export function productsMatchingRule(slug: string, rule: CollectionRule): CatalogProduct[] {
+  const cached = ruleCache.get(slug)
+  if (cached) return cached
+  const titleRe = rule.title ? new RegExp(rule.title, 'i') : null
+  const tags = rule.tags?.map((t) => t.toLowerCase())
+  const brands = rule.brands?.map((b) => b.toLowerCase())
+  const result = catalog.products.filter((p) => {
+    if (rule.hubs && !rule.hubs.includes(p.hub)) return false
+    if (tags && !p.tags.some((t) => tags.includes(t.trim().toLowerCase()))) return false
+    if (titleRe && !titleRe.test(p.title)) return false
+    if (brands && !brands.includes(p.brand.toLowerCase())) return false
+    if (rule.minPrice !== undefined && p.price < rule.minPrice) return false
+    if (rule.maxPrice !== undefined && p.price >= rule.maxPrice) return false
+    return true
+  })
+  ruleCache.set(slug, result)
+  return result
 }

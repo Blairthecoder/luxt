@@ -1,55 +1,53 @@
 import { Link } from '@tanstack/react-router'
-import type { ProductSummary } from '@/lib/catalog'
+import type { ProductSummary } from '@/lib/listing'
 import { getOptimizedImageUrl } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
 
 export function ProductCard({ product }: { product: ProductSummary }) {
-  const discountPercent = product.compareAtPrice
-    ? Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)
-    : null
-
   return (
     <Link
       to="/products/$productId"
       params={{ productId: product.handle }}
-      className="group flex flex-col rounded-3xl bg-[#12131C] border border-[#232535] hover:border-[#4B3D55] transition-all overflow-hidden"
+      className="group flex flex-col"
     >
-      <div className="relative aspect-square overflow-hidden bg-white">
+      <div className="relative aspect-[4/5] overflow-hidden bg-tile">
         <img
           src={getOptimizedImageUrl(product.image, 600)}
           alt={`${product.title} by ${product.brand}`}
           loading="lazy"
           width={600}
-          height={600}
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+          height={750}
+          className="absolute inset-0 w-full h-full object-contain p-6 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
-        {discountPercent ? (
-          <span className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-rose-600 text-white">
-            Save {discountPercent}%
-          </span>
+        {product.compareAtPrice ? (
+          <span className="eyebrow absolute top-3 left-3 bg-ink text-gold px-2.5 py-1">Sale</span>
         ) : null}
         {!product.available && (
-          <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-slate-800 text-slate-200">
-            Out of stock
-          </span>
+          <span className="eyebrow absolute top-3 right-3 bg-ink/80 text-muted px-2.5 py-1">Sold Out</span>
         )}
       </div>
-      <div className="flex-1 p-5 flex flex-col gap-2">
-        <span className="text-[11px] font-medium tracking-wider uppercase text-amber-200/90">
-          {product.brand}
-        </span>
-        <h3 className="text-base font-serif font-bold text-white group-hover:text-amber-200 transition-colors line-clamp-2">
+      <div className="pt-4 space-y-1.5">
+        <p className="eyebrow text-gold-deep">{product.brand}</p>
+        <h3 className="font-display text-lg leading-snug text-ivory group-hover:text-gold transition-colors line-clamp-2">
           {product.title}
         </h3>
-        <div className="mt-auto pt-3 flex items-baseline gap-2">
-          <span className="text-lg font-bold text-white">{formatPrice(product.price)}</span>
+        <p className="text-sm text-ivory/90">
+          {formatPrice(product.price)}
           {product.compareAtPrice && (
-            <span className="text-xs line-through text-slate-500">
-              {formatPrice(product.compareAtPrice)}
-            </span>
+            <span className="ml-2 text-faint line-through">{formatPrice(product.compareAtPrice)}</span>
           )}
-        </div>
+        </p>
       </div>
     </Link>
+  )
+}
+
+export function ProductGrid({ products }: { products: ProductSummary[] }) {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 sm:gap-x-8">
+      {products.map((product) => (
+        <ProductCard key={product.handle} product={product} />
+      ))}
+    </div>
   )
 }

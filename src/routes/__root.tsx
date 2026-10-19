@@ -16,7 +16,7 @@ export const Route = createRootRoute({
       { property: 'og:site_name', content: SITE.name },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'theme-color', content: '#0A0B10' },
+      { name: 'theme-color', content: '#0b0a09' },
     ],
     links: [
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -24,7 +24,7 @@ export const Route = createRootRoute({
       { rel: 'preconnect', href: 'https://cdn.shopify.com' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap',
       },
     ],
   }),
@@ -38,7 +38,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-[#0A0B10] text-slate-100 antialiased min-h-screen flex flex-col">
+      <body className="bg-ink text-ivory antialiased min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
@@ -51,11 +51,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
 function NotFound() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-24 text-center space-y-4">
-      <h1 className="text-3xl font-serif font-bold text-white">We couldn't find that page</h1>
-      <p className="text-slate-400">The product may have sold out or moved. Try one of our categories instead.</p>
-      <Link to="/" className="inline-block text-amber-200 underline">
-        Back to the homepage
+    <div className="max-w-2xl mx-auto px-5 py-32 text-center space-y-6">
+      <p className="eyebrow text-gold">Page Not Found</p>
+      <h1 className="text-5xl text-ivory">This Page Has Moved On</h1>
+      <p className="text-muted">The product may have sold out or moved. Try one of our collections instead.</p>
+      <Link to="/" className="btn-line">
+        Return Home
       </Link>
     </div>
   )
