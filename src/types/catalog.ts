@@ -1,0 +1,55 @@
+export interface CatalogImage {
+  src: string
+  width?: number
+  height?: number
+}
+
+export interface CatalogVariant {
+  id?: number
+  title: string
+  price: number
+  compareAtPrice?: number
+  available: boolean
+}
+
+export interface CatalogProduct {
+  handle: string
+  title: string
+  brand: string
+  productType: string
+  tags: string[]
+  hub: string
+  price: number
+  compareAtPrice?: number
+  available: boolean
+  images: CatalogImage[]
+  variants: CatalogVariant[]
+  program: string
+  updatedAt?: string
+}
+
+export interface Catalog {
+  syncedAt: string | null
+  source: string
+  products: CatalogProduct[]
+}
+
+/** Original editorial copy for a product. Pages without it stay noindex. */
+export interface ProductCopy {
+  summary: string
+  body?: string[]
+  bestFor?: string
+  pros?: string[]
+  cons?: string[]
+  faqs?: { q: string; a: string }[]
+}
+
+export interface Hub {
+  slug: string
+  name: string
+  singular: string
+  metaTitle: string
+  metaDescription: string
+  intro: string
+  buyingTips: string[]
+}

@@ -1,0 +1,19 @@
+{
+  "_note": "Ordered rules assigning each product one primary hub. Tested against product_type + tags first, then title. First match wins; unmatched products go to fallback.",
+  "fallback": "more-toys",
+  "rules": [
+    { "hub": "lingerie", "pattern": "lingerie|bodysuit|bodystocking|chemise|babydoll|teddy|garter|stocking" },
+    { "hub": "lubricants", "pattern": "\\blubes?\\b|lubricant|massage oil|arousal gel" },
+    { "hub": "sex-dolls", "pattern": "\\bdolls?\\b|love doll|companion" },
+    { "hub": "penis-pumps", "pattern": "penis pump|\\bpumps?\\b|bathmate|hydromax" },
+    { "hub": "penis-rings", "pattern": "cock ?rings?|penis ?rings?|c-ring|ball stretcher|cockring" },
+    { "hub": "prostate-massagers", "pattern": "prostate" },
+    { "hub": "strap-ons", "pattern": "strap-?ons?|strapless|harness|pegging" },
+    { "hub": "strokers", "pattern": "masturbat(or|ion type)|stroker|fleshlight|pocket pussy|penis sleeve|onacup|tenga" },
+    { "hub": "anal-toys", "pattern": "\\banal\\b|butt ?plugs?|\\bplugs?\\b|anal beads|rimming" },
+    { "hub": "bdsm", "pattern": "bdsm|bondage|restraint|collar|whip|flogger|paddle|cuffs?|nipple|chastity|\\bgag\\b|blindfold|\\bhood\\b|impact" },
+    { "hub": "vibrators", "pattern": "vibrat|\\bwands?\\b|bullet|rabbit|clitoral|suction|air pulse|womanizer|massager" },
+    { "hub": "dildos", "pattern": "dildo|\\bdong\\b|realistic cock" },
+    { "hub": "couples", "pattern": "couples?" }
+  ]
+}

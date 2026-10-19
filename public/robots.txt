@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /go/
+
+Sitemap: https://nightstandsupply.co/sitemap.xml
