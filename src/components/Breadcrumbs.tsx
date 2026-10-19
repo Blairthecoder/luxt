@@ -1,18 +1,16 @@
-import { ChevronRight } from 'lucide-react'
-
 export function Breadcrumbs({ items }: { items: { name: string; path: string }[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="text-xs text-slate-400">
-      <ol className="flex items-center flex-wrap gap-1">
+    <nav aria-label="Breadcrumb" className="eyebrow text-faint">
+      <ol className="flex items-center flex-wrap gap-2">
         {items.map((item, i) => (
-          <li key={item.path} className="flex items-center gap-1">
-            {i > 0 && <ChevronRight className="w-3 h-3 text-slate-600" />}
+          <li key={item.path} className="flex items-center gap-2">
+            {i > 0 && <span aria-hidden="true">/</span>}
             {i === items.length - 1 ? (
-              <span aria-current="page" className="text-slate-300">
+              <span aria-current="page" className="text-muted">
                 {item.name}
               </span>
             ) : (
-              <a href={item.path} className="hover:text-amber-200">
+              <a href={item.path} className="hover:text-gold transition-colors">
                 {item.name}
               </a>
             )}

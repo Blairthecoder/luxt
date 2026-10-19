@@ -16,11 +16,18 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 - `src/data/hub-rules.json`: ordered regex rules mapping each product to one category hub.
 - `src/content/hubs.ts`: category names, meta and original intro copy.
 - `src/content/product-copy.ts`: original product copy keyed by handle. Product pages are `noindex` until they have an entry. Never paste merchant descriptions.
+- `src/content/collections.ts`: search-led collection pages at `/shop/<slug>`, each a rule over the catalog (tags, title regex, brand, price).
+- `src/content/posts.ts`: Nightstand Notes guides at `/blog/<slug>`, Markdown rendered server-side with `marked`.
+- `src/server/listing.ts`: facet extraction (style, designed for, features, price, brand), filtering, sorting, pagination (48 per page). Filtered views are noindex with a canonical to the clean listing; `?page=N` is self-canonical.
 - `src/server/catalog-store.ts`: server-only catalog access. Import it dynamically inside server functions or server routes so the catalog stays out of the client bundle.
 - `src/lib/catalog.ts`: server functions used by route loaders.
 - `src/lib/seo.ts`: `pageHead()` for title, description, robots, canonical and JSON-LD.
 - `src/routes/sitemap[.]xml.ts`: lists home, non-empty hubs and products with copy.
 - `src/components/AgeGate.tsx`: client-only 18+ overlay; server HTML stays fully crawlable.
+
+## Design
+
+Tokens live in `src/styles.css` (`@theme`): ink/surface/line backgrounds, ivory text, gold accent. Display type is Cormorant Garamond, body is Jost. Headings use Title Case; small labels use the `.eyebrow` class. No icon library.
 
 ## Conventions
 

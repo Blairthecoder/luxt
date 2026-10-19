@@ -1,8 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { absoluteUrl } from '@/config/site'
 import { HUBS } from '@/content/hubs'
+import { COLLECTIONS } from '@/content/collections'
+import { POSTS } from '@/content/posts'
 
-// Lists only indexable URLs: home, category hubs with products, and product
+// Lists only indexable URLs: home, category hubs and collections with products,
+// guides, and product
 // pages that have original copy. /go/ redirects are never included.
 export const Route = createFileRoute('/sitemap.xml')({
   server: {
@@ -15,6 +18,15 @@ export const Route = createFileRoute('/sitemap.xml')({
         const urls: { loc: string; lastmod?: string }[] = [{ loc: absoluteUrl('/'), lastmod }]
         for (const hub of HUBS) {
           if (counts[hub.slug]) urls.push({ loc: absoluteUrl(`/category/${hub.slug}`), lastmod })
+        }
+        for (const c of COLLECTIONS) {
+          if (store.productsMatchingRule(c.slug, c.rule).length >= 6) {
+            urls.push({ loc: absoluteUrl(`/shop/${c.slug}`), lastmod })
+          }
+        }
+        urls.push({ loc: absoluteUrl('/blog') })
+        for (const post of POSTS) {
+          urls.push({ loc: absoluteUrl(`/blog/${post.slug}`), lastmod: post.updatedAt ?? post.publishedAt })
         }
         for (const p of store.allProducts()) {
           if (store.hasCopy(p.handle)) {

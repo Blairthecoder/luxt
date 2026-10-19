@@ -14,8 +14,9 @@ export const Route = createFileRoute('/disclosure')({
 
 function DisclosurePage() {
   return (
-    <article className="max-w-3xl mx-auto px-4 sm:px-6 py-14 space-y-5 text-slate-300 leading-relaxed">
-      <h1 className="text-3xl font-serif font-bold text-white">Affiliate disclosure</h1>
+    <article className="max-w-2xl mx-auto px-5 py-20 space-y-6 text-muted leading-relaxed">
+      <p className="eyebrow text-gold">Transparency</p>
+      <h1 className="text-5xl text-ivory">Affiliate Disclosure</h1>
       <p>
         {SITE.name} is reader-supported. When you click a buy button and make a purchase, we may earn a
         commission from the retailer. The price you pay is the same as going to the retailer directly.

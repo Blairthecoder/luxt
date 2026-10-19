@@ -1,74 +1,180 @@
 @import "tailwindcss" source("../");
 
-:root {
-  --color-primary: #B02A6A;
-  --color-secondary: #D4A373;
-  --color-accent: #E24A84;
-  --color-noir: #0A0B10;
-  --color-surface: #12131C;
+@theme {
+  --color-ink: #0b0a09;
+  --color-surface: #13110f;
+  --color-raised: #1a1714;
+  --color-line: #2a2621;
+  --color-ivory: #ece6dc;
+  --color-muted: #9c948a;
+  --color-faint: #6b645c;
+  --color-gold: #c6a469;
+  --color-gold-deep: #8c7348;
+  --color-tile: #efebe4;
+
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html {
+  background-color: var(--color-ink);
 }
 
 body {
   margin: 0;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
-  background-color: #0A0B10;
-  color: #F1F3F9;
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, .font-serif {
-  font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
-code {
-  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
 }
 
-/* Custom subtle scrollbar */
+/* Small uppercase label used above headings and on buttons */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2rem;
+  background: var(--color-gold);
+  color: var(--color-ink);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: #d4b57e;
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2rem;
+  border: 1px solid var(--color-gold-deep);
+  color: var(--color-ivory);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-line:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* Long-form article typography */
+.prose-notes {
+  color: #d9d2c7;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.prose-notes h2 {
+  font-size: 1.875rem;
+  color: var(--color-ivory);
+  margin: 2.75rem 0 1rem;
+}
+
+.prose-notes h3 {
+  font-size: 1.375rem;
+  color: var(--color-ivory);
+  margin: 2rem 0 0.75rem;
+}
+
+.prose-notes p {
+  margin: 0 0 1.25rem;
+}
+
+.prose-notes ul,
+.prose-notes ol {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+}
+
+.prose-notes ul {
+  list-style: disc;
+}
+
+.prose-notes ol {
+  list-style: decimal;
+}
+
+.prose-notes li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-notes li::marker {
+  color: var(--color-gold-deep);
+}
+
+.prose-notes a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose-notes strong {
+  color: var(--color-ivory);
+  font-weight: 500;
+}
+
+.prose-notes table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.75rem;
+  font-size: 0.9375rem;
+}
+
+.prose-notes th,
+.prose-notes td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-notes th {
+  color: var(--color-ivory);
+  font-weight: 500;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0D0E15;
+  background: var(--color-ink);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #282B3E;
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #B02A6A;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(226, 74, 132, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(226, 74, 132, 0.5);
-  }
-}
-
-.pulse-glow {
-  animation: pulseGlow 3s infinite ease-in-out;
+  background: var(--color-line);
 }
