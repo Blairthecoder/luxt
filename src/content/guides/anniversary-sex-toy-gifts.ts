@@ -78,7 +78,7 @@ For more ideas that last past the anniversary, read [how to spice up your marria
           label: 'Best Shared Add-On',
           note: 'A vibrating ring adds something new for both of you during sex. Small enough to tuck into a card.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls', minPrice: 20, maxPrice: 75 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls|plug|anal|strap', minPrice: 20, maxPrice: 75 },
             { hubs: ['couples'], maxPrice: 75 },
           ],
         },

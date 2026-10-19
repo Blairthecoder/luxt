@@ -95,7 +95,7 @@ Pick one idea from the first two sections and one from the toy section. Talk abo
           label: 'Easiest First Toy',
           note: 'A stretchy vibrating ring that adds clitoral stimulation during sex, hands-free. Low cost and low pressure.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls', maxPrice: 50 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls|plug|anal|strap', maxPrice: 50 },
             { hubs: ['penis-rings'], title: 'vibrat' },
           ],
         },

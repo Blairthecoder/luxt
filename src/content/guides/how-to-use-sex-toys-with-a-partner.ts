@@ -91,7 +91,7 @@ Once a first toy feels normal, see our guide to the [best couples sex toys](/blo
           label: 'Best Hands-Free',
           note: 'A stretchy vibrating ring that puts vibration where both of you feel it, without anyone having to hold it.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls', minPrice: 15, maxPrice: 80 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls|plug|anal|strap', minPrice: 15, maxPrice: 80 },
             { hubs: ['penis-rings'], title: 'vibrat' },
           ],
         },

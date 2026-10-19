@@ -128,7 +128,7 @@ See the [best sex toy gifts for her](/blog/sex-toy-gifts-for-her), or if you wan
           label: 'Best Vibrating Ring',
           note: 'Comfortable stretch silicone with a small motor placed for your pleasure too. One of the easiest ways to bring a toy into sex.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls', minPrice: 25, maxPrice: 150 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature|balls|plug|anal|strap', minPrice: 25, maxPrice: 150 },
             { hubs: ['penis-rings'], title: 'vibrat' },
           ],
         },
