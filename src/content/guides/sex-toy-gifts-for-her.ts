@@ -137,7 +137,7 @@ If you want something you will use together, read our guide to the [best couples
         {
           label: 'Best G-Spot',
           note: 'A firm, curved tip that puts pressure where internal sensation is strongest. A good pick for someone who already enjoys penetration.',
-          rules: [{ hubs: ['vibrators'], title: 'g-spot|g spot', minPrice: 50, maxPrice: 150 }],
+          rules: [{ hubs: ['vibrators'], title: 'g-spot|g spot', excludeTitle: 'rabbit|strap|harness', minPrice: 50, maxPrice: 150 }],
         },
         {
           label: 'Best Rabbit',
@@ -152,17 +152,17 @@ If you want something you will use together, read our guide to the [best couples
           label: 'Best Luxury Gift',
           note: 'Premium silicone, a near-silent motor and gift-ready packaging. The kind of toy that replaces the rest of the drawer.',
           rules: [
-            { brands: ['lelo'], minPrice: 150 },
-            { brands: ['womanizer'], minPrice: 150 },
-            { hubs: ['vibrators'], minPrice: 150, maxPrice: 300 },
+            { brands: ['lelo'], hubs: ['vibrators'], minPrice: 150, maxPrice: 300 },
+            { brands: ['womanizer'], minPrice: 150, maxPrice: 300 },
+            { hubs: ['vibrators'], tags: ['female'], minPrice: 150, maxPrice: 300 },
           ],
         },
         {
           label: 'Best Statement Piece',
           note: 'For someone who already has the basics. Thrusting or app-connected toys add a sensation she cannot get from a standard vibrator.',
           rules: [
-            { hubs: ['vibrators'], title: 'thrust', minPrice: 120, maxPrice: 300 },
-            { hubs: ['vibrators'], tags: ['app'], minPrice: 120, maxPrice: 300 },
+            { hubs: ['vibrators'], tags: ['female'], title: 'thrust', excludeTitle: 'strap|harness|dildo', minPrice: 120, maxPrice: 300 },
+            { hubs: ['vibrators'], tags: ['female'], text: '^app$', minPrice: 120, maxPrice: 300 },
           ],
         },
       ],

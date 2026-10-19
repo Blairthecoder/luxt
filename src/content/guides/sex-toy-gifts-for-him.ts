@@ -108,7 +108,7 @@ See the [best sex toy gifts for her](/blog/sex-toy-gifts-for-her), or if you wan
           label: 'Best Hands-Free',
           note: 'Does the motion for him, with adjustable speed and stroke. A true luxury gift for the tech-minded.',
           rules: [
-            { tags: ['masturbation type_automatic'], minPrice: 100, maxPrice: 300 },
+            { hubs: ['strokers'], tags: ['masturbation type_automatic'], minPrice: 100, maxPrice: 300 },
             { hubs: ['strokers'], title: 'automatic|thrust|rotat', minPrice: 80, maxPrice: 300 },
           ],
         },
@@ -116,7 +116,7 @@ See the [best sex toy gifts for her](/blog/sex-toy-gifts-for-her), or if you wan
           label: 'Best Value Automatic',
           note: 'Vibration or suction in a simpler, more affordable body. A good test of whether he likes automatic play.',
           rules: [
-            { tags: ['masturbation type_automatic'], maxPrice: 100 },
+            { hubs: ['strokers'], tags: ['masturbation type_automatic'], maxPrice: 100 },
             { hubs: ['strokers'], title: 'vibrat|suction', maxPrice: 100 },
           ],
         },
@@ -128,7 +128,7 @@ See the [best sex toy gifts for her](/blog/sex-toy-gifts-for-her), or if you wan
           label: 'Best Vibrating Ring',
           note: 'Comfortable stretch silicone with a small motor placed for your pleasure too. One of the easiest ways to bring a toy into sex.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', minPrice: 25, maxPrice: 150 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature', minPrice: 25, maxPrice: 150 },
             { hubs: ['penis-rings'], title: 'vibrat' },
           ],
         },

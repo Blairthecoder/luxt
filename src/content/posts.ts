@@ -25,7 +25,7 @@ export interface PickSlot {
   note: string
   /** Tried in order; the first rule with an in-stock product fills the slot. */
   rules: CollectionRule[]
-  /** Which matching product to take. Defaults to the highest price in range. */
+  /** Which matching product to take. Defaults to the median price in range. */
   prefer?: 'price-desc' | 'price-asc'
 }
 

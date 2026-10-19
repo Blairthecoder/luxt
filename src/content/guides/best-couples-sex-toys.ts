@@ -70,7 +70,7 @@ The toy is the easy part. If you have not talked about toys before, read our gui
           label: 'Best Vibrating Ring',
           note: 'Hands-free clitoral stimulation during sex with a ring that also helps him stay firm. The single easiest couples toy to start with.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', minPrice: 30, maxPrice: 180 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature', minPrice: 30, maxPrice: 180 },
             { hubs: ['penis-rings'], title: 'vibrat' },
           ],
         },
@@ -90,7 +90,7 @@ The toy is the easy part. If you have not talked about toys before, read our gui
           label: 'Best Wearable',
           note: 'Designed to be worn during sex, so both partners feel the vibration. App or remote control hands the settings to either of you.',
           rules: [
-            { brands: ['we-vibe', 'we vibe'], minPrice: 80 },
+            { brands: ['we-vibe', 'we vibe'], title: 'sync|chorus|couple', minPrice: 80, maxPrice: 250 },
             { hubs: ['couples'], minPrice: 60, maxPrice: 250 },
             { hubs: ['vibrators'], title: 'wearable|couple', minPrice: 50, maxPrice: 250 },
           ],
@@ -99,7 +99,8 @@ The toy is the easy part. If you have not talked about toys before, read our gui
           label: 'Best Remote Panty Vibe',
           note: 'A discreet vibrator worn under clothing while your partner holds the remote. Built for date nights and long dinners.',
           rules: [
-            { hubs: ['vibrators', 'couples'], title: 'panty|panties|wearable|remote', maxPrice: 150 },
+            { hubs: ['vibrators', 'couples'], title: 'panty|panties|underwear|knicker', maxPrice: 150 },
+            { hubs: ['vibrators', 'couples'], title: 'wearable', maxPrice: 150 },
           ],
         },
       ],
@@ -110,7 +111,7 @@ The toy is the easy part. If you have not talked about toys before, read our gui
           label: 'Best Long-Distance Pick',
           note: 'App control from anywhere, with patterns and live control your partner can take over. One of the most established long-distance brands.',
           rules: [
-            { brands: ['lovense'], minPrice: 60, maxPrice: 250 },
+            { brands: ['lovense'], hubs: ['vibrators', 'couples'], excludeTitle: 'dildo|machine', minPrice: 60, maxPrice: 250 },
             { tags: ['app'], minPrice: 60, maxPrice: 250 },
           ],
         },

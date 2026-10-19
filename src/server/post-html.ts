@@ -27,12 +27,15 @@ function candidates(rule: CollectionRule): CatalogProduct[] {
 }
 
 function fillSlot(slot: PickSlot, used: Set<string>): CatalogProduct | undefined {
-  const dir = slot.prefer === 'price-asc' ? 1 : -1
   for (const rule of slot.rules) {
-    const match = candidates(rule)
+    const matches = candidates(rule)
       .filter((p) => !used.has(p.handle))
-      .sort((a, b) => (a.price - b.price) * dir)[0]
-    if (match) return match
+      .sort((a, b) => a.price - b.price)
+    if (!matches.length) continue
+    if (slot.prefer === 'price-asc') return matches[0]
+    if (slot.prefer === 'price-desc') return matches[matches.length - 1]
+    // Middle of the range: representative of the slot, not its outliers.
+    return matches[Math.floor(matches.length / 2)]
   }
   return undefined
 }

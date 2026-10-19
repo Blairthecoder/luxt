@@ -78,7 +78,7 @@ For more ideas that last past the anniversary, read [how to spice up your marria
           label: 'Best Shared Add-On',
           note: 'A vibrating ring adds something new for both of you during sex. Small enough to tuck into a card.',
           rules: [
-            { hubs: ['penis-rings'], title: 'vibrat', minPrice: 20, maxPrice: 75 },
+            { hubs: ['penis-rings'], title: 'vibrat', excludeTitle: 'prostate|dildo|creature', minPrice: 20, maxPrice: 75 },
             { hubs: ['couples'], maxPrice: 75 },
           ],
         },
@@ -116,7 +116,7 @@ For more ideas that last past the anniversary, read [how to spice up your marria
           label: 'Best Luxury Gift',
           note: 'The top of a premium brand’s range. Flawless silicone, serious power and the kind of finish that feels like jewelry.',
           rules: [
-            { brands: ['lelo', 'womanizer', 'we-vibe', 'we vibe'], minPrice: 180 },
+            { brands: ['lelo', 'womanizer', 'we-vibe', 'we vibe'], minPrice: 180, maxPrice: 400 },
             { hubs: ['vibrators', 'couples'], minPrice: 200, maxPrice: 400 },
           ],
         },
