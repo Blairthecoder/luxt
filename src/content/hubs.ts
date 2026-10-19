@@ -197,6 +197,21 @@ export const HUBS: Hub[] = [
     ],
   },
   {
+    slug: 'sex-machines-furniture',
+    name: 'Sex Machines & Furniture',
+    singular: 'Machine or Furniture Piece',
+    metaTitle: 'Sex Machines, Swings & Positioning Furniture',
+    metaDescription:
+      'Thrusting sex machines, sex swings, slings and positioning wedges compared by setup, stability and price. What to check before you buy.',
+    intro:
+      'Machines and furniture are the big-ticket corner of the nightstand. A machine does the thrusting for you, while swings, slings and wedges take the strain out of positions that are hard to hold. Measure your space and check weight limits first.',
+    buyingTips: [
+      'Check the rated weight limit and how a swing or sling mounts: door frame, ceiling or freestanding.',
+      'On a machine, look for adjustable speed and stroke length and a stable, low base.',
+      'Positioning wedges are the easiest start: no setup, and they double as support for toys.',
+    ],
+  },
+  {
     slug: 'more-toys',
     name: 'More Toys & Accessories',
     singular: 'Accessory',

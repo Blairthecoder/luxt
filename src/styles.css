@@ -166,6 +166,117 @@ h3 {
   font-weight: 500;
 }
 
+/* Product picks embedded in Nightstand Notes ([[picks:id]]). */
+.prose-notes .picks {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 2.5rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.prose-notes .pick {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  margin: 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+@media (min-width: 640px) {
+  .prose-notes .pick {
+    grid-template-columns: 10rem 1fr;
+    gap: 1.75rem;
+  }
+}
+
+.prose-notes .pick-image {
+  display: block;
+  aspect-ratio: 4 / 5;
+  background: var(--color-tile);
+  text-decoration: none;
+}
+
+.prose-notes .pick-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+  mix-blend-mode: multiply;
+}
+
+.prose-notes .pick-body p {
+  margin: 0;
+}
+
+.prose-notes .pick-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.prose-notes .pick-title {
+  margin: 0.4rem 0 0.25rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.prose-notes .pick-title a {
+  color: var(--color-ivory);
+  text-decoration: none;
+}
+
+.prose-notes .pick-title a:hover {
+  color: var(--color-gold);
+}
+
+.prose-notes .pick-meta {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.prose-notes .pick-price {
+  color: var(--color-ivory);
+}
+
+.prose-notes .pick-price s {
+  margin-left: 0.4rem;
+  color: var(--color-faint);
+}
+
+.prose-notes .pick-note {
+  margin-top: 0.6rem !important;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.prose-notes .pick-buy {
+  display: inline-block;
+  margin-top: 0.9rem;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink);
+  background: var(--color-gold);
+}
+
+.prose-notes .pick-buy-merchant {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .prose-notes .pick-buy-merchant {
+    display: inline;
+  }
+}
+
+.prose-notes .pick-buy:hover {
+  background: var(--color-ivory);
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

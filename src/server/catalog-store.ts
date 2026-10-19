@@ -51,12 +51,16 @@ export function productsMatchingRule(slug: string, rule: CollectionRule): Catalo
   const cached = ruleCache.get(slug)
   if (cached) return cached
   const titleRe = rule.title ? new RegExp(rule.title, 'i') : null
+  const excludeRe = rule.excludeTitle ? new RegExp(rule.excludeTitle, 'i') : null
+  const textRe = rule.text ? new RegExp(rule.text, 'i') : null
   const tags = rule.tags?.map((t) => t.toLowerCase())
   const brands = rule.brands?.map((b) => b.toLowerCase())
   const result = catalog.products.filter((p) => {
     if (rule.hubs && !rule.hubs.includes(p.hub)) return false
     if (tags && !p.tags.some((t) => tags.includes(t.trim().toLowerCase()))) return false
     if (titleRe && !titleRe.test(p.title)) return false
+    if (excludeRe && excludeRe.test(p.title)) return false
+    if (textRe && !textRe.test(p.title) && !p.tags.some((t) => textRe.test(t))) return false
     if (brands && !brands.includes(p.brand.toLowerCase())) return false
     if (rule.minPrice !== undefined && p.price < rule.minPrice) return false
     if (rule.maxPrice !== undefined && p.price >= rule.maxPrice) return false

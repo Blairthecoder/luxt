@@ -1,7 +1,38 @@
 /**
  * Nightstand Notes: original buying guides. Bodies are Markdown, rendered on
  * the server. Link to /shop and /category pages so guides pass shoppers on.
+ *
+ * Bodies can embed live catalog data (see src/server/post-html.ts):
+ * - `[[picks:<id>]]` on its own line renders the post's `picks[id]` block as
+ *   product cards with feed prices and /go/ buttons.
+ * - `[[from:<collection slug>]]` renders " (from $X)", the lowest in-stock
+ *   price in that collection, or nothing if it is empty.
+ * - `[[price:<collection slug>]]` renders that lowest price alone ("$12"),
+ *   for tables.
  */
+import type { CollectionRule } from '@/content/collections'
+import { GIFTS_FOR_HER } from '@/content/guides/sex-toy-gifts-for-her'
+import { GIFTS_FOR_HIM } from '@/content/guides/sex-toy-gifts-for-him'
+import { COUPLES_TOYS } from '@/content/guides/best-couples-sex-toys'
+import { SPICE_UP_MARRIAGE } from '@/content/guides/how-to-spice-up-your-marriage'
+import { ANNIVERSARY_GIFTS } from '@/content/guides/anniversary-sex-toy-gifts'
+import { TOYS_WITH_PARTNER } from '@/content/guides/how-to-use-sex-toys-with-a-partner'
+
+export interface PickSlot {
+  /** Short badge, e.g. "Best Overall" or "Under $50". */
+  label: string
+  /** Original one or two sentences on why this pick is here. */
+  note: string
+  /** Tried in order; the first rule with an in-stock product fills the slot. */
+  rules: CollectionRule[]
+  /** Which matching product to take. Defaults to the highest price in range. */
+  prefer?: 'price-desc' | 'price-asc'
+}
+
+export interface PickBlock {
+  slots: PickSlot[]
+}
+
 export interface Post {
   slug: string
   title: string
@@ -13,10 +44,20 @@ export interface Post {
   readMinutes: number
   /** Hubs this guide supports; used to surface it on category and product pages. */
   hubs: string[]
+  /** Nightstand Notes topic hubs (src/content/topics.ts) this guide belongs to. */
+  topics: string[]
   body: string
+  picks?: Record<string, PickBlock>
+  faqs?: { q: string; a: string }[]
 }
 
 export const POSTS: Post[] = [
+  GIFTS_FOR_HER,
+  GIFTS_FOR_HIM,
+  COUPLES_TOYS,
+  ANNIVERSARY_GIFTS,
+  SPICE_UP_MARRIAGE,
+  TOYS_WITH_PARTNER,
   {
     slug: 'fleshlight-vs-tenga',
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',
@@ -28,6 +69,7 @@ export const POSTS: Post[] = [
     publishedAt: '2026-10-19',
     readMinutes: 6,
     hubs: ['strokers'],
+    topics: ['for-him'],
     body: `
 If you are shopping for your first stroker, you will run into two names almost immediately: **Fleshlight** and **Tenga**. Both are well made and both are worth buying. They just solve the problem differently, and the right choice depends on how you plan to use it.
 
@@ -83,6 +125,7 @@ If you like the feeling but want hands-free play, look at [automatic strokers](/
     publishedAt: '2026-10-19',
     readMinutes: 7,
     hubs: ['vibrators', 'couples'],
+    topics: ['for-her', 'how-to'],
     body: `
 Walking into the world of vibrators can feel like a lot. There are hundreds of shapes, a dozen technologies and prices from $15 to $300. The good news is that choosing well comes down to three questions.
 
@@ -137,6 +180,7 @@ Start external, start body-safe, and do not overspend on your first toy. Once yo
     publishedAt: '2026-10-19',
     readMinutes: 5,
     hubs: ['lubricants', 'anal-toys', 'strokers', 'dildos'],
+    topics: ['how-to'],
     body: `
 Lube is the cheapest upgrade you can make to any toy. It makes play more comfortable, reduces friction and helps toys last. But not every lube works with every toy, and picking the wrong one can quietly damage something you paid good money for.
 
@@ -184,4 +228,18 @@ export const POSTS_BY_SLUG: Record<string, Post> = Object.fromEntries(POSTS.map(
 
 export function postsForHub(hub: string): Post[] {
   return POSTS.filter((p) => p.hubs.includes(hub))
+}
+
+export function postsForTopic(topic: string): Post[] {
+  return POSTS.filter((p) => p.topics.includes(topic))
+}
+
+/** Guides that share the most topics with this one, newest first on ties. */
+export function relatedPosts(post: Post, limit = 3): Post[] {
+  const shared = (p: Post) => p.topics.filter((t) => post.topics.includes(t)).length
+  return POSTS.filter((p) => p.slug !== post.slug)
+    .map((p, i) => ({ p, score: shared(p) * 100 - i }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ p }) => p)
 }

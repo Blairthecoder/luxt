@@ -2,7 +2,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { absoluteUrl } from '@/config/site'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
-import { POSTS } from '@/content/posts'
+import { POSTS, postsForTopic } from '@/content/posts'
+import { TOPICS } from '@/content/topics'
 
 // Lists only indexable URLs: home, category hubs and collections with products,
 // guides, and product
@@ -24,7 +25,11 @@ export const Route = createFileRoute('/sitemap.xml')({
             urls.push({ loc: absoluteUrl(`/shop/${c.slug}`), lastmod })
           }
         }
+        urls.push({ loc: absoluteUrl('/gifts'), lastmod })
         urls.push({ loc: absoluteUrl('/blog') })
+        for (const topic of TOPICS) {
+          if (postsForTopic(topic.slug).length) urls.push({ loc: absoluteUrl(`/blog/topic/${topic.slug}`) })
+        }
         for (const post of POSTS) {
           urls.push({ loc: absoluteUrl(`/blog/${post.slug}`), lastmod: post.updatedAt ?? post.publishedAt })
         }

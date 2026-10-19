@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DisclosureRouteImport } from './routes/disclosure'
+import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
@@ -18,6 +19,7 @@ import { Route as CategorySlugRouteImport } from './routes/category/$slug'
 import { Route as GoHandleRouteImport } from './routes/go/$handle'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 import { Route as ShopSlugRouteImport } from './routes/shop/$slug'
+import { Route as BlogTopicTopicRouteImport } from './routes/blog/topic/$topic'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -27,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const DisclosureRoute = DisclosureRouteImport.update({
   id: '/disclosure',
   path: '/disclosure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GiftsRoute = GiftsRouteImport.update({
+  id: '/gifts',
+  path: '/gifts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -64,10 +71,16 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
   path: '/shop/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogTopicTopicRoute = BlogTopicTopicRouteImport.update({
+  id: '/blog/topic/$topic',
+  path: '/blog/topic/$topic',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/disclosure': typeof DisclosureRoute
+  '/gifts': typeof GiftsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -75,10 +88,12 @@ export interface FileRoutesByFullPath {
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/disclosure': typeof DisclosureRoute
+  '/gifts': typeof GiftsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -86,11 +101,13 @@ export interface FileRoutesByTo {
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/disclosure': typeof DisclosureRoute
+  '/gifts': typeof GiftsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -98,12 +115,14 @@ export interface FileRoutesById {
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/disclosure'
+    | '/gifts'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/category/$slug'
@@ -111,10 +130,12 @@ export interface FileRouteTypes {
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
+    | '/blog/topic/$topic'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/disclosure'
+    | '/gifts'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/category/$slug'
@@ -122,10 +143,12 @@ export interface FileRouteTypes {
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog'
+    | '/blog/topic/$topic'
   id:
     | '__root__'
     | '/'
     | '/disclosure'
+    | '/gifts'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/category/$slug'
@@ -133,11 +156,13 @@ export interface FileRouteTypes {
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
+    | '/blog/topic/$topic'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DisclosureRoute: typeof DisclosureRoute
+  GiftsRoute: typeof GiftsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
@@ -145,6 +170,7 @@ export interface RootRouteChildren {
   ProductsProductIdRoute: typeof ProductsProductIdRoute
   ShopSlugRoute: typeof ShopSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  BlogTopicTopicRoute: typeof BlogTopicTopicRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -161,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/disclosure'
       fullPath: '/disclosure'
       preLoaderRoute: typeof DisclosureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gifts': {
+      id: '/gifts'
+      path: '/gifts'
+      fullPath: '/gifts'
+      preLoaderRoute: typeof GiftsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -212,12 +245,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/topic/$topic': {
+      id: '/blog/topic/$topic'
+      path: '/blog/topic/$topic'
+      fullPath: '/blog/topic/$topic'
+      preLoaderRoute: typeof BlogTopicTopicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DisclosureRoute: DisclosureRoute,
+  GiftsRoute: GiftsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,
@@ -225,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsProductIdRoute: ProductsProductIdRoute,
   ShopSlugRoute: ShopSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
+  BlogTopicTopicRoute: BlogTopicTopicRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
