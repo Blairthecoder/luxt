@@ -1,6 +1,9 @@
 [build]
-  command = "vite build"
+  command = "node scripts/sync-catalog.mjs && vite build"
   publish = "dist/client"
+[build.environment]
+  # sync-catalog.mjs relies on the global fetch in Node 18+
+  NODE_VERSION = "22"
 [dev]
   command = "npm run dev"
   targetPort = 3000
