@@ -21,6 +21,7 @@ export function ListingPage({
   extra,
   extraName,
   subcats = [],
+  otherBrands = [],
 }: {
   eyebrow: string
   title: string
@@ -33,6 +34,7 @@ export function ListingPage({
   extra?: ListingExtra | null
   extraName?: string
   subcats?: SubcategoryTile[]
+  otherBrands?: { slug: string; name: string }[]
 }) {
   return (
     <div className="wrap">
@@ -102,17 +104,47 @@ export function ListingPage({
           {extra.faqs.length > 0 && (
             <>
               <h2 className="lg:col-span-4 display-m lg:pt-6">Questions People Ask.</h2>
-              <dl className="lg:col-span-8 max-w-3xl border-t border-line lg:mt-6">
+              <div className="lg:col-span-8 max-w-3xl border-t border-line lg:mt-6">
                 {extra.faqs.map((faq) => (
-                  <div key={faq.q} className="py-6 border-b border-line">
-                    <dt className="font-display text-xl font-semibold tracking-[-0.02em]">{faq.q}</dt>
-                    <dd className="mt-2 text-graphite text-[1.0625rem] leading-relaxed">{faq.a}</dd>
-                  </div>
+                  <details key={faq.q} className="group border-b border-line">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
+                      <h3 className="font-display text-xl font-semibold tracking-[-0.02em]">{faq.q}</h3>
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        className="h-5 w-5 shrink-0 text-graphite transition-transform group-open:rotate-45"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                      >
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </summary>
+                    <p className="pb-6 -mt-2 text-graphite text-[1.0625rem] leading-relaxed">{faq.a}</p>
+                  </details>
                 ))}
-              </dl>
+              </div>
             </>
           )}
         </section>
+      )}
+
+      {otherBrands.length > 0 && (
+        <nav aria-label="Shop other brands" className="mt-24 pt-14 border-t border-ink reveal">
+          <h2 className="display-m">
+            Shop More Brands. <span className="text-graphite">Compare Side by Side.</span>
+          </h2>
+          <ul className="mt-8 flex flex-wrap gap-2.5">
+            {otherBrands.map((brand) => (
+              <li key={brand.slug}>
+                <Link to="/shop/$slug" params={{ slug: brand.slug }} className="chip">
+                  {brand.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
 
       {(tips?.length || guides.length > 0) && (
@@ -137,7 +169,7 @@ export function ListingPage({
           {guides.length > 0 && (
             <div className="reveal">
               <h2 className="display-m">
-                Read the Guide. <span className="text-graphite">Nightstand Notes.</span>
+                {guides.length > 1 ? 'Read the Guides.' : 'Read the Guide.'} <span className="text-graphite">Nightstand Notes.</span>
               </h2>
               <ul className="mt-10 border-t border-line">
                 {guides.map((post) => (

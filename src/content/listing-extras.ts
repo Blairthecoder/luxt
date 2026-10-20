@@ -602,6 +602,37 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
   // ---------------------------------------------------------------------------
   // Brand collections
   // ---------------------------------------------------------------------------
+  'shop:fleshlight': {
+    h1: 'Fleshlight Sleeves, Girls Models & Accessories Explained',
+    body: [
+      "Fleshlight is the best-known name in strokers, and most people have heard of it long before they buy one. The idea is simple. A soft, skin-like sleeve sits inside a hard, flashlight-shaped case, and a cap at the end lets you tighten or loosen suction to change the feel. The sleeve is the part that matters most, and the range comes down to which internal texture and which size you want.",
+      "The lineup falls into a few families. The Girls line is molded from adult performers and comes in several textures. Quickshot models are shorter and lighter, which makes them easier to store and to hold. The Go line is more compact again and suits travel. Launch is the automatic version, with a motor that does the stroking so your hands are free. Inside any of them, a tighter canal feels more intense, and a more open, ribbed one feels gentler.",
+      "A Fleshlight is a reusable toy, so a little care goes a long way. Use water-based lube only, rinse the sleeve with warm water after each use, let it air dry fully before it goes back in the case, and dust it lightly with a renewing powder if it turns tacky. Warming the case in a sink of warm water first makes the first minute feel far more natural. If you are not sure where to start, our Fleshlight vs. Tenga guide walks through the choice.",
+    ],
+    faqs: [
+      {
+        q: 'Which Fleshlight is best for beginners?',
+        a: "A mid-range texture in a standard size is the easiest first choice, since very tight or heavily ribbed sleeves can feel intense until you know what you like. Quickshot models are lighter and simpler to handle, and a Girls model gives you a more lifelike shape. Pair any of them with a good water-based lube and warm the case first.",
+      },
+      {
+        q: 'How do you clean a Fleshlight?',
+        a: "Slide the sleeve out of the case, rinse the canal with warm water while gently squeezing it, and skip harsh soaps that can dry the material. Pat the outside dry, then stand the sleeve upright with both ends open so it air dries fully. Once it is completely dry, a light dusting of renewing powder keeps it from feeling sticky.",
+      },
+      {
+        q: 'What lube is safe with a Fleshlight?',
+        a: "Use water-based lube only. Silicone and oil-based lubes can break down the sleeve material and leave it sticky or damaged. A slightly thicker water-based formula lasts longer inside a sleeve, and you can always add a few drops partway through. Wash it out thoroughly afterward so nothing builds up inside.",
+      },
+      {
+        q: 'How long does a Fleshlight last?',
+        a: "With regular rinsing, full drying and the right lube, a sleeve can stay in good shape for a long time. Signs it is wearing out are tears, a persistent sticky feel that powder no longer fixes, or a smell that does not wash away. At that point a replacement sleeve is usually cheaper than a whole new toy.",
+      },
+      {
+        q: 'How is Fleshlight different from Tenga?',
+        a: "Fleshlight focuses on reusable sleeves in a hard case with adjustable suction and a wide range of textures. Tenga leans toward compact, design-led products, including single-use cups that come pre-lubricated. Fleshlight suits someone who wants one toy for the long term, while Tenga is an easy way to try several feels first.",
+      },
+    ],
+  },
+
   'shop:lelo': {
     h1: 'LELO Vibrators & Sonic Toys Made to Feel Good',
     body: [
@@ -621,6 +652,14 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
       {
         q: 'Where is LELO from?',
         a: "LELO was founded in Stockholm, Sweden, and its Scandinavian design influence shows in the clean lines and soft-touch finishes across the range. The brand sells internationally and offers vibrators, sonic clitoral toys, prostate massagers, couples toys and toys for penis owners. Check each product listing for current details, since models are updated over time with new versions.",
+      },
+      {
+        q: 'Are LELO toys quiet?',
+        a: "LELO is known for quieter motors, and many of its rechargeable toys are quiet enough to use on low settings without drawing attention. Higher settings and larger toys such as wands are louder, and a toy pressed against a hard surface carries more sound. Check each product's details and use a pillow or blanket if privacy matters to you.",
+      },
+      {
+        q: 'What is the difference between LELO and Womanizer?',
+        a: "LELO is a broad brand with vibrators, sonic toys, prostate massagers and couples products. Womanizer specializes in air-pulse clitoral stimulation. LELO's SONA is a sonic toy that feels similar in spirit, but the two use different technology and feel different in use. Our Womanizer vs. LELO SONA guide compares them side by side.",
       },
     ],
   },
@@ -645,6 +684,14 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
         q: 'Is Womanizer waterproof?',
         a: "Many Womanizer models are designed to be waterproof, so they can be rinsed under the tap and used in the bath or shower. Water rinses lube away and can affect the seal, so a little extra lube may help you stay comfortable. Always check the individual product details for the rating, and make sure the charging contacts are dry before you charge it.",
       },
+      {
+        q: 'Womanizer vs LELO SONA: what is the difference?',
+        a: "Both are clitoral toys that avoid direct vibration. Womanizer uses air-pulse technology, which creates rhythmic pressure waves, while LELO SONA uses sonic waves that pulse around the clitoris. Many people describe Womanizer as more suction-like and SONA as softer and more diffuse. Our comparison guide breaks down the feel, size and features.",
+      },
+      {
+        q: 'Why do Womanizer toys need a replacement head?',
+        a: "The soft silicone head is the part that touches your skin and seals around the clitoris, so it is designed to be removable for cleaning. Over time it can stretch or wear, and a loose head can weaken the seal. Replacing it when it no longer fits snugly keeps the toy feeling as it should.",
+      },
     ],
   },
 
@@ -667,6 +714,14 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
       {
         q: 'Which We-Vibe is best for couples?',
         a: "Chorus and Sync are the best-known wearable couples vibrators, both adjustable to fit different bodies. Chorus suits couples who like the idea of a squeeze-sensitive remote, while Sync is the classic wearable approach. For play outside the bedroom, Moxie is a discreet panty vibe, and Pivot suits couples who prefer a vibrating ring. Choose based on how you usually have sex.",
+      },
+      {
+        q: 'Is We-Vibe or Lovense better for couples?',
+        a: "Both make app-connected toys. We-Vibe is built around couples, with wearables designed for use during sex and many models that include a physical remote. Lovense is app-first, with a wider range of connected toys and a strong focus on long-distance play. Our Lovense vs. We-Vibe guide compares the apps, wearables and prices.",
+      },
+      {
+        q: 'Can a partner feel a We-Vibe during sex?',
+        a: "Often yes. Because the clitoral arm sits against the body, a partner can feel the vibration through contact, especially in positions where you stay close. How much depends on the model, the setting and how snug the fit is. Starting on a lower setting lets both of you adjust, and you can increase it as you go.",
       },
     ],
   },
@@ -691,6 +746,14 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
         q: 'Can you use Lovense toys without the app?',
         a: "Yes. Most Lovense toys have a button for power and basic vibration modes, so they work as a standard toy without a phone. The app unlocks custom patterns, music sync, partner control and long-distance features, which are the main reasons people choose the brand. If you mainly want simple solo use, it is worth comparing other brands too.",
       },
+      {
+        q: 'Lovense vs We-Vibe: which should I choose?',
+        a: "Choose Lovense if long-distance play and a wide range of connected toys matter most. Choose We-Vibe if you mostly play together in the same room, want a physical remote or like the idea of a couples vibrator worn during sex. Both are established brands, so check the app supports your phone. Our comparison guide goes into detail.",
+      },
+      {
+        q: 'Is Lovense private and safe to use?',
+        a: "Lovense toys connect over Bluetooth, and remote play goes through the app's servers. Use a strong password, review the app's privacy settings and only accept remote connections from people you trust. You can end a session at any time from your own phone. As with any connected device, keep the app and your phone updated.",
+      },
     ],
   },
 
@@ -713,6 +776,14 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
       {
         q: 'How do you clean a Tenga Flip?',
         a: "Open the Flip like a clamshell, rinse the inner sleeve with warm water to remove lube, and gently pat away excess moisture. Leave it open to air dry fully before closing it for storage, out of direct sunlight. Avoid harsh soaps and oil-based products, which can damage the material. Use a water-based lube every session for the best feel.",
+      },
+      {
+        q: 'Which Tenga should I try first?',
+        a: "Single-use Tenga Cups are the easiest way in, since they come pre-lubricated and let you compare textures without a big commitment. The Tenga Egg is a stretchy, lower-intensity option if you want something gentler. If you already know you like strokers, a reusable Flip or Spinner gives you a toy to keep and refine your preferences with.",
+      },
+      {
+        q: 'Is Tenga discreet?',
+        a: "Tenga designs its packaging to look more like a design object than an adult product, and its cups and eggs are small and easy to store. Reusable models are compact too. If privacy matters, check the shipping details at checkout, and consider single-use cups, which leave nothing to store or hide afterward.",
       },
     ],
   },

@@ -34,6 +34,8 @@ import { LOVENSE_VS_WE_VIBE } from '@/content/guides/lovense-vs-we-vibe'
 import { LE_WAND_VS_MAGIC_WAND } from '@/content/guides/le-wand-vs-magic-wand'
 import { BEGINNERS_GUIDE } from '@/content/guides/sex-toys-for-beginners'
 import { BLACK_FRIDAY_DEALS } from '@/content/guides/black-friday-sex-toy-deals'
+import { BEST_FLESHLIGHT_BEGINNERS } from '@/content/guides/best-fleshlight-for-beginners'
+import { CLEAN_FLESHLIGHT } from '@/content/guides/how-to-clean-a-fleshlight'
 
 export interface PickSlot {
   /** Short badge, e.g. "Best Overall" or "Under $50". */
@@ -95,6 +97,8 @@ export const POSTS: Post[] = [
   LE_WAND_VS_MAGIC_WAND,
   BEGINNERS_GUIDE,
   BLACK_FRIDAY_DEALS,
+  BEST_FLESHLIGHT_BEGINNERS,
+  CLEAN_FLESHLIGHT,
   {
     slug: 'fleshlight-vs-tenga',
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',
@@ -130,7 +134,7 @@ Solo time is a chance to relax, learn what you like and feel good in your own bo
 
 Fleshlight sleeves are made from a soft, skin-like material housed in a rigid case. The cap at the bottom controls suction: loosen it for less, tighten it for more. The range is huge, from compact **Quickshot** models to the **Fleshlight Girls** line molded from adult performers.
 
-The trade-off is care. A sleeve needs to be rinsed with warm water after every use and dried completely, ideally by removing it from the case and letting it air out. Skip that and it will not last.
+The trade-off is care. A sleeve needs to be rinsed with warm water after every use and dried completely, ideally by removing it from the case and letting it air out. Skip that and it will not last. Our guide to [cleaning a Fleshlight](/blog/how-to-clean-a-fleshlight) walks through it, and the [best Fleshlight for beginners](/blog/best-fleshlight-for-beginners) helps you pick a first sleeve.
 
 [Browse Fleshlight](/shop/fleshlight)
 
