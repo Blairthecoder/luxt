@@ -40,7 +40,8 @@ export const getHubListing = createServerFn({ method: 'GET' })
   .handler(async ({ data }) => {
     const store = await import('@/server/catalog-store')
     const { buildListing } = await import('@/server/listing')
-    return buildListing(store.productsInHub(data.slug), data.filters)
+    const { LISTING_EXTRAS } = await import('@/content/listing-extras')
+    return { ...buildListing(store.productsInHub(data.slug), data.filters), extra: LISTING_EXTRAS[`hub:${data.slug}`] ?? null }
   })
 
 export const getCollectionListing = createServerFn({ method: 'GET' })
@@ -52,11 +53,11 @@ export const getCollectionListing = createServerFn({ method: 'GET' })
     const collection = COLLECTIONS_BY_SLUG[data.slug]
     if (!collection) return null
     const { COLLECTION_FOCUS } = await import('@/server/merchandising')
-    return buildListing(
-      store.productsMatchingRule(collection.slug, collection.rule),
-      data.filters,
-      COLLECTION_FOCUS[collection.slug]
-    )
+    const { LISTING_EXTRAS } = await import('@/content/listing-extras')
+    return {
+      ...buildListing(store.productsMatchingRule(collection.slug, collection.rule), data.filters, COLLECTION_FOCUS[collection.slug]),
+      extra: LISTING_EXTRAS[`shop:${collection.slug}`] ?? null,
+    }
   })
 
 export const getProductData = createServerFn({ method: 'GET' })
