@@ -43,33 +43,47 @@ const COLLECTION_FOR: Partial<Record<FilterKey, Record<string, string>>> = {
 /** Product grid with facet filters, sorting and numbered pagination. */
 export function ListingView({ result, filters }: { result: ListingResult; filters: ListingFilters }) {
   const active = FILTER_KEYS.filter((key) => filters[key])
-  const [showFilters, setShowFilters] = useState(false)
+  const [open, setOpen] = useState<FilterKey | null>(null)
   const pathname = useRouterState({ select: (st) => st.location.pathname })
   const unfiltered = active.length === 0
   const collectionFor = (key: FilterKey, value: string) => {
     const slug = COLLECTION_FOR[key]?.[value]
     return unfiltered && slug && pathname !== `/shop/${slug}` ? slug : null
   }
+  const facets = FACET_ORDER.filter((key) => {
+    const options = result.facets[key]
+    return options.length > 0 && !(options.length === 1 && !filters[key])
+  })
 
   return (
     <div>
-      <div className="sticky top-[5.5rem] z-20 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] bg-canvas/90 backdrop-blur-xl border-b border-line">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-x-4 gap-y-2 py-3 sm:py-0 sm:h-14">
-          <div className="flex items-center gap-6 whitespace-nowrap">
-            <button
-              type="button"
-              onClick={() => setShowFilters(!showFilters)}
-              aria-expanded={showFilters}
-              aria-controls="listing-filters"
-              className="lg:hidden text-sm font-medium"
-            >
-              {showFilters ? 'Hide Filters' : 'Show Filters'}
-            </button>
-            <p className="text-sm text-graphite">
-              {result.total.toLocaleString()} {result.total === 1 ? 'Product' : 'Products'}
-            </p>
+      <div className="sticky top-[5.75rem] z-20 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] bg-canvas/95 backdrop-blur-xl border-y border-line">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-x-6 gap-y-2 py-3">
+          <div className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] -mx-1 px-1">
+            <span className="text-sm font-semibold pr-2 whitespace-nowrap">Filter</span>
+            {facets.map((key) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setOpen(open === key ? null : key)}
+                aria-expanded={open === key}
+                aria-controls={`facet-${key}`}
+                className={`chip gap-2 ${filters[key] && open !== key ? '!border-ink' : ''}`}
+              >
+                {FILTER_LABELS[key]}
+                {filters[key] && <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-signal" />}
+                <span
+                  aria-hidden="true"
+                  className={`block w-1.5 h-1.5 border-b-[1.5px] border-r-[1.5px] border-current transition-transform ${open === key ? '-rotate-[135deg] mt-1' : 'rotate-45 -mt-0.5'}`}
+                />
+              </button>
+            ))}
           </div>
           <div className="flex items-center gap-5 overflow-x-auto [scrollbar-width:none]">
+            <p className="text-sm text-graphite whitespace-nowrap">
+              {result.total.toLocaleString()} {result.total === 1 ? 'Product' : 'Products'}
+            </p>
+            <span aria-hidden="true" className="h-4 w-px bg-line" />
             {SORTS.map((s) => {
               const current = (filters.sort ?? 'featured') === s.id
               return (
@@ -92,103 +106,93 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
             })}
           </div>
         </div>
-      </div>
 
-      <div className="pt-8 grid lg:grid-cols-[220px_1fr] gap-10 lg:gap-12">
-        <aside
-          id="listing-filters"
-          aria-label="Filters"
-          className={`${showFilters ? 'block' : 'hidden'} lg:block lg:sticky lg:top-[9.5rem] lg:self-start lg:max-h-[calc(100vh-10.5rem)] lg:overflow-y-auto lg:pr-2`}
-        >
-          <div className="space-y-8">
-            {FACET_ORDER.map((key) => {
-              const options = result.facets[key]
-              if (!options.length || (options.length === 1 && !filters[key])) return null
-              return (
-                <div key={key} className="border-b border-line pb-7 last:border-0">
-                  <h2 className="font-sans text-[0.9375rem] font-semibold tracking-[-0.01em] mb-3">
-                    {FILTER_LABELS[key]}
-                  </h2>
-                  <ul className="space-y-1.5">
-                    {options.map((opt) => {
-                      const selected = filters[key] === opt.value
-                      const collection = collectionFor(key, opt.value)
-                      const rowClass = `flex items-center justify-between gap-3 text-[0.9375rem] transition-colors ${
-                        selected ? 'text-ink font-medium' : 'text-graphite hover:text-ink'
-                      }`
-                      const row = (
-                        <>
-                          <span className="flex items-center gap-2.5">
-                            <span
-                              aria-hidden="true"
-                              className={`w-3.5 h-3.5 shrink-0 border ${selected ? 'bg-ink border-ink' : 'border-silver'}`}
-                            />
-                            {opt.label}
-                          </span>
-                          <span className="text-xs text-silver tabular-nums">{opt.count}</span>
-                        </>
-                      )
-                      return (
-                        <li key={opt.value}>
-                          {collection ? (
-                            <Link to="/shop/$slug" params={{ slug: collection }} className={rowClass}>
-                              {row}
-                            </Link>
-                          ) : (
-                          <Link
-                            to="."
-                            rel="nofollow"
-                            search={(prev: ListingFilters) => ({
-                              ...prev,
-                              [key]: selected ? undefined : opt.value,
-                              page: undefined,
-                            })}
-                            className={rowClass}
-                          >
-                            {row}
-                          </Link>
-                          )}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
-        </aside>
-
-        <div className="space-y-8 min-w-0">
-          {active.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2">
-              {active.map((key) => {
-                const label =
-                  result.facets[key].find((o) => o.value === filters[key])?.label ?? filters[key]
+        {/* Every panel stays in the HTML so its links are crawlable; only the open one shows. */}
+        {facets.map((key) => (
+          <div
+            key={key}
+            id={`facet-${key}`}
+            role="region"
+            aria-label={FILTER_LABELS[key]}
+            className={`${open === key ? 'block' : 'hidden'} border-t border-line py-5 max-h-[50vh] overflow-y-auto`}
+          >
+            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-2">
+              {result.facets[key].map((opt) => {
+                const selected = filters[key] === opt.value
+                const collection = collectionFor(key, opt.value)
+                const rowClass = `flex items-center justify-between gap-3 text-[0.9375rem] transition-colors ${
+                  selected ? 'text-ink font-medium' : 'text-graphite hover:text-ink'
+                }`
+                const row = (
+                  <>
+                    <span className="flex items-center gap-2.5 min-w-0">
+                      <span
+                        aria-hidden="true"
+                        className={`w-3.5 h-3.5 shrink-0 rounded-[3px] border ${selected ? 'bg-ink border-ink' : 'border-silver'}`}
+                      />
+                      <span className="truncate">{opt.label}</span>
+                    </span>
+                    <span className="text-xs text-silver tabular-nums">{opt.count}</span>
+                  </>
+                )
                 return (
-                  <Link
-                    key={key}
-                    to="."
-                    search={(prev: ListingFilters) => ({ ...prev, [key]: undefined, page: undefined })}
-                    className="inline-flex items-center gap-2 text-sm bg-mist rounded-full px-4 h-9 hover:bg-line transition-colors"
-                  >
-                    {label} <span className="text-graphite" aria-label="Remove">×</span>
-                  </Link>
+                  <li key={opt.value}>
+                    {collection ? (
+                      <Link to="/shop/$slug" params={{ slug: collection }} className={rowClass}>
+                        {row}
+                      </Link>
+                    ) : (
+                      <Link
+                        to="."
+                        rel="nofollow"
+                        search={(prev: ListingFilters) => ({
+                          ...prev,
+                          [key]: selected ? undefined : opt.value,
+                          page: undefined,
+                        })}
+                        onClick={() => setOpen(null)}
+                        className={rowClass}
+                      >
+                        {row}
+                      </Link>
+                    )}
+                  </li>
                 )
               })}
-              <Link to="." search={{}} className="text-sm text-graphite underline underline-offset-4 hover:text-ink ml-2">
-                Clear All
-              </Link>
-            </div>
-          )}
+            </ul>
+          </div>
+        ))}
+      </div>
 
-          {result.products.length === 0 ? (
-            <p className="text-graphite py-16 lede">Nothing matches those filters yet. Try removing one.</p>
-          ) : (
-            <ProductGrid products={result.products} />
-          )}
+      <div className="pt-8 space-y-8 min-w-0">
+        {active.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2">
+            {active.map((key) => {
+              const label = result.facets[key].find((o) => o.value === filters[key])?.label ?? filters[key]
+              return (
+                <Link
+                  key={key}
+                  to="."
+                  search={(prev: ListingFilters) => ({ ...prev, [key]: undefined, page: undefined })}
+                  className="inline-flex items-center gap-2 text-sm bg-mist rounded-full px-4 h-9 hover:bg-line transition-colors"
+                >
+                  {label} <span className="text-graphite" aria-label="Remove">×</span>
+                </Link>
+              )
+            })}
+            <Link to="." search={{}} className="text-sm text-graphite underline underline-offset-4 hover:text-ink ml-2">
+              Clear All
+            </Link>
+          </div>
+        )}
 
-          {result.pageCount > 1 && <Pagination page={result.page} pageCount={result.pageCount} />}
-        </div>
+        {result.products.length === 0 ? (
+          <p className="text-graphite py-16 lede">Nothing matches those filters yet. Try removing one.</p>
+        ) : (
+          <ProductGrid products={result.products} dense />
+        )}
+
+        {result.pageCount > 1 && <Pagination page={result.page} pageCount={result.pageCount} />}
       </div>
     </div>
   )

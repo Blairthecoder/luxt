@@ -5,17 +5,17 @@ export const MENOPAUSE_TOYS: Post = {
   title: 'Sex Toys for Menopause: Comfort, Lube and Gentle Vibrators',
   metaTitle: 'Sex Toys for Menopause: Lube, Vibrators & Comfort',
   metaDescription:
-    'Sex toys and lube that help with menopause changes like dryness and lower sensitivity: gentle vibrators, the right lube and how to start.',
+    'Sex toys for menopause that help sex feel comfortable and enjoyable again: the right lube for dryness, gentle vibrators for sensitivity and how to begin.',
   excerpt:
-    'Menopause changes how sex feels. The right lube, a gentle vibrator and a little patience can make it comfortable and enjoyable again.',
+    'Menopause changes how sex feels, but pleasure is still yours. The right lube, a gentle vibrator and some patience can make it comfortable and enjoyable again.',
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['vibrators', 'lubricants'],
   topics: ['for-her', 'how-to'],
   body: `
-Menopause and perimenopause change the body in ways that affect sex. Lower estrogen can cause vaginal dryness, thinner tissue, less natural lubrication and reduced sensitivity or arousal. These changes are common and manageable.
+You deserve to feel comfortable, desired and at home in your body through every stage of life, and menopause is no exception. Menopause and perimenopause change the body in ways that affect sex. Lower estrogen can cause vaginal dryness, thinner tissue, less natural lubrication and reduced sensitivity or arousal. These changes are common and manageable.
 
-Toys and lube are one part of the answer. They are not a substitute for medical care, which can help too.
+Toys and lube are one part of the answer, and this guide helps you choose both. They are not a substitute for medical care, which can help too.
 
 ## What Changes
 

@@ -5,15 +5,15 @@ export const GIFTS_FOR_HER: Post = {
   title: 'The Best Sex Toy Gifts for Her, by Budget and Personality',
   metaTitle: 'Best Sex Toy Gifts for Her: 2026 Holiday Gift Guide',
   metaDescription:
-    'Sex toy gifts for your wife, girlfriend or partner, sorted by budget and personality. Safe bets, bold picks and current prices.',
+    'Sex toy gifts for her that help your wife, girlfriend or partner feel adored and at ease, sorted by budget and personality, with safe bets and bold picks.',
   excerpt:
-    'A safe bet and a bolder pick at every budget, plus the questions that tell you which kind of toy she will actually use.',
+    'Gifts that say "this is for you." A safe bet and a bolder pick at every budget, plus the questions that tell you which toy she will love using.',
   publishedAt: '2026-10-19',
   readMinutes: 11,
   hubs: ['vibrators', 'lingerie', 'couples'],
   topics: ['gift-guides', 'for-her'],
   body: `
-A sex toy can be one of the most thoughtful gifts you give, or one that ends up in a drawer. The difference is almost never the price. It comes down to whether the toy matches how she already likes to be touched, and whether the gift says "this is for you" rather than "this is for me."
+The best intimate gift leaves her feeling seen, adored and completely at ease, because you paid attention to what she enjoys. A sex toy can be one of the most thoughtful gifts you give, or one that ends up in a drawer. The difference is almost never the price. It comes down to whether the toy matches how she already likes to be touched, and whether the gift says "this is for you" rather than "this is for me."
 
 This guide is built to help you decide quickly. Start with the three questions below, pick a budget, and you will have a shortlist in a few minutes.
 
@@ -41,13 +41,13 @@ Under $50 you are buying a great second toy or a low-pressure first one. Look fo
 
 ### $50 to $150: The Sweet Spot
 
-This is where toys get quieter, stronger and better finished. If you want a gift that feels considered without going luxury, start here. Our [under $100 picks](/shop/sex-toys-under-100) are a good shortlist.
+This is where toys get quieter, stronger and better finished. If you want a gift that feels considered without a big spend, start here. Our [under $100 picks](/shop/sex-toys-under-100) are a good shortlist.
 
 [[picks:mid]]
 
 ### $150 and Up: The Investment Piece
 
-Premium brands earn their prices with whisper-quiet motors, flawless silicone and long warranties. A luxury toy also looks like a gift: these usually arrive in presentation boxes. See the full [luxury collection](/shop/luxury-sex-toys).
+Higher-end brands earn their prices with whisper-quiet motors, flawless silicone and long warranties, which matters for a toy she will reach for often. They usually arrive in presentation boxes, so they are easy to give. See the full [premium collection](/shop/luxury-sex-toys).
 
 [[picks:luxury]]
 
@@ -60,7 +60,7 @@ Premium brands earn their prices with whisper-quiet motors, flawless silicone an
 | Into internal play | A [rabbit](/shop/rabbit-vibrators) or [G-spot vibrator](/shop/g-spot-vibrators) | Targeted pressure, or both kinds at once |
 | Private or shy | A discreet, quiet bullet | Small, silent, easy to store |
 | Playful with a partner | A [remote control vibrator](/shop/remote-control-vibrators) | Hands the controls to you, which is the fun |
-| A design lover | A luxury piece from LELO or Womanizer | Looks like a beauty object, not a toy |
+| A design lover | A beautifully designed piece from LELO or Womanizer | Looks like a beauty object, not a toy |
 
 ## Add Something That Makes It a Gift
 
@@ -119,7 +119,7 @@ If you want something you will use together, read our guide to the [best couples
         },
         {
           label: 'Best Under $50 Rabbit',
-          note: 'Internal and external at once, without the luxury price. Choose this only if you know she likes internal play.',
+          note: 'Internal and external at once, without the premium price. Choose this only if you know she likes internal play.',
           rules: [{ hubs: ['vibrators'], title: 'rabbit', excludeTitle: 'strap|harness', maxPrice: 50 }],
         },
       ],
@@ -149,7 +149,7 @@ If you want something you will use together, read our guide to the [best couples
     luxury: {
       slots: [
         {
-          label: 'Best Luxury Gift',
+          label: 'Best Treat-Yourself Gift',
           note: 'Premium silicone, a near-silent motor and gift-ready packaging. The kind of toy that replaces the rest of the drawer.',
           rules: [
             { brands: ['lelo'], hubs: ['vibrators'], minPrice: 150, maxPrice: 300 },
@@ -175,7 +175,7 @@ If you want something you will use together, read our guide to the [best couples
     },
     {
       q: 'What is the best first sex toy to give a woman?',
-      a: 'A clitoral suction toy or a small bullet vibrator. Both focus on external stimulation, which is how most women orgasm, and neither needs any learning curve.',
+      a: 'A clitoral suction toy or a small bullet vibrator. Both focus on external stimulation, which is how most people with a vulva orgasm, and neither has a learning curve, so she can simply relax and enjoy it.',
     },
     {
       q: 'How much should I spend on a sex toy gift?',

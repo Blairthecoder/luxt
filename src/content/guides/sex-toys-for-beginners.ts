@@ -5,15 +5,15 @@ export const BEGINNERS_GUIDE: Post = {
   title: 'Sex Toys for Beginners: Where to Start',
   metaTitle: 'Sex Toys for Beginners: Where to Start',
   metaDescription:
-    'A calm, practical guide to your first sex toy: which type to choose, body-safe materials, lube, cleaning, privacy and simple first picks for every body.',
+    'Sex toys for beginners: a calm guide to your first toy, from which type to choose to body-safe materials, lube, cleaning and privacy, for every body.',
   excerpt:
-    'Your first toy does not need to be complicated or expensive. Start with where you like to be touched, choose body-safe silicone and add a good lube.',
+    'Your first toy should leave you curious and comfortable, not overwhelmed. Start with where you like to be touched, choose body-safe silicone and add lube.',
   publishedAt: '2026-10-20',
   readMinutes: 10,
   hubs: ['vibrators', 'strokers', 'lubricants', 'couples'],
   topics: ['how-to', 'for-her', 'for-him'],
   body: `
-Buying a first sex toy can feel like a bigger decision than it is. There are thousands of products, unfamiliar words and prices that range from pocket money to luxury. The good news is that a great first toy is usually simple, small and inexpensive, and you can learn everything you need in a few minutes.
+Your first toy is really about getting to know yourself, or each other, and feeling comfortable with what you enjoy. Buying one can feel like a bigger decision than it is. There are thousands of products, unfamiliar words and a wide range of prices. The good news is that a great first toy is usually simple, small and inexpensive, and you can learn everything you need in a few minutes.
 
 This guide walks through the choices in order: what kind of toy, what it should be made of, what to use with it, and how to look after it.
 

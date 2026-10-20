@@ -5,15 +5,15 @@ export const TOYS_WITH_PARTNER: Post = {
   title: 'How to Use Sex Toys With a Partner',
   metaTitle: 'How to Use Sex Toys With a Partner: A Couples Guide',
   metaDescription:
-    'How to introduce sex toys to your partner, what to say, which toy to start with and how to use it during sex. A practical guide for couples.',
+    'How to use sex toys with a partner: what to say, which toy to start with and how to bring it into sex so you both feel relaxed. A warm guide for couples.',
   excerpt:
-    'What to say, which toy to start with and how to bring it into sex the first time, without the awkward part.',
+    'What to say, which toy to start with and how to bring it into sex the first time, so you both feel relaxed, included and curious rather than awkward.',
   publishedAt: '2026-10-19',
   readMinutes: 9,
   hubs: ['couples', 'vibrators', 'penis-rings', 'lubricants'],
   topics: ['how-to', 'couples'],
   body: `
-Using a toy together is one of the simplest ways to make sex better for both partners. For many women, it is the difference between orgasming during sex or not. The hard part is rarely the toy. It is the conversation and the first time. This guide covers both.
+Bringing a toy into the bedroom is a way of saying "I want this to feel good for both of us." It can make sex more relaxed, more playful and more satisfying for both partners, and for many people with a vulva it is the difference between orgasming during sex or not. The hard part is rarely the toy. It is the conversation and the first time. This guide helps with both, so you each feel comfortable from the start.
 
 ## Step 1: Bring It Up the Right Way
 

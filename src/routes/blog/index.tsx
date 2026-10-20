@@ -10,7 +10,7 @@ export const Route = createFileRoute('/blog/')({
     pageHead({
       title: `${SITE.guidesName}: Sex Toy Guides & Honest Advice | ${SITE.shortName}`,
       description:
-        'Straight answers on choosing, using and caring for adult toys. Buying guides, comparisons and how-tos from the Nightstand Supply Co. team.',
+        'Friendly, judgment-free advice on choosing, using and caring for adult toys, solo or with a partner. Buying guides, comparisons and how-tos.',
       path: '/blog',
       jsonLd: [
         breadcrumbJsonLd([
@@ -30,7 +30,7 @@ function BlogIndex() {
         <p className="eyebrow text-graphite rise">The Journal</p>
         <h1 className="mt-3 display-xl rise">{SITE.guidesName}</h1>
         <p className="mt-8 lede text-graphite max-w-xl rise-delay">
-          Straight answers on choosing, using and caring for the things in your nightstand.
+          Friendly, judgment-free advice to help you feel more comfortable and confident, solo or with a partner.
         </p>
         <nav aria-label="Guide topics" className="mt-10 rise-delay">
           <ul className="flex flex-wrap gap-2">
