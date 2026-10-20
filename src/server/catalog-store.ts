@@ -65,6 +65,7 @@ export function productsMatchingRule(slug: string, rule: CollectionRule): Catalo
     if (brands && !brands.includes(p.brand.toLowerCase())) return false
     if (rule.minPrice !== undefined && p.price < rule.minPrice) return false
     if (rule.maxPrice !== undefined && p.price >= rule.maxPrice) return false
+    if (rule.onSale && !(p.compareAtPrice !== undefined && p.compareAtPrice > p.price)) return false
     return true
   })
   ruleCache.set(slug, result)
