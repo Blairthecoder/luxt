@@ -578,3 +578,60 @@ h3 {
 .prose-notes .pick-buy:hover {
   background: #3a3a3c;
 }
+
+/* ---------------------------------------------------------------------------
+   Phone and small-tablet app feel. Everything here is scoped to widths under
+   1024px (or opt-in utility classes), so the desktop layout is unchanged.
+--------------------------------------------------------------------------- */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Room for the fixed bottom tab bar (or the product page buy bar). */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Quick press feedback on tappable elements. */
+.press {
+  transition: transform 0.15s var(--ease-out-soft);
+}
+
+.press:active {
+  transform: scale(0.94);
+}
+
+.fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+.sheet-up {
+  animation: sheet-up 0.32s var(--ease-out-soft) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .sheet-up {
+    animation: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { ProductCard } from '@/components/ProductCard'
+import { MobileSearchField } from '@/components/MobileSearchField'
 import { Carousel } from '@/components/Carousel'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { HUBS } from '@/content/hubs'
@@ -167,7 +168,7 @@ function PromoPair({ tiles: all }: { tiles: Tile[] }) {
   const tiles = all.filter((t) => PROMO_COPY[t.slug])
   if (!tiles.length) return null
   return (
-    <section className={`wrap pt-16 sm:pt-20 grid gap-4 reveal ${tiles.length > 1 ? 'md:grid-cols-2' : ''}`}>
+    <section className={`wrap pt-10 sm:pt-20 grid gap-4 reveal ${tiles.length > 1 ? 'md:grid-cols-2' : ''}`}>
       {tiles.map((tile) => {
         const copy = PROMO_COPY[tile.slug]
         return (
@@ -220,23 +221,24 @@ function HomePage() {
 
   return (
     <div>
-      <section className="wrap pt-4 sm:pt-6">
-        <div className="rounded-3xl bg-blush px-6 sm:px-12 lg:px-16 pt-14 sm:pt-20 pb-10 sm:pb-12">
-          <div className="grid lg:grid-cols-12 gap-8 items-end">
+      <section className="wrap pt-3 sm:pt-6">
+        <MobileSearchField className="mb-3" />
+        <div className="rounded-3xl bg-blush px-5 sm:px-12 lg:px-16 pt-7 sm:pt-20 pb-6 sm:pb-12">
+          <div className="grid lg:grid-cols-12 max-sm:gap-0 gap-8 items-end">
             <div className="lg:col-span-7 rise">
               <p className="eyebrow text-graphite">For You. For Two. No Judgment.</p>
-              <h1 className="mt-4 display-l">Adult Toys for Confidence, Comfort and Connection.</h1>
+              <h1 className="mt-3 sm:mt-4 display-l max-sm:!text-[2.125rem]">Adult Toys for Confidence, Comfort and Connection.</h1>
             </div>
             <div className="lg:col-span-5 rise-delay">
-              <p className="lede text-graphite">
+              <p className="lede text-graphite max-sm:hidden">
                 Feeling good should feel easy. We help you find toys that suit your body, your pace and your
                 relationship, with honest advice and discreet delivery.
               </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="btn">
+              <div className="mt-5 sm:mt-7 flex max-sm:flex-nowrap flex-wrap gap-2 sm:gap-3">
+                <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="btn max-sm:!px-4 max-sm:!text-sm whitespace-nowrap">
                   Shop Picks Under $50
                 </Link>
-                <Link to="/gifts" className="btn-ghost bg-canvas border-transparent">
+                <Link to="/gifts" className="btn-ghost bg-canvas border-transparent max-sm:!px-4 max-sm:!text-sm whitespace-nowrap">
                   Find a Gift
                 </Link>
               </div>
@@ -244,7 +246,7 @@ function HomePage() {
           </div>
 
           {shortcuts.length > 0 && (
-            <nav aria-label="Shop by need" className="mt-12 sm:mt-16 shortcuts">
+            <nav aria-label="Shop by need" className="mt-7 sm:mt-16 shortcuts">
               {shortcuts.map((tile) => (
                 <TileLink key={tile.slug} tile={tile} className="group shrink-0 w-[4.75rem] sm:w-[6rem] lg:w-auto flex flex-col items-center text-center">
                   <span className="relative block w-full aspect-square rounded-full bg-canvas overflow-hidden ring-1 ring-ink/5 group-hover:ring-ink/40 transition">
@@ -261,9 +263,9 @@ function HomePage() {
       </section>
 
       <section className="wrap pt-8">
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5 border-y border-line py-7">
+        <ul className="max-sm:-mx-5 max-sm:px-5 max-sm:flex max-sm:gap-3 max-sm:overflow-x-auto max-sm:snap-x max-sm:scroll-pl-5 max-sm:[scrollbar-width:none] sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5 sm:border-y border-line sm:py-7">
           {PROMISES.map(([title, body, mark]) => (
-            <li key={title} className="flex gap-3.5">
+            <li key={title} className="flex gap-3.5 max-sm:w-[17rem] max-sm:shrink-0 max-sm:snap-start max-sm:rounded-2xl max-sm:bg-mist max-sm:p-4">
               <Mark name={mark} />
               <span>
                 <span className="block text-sm font-semibold tracking-[-0.01em]">{title}</span>
@@ -275,7 +277,7 @@ function HomePage() {
       </section>
 
       {firstPicks.length > 0 && (
-        <section className="wrap pt-16 sm:pt-20 reveal">
+        <section className="wrap pt-10 sm:pt-20 reveal">
           <div className="section-head">
             <div>
               <h2 className="display-m">Easy First Picks</h2>
@@ -292,7 +294,7 @@ function HomePage() {
       <PromoPair tiles={promoTiles.slice(0, 2)} />
 
       {categoryTiles.length > 0 && (
-        <section className="wrap pt-16 sm:pt-24 reveal">
+        <section className="wrap pt-10 sm:pt-24 reveal">
           <div className="section-head">
             <h2 className="display-m">Featured Categories</h2>
             <Link to="/blog" className="more hidden sm:inline-flex">
@@ -320,7 +322,7 @@ function HomePage() {
       )}
 
       {topPicks.length > 0 && (
-        <section className="wrap pt-16 sm:pt-24 reveal">
+        <section className="wrap pt-10 sm:pt-24 reveal">
           <Carousel
             title={topPicksLabel}
             action={
@@ -339,7 +341,7 @@ function HomePage() {
       {AUDIENCES.map((a) => {
         const products = data[a.key]
         return (
-          <section key={a.slug} id={a.id} className="scroll-mt-28 wrap pt-16 sm:pt-24 reveal">
+          <section key={a.slug} id={a.id} className="scroll-mt-28 wrap pt-10 sm:pt-24 reveal">
             <div className="rounded-3xl border border-line p-6 sm:p-10">
               <div className="grid lg:grid-cols-12 gap-6 items-end mb-8">
                 <div className="lg:col-span-6">
@@ -366,7 +368,7 @@ function HomePage() {
       <PromoPair tiles={promoTiles.slice(2, 4)} />
 
       {onSale.length > 0 && (
-        <section className="wrap pt-16 sm:pt-24 reveal">
+        <section className="wrap pt-10 sm:pt-24 reveal">
           <Carousel
             title="On Sale Now"
             action={
@@ -383,7 +385,7 @@ function HomePage() {
       )}
 
       {splurge.length > 0 && (
-        <section className="wrap pt-16 sm:pt-24 grid lg:grid-cols-12 gap-10 reveal">
+        <section className="wrap pt-10 sm:pt-24 grid lg:grid-cols-12 gap-10 reveal">
           <div className="lg:col-span-4">
             <h2 className="display-m">When You Want to Treat Yourself</h2>
             <p className="mt-4 text-graphite leading-relaxed max-w-xs">
@@ -433,7 +435,7 @@ function HomePage() {
         </section>
       )}
 
-      <section className="wrap pt-16 sm:pt-24 reveal">
+      <section className="wrap pt-10 sm:pt-24 reveal">
         <div className="section-head">
           <h2 className="display-m">Shop by Brand</h2>
         </div>
@@ -481,7 +483,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="wrap pt-16 sm:pt-24 grid lg:grid-cols-12 gap-10 reveal">
+      <section className="wrap pt-10 sm:pt-24 grid lg:grid-cols-12 gap-10 reveal">
         <h2 className="lg:col-span-4 display-m">Adult Toys That Help You Feel at Ease</h2>
         <div className="lg:col-span-8 grid md:grid-cols-2 gap-x-10 gap-y-5 text-[0.9375rem] leading-relaxed text-[#3a3a3c]">
           <p>

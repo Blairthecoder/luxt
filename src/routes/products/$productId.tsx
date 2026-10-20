@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BuyButton } from '@/components/BuyButton'
@@ -85,6 +85,7 @@ export const Route = createFileRoute('/products/$productId')({
 function ProductPage() {
   const { product, copy, related, hub } = Route.useLoaderData()
   const [imageIndex, setImageIndex] = useState(0)
+  const touchStartX = useRef<number | null>(null)
   const merchant = getProgram(product.program).merchantName
   const options = product.variants.filter((v) => v.title !== 'Default Title')
   const guides = postsForHub(hub.slug)
@@ -115,7 +116,7 @@ function ProductPage() {
       <div className="mt-8 grid lg:grid-cols-12 gap-10 lg:gap-16">
         <div className="lg:col-span-7 flex flex-col-reverse lg:flex-row gap-3">
           {product.images.length > 1 && (
-            <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible lg:w-20 shrink-0">
+            <div className="max-lg:hidden flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible lg:w-20 shrink-0">
               {product.images.map((img, i) => (
                 <button
                   key={img.src}
@@ -138,7 +139,37 @@ function ProductPage() {
               ))}
             </div>
           )}
-          <div className="relative aspect-square flex-1 bg-mist overflow-hidden">
+          {product.images.length > 1 && (
+            <div className="lg:hidden flex justify-center gap-2 pt-1" role="tablist" aria-label="Product images">
+              {product.images.map((img, i) => (
+                <button
+                  key={img.src}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === imageIndex}
+                  aria-label={`Show image ${i + 1}`}
+                  onClick={() => setImageIndex(i)}
+                  className="flex h-5 w-5 items-center justify-center"
+                >
+                  <span className={`block h-2 rounded-full transition-all ${i === imageIndex ? 'w-5 bg-ink' : 'w-2 bg-silver'}`} />
+                </button>
+              ))}
+            </div>
+          )}
+          <div
+            className="relative aspect-square flex-1 bg-mist overflow-hidden max-lg:-mx-[clamp(1.25rem,4vw,3rem)] max-lg:flex-none"
+            onTouchStart={(e) => {
+              touchStartX.current = e.touches[0]?.clientX ?? null
+            }}
+            onTouchEnd={(e) => {
+              const start = touchStartX.current
+              touchStartX.current = null
+              if (start === null || product.images.length < 2) return
+              const delta = (e.changedTouches[0]?.clientX ?? start) - start
+              if (Math.abs(delta) < 40) return
+              setImageIndex((i) => (delta < 0 ? Math.min(i + 1, product.images.length - 1) : Math.max(i - 1, 0)))
+            }}
+          >
             <img
               key={imageIndex}
               src={getOptimizedImageUrl(product.images[imageIndex]?.src, 1400)}
@@ -224,6 +255,26 @@ function ProductPage() {
           </dl>
 
           <AffiliateNotice className="mt-6" />
+        </div>
+      </div>
+
+      <div className="lg:hidden fixed inset-x-0 bottom-0 z-[46] border-t border-line bg-canvas/95 backdrop-blur-xl px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
+        <div className="mx-auto flex max-w-xl items-center gap-4">
+          <div className="min-w-0 shrink-0">
+            <p className="text-lg font-semibold leading-none">{formatPrice(product.price)}</p>
+            {product.compareAtPrice && (
+              <p className="mt-1 text-xs text-silver line-through">{formatPrice(product.compareAtPrice)}</p>
+            )}
+          </div>
+          <a
+            href={goPath(product.handle)}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            data-link-context="mobile_buy_bar"
+            className="btn btn-lg flex-1 !min-h-[3.25rem] press"
+          >
+            {product.available ? `Buy at ${merchant}` : `Check Stock at ${merchant}`}
+          </a>
         </div>
       </div>
 

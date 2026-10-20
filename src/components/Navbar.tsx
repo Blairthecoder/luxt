@@ -4,6 +4,7 @@ import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
 import { SearchDialog } from '@/components/SearchDialog'
+import { MobileTabBar } from '@/components/MobileTabBar'
 import { SITE } from '@/config/site'
 
 const PRIMARY = [
@@ -73,6 +74,25 @@ export function Navbar() {
     document.documentElement.style.overflow = mobileOpen || searchOpen ? 'hidden' : ''
   }, [mobileOpen, searchOpen])
 
+  // Search fields elsewhere on the page ask the header to open the dialog.
+  useEffect(() => {
+    const open = () => {
+      setMobileOpen(false)
+      setSearchOpen(true)
+    }
+    window.addEventListener('open-search', open)
+    return () => window.removeEventListener('open-search', open)
+  }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [mobileOpen])
+
   // Cmd+K (Mac) or Ctrl+K opens search from anywhere on the site.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -91,6 +111,7 @@ export function Navbar() {
   useEffect(() => {
     setShopOpen(false)
     setSearchOpen(false)
+    setMobileOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -254,58 +275,48 @@ export function Navbar() {
                 setMobileOpen(false)
                 setSearchOpen(true)
               }}
-              className="lg:hidden -mr-3 flex h-8 w-8 items-center justify-center text-ink"
+              className="press lg:hidden -mr-2 flex h-10 w-10 items-center justify-center text-ink"
               aria-label="Search"
             >
               <SearchIcon />
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative w-8 h-8 -mr-1.5"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            >
-              <span
-                aria-hidden="true"
-                className={`absolute left-1.5 right-1.5 h-[1.5px] bg-ink transition-transform duration-300 ${
-                  mobileOpen ? 'top-1/2 rotate-45' : 'top-[11px]'
-                }`}
-              />
-              <span
-                aria-hidden="true"
-                className={`absolute left-1.5 right-1.5 h-[1.5px] bg-ink transition-transform duration-300 ${
-                  mobileOpen ? 'top-1/2 -rotate-45' : 'top-[19px]'
-                }`}
-              />
             </button>
           </div>
         </div>
       </div>
 
       {mobileOpen && (
-        <nav
-          id="mobile-menu"
-          aria-label="Mobile"
-          className="lg:hidden fixed inset-x-0 bottom-0 top-[5.75rem] bg-canvas overflow-y-auto"
-        >
-          <div className="wrap pt-6 pb-16 space-y-12">
-            <ul className="space-y-1 font-display text-[2rem] font-bold tracking-[-0.04em] leading-tight">
+        <div className="lg:hidden fixed inset-0 z-[55]">
+          <button type="button" aria-label="Close menu" tabIndex={-1} className="absolute inset-0 bg-ink/40 fade-in" onClick={close} />
+          <nav
+            id="mobile-menu"
+            aria-label="Shop menu"
+            className="sheet-up absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto overscroll-contain rounded-t-[28px] bg-canvas"
+          >
+            <div className="sticky top-0 z-10 bg-canvas px-5 pb-3 pt-3">
+              <span aria-hidden="true" className="mx-auto mb-3 block h-1 w-10 rounded-full bg-line" />
+              <div className="flex items-center justify-between">
+                <p className="font-display text-xl font-semibold tracking-[-0.02em]">Shop</p>
+                <button type="button" onClick={close} className="press rounded-full bg-mist px-4 py-2 text-sm font-medium">
+                  Close
+                </button>
+              </div>
+            </div>
+          <div className="px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-2 space-y-10">
+            <ul className="flex flex-wrap gap-2">
               {PRIMARY.map((item) => (
-                <li key={item.slug} className="rise">
-                  <Link to="/shop/$slug" params={{ slug: item.slug }} onClick={close}>
+                <li key={item.slug}>
+                  <Link to="/shop/$slug" params={{ slug: item.slug }} onClick={close} className="chip !min-h-[2.75rem] !px-5 !text-sm">
                     {item.label}
                   </Link>
                 </li>
               ))}
-              <li className="rise">
-                <Link to="/gifts" onClick={close}>
+              <li>
+                <Link to="/gifts" onClick={close} className="chip !min-h-[2.75rem] !px-5 !text-sm">
                   Gifts
                 </Link>
               </li>
-              <li className="rise">
-                <Link to="/blog" onClick={close}>
+              <li>
+                <Link to="/blog" onClick={close} className="chip !min-h-[2.75rem] !px-5 !text-sm">
                   {SITE.guidesName}
                 </Link>
               </li>
@@ -349,8 +360,20 @@ export function Navbar() {
               </MenuColumn>
             </div>
           </div>
-        </nav>
+          </nav>
+        </div>
       )}
+      <MobileTabBar
+        shopOpen={mobileOpen}
+        onShop={() => {
+          setSearchOpen(false)
+          setMobileOpen((open) => !open)
+        }}
+        onSearch={() => {
+          setMobileOpen(false)
+          setSearchOpen(true)
+        }}
+      />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )
