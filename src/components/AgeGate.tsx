@@ -1,6 +1,18 @@
 import { useEffect, useState } from 'react'
 
 const STORAGE_KEY = 'ns_age_confirmed'
+// A first-party cookie as well as localStorage, so Safari private windows and
+// cleared storage don't re-gate every page.
+const COOKIE = 'ns_age=1'
+
+function confirmed(): boolean {
+  if (document.cookie.split('; ').includes(COOKIE)) return true
+  try {
+    return localStorage.getItem(STORAGE_KEY) === '1'
+  } catch {
+    return false
+  }
+}
 
 /**
  * 18+ confirmation overlay. Rendered only after hydration, so the server HTML
@@ -10,16 +22,13 @@ export function AgeGate() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    try {
-      if (localStorage.getItem(STORAGE_KEY) !== '1') setOpen(true)
-    } catch {
-      setOpen(true)
-    }
+    if (!confirmed()) setOpen(true)
   }, [])
 
   if (!open) return null
 
   const confirm = () => {
+    document.cookie = `${COOKIE}; Max-Age=31536000; Path=/; SameSite=Lax`
     try {
       localStorage.setItem(STORAGE_KEY, '1')
     } catch {

@@ -61,6 +61,9 @@ export interface Post {
   body: string
   picks?: Record<string, PickBlock>
   faqs?: { q: string; a: string }[]
+  /** Named writer and medical/sexual-health reviewer. Defaults to the editorial team (SITE.editorialTeam). */
+  author?: { name: string; role?: string; url?: string }
+  reviewedBy?: { name: string; credentials?: string; url?: string }
 }
 
 export const POSTS: Post[] = [

@@ -7,6 +7,21 @@ import { TOPICS_BY_SLUG } from '@/content/topics'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getPostHtml } from '@/lib/catalog'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
+import { BuyButton } from '@/components/BuyButton'
+import { formatPrice } from '@/lib/format'
+import { getOptimizedImageUrl } from '@/lib/image'
+import type { Post } from '@/content/posts'
+
+/** Home > Nightstand Notes > first topic > guide. */
+function crumbs(post: Pick<Post, 'slug' | 'title' | 'topics'>) {
+  const topic = TOPICS_BY_SLUG[post.topics[0]]
+  return [
+    { name: 'Home', path: '/' },
+    { name: SITE.guidesName, path: '/blog' },
+    ...(topic ? [{ name: topic.name, path: `/blog/topic/${topic.slug}` }] : []),
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]
+}
 
 function formatDate(iso: string) {
   return new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', {
@@ -24,7 +39,7 @@ export const Route = createFileRoute('/blog/$slug')({
     if (!rendered) throw notFound()
     // The body is already rendered to html; keep the Markdown out of the page payload.
     const { body: _body, picks: _picks, ...meta } = post
-    return { post: { ...meta, body: '' }, html: rendered.html, hasPicks: Boolean(_picks) }
+    return { post: { ...meta, body: '' }, html: rendered.html, topPick: rendered.topPick, hasPicks: Boolean(_picks) }
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
@@ -35,11 +50,7 @@ export const Route = createFileRoute('/blog/$slug')({
       description: post.metaDescription,
       path,
       jsonLd: [
-        breadcrumbJsonLd([
-          { name: 'Home', path: '/' },
-          { name: SITE.guidesName, path: '/blog' },
-          { name: post.title, path },
-        ]),
+        breadcrumbJsonLd(crumbs(post)),
         {
           '@context': 'https://schema.org',
           '@type': 'Article',
@@ -48,7 +59,18 @@ export const Route = createFileRoute('/blog/$slug')({
           datePublished: post.publishedAt,
           dateModified: post.updatedAt ?? post.publishedAt,
           mainEntityOfPage: absoluteUrl(path),
-          author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+          author: post.author
+            ? { '@type': 'Person', name: post.author.name, ...(post.author.url ? { url: post.author.url } : {}) }
+            : { '@type': 'Organization', name: SITE.editorialTeam, url: absoluteUrl('/blog') },
+          ...(post.reviewedBy
+            ? {
+                reviewedBy: {
+                  '@type': 'Person',
+                  name: post.reviewedBy.name,
+                  ...(post.reviewedBy.url ? { url: post.reviewedBy.url } : {}),
+                },
+              }
+            : {}),
           publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
         },
         ...(post.faqs?.length
@@ -71,7 +93,7 @@ export const Route = createFileRoute('/blog/$slug')({
 })
 
 function PostPage() {
-  const { post, html, hasPicks } = Route.useLoaderData()
+  const { post, html, topPick, hasPicks } = Route.useLoaderData()
   const more = relatedPosts(post, 2)
   const hubs = post.hubs.map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
@@ -79,13 +101,7 @@ function PostPage() {
   return (
     <article>
       <header className="wrap pt-6">
-        <Breadcrumbs
-          items={[
-            { name: 'Home', path: '/' },
-            { name: SITE.guidesName, path: '/blog' },
-            { name: post.title, path: `/blog/${post.slug}` },
-          ]}
-        />
+        <Breadcrumbs items={crumbs(post)} />
         <div className="mt-16 sm:mt-24 max-w-5xl">
           <p className="text-sm text-graphite rise">
             <span className="text-signal font-semibold">{SITE.guidesName}</span>
@@ -93,6 +109,16 @@ function PostPage() {
             {formatDate(post.updatedAt ?? post.publishedAt)}
             <span className="mx-2 text-silver">·</span>
             {post.readMinutes} min read
+          </p>
+          <p className="mt-2 text-sm text-graphite rise">
+            By {post.author?.name ?? SITE.editorialTeam}
+            {post.reviewedBy && (
+              <>
+                <span className="mx-2 text-silver">·</span>
+                Reviewed by {post.reviewedBy.name}
+                {post.reviewedBy.credentials ? `, ${post.reviewedBy.credentials}` : ''}
+              </>
+            )}
           </p>
           <h1 className="mt-5 display-l rise">{post.title}</h1>
           <p className="mt-8 lede text-graphite max-w-3xl rise-delay">{post.excerpt}</p>
@@ -121,6 +147,36 @@ function PostPage() {
       <div className="wrap">
         <div className="max-w-[46rem] mx-auto py-14 sm:py-20">
           {hasPicks && <AffiliateNotice className="mb-12 pb-6 border-b border-line" />}
+          {topPick && (
+            <aside aria-label="Our top pick" className="mb-14 grid grid-cols-[6rem_1fr] sm:grid-cols-[8rem_1fr] gap-5 sm:gap-7 p-5 sm:p-7 bg-stone">
+              <Link to="/products/$productId" params={{ productId: topPick.handle }} className="relative block aspect-[4/5] bg-canvas">
+                <img
+                  src={getOptimizedImageUrl(topPick.image, 300)}
+                  alt={`${topPick.title} by ${topPick.brand}`}
+                  width={300}
+                  height={375}
+                  className="absolute inset-0 w-full h-full object-contain p-3 mix-blend-multiply"
+                />
+              </Link>
+              <div className="min-w-0">
+                <p className="text-[0.8125rem] font-semibold text-signal">Our Top Pick · {topPick.label}</p>
+                <p className="mt-1 font-display text-xl font-semibold tracking-[-0.02em] leading-snug">
+                  <Link to="/products/$productId" params={{ productId: topPick.handle }} className="hover:underline underline-offset-4">
+                    {topPick.title}
+                  </Link>
+                </p>
+                <p className="mt-1 text-sm text-graphite">
+                  {topPick.brand} · <span className="text-ink font-medium">{formatPrice(topPick.price)}</span>
+                </p>
+                <BuyButton
+                  handle={topPick.handle}
+                  program={topPick.program}
+                  context="guide_top_pick"
+                  className="mt-4 !min-h-[2.75rem] !text-sm"
+                />
+              </div>
+            </aside>
+          )}
           <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
           {post.faqs?.length ? (
             <section className="mt-20 pt-12 border-t border-ink">

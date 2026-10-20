@@ -3,6 +3,7 @@
 // prices in guides always match the catalog the site was built with.
 import { marked } from 'marked'
 import { productsMatchingRule } from '@/server/catalog-store'
+import { isDiscreet } from '@/server/merchandising'
 import { COLLECTIONS_BY_SLUG, type CollectionRule } from '@/content/collections'
 import type { PickBlock, PickSlot, Post } from '@/content/posts'
 import type { CatalogProduct } from '@/types/catalog'
@@ -28,9 +29,10 @@ function candidates(rule: CollectionRule): CatalogProduct[] {
 
 function fillSlot(slot: PickSlot, used: Set<string>): CatalogProduct | undefined {
   for (const rule of slot.rules) {
-    const matches = candidates(rule)
-      .filter((p) => !used.has(p.handle))
-      .sort((a, b) => a.price - b.price)
+    const open = candidates(rule).filter((p) => !used.has(p.handle))
+    // Guides sit next to LELO and Womanizer: explicit novelty names only fill a slot when nothing else can.
+    const discreet = open.filter(isDiscreet)
+    const matches = (discreet.length ? discreet : open).sort((a, b) => a.price - b.price)
     if (!matches.length) continue
     if (slot.prefer === 'price-asc') return matches[0]
     if (slot.prefer === 'price-desc') return matches[matches.length - 1]
@@ -65,7 +67,7 @@ function pickCard(slot: PickSlot, p: CatalogProduct): string {
     <h3 class="pick-title"><a href="/products/${p.handle}">${title}</a></h3>
     <p class="pick-meta">${escapeHtml(p.brand)} · <span class="pick-price">${price}</span></p>
     <p class="pick-note">${escapeHtml(slot.note)}</p>
-    <a class="pick-buy" href="${goPath(p.handle)}" target="_blank" rel="sponsored nofollow noopener">Check Price<span class="pick-buy-merchant"> at ${escapeHtml(merchant)}</span></a>
+    <a class="pick-buy" data-link-context="guide_pick" href="${goPath(p.handle)}" target="_blank" rel="sponsored nofollow noopener">Check Price<span class="pick-buy-merchant"> at ${escapeHtml(merchant)}</span></a>
   </div>
 </li>`
 }
@@ -79,8 +81,20 @@ function lowestPrice(slug: string): number | undefined {
   return prices.length ? Math.min(...prices) : undefined
 }
 
-export async function renderPostHtml(post: Post): Promise<string> {
+export type TopPick = {
+  handle: string
+  title: string
+  brand: string
+  price: number
+  image?: string
+  program: string
+  label: string
+  note: string
+}
+
+export async function renderPostHtml(post: Post): Promise<{ html: string; topPick: TopPick | null }> {
   const used = new Set<string>()
+  let topPick: TopPick | null = null
   let html = await marked.parse(post.body.trim())
 
   html = html.replace(/<p>\[\[picks:([a-z0-9-]+)\]\]<\/p>/g, (_, id: string) => {
@@ -88,6 +102,19 @@ export async function renderPostHtml(post: Post): Promise<string> {
     if (!block) return ''
     const picks = resolvePicks(block, used)
     if (!picks.length) return ''
+    if (!topPick) {
+      const { slot, product } = picks[0]
+      topPick = {
+        handle: product.handle,
+        title: product.title,
+        brand: product.brand,
+        price: product.price,
+        image: product.images[0]?.src,
+        program: product.program,
+        label: slot.label,
+        note: slot.note,
+      }
+    }
     return `<ul class="picks">${picks.map(({ slot, product }) => pickCard(slot, product)).join('')}</ul>`
   })
 
@@ -101,6 +128,6 @@ export async function renderPostHtml(post: Post): Promise<string> {
     return price === undefined ? 'See current prices' : formatPrice(price)
   })
 
-  return html
+  return { html, topPick }
 }
 

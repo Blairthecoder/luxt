@@ -6,7 +6,8 @@ import { SITE, absoluteUrl } from '@/config/site'
 import { getCollectionListing } from '@/lib/catalog'
 import { parseListingSearch } from '@/lib/listing'
 import { listingIndexing } from '@/lib/listing-head'
-import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
+import { breadcrumbJsonLd, faqJsonLd, pageHead } from '@/lib/seo'
+import { hasActiveFilters } from '@/lib/listing'
 
 // Collections with fewer products than this stay out of the index.
 const MIN_INDEXABLE = 6
@@ -48,6 +49,8 @@ export const Route = createFileRoute('/shop/$slug')({
             name: p.title,
           })),
         },
+        // Copy and FAQs render on the clean first page only, so paginated and filtered views don't duplicate them.
+        ...(result.extra?.faqs.length && result.page === 1 && !hasActiveFilters(filters) ? [faqJsonLd(result.extra.faqs)] : []),
       ],
     })
   },
@@ -60,7 +63,9 @@ function CollectionPage() {
   return (
     <ListingPage
       eyebrow={collection.group}
-      title={collection.name}
+      title={result.extra?.h1 ?? collection.name}
+      extra={result.page === 1 && !hasActiveFilters(filters) ? result.extra : null}
+      extraName={collection.name}
       intro={collection.intro}
       breadcrumbs={[
         { name: 'Home', path: '/' },

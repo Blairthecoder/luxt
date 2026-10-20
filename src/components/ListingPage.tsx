@@ -4,6 +4,7 @@ import { ListingView } from '@/components/ListingView'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import type { ListingFilters, ListingResult } from '@/lib/listing'
 import type { Post } from '@/content/posts'
+import type { ListingExtra } from '@/content/listing-extras'
 
 export function ListingPage({
   eyebrow,
@@ -14,6 +15,8 @@ export function ListingPage({
   filters,
   tips,
   guides = [],
+  extra,
+  extraName,
 }: {
   eyebrow: string
   title: string
@@ -23,6 +26,8 @@ export function ListingPage({
   filters: ListingFilters
   tips?: string[]
   guides?: Post[]
+  extra?: ListingExtra | null
+  extraName?: string
 }) {
   return (
     <div className="wrap">
@@ -43,6 +48,32 @@ export function ListingPage({
       <div className="pb-8">
         <ListingView result={result} filters={filters} />
       </div>
+
+      {extra && (
+        <section className="mt-24 pt-14 border-t border-ink grid lg:grid-cols-12 gap-10 lg:gap-16 reveal">
+          <h2 className="lg:col-span-4 display-m">
+            About {extraName}. <span className="text-graphite">The Short Version.</span>
+          </h2>
+          <div className="lg:col-span-8 max-w-3xl space-y-5 text-[1.0625rem] leading-relaxed text-[#3a3a3c]">
+            {extra.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+          {extra.faqs.length > 0 && (
+            <>
+              <h2 className="lg:col-span-4 display-m lg:pt-6">Questions People Ask.</h2>
+              <dl className="lg:col-span-8 max-w-3xl border-t border-line lg:mt-6">
+                {extra.faqs.map((faq) => (
+                  <div key={faq.q} className="py-6 border-b border-line">
+                    <dt className="font-display text-xl font-semibold tracking-[-0.02em]">{faq.q}</dt>
+                    <dd className="mt-2 text-graphite text-[1.0625rem] leading-relaxed">{faq.a}</dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          )}
+        </section>
+      )}
 
       {(tips?.length || guides.length > 0) && (
         <section className="mt-24 pt-14 border-t border-ink grid lg:grid-cols-2 gap-16">

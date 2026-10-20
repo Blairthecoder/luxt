@@ -5,7 +5,7 @@ export const HUBS: Hub[] = [
     slug: 'vibrators',
     name: 'Vibrators',
     singular: 'Vibrator',
-    metaTitle: 'Best Vibrators of 2026: Wands, Rabbits & Bullets',
+    metaTitle: 'Best Vibrators: Wands, Rabbits, Bullets & Suction',
     metaDescription:
       'Compare wand, rabbit, bullet and suction vibrators from top brands. Plain-English guidance on power, noise and materials, with current prices.',
     intro:

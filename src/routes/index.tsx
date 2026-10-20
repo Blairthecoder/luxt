@@ -10,19 +10,49 @@ import { formatPrice } from '@/lib/format'
 import { getOptimizedImageUrl } from '@/lib/image'
 import type { ProductSummary } from '@/lib/listing'
 import { organizationJsonLd, pageHead } from '@/lib/seo'
+import { absoluteUrl } from '@/config/site'
+
+function itemList(name: string, products: ProductSummary[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: absoluteUrl(`/products/${p.handle}`),
+      name: p.title,
+    })),
+  }
+}
+
+/** Shown first in Shop by Category; the rest follow as a quieter line of links. */
+const FEATURED_HUBS = ['vibrators', 'couples', 'lubricants', 'strokers', 'penis-rings', 'prostate-massagers', 'lingerie', 'anal-toys']
 
 export const Route = createFileRoute('/')({
   loader: () => getHomeData(),
-  head: () =>
-    pageHead({
+  head: ({ loaderData }) => {
+    const from = loaderData?.firstPicks.length ? Math.min(...loaderData.firstPicks.map((p) => p.price)) : null
+    return pageHead({
       title: `${SITE.name} | Luxury Adult Toys, Honestly Explained`,
-      description: SITE.description,
+      description: from
+        ? `Luxury vibrators, couples toys and more from ${formatPrice(from)}. Compare LELO, Womanizer and We-Vibe with plain-English guides and real specs. Ships discreetly.`
+        : SITE.description,
       path: '/',
       jsonLd: [
         organizationJsonLd(),
         { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url },
+        ...(loaderData
+          ? [
+              itemList('Easy First Picks', loaderData.firstPicks),
+              itemList('For Her', loaderData.forHer),
+              itemList('For Him', loaderData.forHim),
+              itemList('For Couples', loaderData.forCouples),
+            ].filter((l) => l.itemListElement.length > 0)
+          : []),
       ],
-    }),
+    })
+  },
   component: HomePage,
 })
 
@@ -60,7 +90,7 @@ function ProductRow({ products, cols = 3 }: { products: ProductSummary[]; cols?:
   return (
     <div className={`rail ${cols === 3 ? 'lg:!grid-cols-3' : ''}`}>
       {products.map((product) => (
-        <ProductCard key={product.handle} product={product} size="small" />
+        <ProductCard key={product.handle} product={product} size="small" context="home_card" />
       ))}
     </div>
   )
@@ -70,6 +100,8 @@ function HomePage() {
   const data = Route.useLoaderData()
   const { hubCounts, firstPicks, splurge } = data
   const hubs = HUBS.filter((hub) => (hubCounts[hub.slug] ?? 0) > 0)
+  const featuredHubs = FEATURED_HUBS.map((slug) => hubs.find((h) => h.slug === slug)).filter((h) => h !== undefined)
+  const otherHubs = hubs.filter((h) => !FEATURED_HUBS.includes(h.slug))
   const [lead] = POSTS
 
   return (
@@ -85,7 +117,10 @@ function HomePage() {
           <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end rise-delay">
             <p className="lg:col-span-5 lede text-graphite">
               The world's best adult toys, chosen with care and explained without the blush. Compare honestly, then
-              buy discreetly.
+              buy discreetly.{' '}
+              <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
+                Most first picks are under $50.
+              </Link>
             </p>
             <p className="lg:col-span-6 lg:col-start-7 font-display text-[1.625rem] sm:text-[2.125rem] font-semibold tracking-[-0.03em] leading-[1.2]">
               Shop{' '}
@@ -203,7 +238,10 @@ function HomePage() {
                     <span className="block font-display text-lg sm:text-xl font-semibold tracking-[-0.02em] leading-snug group-hover:underline underline-offset-4 decoration-1">
                       {p.title}
                     </span>
-                    <span className="block mt-0.5 text-sm text-graphite">{p.brand}</span>
+                    <span className="block mt-0.5 text-sm text-graphite">
+                      {p.brand}
+                      {p.why && <span className="hidden sm:inline"> · {p.why}</span>}
+                    </span>
                   </span>
                   <span className="text-[0.9375rem] font-medium tabular-nums">{formatPrice(p.price)}</span>
                 </Link>
@@ -226,7 +264,7 @@ function HomePage() {
             </p>
           </div>
           <ul className="lg:col-span-8 grid sm:grid-cols-2 gap-x-12 border-t border-night-line reveal">
-            {hubs.map((hub) => (
+            {featuredHubs.map((hub) => (
               <li key={hub.slug} className="border-b border-night-line">
                 <Link
                   to="/category/$slug"
@@ -240,6 +278,20 @@ function HomePage() {
                 </Link>
               </li>
             ))}
+            {otherHubs.length > 0 && (
+              <li className="sm:col-span-2 pt-6 text-sm text-[#86868b] leading-relaxed">
+                Also browse{' '}
+                {otherHubs.map((hub, i) => (
+                  <span key={hub.slug}>
+                    {i > 0 && (i === otherHubs.length - 1 ? ' and ' : ', ')}
+                    <Link to="/category/$slug" params={{ slug: hub.slug }} className="text-canvas/70 hover:text-canvas underline underline-offset-4 decoration-night-line">
+                      {hub.name}
+                    </Link>
+                  </span>
+                ))}
+                .
+              </li>
+            )}
           </ul>
         </div>
       </section>

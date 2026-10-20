@@ -4,6 +4,7 @@ import catalogData from '@/data/catalog.json'
 import { PRODUCT_COPY } from '@/content/product-copy'
 import type { Catalog, CatalogProduct } from '@/types/catalog'
 import type { CollectionRule } from '@/content/collections'
+import { merchandise } from '@/server/merchandising'
 
 const catalog = catalogData as Catalog
 
@@ -29,12 +30,12 @@ export function hubCounts(): Record<string, number> {
   return counts
 }
 
+/** Similar products from the same hub: at most one from the same brand, the rest spread across other brands. */
 export function relatedProducts(product: CatalogProduct, limit = 4): CatalogProduct[] {
-  const sameBrand = (p: CatalogProduct) => (p.brand === product.brand ? 0 : 1)
-  return productsInHub(product.hub)
-    .filter((p) => p.handle !== product.handle && p.available)
-    .sort((a, b) => sameBrand(a) - sameBrand(b))
-    .slice(0, limit)
+  const ranked = merchandise(productsInHub(product.hub).filter((p) => p.handle !== product.handle && p.available))
+  const same = ranked.find((p) => p.brand === product.brand)
+  const others = ranked.filter((p) => p.brand !== product.brand)
+  return [...(same ? [same] : []), ...others].slice(0, limit)
 }
 
 export function hasCopy(handle: string): boolean {

@@ -121,7 +121,7 @@ function GiftsPage() {
               View All
             </Link>
           </div>
-          <ProductGrid products={giftSets} />
+          <ProductGrid products={giftSets} context="gift_card" />
         </section>
       )}
 

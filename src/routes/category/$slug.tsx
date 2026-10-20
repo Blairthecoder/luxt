@@ -6,7 +6,8 @@ import { SITE, absoluteUrl } from '@/config/site'
 import { getHubListing } from '@/lib/catalog'
 import { parseListingSearch } from '@/lib/listing'
 import { listingIndexing } from '@/lib/listing-head'
-import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
+import { breadcrumbJsonLd, faqJsonLd, pageHead } from '@/lib/seo'
+import { hasActiveFilters } from '@/lib/listing'
 
 export const Route = createFileRoute('/category/$slug')({
   validateSearch: parseListingSearch,
@@ -44,6 +45,8 @@ export const Route = createFileRoute('/category/$slug')({
             name: p.title,
           })),
         },
+        // Copy and FAQs render on the clean first page only, so paginated and filtered views don't duplicate them.
+        ...(result.extra?.faqs.length && result.page === 1 && !hasActiveFilters(filters) ? [faqJsonLd(result.extra.faqs)] : []),
       ],
     })
   },
@@ -55,7 +58,9 @@ function CategoryPage() {
   return (
     <ListingPage
       eyebrow="Category"
-      title={hub.name}
+      title={result.extra?.h1 ?? hub.name}
+      extra={result.page === 1 && !hasActiveFilters(filters) ? result.extra : null}
+      extraName={hub.name}
       intro={hub.intro}
       breadcrumbs={[
         { name: 'Home', path: '/' },

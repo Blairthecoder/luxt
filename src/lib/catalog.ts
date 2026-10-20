@@ -6,6 +6,8 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const store = await import('@/server/catalog-store')
   const { toSummary } = await import('@/server/listing')
   const { pickSection } = await import('@/server/home-picks')
+  const { PRODUCT_COPY } = await import('@/content/product-copy')
+  const { productHighlights } = await import('@/lib/product-highlights')
   const products = store.allProducts()
   const used = new Set<string>()
   // First Picks choose first: the least intimidating first purchases, three small
@@ -25,7 +27,11 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
     forHer: forHer.map(toSummary),
     forHim: forHim.map(toSummary),
     forCouples: forCouples.map(toSummary),
-    splurge: splurge.map(toSummary),
+    // A one-line reason each splurge earns its price.
+    splurge: splurge.map((p) => ({
+      ...toSummary(p),
+      why: PRODUCT_COPY[p.handle]?.bestFor ?? productHighlights(p).slice(0, 2).join('. ') ?? '',
+    })),
   }
 })
 
@@ -34,7 +40,8 @@ export const getHubListing = createServerFn({ method: 'GET' })
   .handler(async ({ data }) => {
     const store = await import('@/server/catalog-store')
     const { buildListing } = await import('@/server/listing')
-    return buildListing(store.productsInHub(data.slug), data.filters)
+    const { LISTING_EXTRAS } = await import('@/content/listing-extras')
+    return { ...buildListing(store.productsInHub(data.slug), data.filters), extra: LISTING_EXTRAS[`hub:${data.slug}`] ?? null }
   })
 
 export const getCollectionListing = createServerFn({ method: 'GET' })
@@ -46,11 +53,11 @@ export const getCollectionListing = createServerFn({ method: 'GET' })
     const collection = COLLECTIONS_BY_SLUG[data.slug]
     if (!collection) return null
     const { COLLECTION_FOCUS } = await import('@/server/merchandising')
-    return buildListing(
-      store.productsMatchingRule(collection.slug, collection.rule),
-      data.filters,
-      COLLECTION_FOCUS[collection.slug]
-    )
+    const { LISTING_EXTRAS } = await import('@/content/listing-extras')
+    return {
+      ...buildListing(store.productsMatchingRule(collection.slug, collection.rule), data.filters, COLLECTION_FOCUS[collection.slug]),
+      extra: LISTING_EXTRAS[`shop:${collection.slug}`] ?? null,
+    }
   })
 
 export const getProductData = createServerFn({ method: 'GET' })
@@ -76,7 +83,7 @@ export const getPostHtml = createServerFn({ method: 'GET' })
     const { renderPostHtml } = await import('@/server/post-html')
     const post = POSTS_BY_SLUG[slug]
     if (!post) return null
-    return { html: await renderPostHtml(post) }
+    return renderPostHtml(post)
   })
 
 export const getGiftData = createServerFn({ method: 'GET' }).handler(async () => {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import { Link, useRouterState } from '@tanstack/react-router'
 import { ProductGrid } from '@/components/ProductCard'
 import {
   FILTER_KEYS,
@@ -12,10 +12,44 @@ import {
 
 const FACET_ORDER: FilterKey[] = ['for', 'type', 'feature', 'price', 'brand']
 
+/**
+ * Facet values that have their own indexable collection page. With no other
+ * filter active, these link to /shop/<slug> instead of a noindex ?filter= view,
+ * so the strongest internal-link slot on every listing feeds a ranking page.
+ */
+const COLLECTION_FOR: Partial<Record<FilterKey, Record<string, string>>> = {
+  for: { women: 'sex-toys-for-women', men: 'sex-toys-for-men', couples: 'couples-sex-toys' },
+  type: {
+    rabbit: 'rabbit-vibrators',
+    clitoral: 'clitoral-vibrators',
+    'g-spot': 'g-spot-vibrators',
+    bullet: 'bullet-vibrators',
+    wand: 'wand-vibrators',
+    realistic: 'realistic-dildos',
+    'butt-plug': 'butt-plugs',
+    'butt-plugs': 'butt-plugs',
+    'anal-beads': 'anal-beads',
+    'pocket-pussy': 'pocket-pussies',
+  },
+  feature: {
+    'app-controlled': 'app-controlled-sex-toys',
+    'remote-control': 'remote-control-vibrators',
+    thrusting: 'thrusting-vibrators',
+    automatic: 'automatic-strokers',
+  },
+  brand: { lelo: 'lelo', womanizer: 'womanizer', lovense: 'lovense', 'we-vibe': 'we-vibe', tenga: 'tenga', fleshlight: 'fleshlight' },
+}
+
 /** Product grid with facet filters, sorting and numbered pagination. */
 export function ListingView({ result, filters }: { result: ListingResult; filters: ListingFilters }) {
   const active = FILTER_KEYS.filter((key) => filters[key])
   const [showFilters, setShowFilters] = useState(false)
+  const pathname = useRouterState({ select: (st) => st.location.pathname })
+  const unfiltered = active.length === 0
+  const collectionFor = (key: FilterKey, value: string) => {
+    const slug = COLLECTION_FOR[key]?.[value]
+    return unfiltered && slug && pathname !== `/shop/${slug}` ? slug : null
+  }
 
   return (
     <div>
@@ -42,6 +76,7 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
                 <Link
                   key={s.id}
                   to="."
+                  rel="nofollow"
                   search={(prev: ListingFilters) => ({
                     ...prev,
                     sort: s.id === 'featured' ? undefined : s.id,
@@ -77,30 +112,42 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
                   <ul className="space-y-1.5">
                     {options.map((opt) => {
                       const selected = filters[key] === opt.value
+                      const collection = collectionFor(key, opt.value)
+                      const rowClass = `flex items-center justify-between gap-3 text-[0.9375rem] transition-colors ${
+                        selected ? 'text-ink font-medium' : 'text-graphite hover:text-ink'
+                      }`
+                      const row = (
+                        <>
+                          <span className="flex items-center gap-2.5">
+                            <span
+                              aria-hidden="true"
+                              className={`w-3.5 h-3.5 shrink-0 border ${selected ? 'bg-ink border-ink' : 'border-silver'}`}
+                            />
+                            {opt.label}
+                          </span>
+                          <span className="text-xs text-silver tabular-nums">{opt.count}</span>
+                        </>
+                      )
                       return (
                         <li key={opt.value}>
+                          {collection ? (
+                            <Link to="/shop/$slug" params={{ slug: collection }} className={rowClass}>
+                              {row}
+                            </Link>
+                          ) : (
                           <Link
                             to="."
+                            rel="nofollow"
                             search={(prev: ListingFilters) => ({
                               ...prev,
                               [key]: selected ? undefined : opt.value,
                               page: undefined,
                             })}
-                            className={`flex items-center justify-between gap-3 text-[0.9375rem] transition-colors ${
-                              selected ? 'text-ink font-medium' : 'text-graphite hover:text-ink'
-                            }`}
+                            className={rowClass}
                           >
-                            <span className="flex items-center gap-2.5">
-                              <span
-                                aria-hidden="true"
-                                className={`w-3.5 h-3.5 shrink-0 border ${
-                                  selected ? 'bg-ink border-ink' : 'border-silver'
-                                }`}
-                              />
-                              {opt.label}
-                            </span>
-                            <span className="text-xs text-silver tabular-nums">{opt.count}</span>
+                            {row}
                           </Link>
+                          )}
                         </li>
                       )
                     })}
