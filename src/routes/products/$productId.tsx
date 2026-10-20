@@ -4,6 +4,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BuyButton } from '@/components/BuyButton'
 import { ProductGrid } from '@/components/ProductCard'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
+import { FaqAccordion } from '@/components/FaqAccordion'
 import { HUBS_BY_SLUG } from '@/content/hubs'
 import { postsForHub } from '@/content/posts'
 import { SITE, absoluteUrl } from '@/config/site'
@@ -241,13 +242,8 @@ function ProductPage() {
           {copy.faqs?.length ? (
             <>
               <h2 className="lg:col-span-4 display-m pt-10 lg:pt-16">Questions People Ask.</h2>
-              <div className="lg:col-span-8 max-w-3xl lg:pt-16 border-t border-ink">
-                {copy.faqs.map((faq) => (
-                  <div key={faq.q} className="py-6 border-b border-line">
-                    <h3 className="text-xl tracking-[-0.02em]">{faq.q}</h3>
-                    <p className="text-graphite mt-2 leading-relaxed">{faq.a}</p>
-                  </div>
-                ))}
+              <div className="lg:col-span-8 max-w-3xl lg:pt-16">
+                <FaqAccordion faqs={copy.faqs} />
               </div>
             </>
           ) : null}
