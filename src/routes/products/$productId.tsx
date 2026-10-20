@@ -11,7 +11,7 @@ import { SITE, absoluteUrl } from '@/config/site'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
-import { getOptimizedImageUrl } from '@/lib/image'
+import { getImageSrcSet, getOptimizedImageUrl } from '@/lib/image'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 import { productHighlights } from '@/lib/product-highlights'
 
@@ -142,6 +142,8 @@ function ProductPage() {
             <img
               key={imageIndex}
               src={getOptimizedImageUrl(product.images[imageIndex]?.src, 1400)}
+              srcSet={getImageSrcSet(product.images[imageIndex]?.src, [480, 720, 1080, 1400])}
+              sizes="(min-width: 1024px) 50vw, 100vw"
               alt={`${product.title} by ${product.brand}`}
               width={1400}
               height={1400}

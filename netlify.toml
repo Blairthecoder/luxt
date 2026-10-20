@@ -15,3 +15,18 @@
   VITE_NOINDEX = "1"
 [context.branch-deploy.environment]
   VITE_NOINDEX = "1"
+
+# Response headers. Vite fingerprints everything under /assets, so it can be
+# cached for a year; the rest of the site keeps Netlify's default revalidation.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
