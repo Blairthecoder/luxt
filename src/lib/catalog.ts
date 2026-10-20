@@ -95,12 +95,14 @@ export const getProductData = createServerFn({ method: 'GET' })
     const store = await import('@/server/catalog-store')
     const { toSummary } = await import('@/server/listing')
     const { PRODUCT_COPY } = await import('@/content/product-copy')
+    const { HOW_TO_USE } = await import('@/content/how-to-use')
     const product = store.findProduct(handle)
     if (!product) return null
     const copy: ProductCopy | null = PRODUCT_COPY[handle] ?? null
     return {
       product,
       copy,
+      howTo: copy ? (HOW_TO_USE[handle] ?? null) : null,
       related: store.relatedProducts(product).map(toSummary),
     }
   })

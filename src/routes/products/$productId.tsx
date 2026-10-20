@@ -5,6 +5,7 @@ import { BuyButton } from '@/components/BuyButton'
 import { ProductGrid } from '@/components/ProductCard'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { FaqAccordion } from '@/components/FaqAccordion'
+import { HowToUse } from '@/components/HowToUse'
 import { HUBS_BY_SLUG } from '@/content/hubs'
 import { postsForHub } from '@/content/posts'
 import { SITE, absoluteUrl } from '@/config/site'
@@ -83,7 +84,7 @@ export const Route = createFileRoute('/products/$productId')({
 })
 
 function ProductPage() {
-  const { product, copy, related, hub } = Route.useLoaderData()
+  const { product, copy, howTo, related, hub } = Route.useLoaderData()
   const [imageIndex, setImageIndex] = useState(0)
   const touchStartX = useRef<number | null>(null)
   const merchant = getProgram(product.program).merchantName
@@ -302,6 +303,14 @@ function ProductPage() {
               </div>
             )}
           </div>
+          {howTo ? (
+            <>
+              <h2 className="lg:col-span-4 display-m pt-10 lg:pt-16">How to Use It.</h2>
+              <div className="lg:col-span-8 max-w-3xl lg:pt-16">
+                <HowToUse guide={howTo} />
+              </div>
+            </>
+          ) : null}
           {copy.faqs?.length ? (
             <>
               <h2 className="lg:col-span-4 display-m pt-10 lg:pt-16">Questions People Ask.</h2>
