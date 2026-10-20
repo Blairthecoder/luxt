@@ -24,7 +24,7 @@ export const Route = createFileRoute('/gifts')({
     pageHead({
       title: `Sex Toy Gift Ideas for Her, Him & Couples | ${SITE.shortName}`,
       description:
-        'Adult gift ideas sorted by who you are buying for and what you want to spend: gift guides, gift sets, stocking stuffers and luxury picks with current prices.',
+        'Adult gift ideas sorted by who you are buying for and what you want to spend: gift guides, gift sets, stocking stuffers and premium picks that help them feel cared for.',
       path: '/gifts',
       jsonLd: [
         breadcrumbJsonLd([
@@ -52,8 +52,8 @@ function GiftsPage() {
           <p className="eyebrow text-signal rise">The Gift Shop</p>
           <h1 className="mt-3 display-l rise">Gifts Worth Unwrapping in Private</h1>
           <p className="mt-8 lede text-graphite max-w-2xl rise-delay">
-            Start with who you are buying for, or with what you want to spend. Every guide gives you a safe bet and a
-            bolder pick, with current prices.
+            A thoughtful toy says you care about how someone feels. Start with who it is for or what you want to
+            spend, and every guide gives you a gentle first pick and a bolder one.
           </p>
         </div>
       </header>

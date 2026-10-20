@@ -2,9 +2,9 @@ export const SITE = {
   name: 'Nightstand Supply Co.',
   shortName: 'Nightstand Supply',
   url: 'https://nightstandsupply.com',
-  tagline: 'Honest answers and the best adult toys, in one place.',
+  tagline: 'Adult toys and honest advice for feeling good, solo or together.',
   description:
-    'Compare luxury adult toys from LELO, Womanizer, We-Vibe and more with plain-English guidance, real specs and current prices. Every order ships discreetly.',
+    'Adult toys and honest advice to help you and your partner feel comfortable, confident and pleasured. Body-safe picks from trusted brands, shipped discreetly.',
   guidesName: 'Nightstand Notes',
   /** Byline for guides with no named author. */
   editorialTeam: 'The Nightstand Notes Editors',
