@@ -13,6 +13,7 @@ import {
 } from '@/lib/listing'
 import { merchandise, type MerchFocus } from '@/server/merchandising'
 import hubRules from '@/data/hub-rules.json'
+import { PRODUCT_COPY } from '@/content/product-copy'
 
 const SKIP_GROUPS = new Set(['category', 'celebrity', 'holiday 2021', 'holiday 2022'])
 const BLOCK_VALUES = new Set(hubRules.facets.blockValues)
@@ -136,6 +137,7 @@ export function toSummary(p: CatalogProduct): ProductSummary {
     compareAtPrice: p.compareAtPrice,
     available: p.available,
     image: p.images[0]?.src,
+    hasCopy: p.handle in PRODUCT_COPY,
   }
 }
 

@@ -7,11 +7,12 @@ import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { HUBS_BY_SLUG } from '@/content/hubs'
 import { postsForHub } from '@/content/posts'
 import { SITE, absoluteUrl } from '@/config/site'
-import { getProgram } from '@/lib/affiliate'
+import { getProgram, goPath } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
 import { getOptimizedImageUrl } from '@/lib/image'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
+import { productHighlights } from '@/lib/product-highlights'
 
 export const Route = createFileRoute('/products/$productId')({
   loader: async ({ params }) => {
@@ -86,6 +87,8 @@ function ProductPage() {
   const merchant = getProgram(product.program).merchantName
   const options = product.variants.filter((v) => v.title !== 'Default Title')
   const guides = postsForHub(hub.slug)
+  const highlights = copy ? [] : productHighlights(product)
+  const savings = product.compareAtPrice ? product.compareAtPrice - product.price : 0
 
   const facts: [string, string][] = [
     ['Brand', product.brand],
@@ -163,16 +166,36 @@ function ProductPage() {
                 {formatPrice(product.compareAtPrice)}
               </span>
             )}
+            {savings >= 1 && (
+              <span className="ml-3 text-sm font-semibold text-signal">Save {formatPrice(savings)}</span>
+            )}
           </p>
 
           <p className="mt-8 text-[1.0625rem] leading-relaxed text-[#3a3a3c]">
             {copy
               ? copy.summary
-              : `The ${product.title} from ${product.brand} is part of our ${hub.name.toLowerCase()} collection. Review the details below, compare similar pieces, and buy securely from ${merchant}.`}
+              : `A ${hub.singular.toLowerCase()} from ${product.brand}. Check the details below and our buying tips, then order from ${merchant} with discreet shipping.`}
           </p>
 
+          {highlights.length > 0 && (
+            <ul className="mt-6 space-y-2 text-[0.9375rem]">
+              {highlights.map((line) => (
+                <li key={line} className="flex gap-3">
+                  <span aria-hidden="true" className="mt-[0.6rem] w-1 h-1 shrink-0 rounded-full bg-ink" />
+                  {line}
+                </li>
+              ))}
+            </ul>
+          )}
+
           <div className="mt-10 space-y-3">
-            <BuyButton handle={product.handle} program={product.program} available={product.available} className="w-full" />
+            <BuyButton
+              handle={product.handle}
+              program={product.program}
+              available={product.available}
+              price={product.price}
+              className="w-full"
+            />
             <p className="text-xs text-graphite text-center">
               Secure checkout and discreet shipping from {merchant}
             </p>
@@ -272,9 +295,32 @@ function ProductPage() {
           <h2 className="mb-10 display-m">
             Similar {hub.name}. <span className="text-graphite">You may also consider.</span>
           </h2>
-          <ProductGrid products={related} />
+          <ProductGrid products={related} context="related_card" />
         </section>
       )}
+
+      {/* Mobile buy bar: the main button scrolls away on small screens. */}
+      <div className="lg:hidden h-24" aria-hidden="true" />
+      <div className="lg:hidden fixed inset-x-0 bottom-0 z-30 bg-canvas/95 backdrop-blur-xl border-t border-line">
+        <div className="wrap flex items-center justify-between gap-4 py-3">
+          <div className="min-w-0">
+            <p className="text-sm font-medium truncate">{product.title}</p>
+            <p className="text-sm text-graphite">
+              {formatPrice(product.price)}
+              {savings >= 1 && <span className="ml-2 text-signal font-semibold">Save {formatPrice(savings)}</span>}
+            </p>
+          </div>
+          <a
+            href={goPath(product.handle)}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            data-link-context="product_sticky"
+            className="btn shrink-0 !min-h-[2.75rem] !px-5 text-sm"
+          >
+            {product.available ? 'Buy Now' : 'Check Stock'}
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

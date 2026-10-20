@@ -6,6 +6,8 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const store = await import('@/server/catalog-store')
   const { toSummary } = await import('@/server/listing')
   const { pickSection } = await import('@/server/home-picks')
+  const { PRODUCT_COPY } = await import('@/content/product-copy')
+  const { productHighlights } = await import('@/lib/product-highlights')
   const products = store.allProducts()
   const used = new Set<string>()
   // First Picks choose first: the least intimidating first purchases, three small
@@ -25,7 +27,11 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
     forHer: forHer.map(toSummary),
     forHim: forHim.map(toSummary),
     forCouples: forCouples.map(toSummary),
-    splurge: splurge.map(toSummary),
+    // A one-line reason each splurge earns its price.
+    splurge: splurge.map((p) => ({
+      ...toSummary(p),
+      why: PRODUCT_COPY[p.handle]?.bestFor ?? productHighlights(p).slice(0, 2).join('. ') ?? '',
+    })),
   }
 })
 
@@ -76,7 +82,7 @@ export const getPostHtml = createServerFn({ method: 'GET' })
     const { renderPostHtml } = await import('@/server/post-html')
     const post = POSTS_BY_SLUG[slug]
     if (!post) return null
-    return { html: await renderPostHtml(post) }
+    return renderPostHtml(post)
   })
 
 export const getGiftData = createServerFn({ method: 'GET' }).handler(async () => {

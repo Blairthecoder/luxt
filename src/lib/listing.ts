@@ -52,7 +52,11 @@ export type Facets = Record<FilterKey, FacetOption[]>
 export type ProductSummary = Pick<
   CatalogProduct,
   'handle' | 'title' | 'brand' | 'hub' | 'price' | 'compareAtPrice' | 'available'
-> & { image?: string }
+> & {
+  image?: string
+  /** True when the product page carries original copy (and is indexable). */
+  hasCopy?: boolean
+}
 
 export interface ListingResult {
   products: ProductSummary[]

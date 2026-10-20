@@ -381,7 +381,12 @@ export const COLLECTIONS: Collection[] = [
       'Quality vibrators, strokers, plugs and lubes under $50. Body-safe picks that do not cut corners.',
     intro:
       'A great first toy does not have to be expensive. Everything here is under $50, and body-safe silicone is the one place not to compromise.',
-    rule: { maxPrice: 50 },
+    // Approachable categories only; novelty and explicit items stay out of the budget pages.
+    rule: {
+      maxPrice: 50,
+      hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings', 'couples', 'prostate-massagers'],
+      excludeTitle: 'sling|swing|machine|doll|pump|whip|flog|gag|bondage|chastity|celebrity|porn|slut|fuck|bitch|naughty|pussy|dong|realistic|novelty|gag gift|candy|edible|party',
+    },
     guide: 'sex-toy-gifts-for-her',
   },
   {
@@ -393,7 +398,12 @@ export const COLLECTIONS: Collection[] = [
       'The sweet spot for quality: rechargeable vibrators, strokers and couples toys from $50 to $100, with current prices.',
     intro:
       'Between $50 and $100 is where most toys get rechargeable, quieter and better made. It is the best range for a gift that feels considered without going luxury.',
-    rule: { minPrice: 50, maxPrice: 100 },
+    rule: {
+      minPrice: 50,
+      maxPrice: 100,
+      hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings', 'couples', 'prostate-massagers'],
+      excludeTitle: 'sling|swing|machine|doll|pump|whip|flog|gag|bondage|chastity|celebrity|porn|slut|fuck|bitch|naughty|pussy|dong|realistic|novelty|gag gift|candy|edible|party',
+    },
     guide: 'sex-toy-gifts-for-him',
   },
   {

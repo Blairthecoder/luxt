@@ -1,6 +1,10 @@
 import { SITE, absoluteUrl } from '@/config/site'
 import { truncate } from '@/lib/format'
 
+// Deploy previews and branch deploys build with VITE_NOINDEX=1 (netlify.toml),
+// so preview copies of the site can never be indexed.
+const FORCE_NOINDEX = import.meta.env.VITE_NOINDEX === '1'
+
 /** Builds the meta/link/script arrays for a route's head(). */
 export function pageHead({
   title,
@@ -23,7 +27,7 @@ export function pageHead({
     meta: [
       { title },
       { name: 'description', content: desc },
-      { name: 'robots', content: noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large' },
+      { name: 'robots', content: noindex || FORCE_NOINDEX ? 'noindex, follow' : 'index, follow, max-image-preview:large' },
       { property: 'og:title', content: title },
       { property: 'og:description', content: desc },
       { property: 'og:url', content: url },

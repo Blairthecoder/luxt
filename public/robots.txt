@@ -1,4 +1,12 @@
 User-agent: *
 Disallow: /go/
+# Filtered and sorted listing views are noindex duplicates of the clean listing.
+# ?page=N stays crawlable.
+Disallow: /*?*type=
+Disallow: /*?*for=
+Disallow: /*?*feature=
+Disallow: /*?*price=
+Disallow: /*?*brand=
+Disallow: /*?*sort=
 
 Sitemap: https://nightstandsupply.com/sitemap.xml
