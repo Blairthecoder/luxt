@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { ProductGrid } from '@/components/ProductCard'
 import {
@@ -46,6 +46,15 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
   const [open, setOpen] = useState<FilterKey | null>(null)
   const pathname = useRouterState({ select: (st) => st.location.pathname })
   const unfiltered = active.length === 0
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
   const collectionFor = (key: FilterKey, value: string) => {
     const slug = COLLECTION_FOR[key]?.[value]
     return unfiltered && slug && pathname !== `/shop/${slug}` ? slug : null
@@ -57,7 +66,7 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
 
   return (
     <div>
-      <div className="sticky top-[5.75rem] z-20 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] bg-canvas/95 backdrop-blur-xl border-y border-line">
+      <div className="sticky top-[5.75rem] z-20 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] bg-canvas/95 backdrop-blur-xl max-lg:backdrop-blur-none max-lg:bg-canvas border-y border-line">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-x-6 gap-y-2 py-3">
           <div className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] -mx-1 px-1">
             <span className="text-sm font-semibold pr-2 whitespace-nowrap">Filter</span>
@@ -68,7 +77,7 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
                 onClick={() => setOpen(open === key ? null : key)}
                 aria-expanded={open === key}
                 aria-controls={`facet-${key}`}
-                className={`chip gap-2 ${filters[key] && open !== key ? '!border-ink' : ''}`}
+                className={`chip press gap-2 max-lg:!min-h-[2.5rem] ${filters[key] && open !== key ? '!border-ink' : ''}`}
               >
                 {FILTER_LABELS[key]}
                 {filters[key] && <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-signal" />}
@@ -107,6 +116,16 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
           </div>
         </div>
 
+        {open && (
+          <button
+            type="button"
+            aria-label="Close filters"
+            tabIndex={-1}
+            onClick={() => setOpen(null)}
+            className="lg:hidden fixed inset-0 z-[54] bg-ink/40 fade-in"
+          />
+        )}
+
         {/* Every panel stays in the HTML so its links are crawlable; only the open one shows. */}
         {facets.map((key) => (
           <div
@@ -114,13 +133,22 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
             id={`facet-${key}`}
             role="region"
             aria-label={FILTER_LABELS[key]}
-            className={`${open === key ? 'block' : 'hidden'} border-t border-line py-5 max-h-[50vh] overflow-y-auto`}
+            className={`${open === key ? 'block' : 'hidden'} border-t border-line py-5 max-h-[50vh] overflow-y-auto max-lg:animate-[sheet-up_0.32s_cubic-bezier(0.22,1,0.36,1)_both] max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 max-lg:z-[55] max-lg:max-h-[78vh] max-lg:rounded-t-[28px] max-lg:border-0 max-lg:bg-canvas max-lg:px-5 max-lg:pb-[calc(1.5rem+env(safe-area-inset-bottom))] max-lg:pt-3`}
           >
-            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-2">
+            <div className="lg:hidden sticky top-0 -mx-5 -mt-3 mb-2 bg-canvas px-5 pb-3 pt-3">
+              <span aria-hidden="true" className="mx-auto mb-3 block h-1 w-10 rounded-full bg-line" />
+              <div className="flex items-center justify-between">
+                <p className="font-display text-xl font-semibold tracking-[-0.02em]">{FILTER_LABELS[key]}</p>
+                <button type="button" onClick={() => setOpen(null)} className="press rounded-full bg-mist px-4 py-2 text-sm font-medium">
+                  Done
+                </button>
+              </div>
+            </div>
+            <ul className="grid max-lg:grid-cols-1 lg:grid-cols-5 gap-x-8 gap-y-2 max-lg:gap-y-0">
               {result.facets[key].map((opt) => {
                 const selected = filters[key] === opt.value
                 const collection = collectionFor(key, opt.value)
-                const rowClass = `flex items-center justify-between gap-3 text-[0.9375rem] transition-colors ${
+                const rowClass = `flex items-center justify-between gap-3 text-[0.9375rem] transition-colors max-lg:min-h-[3.25rem] max-lg:border-b max-lg:border-line ${
                   selected ? 'text-ink font-medium' : 'text-graphite hover:text-ink'
                 }`
                 const row = (

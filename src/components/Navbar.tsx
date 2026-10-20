@@ -4,6 +4,7 @@ import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
 import { SearchDialog } from '@/components/SearchDialog'
+import { MobileTabBar } from '@/components/MobileTabBar'
 import { SITE } from '@/config/site'
 
 const PRIMARY = [
@@ -19,6 +20,14 @@ const GIFTS_AND_COUPLES = [
   ...COLLECTIONS.filter((c) => c.group === 'Gift Ideas'),
   ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
 ]
+
+const SHEET_LINKS = [
+  { label: 'For Her', to: '/shop/$slug', params: { slug: 'sex-toys-for-women' } },
+  { label: 'For Him', to: '/shop/$slug', params: { slug: 'sex-toys-for-men' } },
+  { label: 'For Couples', to: '/shop/$slug', params: { slug: 'couples-sex-toys' } },
+  { label: 'Gifts', to: '/gifts' },
+  { label: SITE.guidesName, to: '/blog' },
+] as const
 
 const SearchIcon = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
@@ -73,6 +82,25 @@ export function Navbar() {
     document.documentElement.style.overflow = mobileOpen || searchOpen ? 'hidden' : ''
   }, [mobileOpen, searchOpen])
 
+  // Search fields elsewhere on the page ask the header to open the dialog.
+  useEffect(() => {
+    const open = () => {
+      setMobileOpen(false)
+      setSearchOpen(true)
+    }
+    window.addEventListener('open-search', open)
+    return () => window.removeEventListener('open-search', open)
+  }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [mobileOpen])
+
   // Cmd+K (Mac) or Ctrl+K opens search from anywhere on the site.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -91,6 +119,7 @@ export function Navbar() {
   useEffect(() => {
     setShopOpen(false)
     setSearchOpen(false)
+    setMobileOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -254,103 +283,82 @@ export function Navbar() {
                 setMobileOpen(false)
                 setSearchOpen(true)
               }}
-              className="lg:hidden -mr-3 flex h-8 w-8 items-center justify-center text-ink"
+              className="press lg:hidden -mr-2 flex h-10 w-10 items-center justify-center text-ink"
               aria-label="Search"
             >
               <SearchIcon />
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative w-8 h-8 -mr-1.5"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            >
-              <span
-                aria-hidden="true"
-                className={`absolute left-1.5 right-1.5 h-[1.5px] bg-ink transition-transform duration-300 ${
-                  mobileOpen ? 'top-1/2 rotate-45' : 'top-[11px]'
-                }`}
-              />
-              <span
-                aria-hidden="true"
-                className={`absolute left-1.5 right-1.5 h-[1.5px] bg-ink transition-transform duration-300 ${
-                  mobileOpen ? 'top-1/2 -rotate-45' : 'top-[19px]'
-                }`}
-              />
             </button>
           </div>
         </div>
       </div>
 
       {mobileOpen && (
-        <nav
-          id="mobile-menu"
-          aria-label="Mobile"
-          className="lg:hidden fixed inset-x-0 bottom-0 top-[5.75rem] bg-canvas overflow-y-auto"
-        >
-          <div className="wrap pt-6 pb-16 space-y-12">
-            <ul className="space-y-1 font-display text-[2rem] font-bold tracking-[-0.04em] leading-tight">
-              {PRIMARY.map((item) => (
-                <li key={item.slug} className="rise">
-                  <Link to="/shop/$slug" params={{ slug: item.slug }} onClick={close}>
+        <div className="lg:hidden fixed inset-0 z-[55]">
+          <button type="button" aria-label="Close menu" tabIndex={-1} className="absolute inset-0 bg-ink/40 fade-in" onClick={close} />
+          <nav
+            id="mobile-menu"
+            aria-label="Shop menu"
+            className="sheet-up absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto overscroll-contain rounded-t-[28px] bg-canvas"
+          >
+            <div className="sticky top-0 z-10 bg-canvas px-5 pb-3 pt-3">
+              <span aria-hidden="true" className="mx-auto mb-3 block h-1 w-10 rounded-full bg-line" />
+              <div className="flex items-center justify-between">
+                <p className="font-display text-xl font-semibold tracking-[-0.02em]">Shop</p>
+                <button type="button" onClick={close} className="press rounded-full bg-mist px-4 py-2 text-sm font-medium">
+                  Close
+                </button>
+              </div>
+            </div>
+          <div className="px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-1">
+            <ul className="space-y-2">
+              {SHEET_LINKS.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    {...('params' in item ? { params: item.params } : {})}
+                    onClick={close}
+                    className="press flex h-[3.75rem] items-center justify-between rounded-2xl bg-mist px-5 text-[1.0625rem] font-semibold tracking-[-0.01em]"
+                  >
                     {item.label}
+                    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-graphite" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m9 6 6 6-6 6" />
+                    </svg>
                   </Link>
                 </li>
               ))}
-              <li className="rise">
-                <Link to="/gifts" onClick={close}>
-                  Gifts
-                </Link>
-              </li>
-              <li className="rise">
-                <Link to="/blog" onClick={close}>
-                  {SITE.guidesName}
-                </Link>
-              </li>
             </ul>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-10">
-              <MenuColumn title="Categories">
+            <details className="group mt-3 rounded-2xl border border-line">
+              <summary className="flex h-14 cursor-pointer list-none items-center justify-between px-5 text-[0.9375rem] font-medium [&::-webkit-details-marker]:hidden">
+                All Categories
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-graphite transition-transform group-open:rotate-90" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m9 6 6 6-6 6" />
+                </svg>
+              </summary>
+              <ul className="flex flex-wrap gap-2 px-4 pb-4">
                 {HUBS.map((hub) => (
                   <li key={hub.slug}>
-                    <Link to="/category/$slug" params={{ slug: hub.slug }} onClick={close}>
+                    <Link to="/category/$slug" params={{ slug: hub.slug }} onClick={close} className="chip !min-h-[2.5rem]">
                       {hub.name}
                     </Link>
                   </li>
                 ))}
-              </MenuColumn>
-              <MenuColumn title="By Style">
-                {STYLES.map((c) => (
-                  <li key={c.slug}>
-                    <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
-                      {c.name}
-                    </Link>
-                  </li>
-                ))}
-              </MenuColumn>
-              <MenuColumn title="Gifts & Couples">
-                {GIFTS_AND_COUPLES.map((c) => (
-                  <li key={c.slug}>
-                    <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
-                      {c.name}
-                    </Link>
-                  </li>
-                ))}
-              </MenuColumn>
-              <MenuColumn title="Guides by Topic">
-                {TOPICS.map((t) => (
-                  <li key={t.slug}>
-                    <Link to="/blog/topic/$topic" params={{ topic: t.slug }} onClick={close}>
-                      {t.name}
-                    </Link>
-                  </li>
-                ))}
-              </MenuColumn>
-            </div>
+              </ul>
+            </details>
           </div>
-        </nav>
+          </nav>
+        </div>
       )}
+      <MobileTabBar
+        shopOpen={mobileOpen}
+        onShop={() => {
+          setSearchOpen(false)
+          setMobileOpen((open) => !open)
+        }}
+        onSearch={() => {
+          setMobileOpen(false)
+          setSearchOpen(true)
+        }}
+      />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )

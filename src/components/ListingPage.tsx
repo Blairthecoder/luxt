@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ListingView } from '@/components/ListingView'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
+import { MobileSearchField } from '@/components/MobileSearchField'
 import { FaqAccordion } from '@/components/FaqAccordion'
 import type { ListingFilters, ListingResult } from '@/lib/listing'
 import type { Post } from '@/content/posts'
@@ -41,7 +42,8 @@ export function ListingPage({
     <div className="wrap">
       <header className="pt-6 pb-8 sm:pb-10">
         <Breadcrumbs items={breadcrumbs} />
-        <div className="mt-8 sm:mt-12 grid lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+        <MobileSearchField className="mt-4" />
+        <div className="mt-6 sm:mt-12 grid lg:grid-cols-12 gap-6 lg:gap-12 items-end">
           <div className="lg:col-span-6 rise">
             <p className="eyebrow text-graphite">{eyebrow}</p>
             <h1 className="mt-2 display-m">{title}</h1>
