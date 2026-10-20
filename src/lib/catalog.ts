@@ -8,6 +8,9 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const { pickSection } = await import('@/server/home-picks')
   const { PRODUCT_COPY } = await import('@/content/product-copy')
   const { productHighlights } = await import('@/lib/product-highlights')
+  const { buildTiles } = await import('@/server/tiles')
+  const { HOME_SHORTCUTS, FEATURED_HUBS } = await import('@/content/shortcuts')
+  const { POPULAR_TAG } = await import('@/server/merchandising')
   const products = store.allProducts()
   const used = new Set<string>()
   // First Picks choose first: the least intimidating first purchases, three small
@@ -17,12 +20,33 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const firstLube = pickSection(products, { maxPrice: 30, hubs: ['lubricants'] }, used, 1)
   const firstPicks = [...firstToys, ...firstLube].sort((a, b) => a.price - b.price)
   // The gendered sections choose next so their lineups stay distinct.
-  const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], tags: ['female'], audience: 'female' }, used, 3)
-  const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'], audience: 'male' }, used, 3)
-  const forCouples = pickSection(products, { hubs: ['couples', 'vibrators', 'penis-rings'], title: /couple|partner|app|remote|wearable/i }, used, 3)
+  const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], tags: ['female'], audience: 'female' }, used, 4)
+  const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'], audience: 'male' }, used, 4)
+  const forCouples = pickSection(products, { hubs: ['couples', 'vibrators', 'penis-rings'], title: /couple|partner|app|remote|wearable/i }, used, 4)
   const splurge = pickSection(products, { minPrice: 150, hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'] }, used, 3)
+  // Best Sellers only carries that name when the merchant itself tags enough products as best sellers.
+  const popular = pickSection(products, { where: (p) => p.tags.some((t) => POPULAR_TAG.test(t)) }, used, 8)
+  const popularLabelled = popular.length >= 4
+  const topPicks = popularLabelled ? popular : [...popular, ...pickSection(products, {}, used, 8 - popular.length)]
+  // Real markdowns only: compareAtPrice comes from the merchant feed.
+  const onSale = pickSection(products, { where: (p) => !!p.compareAtPrice && p.compareAtPrice > p.price }, used, 8)
+  const tileImages = new Set<string>()
   return {
     hubCounts: store.hubCounts(),
+    shortcuts: buildTiles(HOME_SHORTCUTS, tileImages),
+    promoTiles: buildTiles(
+      [
+        { kind: 'shop', slug: 'sex-toy-gift-sets' },
+        { kind: 'shop', slug: 'sex-toys-for-beginners' },
+        { kind: 'shop', slug: 'quiet-vibrators' },
+        { kind: 'shop', slug: 'app-controlled-sex-toys' },
+      ],
+      tileImages
+    ),
+    categoryTiles: buildTiles(FEATURED_HUBS.map((slug) => ({ kind: 'hub' as const, slug })), tileImages),
+    topPicks: topPicks.map(toSummary),
+    topPicksLabel: popularLabelled ? 'Best Sellers' : 'Our Top Picks',
+    onSale: onSale.length >= 4 ? onSale.map(toSummary) : [],
     firstPicks: firstPicks.map(toSummary),
     forHer: forHer.map(toSummary),
     forHim: forHim.map(toSummary),
@@ -41,7 +65,11 @@ export const getHubListing = createServerFn({ method: 'GET' })
     const store = await import('@/server/catalog-store')
     const { buildListing } = await import('@/server/listing')
     const { LISTING_EXTRAS } = await import('@/content/listing-extras')
-    return { ...buildListing(store.productsInHub(data.slug), data.filters), extra: LISTING_EXTRAS[`hub:${data.slug}`] ?? null }
+    return {
+      ...buildListing(store.productsInHub(data.slug), data.filters),
+      extra: LISTING_EXTRAS[`hub:${data.slug}`] ?? null,
+      subcats: (await import('@/server/tiles')).subcategoryTiles(`hub:${data.slug}`),
+    }
   })
 
 export const getCollectionListing = createServerFn({ method: 'GET' })
@@ -57,6 +85,7 @@ export const getCollectionListing = createServerFn({ method: 'GET' })
     return {
       ...buildListing(store.productsMatchingRule(collection.slug, collection.rule), data.filters, COLLECTION_FOCUS[collection.slug]),
       extra: LISTING_EXTRAS[`shop:${collection.slug}`] ?? null,
+      subcats: (await import('@/server/tiles')).subcategoryTiles(`shop:${collection.slug}`),
     }
   })
 

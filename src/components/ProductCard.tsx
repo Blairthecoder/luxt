@@ -19,7 +19,7 @@ export function ProductCard({
   return (
     <div className="group flex flex-col">
       <Link to="/products/$productId" params={{ productId: product.handle }} className="flex flex-col">
-        <div className={`relative overflow-hidden ${size === 'small' ? 'aspect-[5/4] bg-stone' : 'aspect-[4/5] bg-mist'}`}>
+        <div className={`relative overflow-hidden rounded-xl ${size === 'small' ? 'aspect-[5/4] bg-stone' : 'aspect-square bg-mist'}`}>
           <img
             src={getOptimizedImageUrl(product.image, 600)}
             alt={`${product.title} by ${product.brand}`}
@@ -28,8 +28,13 @@ export function ProductCard({
             height={750}
             className={`absolute inset-0 w-full h-full object-contain mix-blend-multiply ${size === 'small' ? 'p-[18%] saturate-[0.85]' : 'p-[9%]'} transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
           />
+          {flag === 'Sale' && (
+            <span className="absolute top-2.5 left-2.5 rounded-full bg-signal px-2.5 py-1 text-[0.6875rem] font-semibold leading-none text-canvas">
+              Sale
+            </span>
+          )}
         </div>
-        <div className="pt-4 space-y-0.5">
+        <div className="pt-3 space-y-0.5">
           {flag && (
             <p className={`text-[0.8125rem] font-semibold ${flag === 'Sale' ? 'text-signal' : 'text-graphite'}`}>
               {flag === 'Sale' && savings >= 1 ? `Save ${formatPrice(savings)}` : flag}
@@ -63,9 +68,20 @@ export function ProductCard({
   )
 }
 
-export function ProductGrid({ products, context }: { products: ProductSummary[]; context?: string }) {
+export function ProductGrid({
+  products,
+  context,
+  dense = false,
+}: {
+  products: ProductSummary[]
+  context?: string
+  /** Five across on wide screens, for full-width listing grids. */
+  dense?: boolean
+}) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-12 sm:gap-x-4">
+    <div
+      className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-10 sm:gap-x-4 ${dense ? 'xl:grid-cols-5' : ''}`}
+    >
       {products.map((product) => (
         <ProductCard key={product.handle} product={product} context={context} />
       ))}

@@ -10,6 +10,7 @@ export type HomeSection = MerchFocus & {
   exclude?: RegExp
   minPrice?: number
   maxPrice?: number
+  where?: (p: CatalogProduct) => boolean
 }
 
 function eligible(p: CatalogProduct, section: HomeSection): boolean {
@@ -20,6 +21,7 @@ function eligible(p: CatalogProduct, section: HomeSection): boolean {
   if (section.tags && !p.tags.some((t) => section.tags!.includes(t.trim().toLowerCase()))) return false
   if (section.title && !section.title.test(p.title)) return false
   if (section.exclude && section.exclude.test(p.title)) return false
+  if (section.where && !section.where(p)) return false
   return isDiscreet(p)
 }
 
