@@ -34,6 +34,38 @@ import { LOVENSE_VS_WE_VIBE } from '@/content/guides/lovense-vs-we-vibe'
 import { LE_WAND_VS_MAGIC_WAND } from '@/content/guides/le-wand-vs-magic-wand'
 import { BEGINNERS_GUIDE } from '@/content/guides/sex-toys-for-beginners'
 import { BLACK_FRIDAY_DEALS } from '@/content/guides/black-friday-sex-toy-deals'
+import { ANAL_BEGINNERS } from '@/content/guides/anal-toys-for-beginners'
+import { BDSM_STARTER_KIT } from '@/content/guides/bdsm-starter-kit'
+import { BEST_BULLETS } from '@/content/guides/best-bullet-vibrators'
+import { BEST_PROSTATE_VIBRATORS } from '@/content/guides/best-prostate-vibrators'
+import { BEST_RABBITS } from '@/content/guides/best-rabbit-vibrators'
+import { BEST_THRUSTING } from '@/content/guides/best-thrusting-vibrators'
+import { BEST_VIBRATING_RINGS } from '@/content/guides/best-vibrating-cock-rings'
+import { BODY_SAFE_MATERIALS } from '@/content/guides/body-safe-sex-toy-materials'
+import { BUTT_PLUG_SIZES } from '@/content/guides/butt-plug-sizes'
+import { TOYS_AND_UTI } from '@/content/guides/can-sex-toys-cause-a-uti'
+import { SILICONE_LUBE_SILICONE_TOYS } from '@/content/guides/can-you-use-silicone-lube-with-silicone-toys'
+import { CHRISTMAS_COUPLES } from '@/content/guides/christmas-sex-toy-gifts-for-couples'
+import { DISCREET_SHOPPING } from '@/content/guides/discreet-sex-toy-shopping'
+import { HOW_LONG_TOYS_LAST } from '@/content/guides/how-long-do-sex-toys-last'
+import { ASK_PARTNER_TOY } from '@/content/guides/how-to-ask-your-partner-to-try-a-sex-toy'
+import { CHOOSE_A_DILDO } from '@/content/guides/how-to-choose-a-dildo'
+import { HIDE_AND_TRAVEL } from '@/content/guides/how-to-hide-and-travel-with-sex-toys'
+import { TALK_ABOUT_SEX } from '@/content/guides/how-to-talk-about-sex-with-your-partner'
+import { PENIS_PUMP_HOWTO } from '@/content/guides/how-to-use-a-penis-pump'
+import { IS_LOVENSE_WORTH_IT } from '@/content/guides/is-lovense-worth-it'
+import { LELO_VS_WOMANIZER } from '@/content/guides/lelo-vs-womanizer'
+import { LINGERIE_SIZES } from '@/content/guides/lingerie-size-guide'
+import { MISMATCHED_LIBIDO } from '@/content/guides/mismatched-libido'
+import { POSTPARTUM_TOYS } from '@/content/guides/postpartum-sex-toys'
+import { QUIETEST_VIBRATORS } from '@/content/guides/quietest-vibrators'
+import { ROLEPLAY_IDEAS } from '@/content/guides/roleplay-ideas-for-couples'
+import { SEX_TOY_SIZES } from '@/content/guides/sex-toy-size-guide'
+import { CHRONIC_PAIN_MOBILITY } from '@/content/guides/sex-toys-for-chronic-pain-and-limited-mobility'
+import { ED_TOYS } from '@/content/guides/sex-toys-for-erectile-dysfunction'
+import { STRAP_ON_HARNESS } from '@/content/guides/strap-on-harness-guide'
+import { TYPES_OF_LUBE } from '@/content/guides/types-of-lube'
+import { YES_NO_MAYBE } from '@/content/guides/yes-no-maybe-list'
 
 export interface PickSlot {
   /** Short badge, e.g. "Best Overall" or "Under $50". */
@@ -95,6 +127,38 @@ export const POSTS: Post[] = [
   LE_WAND_VS_MAGIC_WAND,
   BEGINNERS_GUIDE,
   BLACK_FRIDAY_DEALS,
+  ANAL_BEGINNERS,
+  BDSM_STARTER_KIT,
+  BEST_BULLETS,
+  BEST_PROSTATE_VIBRATORS,
+  BEST_RABBITS,
+  BEST_THRUSTING,
+  BEST_VIBRATING_RINGS,
+  BODY_SAFE_MATERIALS,
+  BUTT_PLUG_SIZES,
+  TOYS_AND_UTI,
+  SILICONE_LUBE_SILICONE_TOYS,
+  CHRISTMAS_COUPLES,
+  DISCREET_SHOPPING,
+  HOW_LONG_TOYS_LAST,
+  ASK_PARTNER_TOY,
+  CHOOSE_A_DILDO,
+  HIDE_AND_TRAVEL,
+  TALK_ABOUT_SEX,
+  PENIS_PUMP_HOWTO,
+  IS_LOVENSE_WORTH_IT,
+  LELO_VS_WOMANIZER,
+  LINGERIE_SIZES,
+  MISMATCHED_LIBIDO,
+  POSTPARTUM_TOYS,
+  QUIETEST_VIBRATORS,
+  ROLEPLAY_IDEAS,
+  SEX_TOY_SIZES,
+  CHRONIC_PAIN_MOBILITY,
+  ED_TOYS,
+  STRAP_ON_HARNESS,
+  TYPES_OF_LUBE,
+  YES_NO_MAYBE,
   {
     slug: 'fleshlight-vs-tenga',
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',
@@ -150,6 +214,20 @@ Tenga is a Japanese brand known for clean, considered design. Its single-use **c
 
 If you like the feeling but want hands-free play, look at [automatic strokers](/shop/automatic-strokers), which add thrusting or suction. Or browse every [stroker and masturbator](/category/strokers) we carry.
 `,
+    faqs: [
+      {
+        q: 'Which is better for a first stroker, Fleshlight or Tenga?',
+        a: 'Tenga cups are easier and lower commitment to start with. Fleshlight is a better fit if you already know you enjoy strokers and want a reusable toy.',
+      },
+      {
+        q: 'What lube should I use with a stroker?',
+        a: 'Water-based lube. It is safe with every sleeve material, whereas silicone lube can break down many stroker materials.',
+      },
+      {
+        q: 'How do I clean a Fleshlight?',
+        a: 'Rinse the sleeve with warm water after each use, then let it dry completely before storing it, ideally removed from the case.',
+      },
+    ],
   },
   {
     slug: 'how-to-choose-your-first-vibrator',
@@ -205,6 +283,20 @@ You can get a great first vibrator for under $50. See our [picks under $50](/sho
 
 Start external, start body-safe, and do not overspend on your first toy. Once you know what you enjoy, upgrading is easy. Browse all [vibrators](/category/vibrators) or toys [designed for women](/shop/sex-toys-for-women).
 `,
+    faqs: [
+      {
+        q: 'What is the best first vibrator?',
+        a: 'A small clitoral vibrator or bullet is the easiest first pick: external, quiet, affordable and simple to use. A mini wand is a good step up if you want broader vibration.',
+      },
+      {
+        q: 'Are vibrators noisy?',
+        a: 'It varies. Rumbly, low-frequency motors tend to be quieter than high, buzzy ones, and a toy used under a blanket or against the body sounds quieter still.',
+      },
+      {
+        q: 'What material should a vibrator be made of?',
+        a: 'Body-safe silicone is the best all-round choice. It is non-porous, easy to clean and works with water-based lube.',
+      },
+    ],
   },
   {
     slug: 'best-lube-for-sex-toys',
@@ -258,6 +350,20 @@ Long-lasting and good for massage, but it breaks down latex condoms and can stai
 
 Keep a good water-based lube in your nightstand as the default, and add a silicone lube for toy-free sex if you like it. Browse every [lubricant](/category/lubricants) we carry.
 `,
+    faqs: [
+      {
+        q: 'Which lube is best for sex toys?',
+        a: 'Water-based lube is safe with every toy material and with condoms. Silicone lube lasts longer but can damage silicone toys, so use it with glass, steel or ABS plastic.',
+      },
+      {
+        q: 'Can I use silicone lube with a silicone toy?',
+        a: 'Usually not. Silicone lube can degrade silicone toys over time. Spot-test on the base of the toy first, or choose water-based lube.',
+      },
+      {
+        q: 'How often should I reapply lube?',
+        a: 'Whenever things start to feel dry or sticky. Water-based lube absorbs and dries faster, so plan to reapply during longer sessions.',
+      },
+    ],
   },
 ]
 

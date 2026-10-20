@@ -63,6 +63,26 @@ export const TOPICS: Topic[] = [
       'The practical side of feeling at ease: using toys with a partner, choosing a lube that keeps things comfortable and caring for toys so they are always ready.',
     collections: ['sex-toys-for-beginners', 'water-based-lube', 'silicone-lube', 'discreet-sex-toys', 'bullet-vibrators', 'vibrating-cock-rings', 'butt-plugs', 'anal-beads'],
   },
+  {
+    slug: 'talk-connection',
+    name: 'Talk & Connection',
+    metaTitle: 'How to Talk About Sex: Couples Communication Guides',
+    metaDescription:
+      'How to talk about sex with a partner: scripts for asking for what you want, bringing up a toy, mismatched libidos and exploring fantasies together.',
+    intro:
+      'Most of what makes sex better happens before anyone touches a toy. These guides give you the words for the conversations that feel awkward, so you can ask for what you want and listen well.',
+    collections: ['couples-sex-toys', 'remote-control-vibrators', 'app-controlled-sex-toys', 'bondage-kits', 'sex-toy-gift-sets'],
+  },
+  {
+    slug: 'health-comfort',
+    name: 'Health & Comfort',
+    metaTitle: 'Sexual Wellness Guides: Materials, Comfort & Body Changes',
+    metaDescription:
+      'Sexual wellness guides on body-safe materials, lube, postpartum, menopause, ED and chronic pain, so pleasure stays comfortable through every stage of life.',
+    intro:
+      'Bodies change, and comfort comes first. These guides cover body-safe materials, the right lube and how toys can help through pregnancy, menopause, erectile changes and chronic pain. They are not medical advice; talk to your doctor about symptoms.',
+    collections: ['water-based-lube', 'silicone-lube', 'quiet-vibrators', 'wand-vibrators', 'vibrating-cock-rings', 'sex-toys-for-beginners'],
+  },
 ]
 
 export const TOPICS_BY_SLUG: Record<string, Topic> = Object.fromEntries(TOPICS.map((t) => [t.slug, t]))

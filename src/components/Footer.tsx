@@ -64,6 +64,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/quiz" className={link}>
+                  Toy Finder Quiz
+                </Link>
+              </li>
+              <li>
+                <Link to="/glossary" className={link}>
+                  Glossary
+                </Link>
+              </li>
+              <li>
                 <Link to="/blog" className="text-ink font-medium hover:underline underline-offset-2">
                   All Guides
                 </Link>
@@ -78,6 +88,10 @@ export function Footer() {
             shipped by our retail partner.{' '}
             <Link to="/disclosure" className="text-ink underline underline-offset-2">
               Disclosure
+            </Link>
+            {' · '}
+            <Link to="/about" className="text-ink underline underline-offset-2">
+              About Us &amp; Editorial Standards
             </Link>
           </p>
           <div className="flex flex-col sm:flex-row justify-between gap-2">

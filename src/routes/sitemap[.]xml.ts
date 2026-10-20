@@ -27,6 +27,7 @@ export const Route = createFileRoute('/sitemap.xml')({
         }
         urls.push({ loc: absoluteUrl('/gifts'), lastmod })
         urls.push({ loc: absoluteUrl('/blog') })
+        for (const path of ['/glossary', '/quiz', '/about']) urls.push({ loc: absoluteUrl(path) })
         for (const topic of TOPICS) {
           if (postsForTopic(topic.slug).length) urls.push({ loc: absoluteUrl(`/blog/topic/${topic.slug}`) })
         }
