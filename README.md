@@ -1,6 +1,6 @@
 # Nightstand Supply Co.
 
-Affiliate storefront for adult toys at https://nightstandsupply.co. Product and category pages live on-site; purchases go to LuxuryToyX through tracked `/go/<handle>` redirects.
+Affiliate storefront for adult toys at https://nightstandsupply.com. Product and category pages live on-site; purchases go to LuxuryToyX through tracked `/go/<handle>` redirects.
 
 ## Commands
 
