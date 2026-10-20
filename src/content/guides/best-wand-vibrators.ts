@@ -98,11 +98,11 @@ Wash the head with warm water and mild soap or a toy cleaner. Do not submerge a 
     corded: {
       slots: [
         {
-          label: 'Best Plug-In Wand',
+          label: 'Best Corded Wand',
           note: 'Corded, strong and always ready. A good choice for home use when power matters most.',
           rules: [
-            { hubs: ['vibrators'], title: 'plug|corded|plug-in|magic', excludeTitle: 'butt|anal|strap|harness', maxPrice: 120 },
-            { hubs: ['vibrators'], title: 'wand', excludeTitle: 'strap|harness|rechargeable|cordless', maxPrice: 120 },
+            { hubs: ['vibrators'], title: 'plug-in|plug in|corded|magic wand', excludeTitle: 'butt|anal|strap|harness|rechargeable|cordless|dual vibe', maxPrice: 120 },
+            { hubs: ['vibrators'], title: 'wand', excludeTitle: 'strap|harness|rechargeable|cordless|battery|mini', maxPrice: 120 },
           ],
         },
       ],

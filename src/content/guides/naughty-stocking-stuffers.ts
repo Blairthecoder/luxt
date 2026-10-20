@@ -76,7 +76,7 @@ At this price, look for silicone or a label that says body-safe. Silicone toys a
         {
           label: 'Best Lube to Add',
           note: 'A water-based lube is safe with every toy and condom. A small bottle fits in the toe.',
-          rules: [{ hubs: ['lubricants'], title: 'water', maxPrice: 30 }, { hubs: ['lubricants'], maxPrice: 30 }],
+          rules: [{ hubs: ['lubricants'], title: 'water', excludeTitle: 'flavor|warming|tingl', maxPrice: 30 }, { hubs: ['lubricants'], excludeTitle: 'flavor|warming|tingl', maxPrice: 30 }],
         },
       ],
     },
@@ -109,7 +109,7 @@ At this price, look for silicone or a label that says body-safe. Silicone toys a
         {
           label: 'Best First Restraint',
           note: 'A soft blindfold or set of cuffs. Gentle enough for a first try and easy to remove.',
-          rules: [{ hubs: ['bdsm'], title: 'blindfold|cuff|restraint|mask', excludeTitle: 'hood|gag|collar', maxPrice: 30 }],
+          rules: [{ hubs: ['bdsm'], title: 'blindfold|plush|soft|fur|velvet|satin', excludeTitle: 'hood|gag|collar|metal|steel|chain|handcuff', maxPrice: 30 }],
           prefer: 'price-asc',
         },
       ],

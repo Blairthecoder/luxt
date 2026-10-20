@@ -93,12 +93,6 @@ For more on keeping toys in good shape, read how to [choose your first vibrator]
           ],
           prefer: 'price-asc',
         },
-        {
-          label: 'Best Storage',
-          note: 'A breathable pouch or case that keeps toys separate and dust-free.',
-          rules: [{ hubs: ['more-toys'], title: 'bag|pouch|case|storage|box', maxPrice: 40 }],
-          prefer: 'price-asc',
-        },
       ],
     },
   },

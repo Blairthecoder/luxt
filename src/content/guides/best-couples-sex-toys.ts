@@ -139,8 +139,8 @@ The toy is the easy part. If you have not talked about toys before, read our gui
           label: 'Best Strap-On Kit',
           note: 'A harness and compatible dildo in one box, which solves the hardest part of starting out. Choose an adjustable harness.',
           rules: [
-            { hubs: ['strap-ons'], title: '\\b(kit|set|system)\\b', maxPrice: 150 },
-            { hubs: ['strap-ons'], maxPrice: 120 },
+            { hubs: ['strap-ons'], title: '\\b(kit|set|system)\\b', excludeTitle: 'panty|panties|crotchless|lingerie', maxPrice: 150 },
+            { hubs: ['strap-ons'], excludeTitle: 'panty|panties|crotchless|lingerie', maxPrice: 120 },
           ],
         },
         {

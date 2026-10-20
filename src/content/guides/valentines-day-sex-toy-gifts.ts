@@ -106,7 +106,7 @@ Valentine's night is a good time to start a habit. Read [how to spice up your ma
           note: 'A reusable stroker from a well-known brand. A direct upgrade with nothing to learn.',
           rules: [
             { brands: ['fleshlight'], maxPrice: 100 },
-            { hubs: ['strokers'], minPrice: 30, maxPrice: 100 },
+            { hubs: ['strokers'], excludeTitle: 'boys|gay|fleshjack', minPrice: 30, maxPrice: 100 },
           ],
         },
         {

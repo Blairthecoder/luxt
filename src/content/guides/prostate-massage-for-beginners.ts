@@ -88,7 +88,7 @@ Wash the toy with warm water and soap or a toy cleaner after each use. Dry it fu
         {
           label: 'Best Lube to Pair',
           note: 'Thick, water-based and safe with silicone. Reapply as often as you need.',
-          rules: [{ hubs: ['lubricants'], title: 'anal|thick|gel|water', maxPrice: 30 }, { hubs: ['lubricants'], maxPrice: 30 }],
+          rules: [{ hubs: ['lubricants'], title: 'anal|thick|gel|water', excludeTitle: 'flavor|warming|tingl', maxPrice: 30 }, { hubs: ['lubricants'], excludeTitle: 'flavor|warming|tingl', maxPrice: 30 }],
         },
       ],
     },

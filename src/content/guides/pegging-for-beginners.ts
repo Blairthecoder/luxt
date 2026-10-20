@@ -81,8 +81,8 @@ If you are exploring new things together, see [how to spice up your marriage](/b
           label: 'Best Beginner Kit',
           note: 'A harness and dildo in one box that fit each other. Solves the hardest part of getting started.',
           rules: [
-            { hubs: ['strap-ons'], title: '\\b(kit|set|system)\\b', maxPrice: 150 },
-            { hubs: ['strap-ons'], maxPrice: 120 },
+            { hubs: ['strap-ons'], title: '\\b(kit|set|system)\\b', excludeTitle: 'panty|panties|crotchless|lingerie', maxPrice: 150 },
+            { hubs: ['strap-ons'], excludeTitle: 'panty|panties|crotchless|lingerie', maxPrice: 120 },
           ],
         },
         {
@@ -94,7 +94,7 @@ If you are exploring new things together, see [how to spice up your marriage](/b
         {
           label: 'Best Lube',
           note: 'Thick and water-based, safe with silicone. Use more than you think you need.',
-          rules: [{ hubs: ['lubricants'], title: 'anal|thick|gel|water', maxPrice: 30 }, { hubs: ['lubricants'], maxPrice: 30 }],
+          rules: [{ hubs: ['lubricants'], title: 'anal|thick|gel|water', excludeTitle: 'flavor|warming|tingl', maxPrice: 30 }, { hubs: ['lubricants'], excludeTitle: 'flavor|warming|tingl', maxPrice: 30 }],
         },
       ],
     },
