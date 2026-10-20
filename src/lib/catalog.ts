@@ -8,11 +8,16 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const { pickSection } = await import('@/server/home-picks')
   const products = store.allProducts()
   const used = new Set<string>()
-  // Order matters: the gendered sections choose first so their lineups stay distinct.
+  // First Picks choose first: the least intimidating first purchases, three small
+  // gender-neutral vibrators plus one lube, shown cheapest first.
+  const neutral = /stroker|masturbat|sleeve|cock|penis|prostate|plug|egg|thrust|rabbit|dual|g-?spot/i
+  const firstToys = pickSection(products, { maxPrice: 50, hubs: ['vibrators', 'couples'], exclude: neutral }, used, 3)
+  const firstLube = pickSection(products, { maxPrice: 30, hubs: ['lubricants'] }, used, 1)
+  const firstPicks = [...firstToys, ...firstLube].sort((a, b) => a.price - b.price)
+  // The gendered sections choose next so their lineups stay distinct.
   const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], tags: ['female'], audience: 'female' }, used, 3)
   const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'], audience: 'male' }, used, 3)
   const forCouples = pickSection(products, { hubs: ['couples', 'vibrators', 'penis-rings'], title: /couple|partner|app|remote|wearable/i }, used, 3)
-  const firstPicks = pickSection(products, { maxPrice: 60, hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings', 'couples'] }, used, 4)
   const splurge = pickSection(products, { minPrice: 150, hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'] }, used, 3)
   return {
     hubCounts: store.hubCounts(),

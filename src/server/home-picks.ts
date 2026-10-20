@@ -7,6 +7,7 @@ import { isDiscreet, merchandise, type MerchFocus } from '@/server/merchandising
 export type HomeSection = MerchFocus & {
   tags?: string[]
   title?: RegExp
+  exclude?: RegExp
   minPrice?: number
   maxPrice?: number
 }
@@ -18,6 +19,7 @@ function eligible(p: CatalogProduct, section: HomeSection): boolean {
   if (section.maxPrice !== undefined && p.price > section.maxPrice) return false
   if (section.tags && !p.tags.some((t) => section.tags!.includes(t.trim().toLowerCase()))) return false
   if (section.title && !section.title.test(p.title)) return false
+  if (section.exclude && section.exclude.test(p.title)) return false
   return isDiscreet(p)
 }
 

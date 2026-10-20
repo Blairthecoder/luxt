@@ -78,7 +78,7 @@ function HomePage() {
         <div className="wrap pt-20 sm:pt-32 pb-12">
           <p className="eyebrow text-graphite rise">Curated Pleasure. Est. 2026.</p>
           <h1 className="mt-5 display-xl rise">
-            Pleasure,{' '}
+            Luxury Adult Toys,{' '}
             <br />
             Explained.
           </h1>
@@ -106,7 +106,7 @@ function HomePage() {
           <ul className="mt-20 sm:mt-28 grid sm:grid-cols-3 gap-x-10 border-t border-ink/15">
             {PROMISES.map(([title, body]) => (
               <li key={title} className="pt-5 pb-2">
-                <h2 className="font-sans text-sm font-semibold tracking-[-0.01em]">{title}</h2>
+                <p className="text-sm font-semibold tracking-[-0.01em]">{title}</p>
                 <p className="mt-1 text-sm text-graphite leading-relaxed max-w-xs">{body}</p>
               </li>
             ))}
@@ -119,7 +119,7 @@ function HomePage() {
           <div className="grid lg:grid-cols-12 gap-6 items-end mb-10">
             <h2 className="lg:col-span-7 display-m">Easy First Picks</h2>
             <p className="lg:col-span-4 lg:col-start-9 text-graphite leading-relaxed">
-              Well made, easy to use and under $60. The ones we point friends to first.{' '}
+              Well made, easy to use and under $50. The ones we point friends to first.{' '}
               <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
                 Shop under $50
               </Link>
