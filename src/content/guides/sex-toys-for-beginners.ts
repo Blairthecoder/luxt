@@ -113,7 +113,7 @@ If you share a home, a few small choices help:
 
 - **Choose a small toy.** Bullets, lipstick-style vibrators and compact strokers are easy to store and look unremarkable in a drawer or bag. See [discreet sex toys](/shop/discreet-sex-toys).
 - **Think about noise.** Lower settings are much quieter, and rumbly toys are less noticeable than buzzy ones. See [quiet vibrators](/shop/quiet-vibrators).
-- **Packaging.** Orders ship from our retail partner in plain packaging. Check the retailer’s shipping page for current details.
+- **Packaging.** Orders ship from our retail partner in plain packaging. Check the retailer’s shipping page for current details, and see our guide to [buying sex toys discreetly](/blog/buying-sex-toys-discreetly).
 
 ## How Much to Spend
 

@@ -34,6 +34,7 @@ import { LOVENSE_VS_WE_VIBE } from '@/content/guides/lovense-vs-we-vibe'
 import { LE_WAND_VS_MAGIC_WAND } from '@/content/guides/le-wand-vs-magic-wand'
 import { BEGINNERS_GUIDE } from '@/content/guides/sex-toys-for-beginners'
 import { BLACK_FRIDAY_DEALS } from '@/content/guides/black-friday-sex-toy-deals'
+import { BUYING_DISCREETLY } from '@/content/guides/buying-sex-toys-discreetly'
 import { BEST_FLESHLIGHT_BEGINNERS } from '@/content/guides/best-fleshlight-for-beginners'
 import { CLEAN_FLESHLIGHT } from '@/content/guides/how-to-clean-a-fleshlight'
 
@@ -97,6 +98,7 @@ export const POSTS: Post[] = [
   LE_WAND_VS_MAGIC_WAND,
   BEGINNERS_GUIDE,
   BLACK_FRIDAY_DEALS,
+  BUYING_DISCREETLY,
   BEST_FLESHLIGHT_BEGINNERS,
   CLEAN_FLESHLIGHT,
   {
