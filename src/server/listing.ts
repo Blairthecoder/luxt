@@ -11,6 +11,7 @@ import {
   type ListingResult,
   type ProductSummary,
 } from '@/lib/listing'
+import { merchandise, type MerchFocus } from '@/server/merchandising'
 
 const SKIP_GROUPS = new Set(['category', 'celebrity', 'holiday 2021', 'holiday 2022'])
 const FEEL_LABELS: Record<string, string> = {
@@ -126,7 +127,7 @@ export function toSummary(p: CatalogProduct): ProductSummary {
 
 const FACET_LIMITS: Record<FilterKey, number> = { brand: 24, type: 14, for: 3, feature: 10, price: 5 }
 
-export function buildListing(source: CatalogProduct[], filters: ListingFilters): ListingResult {
+export function buildListing(source: CatalogProduct[], filters: ListingFilters, focus?: MerchFocus): ListingResult {
   const facets = {} as Facets
   for (const key of FILTER_KEYS) {
     // Counts reflect every other active filter, so options never lead to zero results.
@@ -153,7 +154,7 @@ export function buildListing(source: CatalogProduct[], filters: ListingFilters):
       ? [...filtered].sort((a, b) => a.price - b.price)
       : filters.sort === 'price-desc'
         ? [...filtered].sort((a, b) => b.price - a.price)
-        : [...filtered].sort((a, b) => Number(b.available) - Number(a.available))
+        : merchandise(filtered, focus)
 
   const pageCount = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE))
   const page = Math.min(filters.page ?? 1, pageCount)

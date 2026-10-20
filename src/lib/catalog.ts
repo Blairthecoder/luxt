@@ -5,17 +5,22 @@ import type { ListingFilters } from '@/lib/listing'
 export const getHomeData = createServerFn({ method: 'GET' }).handler(async () => {
   const store = await import('@/server/catalog-store')
   const { toSummary } = await import('@/server/listing')
-  const { pickRow } = await import('@/server/home-picks')
+  const { pickSection } = await import('@/server/home-picks')
   const products = store.allProducts()
   const used = new Set<string>()
-  const forHer = pickRow(products, { hubs: ['vibrators', 'couples'], tags: ['female'] }, used)
-  const forHim = pickRow(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'] }, used)
-  const luxury = pickRow(products, { hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'], minPrice: 150 }, used)
+  // Order matters: the gendered sections choose first so their lineups stay distinct.
+  const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], tags: ['female'], audience: 'female' }, used, 3)
+  const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'], audience: 'male' }, used, 3)
+  const forCouples = pickSection(products, { hubs: ['couples', 'vibrators', 'penis-rings'], title: /couple|partner|app|remote|wearable/i }, used, 3)
+  const firstPicks = pickSection(products, { maxPrice: 60, hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings', 'couples'] }, used, 4)
+  const splurge = pickSection(products, { minPrice: 150, hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'] }, used, 3)
   return {
     hubCounts: store.hubCounts(),
-    luxury: luxury.map(toSummary),
-    forHim: forHim.map(toSummary),
+    firstPicks: firstPicks.map(toSummary),
     forHer: forHer.map(toSummary),
+    forHim: forHim.map(toSummary),
+    forCouples: forCouples.map(toSummary),
+    splurge: splurge.map(toSummary),
   }
 })
 
@@ -35,7 +40,12 @@ export const getCollectionListing = createServerFn({ method: 'GET' })
     const { COLLECTIONS_BY_SLUG } = await import('@/content/collections')
     const collection = COLLECTIONS_BY_SLUG[data.slug]
     if (!collection) return null
-    return buildListing(store.productsMatchingRule(collection.slug, collection.rule), data.filters)
+    const { COLLECTION_FOCUS } = await import('@/server/merchandising')
+    return buildListing(
+      store.productsMatchingRule(collection.slug, collection.rule),
+      data.filters,
+      COLLECTION_FOCUS[collection.slug]
+    )
   })
 
 export const getProductData = createServerFn({ method: 'GET' })
