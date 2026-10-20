@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
+import { TOPICS } from '@/content/topics'
 import { SITE } from '@/config/site'
 
 const PRIMARY = [
@@ -13,6 +14,10 @@ const PRIMARY = [
 const STYLES = COLLECTIONS.filter((c) => c.group === 'By Style')
 const BRANDS = COLLECTIONS.filter((c) => c.group === 'By Brand')
 const BUDGET = COLLECTIONS.filter((c) => c.group === 'By Budget')
+const GIFTS_AND_COUPLES = [
+  ...COLLECTIONS.filter((c) => c.group === 'Gift Ideas'),
+  ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
+]
 
 function MenuColumn({
   title,
@@ -59,7 +64,7 @@ export function Navbar() {
                 Shop All
               </button>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity fixed left-0 right-0 top-[7.25rem] bg-surface border-y border-line">
-                <div className="max-w-[1400px] mx-auto px-8 py-10 grid grid-cols-4 gap-10">
+                <div className="max-w-[1400px] mx-auto px-8 py-10 grid grid-cols-5 gap-10">
                   <MenuColumn title="Categories">
                     {HUBS.map((hub) => (
                       <li key={hub.slug}>
@@ -71,6 +76,20 @@ export function Navbar() {
                   </MenuColumn>
                   <MenuColumn title="By Style">
                     {STYLES.map((c) => (
+                      <li key={c.slug}>
+                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
+                          {c.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </MenuColumn>
+                  <MenuColumn title="Gifts & Couples">
+                    <li>
+                      <Link to="/gifts" className="text-gold hover:underline">
+                        The Gift Shop
+                      </Link>
+                    </li>
+                    {GIFTS_AND_COUPLES.map((c) => (
                       <li key={c.slug}>
                         <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
                           {c.name}
@@ -95,11 +114,16 @@ export function Navbar() {
                         </Link>
                       </li>
                     ))}
-                    <li className="pt-4">
-                      <Link to="/shop/$slug" params={{ slug: 'app-controlled-sex-toys' }} className="hover:text-gold">
-                        App-Controlled
-                      </Link>
+                    <li className="pt-6">
+                      <p className="eyebrow text-gold-deep mb-3">Guides by Topic</p>
                     </li>
+                    {TOPICS.map((t) => (
+                      <li key={t.slug}>
+                        <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className="hover:text-gold">
+                          {t.name}
+                        </Link>
+                      </li>
+                    ))}
                   </MenuColumn>
                 </div>
               </div>
@@ -123,7 +147,10 @@ export function Navbar() {
             <span className="block eyebrow text-gold mt-1.5 !tracking-[0.42em]">Supply Co.</span>
           </Link>
 
-          <nav aria-label="Secondary" className="hidden lg:flex justify-end">
+          <nav aria-label="Secondary" className="hidden lg:flex justify-end items-center gap-8">
+            <Link to="/gifts" className="eyebrow text-ivory hover:text-gold transition-colors">
+              Gifts
+            </Link>
             <Link to="/blog" className="eyebrow text-ivory hover:text-gold transition-colors">
               {SITE.guidesName}
             </Link>
@@ -141,6 +168,11 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link to="/gifts" onClick={close} className="font-display text-2xl text-ivory">
+                Gifts
+              </Link>
+            </li>
             <li>
               <Link to="/blog" onClick={close} className="font-display text-2xl text-ivory">
                 {SITE.guidesName}
@@ -161,6 +193,24 @@ export function Navbar() {
               <li key={c.slug}>
                 <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
                   {c.name}
+                </Link>
+              </li>
+            ))}
+          </MenuColumn>
+          <MenuColumn title="Gifts & Couples">
+            {GIFTS_AND_COUPLES.map((c) => (
+              <li key={c.slug}>
+                <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
+                  {c.name}
+                </Link>
+              </li>
+            ))}
+          </MenuColumn>
+          <MenuColumn title="Guides by Topic">
+            {TOPICS.map((t) => (
+              <li key={t.slug}>
+                <Link to="/blog/topic/$topic" params={{ topic: t.slug }} onClick={close}>
+                  {t.name}
                 </Link>
               </li>
             ))}

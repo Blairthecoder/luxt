@@ -20,6 +20,21 @@ const FEEL_LABELS: Record<string, string> = {
   mouth: 'Mouth Entry',
 }
 
+// Features shoppers filter by that LuxuryToyX only states in product titles.
+const TITLE_FEATURES: [RegExp, string, string][] = [
+  [/\bremote\b/i, 'remote-control', 'Remote Control'],
+  [/rechargeable/i, 'rechargeable', 'Rechargeable'],
+  [/waterproof|water-?resistant|submersible/i, 'waterproof', 'Waterproof'],
+  [/thrust/i, 'thrusting', 'Thrusting'],
+  [/warming|heat(ed|ing)/i, 'warming', 'Warming'],
+  [/\b(quiet|whisper|silent)\b/i, 'quiet', 'Quiet'],
+]
+
+function unique(values: [string, string][]): [string, string][] {
+  const seen = new Set<string>()
+  return values.filter(([slug]) => !seen.has(slug) && Boolean(seen.add(slug)))
+}
+
 function slugify(text: string): string {
   return text
     .toLowerCase()
@@ -61,16 +76,17 @@ function productFacetValues(p: CatalogProduct): Record<FilterKey, [string, strin
     types.push([slugify(label), label])
   }
 
-  if (/\b(app|bluetooth|remote)\b/i.test(p.title)) features.push(['app-controlled', 'App-Controlled'])
+  if (/\b(app|bluetooth)\b/i.test(p.title)) features.push(['app-controlled', 'App-Controlled'])
+  for (const [re, slug, label] of TITLE_FEATURES) if (re.test(p.title)) features.push([slug, label])
   if (/couple/i.test(p.title) || p.hub === 'couples') audience.push(['couples', 'Couples'])
 
   const band = PRICE_BANDS.find((b) => p.price >= b.min && p.price < b.max)
 
   return {
     brand: p.brand ? [[slugify(p.brand), p.brand]] : [],
-    type: types,
-    for: audience,
-    feature: features,
+    type: unique(types),
+    for: unique(audience),
+    feature: unique(features),
     price: band ? [[band.id, band.label]] : [],
   }
 }
@@ -108,7 +124,7 @@ export function toSummary(p: CatalogProduct): ProductSummary {
   }
 }
 
-const FACET_LIMITS: Record<FilterKey, number> = { brand: 24, type: 14, for: 3, feature: 6, price: 5 }
+const FACET_LIMITS: Record<FilterKey, number> = { brand: 24, type: 14, for: 3, feature: 10, price: 5 }
 
 export function buildListing(source: CatalogProduct[], filters: ListingFilters): ListingResult {
   const facets = {} as Facets

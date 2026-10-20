@@ -9,6 +9,10 @@ export interface CollectionRule {
   tags?: string[]
   /** Regex tested against the product title. */
   title?: string
+  /** Regex the product title must NOT match. */
+  excludeTitle?: string
+  /** Regex tested against the product title and tags; any match counts. */
+  text?: string
   brands?: string[]
   minPrice?: number
   maxPrice?: number
@@ -17,7 +21,7 @@ export interface CollectionRule {
 export interface Collection {
   slug: string
   name: string
-  group: 'For Him' | 'For Her' | 'For Couples' | 'By Style' | 'By Brand' | 'By Budget'
+  group: 'For Him' | 'For Her' | 'For Couples' | 'Gift Ideas' | 'By Style' | 'By Brand' | 'By Budget'
   metaTitle: string
   metaDescription: string
   intro: string
@@ -62,6 +66,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Toys made to be shared. Wearables and vibrating rings work during sex, while app-controlled toys let a partner take over from across the room or across the country.',
     rule: { title: 'couple|partner|we-vibe|wearable' },
+    guide: 'best-couples-sex-toys',
   },
   {
     slug: 'app-controlled-sex-toys',
@@ -73,6 +78,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Bluetooth toys pair with a phone app for custom patterns, music sync and remote control by a partner anywhere in the world. Check that the brand app supports your phone before you buy.',
     rule: { tags: ['app'] },
+    guide: 'best-couples-sex-toys',
   },
   {
     slug: 'rabbit-vibrators',
@@ -83,7 +89,7 @@ export const COLLECTIONS: Collection[] = [
       'Rabbit vibrators that stimulate the G-spot and clitoris at once. Compare fit, power and price from top brands.',
     intro:
       'A rabbit pairs an internal shaft with an external arm for dual stimulation. Fit matters: look for a flexible arm so it lines up with your body.',
-    rule: { hubs: ['vibrators'], title: 'rabbit' },
+    rule: { hubs: ['vibrators'], title: 'rabbit', excludeTitle: 'strap|harness' },
     guide: 'how-to-choose-your-first-vibrator',
   },
   {
@@ -188,6 +194,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A vibrating ring helps maintain firmness and puts vibration where both partners feel it. Stretchy silicone is the easiest fit.',
     rule: { hubs: ['penis-rings'], title: 'vibrat' },
+    guide: 'how-to-use-sex-toys-with-a-partner',
   },
   {
     slug: 'fleshlight',
@@ -255,6 +262,115 @@ export const COLLECTIONS: Collection[] = [
     rule: { brands: ['we-vibe', 'we vibe'] },
   },
   {
+    slug: 'sex-toy-gift-sets',
+    name: 'Sex Toy Gift Sets',
+    group: 'Gift Ideas',
+    metaTitle: 'Sex Toy Gift Sets & Kits for Her, Him & Couples',
+    metaDescription:
+      'Ready-to-give sex toy kits and gift sets: vibrator collections, couples kits, bondage starters and more, with current prices.',
+    intro:
+      'A set takes the guesswork out of gifting. Kits bundle toys that work together, so the person opening it has options and nothing to figure out on day one.',
+    rule: { text: '\\b(kit|set|collection|gift box|gift set)\\b', excludeTitle: 'lingerie|bodysuit|stocking|garter' },
+    guide: 'sex-toy-gifts-for-her',
+  },
+  {
+    slug: 'stocking-stuffers',
+    name: 'Stocking Stuffers Under $30',
+    group: 'Gift Ideas',
+    metaTitle: 'Naughty Stocking Stuffers Under $30',
+    metaDescription:
+      'Small, giftable adult toys under $30: bullets, rings, strokers, lube and more. Easy wins for a stocking or a secret Santa for two.',
+    intro:
+      'Small enough for a stocking, good enough to get used. Everything here is under $30, which makes it an easy add-on to a bigger gift or a low-pressure first toy.',
+    rule: {
+      maxPrice: 30,
+      hubs: ['vibrators', 'strokers', 'penis-rings', 'lubricants', 'anal-toys', 'bdsm', 'couples', 'more-toys'],
+    },
+    guide: 'sex-toy-gifts-for-him',
+  },
+  {
+    slug: 'bullet-vibrators',
+    name: 'Bullet Vibrators',
+    group: 'By Style',
+    metaTitle: 'Best Bullet Vibrators: Small, Quiet & Powerful',
+    metaDescription:
+      'Compact bullet vibrators for travel, beginners and use during sex. Compare power, noise and charging, with current prices.',
+    intro:
+      'Bullets are small, focused and easy to bring into partnered sex. They are the most affordable way to try vibration, and a rechargeable bullet is a favorite even in large collections.',
+    rule: { hubs: ['vibrators'], title: 'bullet' },
+    guide: 'how-to-use-sex-toys-with-a-partner',
+  },
+  {
+    slug: 'remote-control-vibrators',
+    name: 'Remote Control Vibrators',
+    group: 'For Couples',
+    metaTitle: 'Best Remote Control Vibrators for Couples',
+    metaDescription:
+      'Remote and app-controlled vibrators, panty vibes and wearables that hand the controls to a partner. Compare range and price.',
+    intro:
+      'A remote hands the controls to someone else, which is the whole fun. Wearable panty vibes suit date nights out; app-controlled models work from anywhere.',
+    rule: { hubs: ['vibrators', 'couples'], title: 'remote|app' },
+    guide: 'best-couples-sex-toys',
+  },
+  {
+    slug: 'thrusting-vibrators',
+    name: 'Thrusting Vibrators',
+    group: 'By Style',
+    metaTitle: 'Best Thrusting Vibrators & Thrusting Rabbits',
+    metaDescription:
+      'Thrusting vibrators and rabbits that move on their own for hands-free, rhythmic sensation. Compare stroke, power and price.',
+    intro:
+      'A thrusting toy moves in and out on its own, so you can focus on the feeling rather than the motion. Thrusting rabbits add external vibration on top.',
+    rule: { hubs: ['vibrators', 'dildos'], title: 'thrust' },
+  },
+  {
+    slug: 'anal-beads',
+    name: 'Anal Beads',
+    group: 'By Style',
+    metaTitle: 'Best Anal Beads: Silicone, Graduated & Vibrating',
+    metaDescription:
+      'Graduated, silicone and vibrating anal beads with retrieval rings. Beginner sizing advice and current prices.',
+    intro:
+      'Beads let you control intensity bead by bead, and graduated sizes make them a gentle way to explore. Choose one-piece silicone with a sturdy retrieval ring.',
+    rule: { hubs: ['anal-toys'], title: 'bead' },
+  },
+  {
+    slug: 'bondage-kits',
+    name: 'Bondage Kits',
+    group: 'For Couples',
+    metaTitle: 'Best Bondage Kits for Beginners & Couples',
+    metaDescription:
+      'Beginner bondage and BDSM kits with restraints, blindfolds and ticklers. What is inside and current prices.',
+    intro:
+      'A kit is the easiest way to try light restraint together without buying piece by piece. Look for soft cuffs, a blindfold and something for sensation play.',
+    rule: { hubs: ['bdsm'], title: '\\b(kit|set)\\b' },
+    guide: 'how-to-spice-up-your-marriage',
+  },
+  {
+    slug: 'strap-on-kits',
+    name: 'Strap-On Kits',
+    group: 'For Couples',
+    metaTitle: 'Best Strap-On Kits for Beginners & Pegging',
+    metaDescription:
+      'Strap-on kits that pair a harness with a compatible dildo, sized for beginners and pegging. Fit tips and current prices.',
+    intro:
+      'A kit solves the biggest strap-on problem, which is matching a harness to a dildo that fits it. Start with an adjustable harness and a modest size.',
+    rule: { hubs: ['strap-ons'], title: '\\b(kit|set|system)\\b|with (a )?dildo|harness (and|&) dildo' },
+    guide: 'best-couples-sex-toys',
+  },
+  {
+    slug: 'sex-swings',
+    name: 'Sex Swings & Slings',
+    group: 'For Couples',
+    metaTitle: 'Sex Swings, Door Swings & Slings',
+    metaDescription:
+      'Door swings, ceiling swings and slings compared by setup, weight limit and price. Make hard positions easy.',
+    intro:
+      'A swing takes the weight off so positions that are tiring to hold become easy. Door-mounted swings install in minutes; stands and ceiling mounts are sturdier.',
+    rule: { text: 'swing|\\bsling\\b' },
+    guide: 'how-to-spice-up-your-marriage',
+  },
+  {
     slug: 'sex-toys-under-50',
     name: 'Sex Toys Under $50',
     group: 'By Budget',
@@ -264,6 +380,19 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A great first toy does not have to be expensive. Everything here is under $50, and body-safe silicone is the one place not to compromise.',
     rule: { maxPrice: 50 },
+    guide: 'sex-toy-gifts-for-her',
+  },
+  {
+    slug: 'sex-toys-under-100',
+    name: 'Sex Toys Under $100',
+    group: 'By Budget',
+    metaTitle: 'Best Sex Toys Under $100',
+    metaDescription:
+      'The sweet spot for quality: rechargeable vibrators, strokers and couples toys from $50 to $100, with current prices.',
+    intro:
+      'Between $50 and $100 is where most toys get rechargeable, quieter and better made. It is the best range for a gift that feels considered without going luxury.',
+    rule: { minPrice: 50, maxPrice: 100 },
+    guide: 'sex-toy-gifts-for-him',
   },
   {
     slug: 'luxury-sex-toys',
@@ -275,6 +404,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Premium toys earn their price with stronger, quieter motors, better materials and longer warranties. These are the pieces worth investing in.',
     rule: { minPrice: 150 },
+    guide: 'anniversary-sex-toy-gifts',
   },
 ]
 
@@ -286,6 +416,7 @@ export const COLLECTION_GROUPS = [
   'For Him',
   'For Her',
   'For Couples',
+  'Gift Ideas',
   'By Style',
   'By Brand',
   'By Budget',

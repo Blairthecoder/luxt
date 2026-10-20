@@ -2,9 +2,9 @@ import { Link } from '@tanstack/react-router'
 import { SITE } from '@/config/site'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
-import { POSTS } from '@/content/posts'
+import { TOPICS } from '@/content/topics'
 
-const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'For Couples', 'By Budget'].includes(c.group))
+const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'Gift Ideas', 'By Budget'].includes(c.group))
 
 export function Footer() {
   return (
@@ -54,13 +54,18 @@ export function Footer() {
         <div>
           <p className="eyebrow text-gold-deep mb-4">{SITE.guidesName}</p>
           <ul className="space-y-2.5 text-sm text-muted">
-            {POSTS.map((post) => (
-              <li key={post.slug}>
-                <Link to="/blog/$slug" params={{ slug: post.slug }} className="hover:text-gold">
-                  {post.title}
+            {TOPICS.map((topic) => (
+              <li key={topic.slug}>
+                <Link to="/blog/topic/$topic" params={{ topic: topic.slug }} className="hover:text-gold">
+                  {topic.name}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link to="/gifts" className="hover:text-gold">
+                The Gift Shop
+              </Link>
+            </li>
             <li>
               <Link to="/blog" className="text-gold hover:underline">
                 All Guides

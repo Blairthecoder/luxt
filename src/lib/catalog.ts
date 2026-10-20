@@ -63,8 +63,27 @@ export const getPostHtml = createServerFn({ method: 'GET' })
   .validator((slug: string) => slug)
   .handler(async ({ data: slug }) => {
     const { POSTS_BY_SLUG } = await import('@/content/posts')
-    const { marked } = await import('marked')
+    const { renderPostHtml } = await import('@/server/post-html')
     const post = POSTS_BY_SLUG[slug]
     if (!post) return null
-    return { html: await marked.parse(post.body.trim()) }
+    return { html: await renderPostHtml(post) }
   })
+
+export const getGiftData = createServerFn({ method: 'GET' }).handler(async () => {
+  const store = await import('@/server/catalog-store')
+  const { toSummary } = await import('@/server/listing')
+  const { COLLECTIONS_BY_SLUG } = await import('@/content/collections')
+  const inStock = (slug: string) => {
+    const c = COLLECTIONS_BY_SLUG[slug]
+    return c ? store.productsMatchingRule(c.slug, c.rule).filter((p) => p.available && p.images.length > 0) : []
+  }
+  const fromPrices: Record<string, number> = {}
+  for (const slug of ['stocking-stuffers', 'sex-toys-under-50', 'sex-toys-under-100', 'luxury-sex-toys', 'sex-toy-gift-sets']) {
+    const prices = inStock(slug).map((p) => p.price)
+    if (prices.length) fromPrices[slug] = Math.min(...prices)
+  }
+  return {
+    giftSets: inStock('sex-toy-gift-sets').slice(0, 8).map(toSummary),
+    fromPrices,
+  }
+})

@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { POSTS } from '@/content/posts'
+import { TOPICS } from '@/content/topics'
 import { SITE } from '@/config/site'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 
@@ -30,6 +31,21 @@ function BlogIndex() {
         <p className="mt-5 text-muted max-w-xl mx-auto leading-relaxed">
           Straight answers on choosing, using and caring for the things in your nightstand.
         </p>
+        <nav aria-label="Guide topics" className="mt-10">
+          <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+            {TOPICS.map((topic) => (
+              <li key={topic.slug}>
+                <Link
+                  to="/blog/topic/$topic"
+                  params={{ topic: topic.slug }}
+                  className="eyebrow text-ivory hover:text-gold transition-colors"
+                >
+                  {topic.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
 
       {lead && (

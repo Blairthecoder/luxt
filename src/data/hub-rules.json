@@ -4,6 +4,7 @@
   "rules": [
     { "hub": "lingerie", "pattern": "lingerie|bodysuit|bodystocking|chemise|babydoll|teddy|garter|stocking" },
     { "hub": "lubricants", "pattern": "\\blubes?\\b|lubricant|massage oil|arousal gel" },
+    { "hub": "sex-machines-furniture", "pattern": "sex machine|fuck machine|thrusting machine|sex swing|position support|\\bsling\\b|liberator|sex furniture|\\bwedge\\b|sybian|sex saddle" },
     { "hub": "sex-dolls", "pattern": "\\bdolls?\\b|love doll|companion" },
     { "hub": "penis-pumps", "pattern": "penis pump|\\bpumps?\\b|bathmate|hydromax" },
     { "hub": "penis-rings", "pattern": "cock ?rings?|penis ?rings?|c-ring|ball stretcher|cockring" },
