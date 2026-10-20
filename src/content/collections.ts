@@ -78,7 +78,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Bluetooth toys pair with a phone app for custom patterns, music sync and remote control by a partner anywhere in the world. Check that the brand app supports your phone before you buy.',
     rule: { tags: ['app'] },
-    guide: 'best-couples-sex-toys',
+    guide: 'long-distance-sex-toys',
   },
   {
     slug: 'rabbit-vibrators',
@@ -102,7 +102,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Wands deliver broad, deep vibration and are the go-to for people who want strength over subtlety. Cordless rechargeable models are the most versatile.',
     rule: { hubs: ['vibrators'], title: '\\bwand' },
-    guide: 'how-to-choose-your-first-vibrator',
+    guide: 'best-wand-vibrators',
   },
   {
     slug: 'clitoral-vibrators',
@@ -114,7 +114,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Clitoral toys focus on external stimulation, which is how most vulva owners reach orgasm. Air-pulse suction toys feel gentler and less direct than traditional vibration.',
     rule: { hubs: ['vibrators'], title: 'clit|suction|air|womanizer' },
-    guide: 'how-to-choose-your-first-vibrator',
+    guide: 'clitoral-vs-g-spot-vibrators',
   },
   {
     slug: 'g-spot-vibrators',
@@ -126,6 +126,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'G-spot toys have a curved tip that presses on the front wall of the vagina. Firmer silicone gives more targeted pressure.',
     rule: { title: 'g-spot|g spot' },
+    guide: 'clitoral-vs-g-spot-vibrators',
   },
   {
     slug: 'realistic-dildos',
@@ -159,7 +160,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Automatic strokers do the work for you with thrusting, rotation or suction. Many pair with apps or video for an interactive experience.',
     rule: { tags: ['masturbation type_automatic'] },
-    guide: 'fleshlight-vs-tenga',
+    guide: 'best-automatic-strokers',
   },
   {
     slug: 'pocket-pussies',
@@ -183,6 +184,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Vibrating prostate massagers add sensation faster than hands-free designs, which makes them easier for first-timers.',
     rule: { hubs: ['prostate-massagers'], title: 'vibrat|remote|rechargeable' },
+    guide: 'prostate-massage-for-beginners',
   },
   {
     slug: 'vibrating-cock-rings',
@@ -194,7 +196,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A vibrating ring helps maintain firmness and puts vibration where both partners feel it. Stretchy silicone is the easiest fit.',
     rule: { hubs: ['penis-rings'], title: 'vibrat' },
-    guide: 'how-to-use-sex-toys-with-a-partner',
+    guide: 'how-to-use-a-penis-ring',
   },
   {
     slug: 'fleshlight',
@@ -271,7 +273,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A set takes the guesswork out of gifting. Kits bundle toys that work together, so the person opening it has options and nothing to figure out on day one.',
     rule: { text: '\\b(kit|set|collection|gift box|gift set)\\b', excludeTitle: 'lingerie|bodysuit|stocking|garter' },
-    guide: 'sex-toy-gifts-for-her',
+    guide: 'valentines-day-sex-toy-gifts',
   },
   {
     slug: 'stocking-stuffers',
@@ -286,7 +288,7 @@ export const COLLECTIONS: Collection[] = [
       maxPrice: 30,
       hubs: ['vibrators', 'strokers', 'penis-rings', 'lubricants', 'anal-toys', 'bdsm', 'couples', 'more-toys'],
     },
-    guide: 'sex-toy-gifts-for-him',
+    guide: 'naughty-stocking-stuffers',
   },
   {
     slug: 'bullet-vibrators',
@@ -310,7 +312,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A remote hands the controls to someone else, which is the whole fun. Wearable panty vibes suit date nights out; app-controlled models work from anywhere.',
     rule: { hubs: ['vibrators', 'couples'], title: 'remote|app' },
-    guide: 'best-couples-sex-toys',
+    guide: 'long-distance-sex-toys',
   },
   {
     slug: 'thrusting-vibrators',
@@ -344,7 +346,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A kit is the easiest way to try light restraint together without buying piece by piece. Look for soft cuffs, a blindfold and something for sensation play.',
     rule: { hubs: ['bdsm'], title: '\\b(kit|set)\\b' },
-    guide: 'how-to-spice-up-your-marriage',
+    guide: 'bondage-for-beginners',
   },
   {
     slug: 'strap-on-kits',
@@ -356,7 +358,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'A kit solves the biggest strap-on problem, which is matching a harness to a dildo that fits it. Start with an adjustable harness and a modest size.',
     rule: { hubs: ['strap-ons'], title: '\\b(kit|set|system)\\b|with (a )?dildo|harness (and|&) dildo' },
-    guide: 'best-couples-sex-toys',
+    guide: 'pegging-for-beginners',
   },
   {
     slug: 'sex-swings',

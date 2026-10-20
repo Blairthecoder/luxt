@@ -17,6 +17,18 @@ import { COUPLES_TOYS } from '@/content/guides/best-couples-sex-toys'
 import { SPICE_UP_MARRIAGE } from '@/content/guides/how-to-spice-up-your-marriage'
 import { ANNIVERSARY_GIFTS } from '@/content/guides/anniversary-sex-toy-gifts'
 import { TOYS_WITH_PARTNER } from '@/content/guides/how-to-use-sex-toys-with-a-partner'
+import { VALENTINES_GIFTS } from '@/content/guides/valentines-day-sex-toy-gifts'
+import { STOCKING_STUFFERS } from '@/content/guides/naughty-stocking-stuffers'
+import { PENIS_RING_HOWTO } from '@/content/guides/how-to-use-a-penis-ring'
+import { PROSTATE_BEGINNERS } from '@/content/guides/prostate-massage-for-beginners'
+import { CLITORAL_VS_GSPOT } from '@/content/guides/clitoral-vs-g-spot-vibrators'
+import { BEST_WANDS } from '@/content/guides/best-wand-vibrators'
+import { LONG_DISTANCE } from '@/content/guides/long-distance-sex-toys'
+import { PEGGING_BEGINNERS } from '@/content/guides/pegging-for-beginners'
+import { BONDAGE_BEGINNERS } from '@/content/guides/bondage-for-beginners'
+import { CLEAN_TOYS } from '@/content/guides/how-to-clean-sex-toys'
+import { AUTOMATIC_STROKERS } from '@/content/guides/best-automatic-strokers'
+import { MENOPAUSE_TOYS } from '@/content/guides/sex-toys-for-menopause'
 
 export interface PickSlot {
   /** Short badge, e.g. "Best Overall" or "Under $50". */
@@ -58,6 +70,18 @@ export const POSTS: Post[] = [
   ANNIVERSARY_GIFTS,
   SPICE_UP_MARRIAGE,
   TOYS_WITH_PARTNER,
+  VALENTINES_GIFTS,
+  STOCKING_STUFFERS,
+  PENIS_RING_HOWTO,
+  PROSTATE_BEGINNERS,
+  CLITORAL_VS_GSPOT,
+  BEST_WANDS,
+  LONG_DISTANCE,
+  PEGGING_BEGINNERS,
+  BONDAGE_BEGINNERS,
+  CLEAN_TOYS,
+  AUTOMATIC_STROKERS,
+  MENOPAUSE_TOYS,
   {
     slug: 'fleshlight-vs-tenga',
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',
