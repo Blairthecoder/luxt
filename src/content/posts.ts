@@ -41,6 +41,7 @@ import { SEXY_ADVENT } from '@/content/guides/sexy-advent-calendar-ideas-for-cou
 import { BEST_TIME_TO_BUY } from '@/content/guides/best-time-to-buy-sex-toys'
 import { MENS_QUESTIONS } from '@/content/guides/sex-toy-questions-men-are-afraid-to-ask'
 import { TALK_TO_PARTNER } from '@/content/guides/how-to-talk-to-your-partner-about-sex-toys'
+import { LDR_VIDEO_INTIMACY } from '@/content/guides/long-distance-relationship-video-call-intimacy'
 import { BEST_FLESHLIGHT_BEGINNERS } from '@/content/guides/best-fleshlight-for-beginners'
 import { CLEAN_FLESHLIGHT } from '@/content/guides/how-to-clean-a-fleshlight'
 
@@ -111,6 +112,7 @@ export const POSTS: Post[] = [
   BEST_TIME_TO_BUY,
   MENS_QUESTIONS,
   TALK_TO_PARTNER,
+  LDR_VIDEO_INTIMACY,
   BEST_FLESHLIGHT_BEGINNERS,
   CLEAN_FLESHLIGHT,
   {
