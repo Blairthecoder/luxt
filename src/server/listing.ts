@@ -141,6 +141,7 @@ export function toSummary(p: CatalogProduct): ProductSummary {
   }
 }
 
+const MIN_STYLE_COUNT = 3
 const FACET_LIMITS: Record<FilterKey, number> = { brand: 24, type: 14, for: 3, feature: 10, price: 5 }
 
 export function buildListing(source: CatalogProduct[], filters: ListingFilters, focus?: MerchFocus): ListingResult {
@@ -160,7 +161,11 @@ export function buildListing(source: CatalogProduct[], filters: ListingFilters, 
     options =
       key === 'price'
         ? PRICE_BANDS.map((b) => counts.get(b.id)).filter((o): o is FacetOption => Boolean(o))
-        : options.sort((a, b) => b.count - a.count).slice(0, FACET_LIMITS[key])
+        : options
+            // One-off style values are usually feed typos ("Neckless", "Chasity"); keep the selected one visible.
+            .filter((o) => key !== 'type' || o.count >= MIN_STYLE_COUNT || filters.type === o.value)
+            .sort((a, b) => b.count - a.count)
+            .slice(0, FACET_LIMITS[key])
     facets[key] = options
   }
 
