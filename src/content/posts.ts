@@ -29,6 +29,11 @@ import { BONDAGE_BEGINNERS } from '@/content/guides/bondage-for-beginners'
 import { CLEAN_TOYS } from '@/content/guides/how-to-clean-sex-toys'
 import { AUTOMATIC_STROKERS } from '@/content/guides/best-automatic-strokers'
 import { MENOPAUSE_TOYS } from '@/content/guides/sex-toys-for-menopause'
+import { WOMANIZER_VS_SONA } from '@/content/guides/womanizer-vs-lelo-sona'
+import { LOVENSE_VS_WE_VIBE } from '@/content/guides/lovense-vs-we-vibe'
+import { LE_WAND_VS_MAGIC_WAND } from '@/content/guides/le-wand-vs-magic-wand'
+import { BEGINNERS_GUIDE } from '@/content/guides/sex-toys-for-beginners'
+import { BLACK_FRIDAY_DEALS } from '@/content/guides/black-friday-sex-toy-deals'
 
 export interface PickSlot {
   /** Short badge, e.g. "Best Overall" or "Under $50". */
@@ -82,6 +87,11 @@ export const POSTS: Post[] = [
   CLEAN_TOYS,
   AUTOMATIC_STROKERS,
   MENOPAUSE_TOYS,
+  WOMANIZER_VS_SONA,
+  LOVENSE_VS_WE_VIBE,
+  LE_WAND_VS_MAGIC_WAND,
+  BEGINNERS_GUIDE,
+  BLACK_FRIDAY_DEALS,
   {
     slug: 'fleshlight-vs-tenga',
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',

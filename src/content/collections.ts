@@ -16,6 +16,8 @@ export interface CollectionRule {
   brands?: string[]
   minPrice?: number
   maxPrice?: number
+  /** Only products currently marked down (compareAtPrice above price). */
+  onSale?: boolean
 }
 
 export interface Collection {
@@ -407,6 +409,96 @@ export const COLLECTIONS: Collection[] = [
       'Premium toys earn their price with stronger, quieter motors, better materials and longer warranties. These are the pieces worth investing in.',
     rule: { minPrice: 150 },
     guide: 'anniversary-sex-toy-gifts',
+  },
+  {
+    slug: 'water-based-lube',
+    name: 'Water-Based Lube',
+    group: 'By Style',
+    metaTitle: 'Water-Based Lube: Safe With Every Toy and Condom',
+    metaDescription:
+      'Water-based lubes from Sliquid, pjur, LELO and more. Safe with silicone toys, strokers and condoms, and easy to rinse away.',
+    intro:
+      'Water-based lube is the one bottle that works with everything: silicone toys, stroker sleeves, latex condoms and sensitive skin. It rinses off with plain water, and if it starts to feel tacky, a few drops of water or a little more lube brings it back.',
+    rule: { hubs: ['lubricants'], text: 'water', excludeTitle: 'silicone|hybrid|oil|wash|cleaner|fuck|jizz|cum|semen|fisting' },
+    guide: 'best-lube-for-sex-toys',
+  },
+  {
+    slug: 'silicone-lube',
+    name: 'Silicone Lube',
+    group: 'By Style',
+    metaTitle: 'Silicone Lube: Long-Lasting and Shower-Proof',
+    metaDescription:
+      'Silicone lubes from Uberlube, pjur, Sliquid and more. Long-lasting glide for sex, massage and the shower, with toy-safety notes.',
+    intro:
+      'Silicone lube stays slippery far longer than water-based formulas and does not wash away in the shower. It is a favorite for sex without toys and is safe with latex condoms. Keep it away from silicone toys unless the toy maker says otherwise, because it can leave the surface tacky over time.',
+    rule: { hubs: ['lubricants'], text: 'silicone|uber ?lube', excludeTitle: 'hybrid|water|fuck|jizz|cum|semen|fisting' },
+    guide: 'best-lube-for-sex-toys',
+  },
+  {
+    slug: 'quiet-vibrators',
+    name: 'Quiet Vibrators',
+    group: 'By Style',
+    metaTitle: 'Quiet Vibrators From Design-Led Brands',
+    metaDescription:
+      'Vibrators from LELO, We-Vibe, Womanizer, ROMP, Svakom and VUSH, chosen for shared homes and thin walls. Tips for keeping noise down.',
+    intro:
+      'Noise is rarely published in a way you can compare, so this collection sticks to brands known for well-finished motors and leaves out thrusting toys, which tend to be the loudest. Lower settings, a towel underneath and a rumbly rather than buzzy toy all help further.',
+    rule: {
+      hubs: ['vibrators'],
+      brands: ['lelo', 'we-vibe', 'womanizer', 'romp', 'svakom', 'vush'],
+      excludeTitle: 'thrust|strap|harness|attachment|remote$',
+    },
+    guide: 'how-to-choose-your-first-vibrator',
+  },
+  {
+    slug: 'sex-toys-for-beginners',
+    name: 'Sex Toys for Beginners',
+    group: 'By Style',
+    metaTitle: 'Sex Toys for Beginners: Simple, Body-Safe Picks',
+    metaDescription:
+      'Easy first toys from ROMP, Le Wand, VUSH, Tenga, LELO and more: small vibrators, strokers and lube at approachable prices.',
+    intro:
+      'A good first toy is simple, body-safe and not too expensive. Everything here comes from brands with a track record, at a price that makes it easy to find out what you like before investing more. Add a water-based lube and you have everything you need.',
+    rule: {
+      hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings'],
+      brands: ['romp', 'le wand', 'vush', 'tenga', 'lelo', 'we-vibe', 'womanizer', 'svakom', 'arcwave', 'sliquid', 'pjur', 'uber lube'],
+      excludeTitle: 'thrust|strap|harness|attachment|anal|plug|remote$|fisting|warming|tingl',
+      maxPrice: 80,
+    },
+    guide: 'sex-toys-for-beginners',
+  },
+  {
+    slug: 'discreet-sex-toys',
+    name: 'Discreet Sex Toys',
+    group: 'By Style',
+    metaTitle: 'Discreet Sex Toys: Small, Quiet and Easy to Store',
+    metaDescription:
+      'Lipstick vibrators, mini wands, travel toys and compact strokers that look unremarkable in a drawer or a bag. Current prices.',
+    intro:
+      'Discreet toys are small, plain-looking and easy to store. Lipstick-style vibrators, mini wands and compact strokers fit in a toiletry bag, and most charge by USB like any other gadget. Orders ship from our retail partner in plain packaging.',
+    rule: {
+      hubs: ['vibrators', 'strokers'],
+      title: 'lipstick|\\bmini\\b|travel|pocket|compact|discreet|bullet|\\begg\\b',
+      excludeTitle: 'pussy|strap|harness|realistic|cock|dildo|butt|anal|thrust',
+      brands: ['lelo', 'we-vibe', 'womanizer', 'romp', 'le wand', 'vush', 'svakom', 'tenga', 'arcwave', 'kiiroo', 'lovense', 'je joue', 'magic wand'],
+    },
+    guide: 'sex-toys-for-beginners',
+  },
+  {
+    slug: 'black-friday-sex-toy-deals',
+    name: 'Sex Toy Deals',
+    group: 'By Budget',
+    metaTitle: 'Black Friday Sex Toy Deals: Current Markdowns',
+    metaDescription:
+      'Every vibrator, stroker and couples toy our retail partner currently has marked down, updated with each catalog sync.',
+    intro:
+      'This page lists only products that are currently marked below their usual price at our retail partner, so it changes as sales start and end. Around Black Friday it fills up; the rest of the year it is a short list worth checking before you pay full price.',
+    rule: {
+      onSale: true,
+      hubs: ['vibrators', 'strokers', 'couples', 'penis-rings', 'prostate-massagers', 'lubricants', 'dildos', 'anal-toys', 'bdsm'],
+      excludeTitle: 'pussy|jizz|cum\\b|semen|slut|bitch|fuck',
+    },
+    guide: 'black-friday-sex-toy-deals',
   },
 ]
 

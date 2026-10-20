@@ -21,7 +21,7 @@ export const TOPICS: Topic[] = [
       'Gift guides for every budget: sex toy gifts for her, for him, for couples and for anniversaries, with current prices and honest picks.',
     intro:
       'Buying for someone else is harder than buying for yourself. These guides pick a safe bet and a bolder option for each person and budget, so you can decide in minutes.',
-    collections: ['sex-toy-gift-sets', 'stocking-stuffers', 'sex-toys-under-50', 'sex-toys-under-100', 'luxury-sex-toys'],
+    collections: ['sex-toy-gift-sets', 'stocking-stuffers', 'sex-toys-under-50', 'sex-toys-under-100', 'luxury-sex-toys', 'black-friday-sex-toy-deals'],
   },
   {
     slug: 'couples',
@@ -41,7 +41,7 @@ export const TOPICS: Topic[] = [
       'Guides for women on choosing vibrators, clitoral and G-spot toys, and getting more from solo and partnered play.',
     intro:
       'Straight answers on vibrators, suction toys and everything in between, written for the person who will be using them.',
-    collections: ['sex-toys-for-women', 'clitoral-vibrators', 'rabbit-vibrators', 'wand-vibrators', 'g-spot-vibrators', 'bullet-vibrators'],
+    collections: ['sex-toys-for-women', 'clitoral-vibrators', 'rabbit-vibrators', 'wand-vibrators', 'g-spot-vibrators', 'bullet-vibrators', 'quiet-vibrators'],
   },
   {
     slug: 'for-him',
@@ -61,7 +61,7 @@ export const TOPICS: Topic[] = [
       'How to use sex toys alone or with a partner, which lube to choose and how to keep toys clean and lasting.',
     intro:
       'The practical side: using toys with a partner, choosing lube, and keeping everything clean so it lasts.',
-    collections: ['bullet-vibrators', 'vibrating-cock-rings', 'butt-plugs', 'anal-beads'],
+    collections: ['sex-toys-for-beginners', 'water-based-lube', 'silicone-lube', 'discreet-sex-toys', 'bullet-vibrators', 'vibrating-cock-rings', 'butt-plugs', 'anal-beads'],
   },
 ]
 
