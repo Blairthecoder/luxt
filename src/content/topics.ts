@@ -63,6 +63,16 @@ export const TOPICS: Topic[] = [
       'The practical side of feeling at ease: using toys with a partner, choosing a lube that keeps things comfortable and caring for toys so they are always ready.',
     collections: ['sex-toys-for-beginners', 'water-based-lube', 'silicone-lube', 'discreet-sex-toys', 'bullet-vibrators', 'vibrating-cock-rings', 'butt-plugs', 'anal-beads'],
   },
+  {
+    slug: 'creators',
+    name: 'For Creators',
+    metaTitle: 'Guides for Adult Content Creators: Strategy, Toys & Privacy',
+    metaDescription:
+      'Guides for adult content creators: strategy by level, solo and couple content ideas, pricing and paywalls, toys that work on camera and a practical privacy and safety checklist.',
+    intro:
+      'Practical guidance for consenting adult creators on subscription platforms: how to grow at each level, what to put behind the paywall, which toys work on camera and how to protect your privacy and wellbeing.',
+    collections: ['app-controlled-sex-toys', 'quiet-vibrators', 'wand-vibrators', 'couples-sex-toys', 'remote-control-vibrators', 'bondage-kits', 'water-based-lube'],
+  },
 ]
 
 export const TOPICS_BY_SLUG: Record<string, Topic> = Object.fromEntries(TOPICS.map((t) => [t.slug, t]))

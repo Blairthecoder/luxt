@@ -42,6 +42,12 @@ import { BEST_TIME_TO_BUY } from '@/content/guides/best-time-to-buy-sex-toys'
 import { MENS_QUESTIONS } from '@/content/guides/sex-toy-questions-men-are-afraid-to-ask'
 import { TALK_TO_PARTNER } from '@/content/guides/how-to-talk-to-your-partner-about-sex-toys'
 import { LDR_VIDEO_INTIMACY } from '@/content/guides/long-distance-relationship-video-call-intimacy'
+import { CREATOR_STRATEGY } from '@/content/guides/adult-content-creator-strategy-by-level'
+import { SOLO_CREATOR_IDEAS } from '@/content/guides/onlyfans-solo-creator-content-ideas'
+import { COUPLE_CREATOR } from '@/content/guides/onlyfans-couple-creator-guide'
+import { CREATOR_TOYS } from '@/content/guides/best-sex-toys-for-adult-content-creators'
+import { PAYWALL_STRATEGY } from '@/content/guides/how-to-price-and-paywall-adult-content'
+import { CREATOR_SAFETY } from '@/content/guides/privacy-and-safety-for-adult-content-creators'
 import { BEST_FLESHLIGHT_BEGINNERS } from '@/content/guides/best-fleshlight-for-beginners'
 import { CLEAN_FLESHLIGHT } from '@/content/guides/how-to-clean-a-fleshlight'
 
@@ -113,6 +119,12 @@ export const POSTS: Post[] = [
   MENS_QUESTIONS,
   TALK_TO_PARTNER,
   LDR_VIDEO_INTIMACY,
+  CREATOR_STRATEGY,
+  SOLO_CREATOR_IDEAS,
+  COUPLE_CREATOR,
+  CREATOR_TOYS,
+  PAYWALL_STRATEGY,
+  CREATOR_SAFETY,
   BEST_FLESHLIGHT_BEGINNERS,
   CLEAN_FLESHLIGHT,
   {
