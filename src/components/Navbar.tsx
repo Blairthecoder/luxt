@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import { Link, useRouterState } from '@tanstack/react-router'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
@@ -56,11 +56,32 @@ function Wordmark() {
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [shopOpen, setShopOpen] = useState(false)
+  const pathname = useRouterState({ select: (state) => state.location.pathname })
   const close = () => setMobileOpen(false)
 
   useEffect(() => {
     document.documentElement.style.overflow = mobileOpen ? 'hidden' : ''
   }, [mobileOpen])
+
+  // The pointer stays over the menu after a click, so hover alone would keep it open over the new page.
+  useEffect(() => {
+    setShopOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!shopOpen) return
+    const dismiss = () => setShopOpen(false)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') dismiss()
+    }
+    window.addEventListener('scroll', dismiss, { passive: true })
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('scroll', dismiss)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [shopOpen])
 
   return (
     <header className="sticky top-0 z-40">
@@ -89,11 +110,32 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <div className="group h-full flex items-center">
-              <button type="button" className={`${navLink} h-full`} aria-haspopup="true">
+            <div
+              className="h-full flex items-center"
+              onMouseEnter={() => setShopOpen(true)}
+              onMouseLeave={() => setShopOpen(false)}
+              onFocus={() => setShopOpen(true)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setShopOpen(false)
+              }}
+            >
+              <button
+                type="button"
+                className={`${navLink} h-full`}
+                aria-haspopup="true"
+                aria-expanded={shopOpen}
+                onClick={() => setShopOpen(true)}
+              >
                 Shop All
               </button>
-              <div className="invisible opacity-0 -translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-[opacity,transform,visibility] duration-300 ease-out absolute left-0 right-0 top-full bg-canvas border-b border-line">
+              <div
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).closest('a')) setShopOpen(false)
+                }}
+                className={`absolute left-0 right-0 top-full bg-canvas border-b border-line transition-[opacity,transform,visibility] duration-300 ease-out ${
+                  shopOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 -translate-y-1 pointer-events-none'
+                }`}
+              >
                 <div className="wrap pt-10 pb-14 grid grid-cols-[1.35fr_1fr_1fr_1fr_1fr] gap-10">
                   <MenuColumn title="Categories" size="lg">
                     {HUBS.map((hub) => (
