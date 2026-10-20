@@ -17,7 +17,7 @@ export function BuyButton({
       href={goPath(handle)}
       target="_blank"
       rel="sponsored nofollow noopener"
-      className={`btn-gold ${className}`}
+      className={`btn btn-lg ${className}`}
     >
       {available ? `Buy Now at ${merchant}` : `Check Stock at ${merchant}`}
     </a>

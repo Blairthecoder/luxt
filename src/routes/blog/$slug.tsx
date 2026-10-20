@@ -77,8 +77,8 @@ function PostPage() {
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
 
   return (
-    <article className="max-w-[1400px] mx-auto px-5 sm:px-8">
-      <header className="pt-10 pb-14 border-b border-line">
+    <article>
+      <header className="wrap pt-6">
         <Breadcrumbs
           items={[
             { name: 'Home', path: '/' },
@@ -86,20 +86,24 @@ function PostPage() {
             { name: post.title, path: `/blog/${post.slug}` },
           ]}
         />
-        <div className="mt-14 max-w-3xl mx-auto text-center">
-          <p className="eyebrow text-gold">
-            {formatDate(post.updatedAt ?? post.publishedAt)} · {post.readMinutes} Minute Read
+        <div className="mt-16 sm:mt-24 max-w-5xl">
+          <p className="text-sm text-graphite rise">
+            <span className="text-signal font-semibold">{SITE.guidesName}</span>
+            <span className="mx-2 text-silver">·</span>
+            {formatDate(post.updatedAt ?? post.publishedAt)}
+            <span className="mx-2 text-silver">·</span>
+            {post.readMinutes} min read
           </p>
-          <h1 className="mt-5 text-5xl sm:text-6xl text-ivory leading-[1.08]">{post.title}</h1>
-          <p className="mt-6 text-lg text-muted leading-relaxed">{post.excerpt}</p>
+          <h1 className="mt-5 display-l rise">{post.title}</h1>
+          <p className="mt-8 lede text-graphite max-w-3xl rise-delay">{post.excerpt}</p>
           {topics.length > 0 && (
-            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <ul className="mt-8 flex flex-wrap gap-2 rise-delay">
               {topics.map((topic) => (
                 <li key={topic.slug}>
                   <Link
                     to="/blog/topic/$topic"
                     params={{ topic: topic.slug }}
-                    className="eyebrow text-gold-deep hover:text-gold"
+                    className="inline-flex items-center h-8 px-4 rounded-full bg-mist text-[0.8125rem] font-medium hover:bg-line transition-colors"
                   >
                     {topic.name}
                   </Link>
@@ -110,49 +114,63 @@ function PostPage() {
         </div>
       </header>
 
-      <div className="max-w-2xl mx-auto py-14">
-        {hasPicks && <AffiliateNotice className="mb-10 pb-6 border-b border-line" />}
-        <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
-        {post.faqs?.length ? (
-          <section className="mt-14 pt-10 border-t border-line">
-            <p className="eyebrow text-gold">Questions</p>
-            <h2 className="mt-3 text-3xl text-ivory">Frequently Asked</h2>
-            <dl className="mt-6 divide-y divide-line border-y border-line">
-              {post.faqs.map((faq) => (
-                <div key={faq.q} className="py-5">
-                  <dt className="font-display text-xl text-ivory">{faq.q}</dt>
-                  <dd className="mt-2 text-muted leading-relaxed">{faq.a}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-        ) : null}
-        <AffiliateNotice className="mt-12 pt-6 border-t border-line" />
+      <div className="wrap mt-14 sm:mt-20">
+        <div className="border-t border-ink" />
       </div>
 
-      {hubs.length > 0 && (
-        <section className="max-w-2xl mx-auto border-t border-line pt-10">
-          <p className="eyebrow text-gold-deep mb-4">Shop This Guide</p>
-          <div className="flex flex-wrap gap-3">
-            {hubs.map((hub) => (
-              <Link key={hub.slug} to="/category/$slug" params={{ slug: hub.slug }} className="btn-line">
-                {hub.name}
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+      <div className="wrap">
+        <div className="max-w-[46rem] mx-auto py-14 sm:py-20">
+          {hasPicks && <AffiliateNotice className="mb-12 pb-6 border-b border-line" />}
+          <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
+          {post.faqs?.length ? (
+            <section className="mt-20 pt-12 border-t border-ink">
+              <h2 className="display-m">Frequently Asked.</h2>
+              <dl className="mt-8 border-t border-line">
+                {post.faqs.map((faq) => (
+                  <div key={faq.q} className="py-6 border-b border-line">
+                    <dt className="font-display text-xl font-semibold tracking-[-0.02em]">{faq.q}</dt>
+                    <dd className="mt-2 text-graphite text-[1.0625rem] leading-relaxed">{faq.a}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ) : null}
+          <AffiliateNotice className="mt-12 pt-6 border-t border-line" />
+
+          {hubs.length > 0 && (
+            <section className="mt-14">
+              <h2 className="font-sans text-[0.9375rem] font-semibold tracking-[-0.01em] mb-4">Shop This Guide</h2>
+              <div className="flex flex-wrap gap-2">
+                {hubs.map((hub) => (
+                  <Link key={hub.slug} to="/category/$slug" params={{ slug: hub.slug }} className="btn-ghost">
+                    {hub.name}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
 
       {more.length > 0 && (
-        <section className="mt-20 border-t border-line pt-14">
-          <p className="eyebrow text-gold text-center">Keep Reading</p>
-          <div className="mt-8 grid md:grid-cols-2 gap-px bg-line border-y border-line">
+        <section className="wrap mt-16 sm:mt-24 reveal">
+          <h2 className="display-m mb-8">Keep Reading.</h2>
+          <div className="grid md:grid-cols-2 gap-3">
             {more.map((p) => (
-              <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }} className="group bg-ink p-10">
-                <h2 className="text-3xl text-ivory group-hover:text-gold transition-colors leading-snug">
-                  {p.title}
-                </h2>
-                <p className="mt-3 text-muted">{p.excerpt}</p>
+              <Link
+                key={p.slug}
+                to="/blog/$slug"
+                params={{ slug: p.slug }}
+                className="group bg-mist p-8 sm:p-12 flex flex-col justify-between min-h-[22rem]"
+              >
+                <div>
+                  <p className="text-sm text-graphite">{p.readMinutes} min read</p>
+                  <h3 className="mt-4 font-display text-[1.875rem] sm:text-[2.25rem] font-bold tracking-[-0.035em] leading-[1.05]">
+                    {p.title}
+                  </h3>
+                  <p className="mt-4 text-graphite leading-relaxed max-w-md">{p.excerpt}</p>
+                </div>
+                <span className="mt-8 more">Read the Guide</span>
               </Link>
             ))}
           </div>

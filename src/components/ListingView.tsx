@@ -18,62 +18,24 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
   const [showFilters, setShowFilters] = useState(false)
 
   return (
-    <div className="grid lg:grid-cols-[240px_1fr] gap-10 lg:gap-14">
-      <aside aria-label="Filters" className="lg:sticky lg:top-28 lg:self-start">
-        <button
-          type="button"
-          onClick={() => setShowFilters(!showFilters)}
-          aria-expanded={showFilters}
-          className="eyebrow text-ivory w-full flex items-center justify-between border-b border-line pb-3 lg:pointer-events-none"
-        >
-          Refine
-          <span className="lg:hidden text-gold">{showFilters ? 'Hide' : 'Show'}</span>
-        </button>
-        <div className={`pt-6 space-y-8 ${showFilters ? 'block' : 'hidden'} lg:block`}>
-            {FACET_ORDER.map((key) => {
-              const options = result.facets[key]
-              if (!options.length || (options.length === 1 && !filters[key])) return null
-              return (
-                <div key={key}>
-                  <h2 className="eyebrow text-gold-deep mb-3">{FILTER_LABELS[key]}</h2>
-                  <ul className="space-y-2 max-h-64 overflow-y-auto pr-2">
-                    {options.map((opt) => {
-                      const selected = filters[key] === opt.value
-                      return (
-                        <li key={opt.value}>
-                          <Link
-                            to="."
-                            search={(prev: ListingFilters) => ({
-                              ...prev,
-                              [key]: selected ? undefined : opt.value,
-                              page: undefined,
-                            })}
-                            className={`flex items-baseline justify-between gap-3 text-sm transition-colors ${
-                              selected ? 'text-gold' : 'text-muted hover:text-ivory'
-                            }`}
-                          >
-                            <span>
-                              {selected && <span aria-hidden="true">— </span>}
-                              {opt.label}
-                            </span>
-                            <span className="text-xs text-faint">{opt.count}</span>
-                          </Link>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              )
-            })}
-        </div>
-      </aside>
-
-      <div className="space-y-8 min-w-0">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-4">
-          <p className="eyebrow text-muted">
-            {result.total.toLocaleString()} {result.total === 1 ? 'Product' : 'Products'}
-          </p>
-          <div className="flex items-center gap-5">
+    <div>
+      <div className="sticky top-[5.5rem] z-20 -mx-[clamp(1.25rem,4vw,3rem)] px-[clamp(1.25rem,4vw,3rem)] bg-canvas/90 backdrop-blur-xl border-b border-line">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-x-4 gap-y-2 py-3 sm:py-0 sm:h-14">
+          <div className="flex items-center gap-6 whitespace-nowrap">
+            <button
+              type="button"
+              onClick={() => setShowFilters(!showFilters)}
+              aria-expanded={showFilters}
+              aria-controls="listing-filters"
+              className="lg:hidden text-sm font-medium"
+            >
+              {showFilters ? 'Hide Filters' : 'Show Filters'}
+            </button>
+            <p className="text-sm text-graphite">
+              {result.total.toLocaleString()} {result.total === 1 ? 'Product' : 'Products'}
+            </p>
+          </div>
+          <div className="flex items-center gap-5 overflow-x-auto [scrollbar-width:none]">
             {SORTS.map((s) => {
               const current = (filters.sort ?? 'featured') === s.id
               return (
@@ -85,7 +47,9 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
                     sort: s.id === 'featured' ? undefined : s.id,
                     page: undefined,
                   })}
-                  className={`eyebrow transition-colors ${current ? 'text-gold' : 'text-faint hover:text-ivory'}`}
+                  className={`text-sm whitespace-nowrap transition-colors ${
+                    current ? 'text-ink font-medium underline underline-offset-[6px] decoration-[1.5px]' : 'text-graphite hover:text-ink'
+                  }`}
                 >
                   {s.label}
                 </Link>
@@ -93,36 +57,91 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
             })}
           </div>
         </div>
+      </div>
 
-        {active.length > 0 && (
-          <div className="flex flex-wrap items-center gap-2">
-            {active.map((key) => {
-              const label =
-                result.facets[key].find((o) => o.value === filters[key])?.label ?? filters[key]
+      <div className="pt-8 grid lg:grid-cols-[220px_1fr] gap-10 lg:gap-12">
+        <aside
+          id="listing-filters"
+          aria-label="Filters"
+          className={`${showFilters ? 'block' : 'hidden'} lg:block lg:sticky lg:top-[9.5rem] lg:self-start lg:max-h-[calc(100vh-10.5rem)] lg:overflow-y-auto lg:pr-2`}
+        >
+          <div className="space-y-8">
+            {FACET_ORDER.map((key) => {
+              const options = result.facets[key]
+              if (!options.length || (options.length === 1 && !filters[key])) return null
               return (
-                <Link
-                  key={key}
-                  to="."
-                  search={(prev: ListingFilters) => ({ ...prev, [key]: undefined, page: undefined })}
-                  className="text-xs border border-line px-3 py-1.5 text-ivory hover:border-gold"
-                >
-                  {label} <span className="text-faint">×</span>
-                </Link>
+                <div key={key} className="border-b border-line pb-7 last:border-0">
+                  <h2 className="font-sans text-[0.9375rem] font-semibold tracking-[-0.01em] mb-3">
+                    {FILTER_LABELS[key]}
+                  </h2>
+                  <ul className="space-y-1.5">
+                    {options.map((opt) => {
+                      const selected = filters[key] === opt.value
+                      return (
+                        <li key={opt.value}>
+                          <Link
+                            to="."
+                            search={(prev: ListingFilters) => ({
+                              ...prev,
+                              [key]: selected ? undefined : opt.value,
+                              page: undefined,
+                            })}
+                            className={`flex items-center justify-between gap-3 text-[0.9375rem] transition-colors ${
+                              selected ? 'text-ink font-medium' : 'text-graphite hover:text-ink'
+                            }`}
+                          >
+                            <span className="flex items-center gap-2.5">
+                              <span
+                                aria-hidden="true"
+                                className={`w-3.5 h-3.5 shrink-0 border ${
+                                  selected ? 'bg-ink border-ink' : 'border-silver'
+                                }`}
+                              />
+                              {opt.label}
+                            </span>
+                            <span className="text-xs text-silver tabular-nums">{opt.count}</span>
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
               )
             })}
-            <Link to="." search={{}} className="eyebrow text-faint hover:text-gold ml-2">
-              Clear All
-            </Link>
           </div>
-        )}
+        </aside>
 
-        {result.products.length === 0 ? (
-          <p className="text-muted py-16">Nothing matches those filters yet. Try removing one.</p>
-        ) : (
-          <ProductGrid products={result.products} />
-        )}
+        <div className="space-y-8 min-w-0">
+          {active.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2">
+              {active.map((key) => {
+                const label =
+                  result.facets[key].find((o) => o.value === filters[key])?.label ?? filters[key]
+                return (
+                  <Link
+                    key={key}
+                    to="."
+                    search={(prev: ListingFilters) => ({ ...prev, [key]: undefined, page: undefined })}
+                    className="inline-flex items-center gap-2 text-sm bg-mist rounded-full px-4 h-9 hover:bg-line transition-colors"
+                  >
+                    {label} <span className="text-graphite" aria-label="Remove">×</span>
+                  </Link>
+                )
+              })}
+              <Link to="." search={{}} className="text-sm text-graphite underline underline-offset-4 hover:text-ink ml-2">
+                Clear All
+              </Link>
+            </div>
+          )}
 
-        {result.pageCount > 1 && <Pagination page={result.page} pageCount={result.pageCount} />}
+          {result.products.length === 0 ? (
+            <p className="text-graphite py-16 lede">Nothing matches those filters yet. Try removing one.</p>
+          ) : (
+            <ProductGrid products={result.products} />
+          )}
+
+          {result.pageCount > 1 && <Pagination page={result.page} pageCount={result.pageCount} />}
+        </div>
       </div>
     </div>
   )
@@ -142,15 +161,15 @@ function pageWindow(page: number, pageCount: number): (number | null)[] {
 function Pagination({ page, pageCount }: { page: number; pageCount: number }) {
   const to = (p: number) => (prev: ListingFilters) => ({ ...prev, page: p > 1 ? p : undefined })
   return (
-    <nav aria-label="Pagination" className="flex items-center justify-center gap-1 pt-6">
+    <nav aria-label="Pagination" className="flex items-center justify-center gap-1 pt-12">
       {page > 1 && (
-        <Link to="." search={to(page - 1)} rel="prev" className="eyebrow px-3 py-2 text-muted hover:text-gold">
+        <Link to="." search={to(page - 1)} rel="prev" className="text-sm font-medium px-4 py-2 hover:underline underline-offset-4">
           Previous
         </Link>
       )}
       {pageWindow(page, pageCount).map((p, i) =>
         p === null ? (
-          <span key={`gap-${i}`} className="px-2 text-faint">
+          <span key={`gap-${i}`} className="px-2 text-silver">
             …
           </span>
         ) : (
@@ -159,8 +178,8 @@ function Pagination({ page, pageCount }: { page: number; pageCount: number }) {
             to="."
             search={to(p)}
             aria-current={p === page ? 'page' : undefined}
-            className={`min-w-10 text-center px-3 py-2 text-sm border ${
-              p === page ? 'border-gold text-gold' : 'border-transparent text-muted hover:text-ivory'
+            className={`w-10 h-10 inline-flex items-center justify-center rounded-full text-sm tabular-nums transition-colors ${
+              p === page ? 'bg-ink text-canvas' : 'text-graphite hover:bg-mist hover:text-ink'
             }`}
           >
             {p}
@@ -168,7 +187,7 @@ function Pagination({ page, pageCount }: { page: number; pageCount: number }) {
         )
       )}
       {page < pageCount && (
-        <Link to="." search={to(page + 1)} rel="next" className="eyebrow px-3 py-2 text-muted hover:text-gold">
+        <Link to="." search={to(page + 1)} rel="next" className="text-sm font-medium px-4 py-2 hover:underline underline-offset-4">
           Next
         </Link>
       )}

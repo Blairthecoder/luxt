@@ -21,6 +21,7 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
     luxury: pick('luxury-sex-toys', 4),
     forHim: pick('sex-toys-for-men', 4),
     forHer: pick('sex-toys-for-women', 4),
+    forCouples: pick('couples-sex-toys', 1),
   }
 })
 

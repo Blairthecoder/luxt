@@ -1,10 +1,12 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ProductGrid } from '@/components/ProductCard'
+import { ProductRail } from '@/components/ProductCard'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { HUBS } from '@/content/hubs'
 import { POSTS } from '@/content/posts'
 import { SITE } from '@/config/site'
 import { getHomeData } from '@/lib/catalog'
+import { formatPrice } from '@/lib/format'
+import { getOptimizedImageUrl } from '@/lib/image'
 import type { ProductSummary } from '@/lib/listing'
 import { organizationJsonLd, pageHead } from '@/lib/seo'
 
@@ -48,131 +50,182 @@ const PROMISES = [
 ] as const
 
 function Row({
-  eyebrow,
   title,
+  kicker,
   slug,
   products,
 }: {
-  eyebrow: string
   title: string
+  kicker: string
   slug: string
   products: ProductSummary[]
 }) {
   if (!products.length) return null
   return (
-    <section className="py-16 border-t border-line">
-      <div className="flex items-end justify-between gap-6 mb-10">
-        <div>
-          <p className="eyebrow text-gold">{eyebrow}</p>
-          <h2 className="mt-3 text-4xl text-ivory">{title}</h2>
-        </div>
-        <Link to="/shop/$slug" params={{ slug }} className="eyebrow text-muted hover:text-gold whitespace-nowrap">
+    <section className="wrap pt-24 sm:pt-32 reveal">
+      <div className="flex items-end justify-between gap-6 mb-8 sm:mb-10">
+        <h2 className="display-m max-w-3xl">
+          {title}. <span className="text-graphite">{kicker}.</span>
+        </h2>
+        <Link to="/shop/$slug" params={{ slug }} className="more hidden sm:inline-flex">
           View All
         </Link>
       </div>
-      <ProductGrid products={products} />
+      <ProductRail products={products} />
+      <Link to="/shop/$slug" params={{ slug }} className="more mt-8 sm:hidden">
+        View All
+      </Link>
     </section>
   )
 }
 
 function HomePage() {
-  const { hubCounts, luxury, forHim, forHer } = Route.useLoaderData()
+  const { hubCounts, luxury, forHim, forHer, forCouples } = Route.useLoaderData()
   const hubs = HUBS.filter((hub) => (hubCounts[hub.slug] ?? 0) > 0)
   const [lead] = POSTS
+  const hero = luxury[0]
+  const tileProducts: Record<string, ProductSummary | undefined> = {
+    'sex-toys-for-women': forHer[0],
+    'sex-toys-for-men': forHim[0],
+    'couples-sex-toys': forCouples[0],
+  }
 
   return (
     <div>
-      <section className="relative border-b border-line overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,164,105,0.12),transparent_60%)]"
-        />
-        <div className="relative max-w-4xl mx-auto px-5 py-28 sm:py-36 text-center">
-          <p className="eyebrow text-gold">Est. 2026 · Curated Pleasure</p>
-          <h1 className="mt-8 text-6xl sm:text-7xl lg:text-8xl text-ivory leading-[0.98]">
-            Pleasure, <em className="text-gold not-italic font-display italic">Explained.</em>
-          </h1>
-          <p className="mt-8 text-lg text-muted max-w-xl mx-auto leading-relaxed">
-            The world's best adult toys, chosen with care and explained without the blush. Compare honestly, then
-            buy discreetly.
-          </p>
-          <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="#shop-by-need" className="btn-gold">
-              Begin Shopping
-            </a>
-            <Link to="/blog" className="btn-line">
-              Read {SITE.guidesName}
-            </Link>
+      <section className="bg-mist overflow-hidden">
+        <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-6 items-center min-h-[min(86vh,880px)] pt-16 pb-12 lg:py-20">
+          <div className="lg:col-span-6 relative z-10">
+            <p className="eyebrow text-graphite rise">Curated Pleasure. Est. 2026.</p>
+            <h1 className="mt-5 display-xl rise">
+              Pleasure,{' '}
+              <br />
+              Explained.
+            </h1>
+            <p className="mt-8 lede text-graphite max-w-lg rise-delay">
+              The world's best adult toys, chosen with care and explained without the blush. Compare honestly, then
+              buy discreetly.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 rise-delay">
+              <a href="#shop-by-need" className="btn">
+                Begin Shopping
+              </a>
+              <Link to="/blog" className="more">
+                Read {SITE.guidesName}
+              </Link>
+            </div>
           </div>
+          {hero && (
+            <Link
+              to="/products/$productId"
+              params={{ productId: hero.handle }}
+              className="group lg:col-span-6 block w-full max-w-md mx-auto lg:max-w-none"
+            >
+              <div className="relative aspect-square">
+                <img
+                  src={getOptimizedImageUrl(hero.image, 1200)}
+                  alt={`${hero.title} by ${hero.brand}`}
+                  width={1200}
+                  height={1200}
+                  fetchPriority="high"
+                  className="absolute inset-0 w-full h-full object-contain mix-blend-multiply transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                />
+              </div>
+              <p className="mt-4 text-sm text-graphite">
+                <span className="text-ink font-medium">{hero.title}</span> · {formatPrice(hero.price)}
+              </p>
+            </Link>
+          )}
         </div>
       </section>
 
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-        <section id="shop-by-need" className="my-16 grid md:grid-cols-3 gap-px bg-line border-y border-line">
-          {NEEDS.map((need) => (
+      <section id="shop-by-need" className="wrap pt-3 grid md:grid-cols-3 gap-3 scroll-mt-24">
+        {NEEDS.map((need) => {
+          const product = tileProducts[need.slug]
+          return (
             <Link
               key={need.slug}
               to="/shop/$slug"
               params={{ slug: need.slug }}
-              className="group bg-ink px-8 py-14 text-center"
+              className="group relative block aspect-[4/5] bg-mist overflow-hidden"
             >
-              <h2 className="text-5xl text-ivory group-hover:text-gold transition-colors">{need.label}</h2>
-              <p className="mt-4 text-sm text-muted max-w-xs mx-auto leading-relaxed">{need.line}</p>
-              <span className="mt-8 inline-block eyebrow text-gold-deep group-hover:text-gold">Explore</span>
+              {product && (
+                <img
+                  src={getOptimizedImageUrl(product.image, 900)}
+                  alt=""
+                  loading="lazy"
+                  width={900}
+                  height={1125}
+                  className="absolute inset-0 w-full h-full object-contain p-[16%] pb-[30%] mix-blend-multiply transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                />
+              )}
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                <h2 className="display-m">{need.label}</h2>
+                <p className="mt-2 text-[0.9375rem] text-graphite max-w-xs leading-snug">{need.line}</p>
+                <span className="mt-5 btn min-h-10 px-5 text-sm">Shop</span>
+              </div>
             </Link>
-          ))}
-        </section>
+          )
+        })}
+      </section>
 
-        <Row eyebrow="The Investment Pieces" title="Luxury Picks" slug="luxury-sex-toys" products={luxury} />
-        <Row eyebrow="Chosen for Her" title="Her Favorites" slug="sex-toys-for-women" products={forHer} />
-        <Row eyebrow="Chosen for Him" title="His Favorites" slug="sex-toys-for-men" products={forHim} />
+      <Row title="Luxury Picks" kicker="The investment pieces" slug="luxury-sex-toys" products={luxury} />
+      <Row title="Her Favorites" kicker="Chosen for her" slug="sex-toys-for-women" products={forHer} />
+      <Row title="His Favorites" kicker="Chosen for him" slug="sex-toys-for-men" products={forHim} />
 
-        <section className="py-16 border-t border-line grid lg:grid-cols-[1fr_2fr] gap-12">
-          <div>
-            <p className="eyebrow text-gold">The Collection</p>
-            <h2 className="mt-3 text-4xl text-ivory">Shop by Category</h2>
+      <section className="mt-28 sm:mt-36 bg-night text-canvas">
+        <div className="wrap py-24 sm:py-32 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-4 reveal">
+            <h2 className="display-l">
+              Shop by{' '}
+              <br />
+              Category.
+            </h2>
+            <p className="mt-6 text-[#a1a1a6] max-w-xs leading-relaxed">
+              Every category, sorted by what it does and who it is for.
+            </p>
           </div>
-          <ul className="grid sm:grid-cols-2 gap-x-12 border-t border-line">
+          <ul className="lg:col-span-8 grid sm:grid-cols-2 gap-x-12 border-t border-night-line reveal">
             {hubs.map((hub) => (
-              <li key={hub.slug} className="border-b border-line">
+              <li key={hub.slug} className="border-b border-night-line">
                 <Link
                   to="/category/$slug"
                   params={{ slug: hub.slug }}
-                  className="group flex items-baseline justify-between py-4"
+                  className="group flex items-baseline justify-between gap-4 py-5"
                 >
-                  <span className="font-display text-2xl text-ivory group-hover:text-gold transition-colors">
+                  <span className="font-display text-2xl sm:text-[1.75rem] font-semibold tracking-[-0.03em] text-canvas/85 group-hover:text-canvas transition-colors">
                     {hub.name}
                   </span>
-                  <span className="text-xs text-faint">{hubCounts[hub.slug].toLocaleString()}</span>
+                  <span className="text-xs text-[#86868b] tabular-nums">{hubCounts[hub.slug].toLocaleString()}</span>
                 </Link>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {lead && (
+        <section className="wrap pt-24 sm:pt-36 reveal">
+          <Link to="/blog/$slug" params={{ slug: lead.slug }} className="group block max-w-5xl">
+            <p className="eyebrow text-signal">From {SITE.guidesName}</p>
+            <h2 className="mt-4 display-l group-hover:text-graphite transition-colors">{lead.title}</h2>
+            <p className="mt-6 lede text-graphite max-w-2xl">{lead.excerpt}</p>
+            <span className="mt-8 more">Read the Guide</span>
+          </Link>
         </section>
+      )}
 
-        {lead && (
-          <section className="py-20 border-t border-line text-center max-w-3xl mx-auto">
-            <p className="eyebrow text-gold">From {SITE.guidesName}</p>
-            <h2 className="mt-5 text-4xl sm:text-5xl text-ivory leading-tight">{lead.title}</h2>
-            <p className="mt-5 text-muted leading-relaxed">{lead.excerpt}</p>
-            <Link to="/blog/$slug" params={{ slug: lead.slug }} className="mt-10 btn-line">
-              Read the Guide
-            </Link>
-          </section>
-        )}
-
-        <section className="py-16 border-t border-line grid md:grid-cols-3 gap-12">
+      <section className="wrap pt-24 sm:pt-36">
+        <div className="grid md:grid-cols-3 gap-12 md:gap-10 border-t border-ink pt-10 reveal">
           {PROMISES.map(([title, body], i) => (
             <div key={title}>
-              <span className="font-display text-3xl text-gold-deep">{String(i + 1).padStart(2, '0')}</span>
-              <h2 className="mt-3 text-2xl text-ivory">{title}</h2>
-              <p className="mt-2 text-sm text-muted leading-relaxed">{body}</p>
+              <span className="text-sm font-semibold text-graphite tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+              <h2 className="mt-4 font-display text-[1.75rem] font-semibold tracking-[-0.03em] leading-tight">{title}</h2>
+              <p className="mt-3 text-graphite leading-relaxed max-w-sm">{body}</p>
             </div>
           ))}
-        </section>
-
-        <AffiliateNotice className="text-center pt-6" />
-      </div>
+        </div>
+        <AffiliateNotice className="pt-16" />
+      </section>
     </div>
   )
 }

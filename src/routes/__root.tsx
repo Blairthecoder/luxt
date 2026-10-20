@@ -18,7 +18,7 @@ export const Route = createRootRoute({
       { property: 'og:site_name', content: SITE.name },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'theme-color', content: '#0b0a09' },
+      { name: 'theme-color', content: '#ffffff' },
     ],
     links: [
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -26,7 +26,7 @@ export const Route = createRootRoute({
       { rel: 'preconnect', href: 'https://cdn.shopify.com' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap',
       },
     ],
   }),
@@ -36,9 +36,22 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Fade sections in as they enter the viewport; no-op without IntersectionObserver or with reduced motion. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.documentElement.classList.add('reveal-ready');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+function scan(){document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el);});}
+document.addEventListener('DOMContentLoaded',scan);
+new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});
+})();`,
+          }}
+        />
         {/* Google tag (gtag.js) */}
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <script
@@ -59,7 +72,7 @@ document.addEventListener('click', function(e){
           }}
         />
       </head>
-      <body className="bg-ink text-ivory antialiased min-h-screen flex flex-col">
+      <body className="bg-canvas text-ink antialiased min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
@@ -72,11 +85,13 @@ document.addEventListener('click', function(e){
 
 function NotFound() {
   return (
-    <div className="max-w-2xl mx-auto px-5 py-32 text-center space-y-6">
-      <p className="eyebrow text-gold">Page Not Found</p>
-      <h1 className="text-5xl text-ivory">This Page Has Moved On</h1>
-      <p className="text-muted">The product may have sold out or moved. Try one of our collections instead.</p>
-      <Link to="/" className="btn-line">
+    <div className="wrap py-32 sm:py-44">
+      <p className="eyebrow text-graphite">Page Not Found</p>
+      <h1 className="mt-4 display-l max-w-4xl">This Page Has Moved On.</h1>
+      <p className="mt-6 lede text-graphite max-w-xl">
+        The product may have sold out or moved. Try one of our collections instead.
+      </p>
+      <Link to="/" className="mt-10 btn">
         Return Home
       </Link>
     </div>

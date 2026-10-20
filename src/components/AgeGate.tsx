@@ -33,21 +33,23 @@ export function AgeGate() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="age-gate-title"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-canvas/80 backdrop-blur-2xl px-5"
     >
-      <div className="w-full max-w-md border border-line bg-surface px-8 py-12 text-center">
-        <p className="eyebrow text-gold">Nightstand Supply Co.</p>
-        <h2 id="age-gate-title" className="mt-6 text-4xl text-ivory">
-          Adults Only
+      <div className="w-full max-w-md text-center rise">
+        <p className="font-display text-lg font-bold tracking-[-0.045em] text-ink">
+          Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
+        </p>
+        <h2 id="age-gate-title" className="mt-10 display-m">
+          Adults Only.
         </h2>
-        <p className="mt-4 text-sm text-muted leading-relaxed">
+        <p className="mt-4 text-graphite leading-relaxed">
           This site features adult products. Please confirm you are 18 or older to enter.
         </p>
         <div className="mt-10 flex flex-col gap-3">
-          <button type="button" onClick={confirm} className="btn-gold w-full">
+          <button type="button" onClick={confirm} className="btn btn-lg w-full">
             I Am 18 or Older
           </button>
-          <a href="https://www.google.com" className="btn-line w-full">
+          <a href="https://www.google.com" className="btn-ghost w-full min-h-[3.75rem]">
             Leave
           </a>
         </div>

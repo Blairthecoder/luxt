@@ -5,6 +5,7 @@ import { TOPICS, TOPICS_BY_SLUG } from '@/content/topics'
 import { COLLECTIONS_BY_SLUG } from '@/content/collections'
 import { SITE, absoluteUrl } from '@/config/site'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
+import { PostGrid } from '@/components/PostGrid'
 
 export const Route = createFileRoute('/blog/topic/$topic')({
   loader: ({ params }) => {
@@ -53,8 +54,8 @@ function TopicPage() {
   const others = TOPICS.filter((t) => t.slug !== topic.slug)
 
   return (
-    <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-      <header className="pt-10 pb-14 border-b border-line">
+    <div className="wrap">
+      <header className="pt-6 pb-12 sm:pb-16">
         <Breadcrumbs
           items={[
             { name: 'Home', path: '/' },
@@ -62,32 +63,24 @@ function TopicPage() {
             { name: topic.name, path: `/blog/topic/${topic.slug}` },
           ]}
         />
-        <div className="mt-12 max-w-3xl mx-auto text-center">
-          <p className="eyebrow text-gold">{SITE.guidesName}</p>
-          <h1 className="mt-4 text-5xl sm:text-6xl text-ivory leading-[1.05]">{topic.name}</h1>
-          <p className="mt-6 text-muted leading-relaxed">{topic.intro}</p>
+        <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="lg:col-span-7 rise">
+            <p className="eyebrow text-graphite">{SITE.guidesName}</p>
+            <h1 className="mt-3 display-l">{topic.name}</h1>
+          </div>
+          <p className="lg:col-span-5 text-[1.0625rem] leading-relaxed text-graphite rise-delay">{topic.intro}</p>
         </div>
       </header>
 
-      <div className="grid md:grid-cols-2 gap-px bg-line border-b border-line">
-        {posts.map((post) => (
-          <Link key={post.slug} to="/blog/$slug" params={{ slug: post.slug }} className="group bg-ink p-10 sm:p-14">
-            <p className="eyebrow text-gold-deep">{post.readMinutes} Minute Read</p>
-            <h2 className="mt-4 text-3xl text-ivory group-hover:text-gold transition-colors leading-snug">
-              {post.title}
-            </h2>
-            <p className="mt-4 text-muted leading-relaxed">{post.excerpt}</p>
-          </Link>
-        ))}
-      </div>
+      <PostGrid posts={posts} />
 
       {collections.length > 0 && (
-        <section className="py-14 border-b border-line">
-          <p className="eyebrow text-gold text-center">Shop the Topic</p>
-          <ul className="mt-8 flex flex-wrap justify-center gap-3">
+        <section className="pt-20 sm:pt-28 reveal">
+          <h2 className="display-m">Shop the Topic.</h2>
+          <ul className="mt-8 flex flex-wrap gap-2">
             {collections.map((c) => (
               <li key={c.slug}>
-                <Link to="/shop/$slug" params={{ slug: c.slug }} className="btn-line">
+                <Link to="/shop/$slug" params={{ slug: c.slug }} className="btn-ghost">
                   {c.name}
                 </Link>
               </li>
@@ -96,15 +89,15 @@ function TopicPage() {
         </section>
       )}
 
-      <nav aria-label="More topics" className="py-14 text-center">
-        <p className="eyebrow text-faint">More Topics</p>
-        <ul className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+      <nav aria-label="More topics" className="mt-20 sm:mt-28 pt-10 border-t border-ink reveal">
+        <p className="text-sm text-graphite">More Topics</p>
+        <ul className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10">
           {others.map((t) => (
-            <li key={t.slug}>
+            <li key={t.slug} className="border-b border-line">
               <Link
                 to="/blog/topic/$topic"
                 params={{ topic: t.slug }}
-                className="font-display text-2xl text-ivory hover:text-gold transition-colors"
+                className="block py-4 font-display text-2xl font-semibold tracking-[-0.03em] hover:text-graphite transition-colors"
               >
                 {t.name}
               </Link>

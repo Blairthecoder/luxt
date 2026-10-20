@@ -29,7 +29,7 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 
 ## Design
 
-Tokens live in `src/styles.css` (`@theme`): ink/surface/line backgrounds, ivory text, gold accent. Display type is Cormorant Garamond, body is Jost. Headings use Title Case; small labels use the `.eyebrow` class. No icon library.
+Tokens live in `src/styles.css` (`@theme`): a monochrome palette (canvas, mist, ink, graphite, silver, line, night) with one accent, `signal`, used sparingly for sale flags and small labels. Display type is Inter Tight, body is Inter. Use the `.display-xl/-l/-m` scale for headings, `.lede` for intro copy, `.wrap` for the page gutter, `.btn`/`.btn-ghost`/`.more` for actions and `.rail` for product carousels. Add `.reveal` to fade a section in on scroll (content stays visible without JS). Headings use Title Case. No icon library, no shadows or gradients.
 
 ## Conventions
 
