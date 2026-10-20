@@ -3,6 +3,7 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
+import { SearchDialog } from '@/components/SearchDialog'
 import { SITE } from '@/config/site'
 
 const PRIMARY = [
@@ -18,6 +19,13 @@ const GIFTS_AND_COUPLES = [
   ...COLLECTIONS.filter((c) => c.group === 'Gift Ideas'),
   ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
 ]
+
+const SearchIcon = () => (
+  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m16 16 4 4" />
+  </svg>
+)
 
 const navLink = 'text-[0.8125rem] font-medium text-ink/80 hover:text-ink transition-colors'
 
@@ -57,16 +65,32 @@ function Wordmark() {
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [shopOpen, setShopOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const pathname = useRouterState({ select: (state) => state.location.pathname })
   const close = () => setMobileOpen(false)
 
   useEffect(() => {
-    document.documentElement.style.overflow = mobileOpen ? 'hidden' : ''
-  }, [mobileOpen])
+    document.documentElement.style.overflow = mobileOpen || searchOpen ? 'hidden' : ''
+  }, [mobileOpen, searchOpen])
+
+  // Cmd+K (Mac) or Ctrl+K opens search from anywhere on the site.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setMobileOpen(false)
+        setShopOpen(false)
+        setSearchOpen((open) => !open)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   // The pointer stays over the menu after a click, so hover alone would keep it open over the new page.
   useEffect(() => {
     setShopOpen(false)
+    setSearchOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -212,6 +236,31 @@ export function Navbar() {
             </Link>
             <button
               type="button"
+              onClick={() => {
+                setMobileOpen(false)
+                setSearchOpen(true)
+              }}
+              className={`${navLink} hidden lg:flex items-center gap-2`}
+              aria-label="Search"
+              aria-keyshortcuts="Control+K Meta+K"
+            >
+              <SearchIcon />
+              <span>Search</span>
+              <kbd className="rounded border border-line px-1.5 py-0.5 text-[0.6875rem] font-sans text-graphite">⌘K</kbd>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false)
+                setSearchOpen(true)
+              }}
+              className="lg:hidden -mr-3 flex h-8 w-8 items-center justify-center text-ink"
+              aria-label="Search"
+            >
+              <SearchIcon />
+            </button>
+            <button
+              type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden relative w-8 h-8 -mr-1.5"
               aria-expanded={mobileOpen}
@@ -302,6 +351,7 @@ export function Navbar() {
           </div>
         </nav>
       )}
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )
 }

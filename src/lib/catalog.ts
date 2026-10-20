@@ -133,3 +133,10 @@ export const getGiftData = createServerFn({ method: 'GET' }).handler(async () =>
     fromPrices,
   }
 })
+
+export const searchCatalog = createServerFn({ method: 'GET' })
+  .validator((query: string) => query)
+  .handler(async ({ data: query }) => {
+    const { searchSite } = await import('@/server/search')
+    return searchSite(query)
+  })
