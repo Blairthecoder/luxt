@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import type { ProductSummary } from '@/lib/listing'
 import { goPath } from '@/lib/affiliate'
-import { getOptimizedImageUrl } from '@/lib/image'
+import { getImageSrcSet, getOptimizedImageUrl } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
 
 export function ProductCard({
@@ -22,6 +22,8 @@ export function ProductCard({
         <div className={`relative overflow-hidden rounded-xl ${size === 'small' ? 'aspect-[5/4] bg-stone' : 'aspect-square bg-mist'}`}>
           <img
             src={getOptimizedImageUrl(product.image, 600)}
+            srcSet={getImageSrcSet(product.image, [240, 360, 480, 600])}
+            sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
             alt={`${product.title} by ${product.brand}`}
             loading="lazy"
             width={600}

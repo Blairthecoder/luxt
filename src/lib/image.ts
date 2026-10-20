@@ -19,3 +19,13 @@ export function getOptimizedImageUrl(src: string | undefined, width = 800, quali
   const normalizedSrc = src.startsWith('/') ? src : `/${src}`
   return `/.netlify/images?url=${encodeURIComponent(normalizedSrc)}&w=${width}&q=${quality}&fm=webp&fit=cover`
 }
+
+/**
+ * A `srcset` of the same image at several widths, so phones and small grid
+ * cells download smaller files. Pair it with a `sizes` attribute that matches
+ * the layout. Returns undefined when there is no image.
+ */
+export function getImageSrcSet(src: string | undefined, widths: number[], quality = 80): string | undefined {
+  if (!src) return undefined
+  return widths.map((w) => `${getOptimizedImageUrl(src, w, quality)} ${w}w`).join(', ')
+}
