@@ -46,7 +46,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`,
+gtag('config', '${GA_MEASUREMENT_ID}');
+document.addEventListener('click', function(e){
+  var a = e.target instanceof Element ? e.target.closest('a[href^="/go/"]') : null;
+  if (!a) return;
+  gtag('event', 'affiliate_click', {
+    product_handle: a.getAttribute('href').slice(4).split('?')[0],
+    page_path: location.pathname,
+    link_context: a.classList.contains('pick-buy') ? 'guide_pick' : 'product_page'
+  });
+}, true);`,
           }}
         />
       </head>
