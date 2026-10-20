@@ -2,19 +2,124 @@
   "_note": "Ordered rules assigning each product one primary hub. Tested against product_type + tags first, then title. First match wins; unmatched products go to fallback.",
   "fallback": "more-toys",
   "rules": [
-    { "hub": "lingerie", "pattern": "lingerie|bodysuit|bodystocking|chemise|babydoll|teddy|garter|stocking" },
-    { "hub": "lubricants", "pattern": "\\blubes?\\b|lubricant|massage oil|arousal gel" },
-    { "hub": "sex-machines-furniture", "pattern": "sex machine|fuck machine|thrusting machine|sex swing|position support|\\bsling\\b|liberator|sex furniture|\\bwedge\\b|sybian|sex saddle" },
-    { "hub": "sex-dolls", "pattern": "\\bdolls?\\b|love doll|companion" },
-    { "hub": "penis-pumps", "pattern": "penis pump|\\bpumps?\\b|bathmate|hydromax" },
-    { "hub": "penis-rings", "pattern": "cock ?rings?|penis ?rings?|c-ring|ball stretcher|cockring" },
-    { "hub": "prostate-massagers", "pattern": "prostate" },
-    { "hub": "strap-ons", "pattern": "strap-?ons?|strapless|harness|pegging" },
-    { "hub": "strokers", "pattern": "masturbat(or|ion type)|stroker|fleshlight|pocket pussy|penis sleeve|onacup|tenga" },
-    { "hub": "anal-toys", "pattern": "\\banal\\b|butt ?plugs?|\\bplugs?\\b|anal beads|rimming" },
-    { "hub": "bdsm", "pattern": "bdsm|bondage|restraint|collar|whip|flogger|paddle|cuffs?|nipple|chastity|\\bgag\\b|blindfold|\\bhood\\b|impact" },
-    { "hub": "vibrators", "pattern": "vibrat|\\bwands?\\b|bullet|rabbit|clitoral|suction|air pulse|womanizer|massager" },
-    { "hub": "dildos", "pattern": "dildo|\\bdong\\b|realistic cock" },
-    { "hub": "couples", "pattern": "couples?" }
-  ]
+    {
+      "hub": "lingerie",
+      "pattern": "lingerie|bodysuit|bodystocking|chemise|babydoll|teddy|garter|stocking"
+    },
+    {
+      "hub": "lubricants",
+      "pattern": "\\blubes?\\b|lubricant|massage oil|arousal gel"
+    },
+    {
+      "hub": "sex-machines-furniture",
+      "pattern": "sex machine|fuck machine|thrusting machine|sex swing|position support|\\bsling\\b|liberator|sex furniture|\\bwedge\\b|sybian|sex saddle"
+    },
+    {
+      "hub": "sex-dolls",
+      "pattern": "\\bdolls?\\b|love doll|companion"
+    },
+    {
+      "hub": "penis-pumps",
+      "pattern": "penis pump|\\bpumps?\\b|bathmate|hydromax"
+    },
+    {
+      "hub": "penis-rings",
+      "pattern": "cock ?rings?|penis ?rings?|c-ring|ball stretcher|cockring"
+    },
+    {
+      "hub": "prostate-massagers",
+      "pattern": "prostate"
+    },
+    {
+      "hub": "strap-ons",
+      "pattern": "strap-?ons?|strapless|harness|pegging"
+    },
+    {
+      "hub": "strokers",
+      "pattern": "masturbat(or|ion type)|stroker|fleshlight|pocket pussy|penis sleeve|onacup|tenga"
+    },
+    {
+      "hub": "anal-toys",
+      "pattern": "\\banal\\b|butt ?plugs?|\\bplugs?\\b|anal beads|rimming"
+    },
+    {
+      "hub": "bdsm",
+      "pattern": "bdsm|bondage|restraint|collar|whip|flogger|paddle|cuffs?|nipple|chastity|\\bgag\\b|blindfold|\\bhood\\b|impact"
+    },
+    {
+      "hub": "vibrators",
+      "pattern": "vibrat|\\bwands?\\b|bullet|rabbit|clitoral|suction|air pulse|womanizer|massager"
+    },
+    {
+      "hub": "dildos",
+      "pattern": "dildo|\\bdong\\b|realistic cock"
+    },
+    {
+      "hub": "couples",
+      "pattern": "couples?"
+    }
+  ],
+  "facets": {
+    "_note": "Style facet values that are materials, power types, internal tags or restate the category. Matched case-insensitively against the cleaned label. Values containing digits or underscores are always dropped.",
+    "blockValues": [
+      "powered",
+      "metal",
+      "silicone",
+      "glass",
+      "plastic",
+      "abs",
+      "tpe",
+      "tpr",
+      "pvc",
+      "jelly",
+      "rubber",
+      "latex",
+      "steel",
+      "stainless steel",
+      "aluminum",
+      "wood",
+      "leather",
+      "cordless",
+      "corded",
+      "battery",
+      "batteries",
+      "rechargeable",
+      "usb",
+      "plug in",
+      "electric",
+      "manual",
+      "yes",
+      "no",
+      "other",
+      "misc",
+      "miscellaneous",
+      "unisex",
+      "male",
+      "female",
+      "men",
+      "women",
+      "new",
+      "sale",
+      "clearance",
+      "featured",
+      "bestseller",
+      "best seller",
+      "reviewed",
+      "audit",
+      "default",
+      "none",
+      "n/a",
+      "na"
+    ],
+    "blockGroups": [
+      "audit",
+      "reviewed",
+      "internal",
+      "feed",
+      "google",
+      "collection",
+      "sale",
+      "holiday"
+    ]
+  }
 }

@@ -11,8 +11,22 @@ import {
   type ListingResult,
   type ProductSummary,
 } from '@/lib/listing'
+import { merchandise, type MerchFocus } from '@/server/merchandising'
+import hubRules from '@/data/hub-rules.json'
 
 const SKIP_GROUPS = new Set(['category', 'celebrity', 'holiday 2021', 'holiday 2022'])
+const BLOCK_VALUES = new Set(hubRules.facets.blockValues)
+const BLOCK_GROUPS = hubRules.facets.blockGroups
+
+/** False for materials, power types, internal feed tags and values that restate the product's own category. */
+function isShopperFacing(group: string, label: string, hub: string): boolean {
+  const value = label.toLowerCase()
+  if (/[\d_]/.test(label) || label.length > 32) return false
+  if (BLOCK_VALUES.has(value)) return false
+  if (BLOCK_GROUPS.some((g) => group.startsWith(g))) return false
+  const slug = slugify(label)
+  return slug !== hub && `${slug}s` !== hub && !hub.startsWith(`${slug}-`)
+}
 const FEEL_LABELS: Record<string, string> = {
   vagina: 'Vaginal Entry',
   anal: 'Anal Entry',
@@ -73,6 +87,7 @@ function productFacetValues(p: CatalogProduct): Record<FilterKey, [string, strin
     const label = group.includes('feel')
       ? FEEL_LABELS[value.toLowerCase()] ?? `${titleCase(value)} Entry`
       : titleCase(value)
+    if (!isShopperFacing(group, label, p.hub)) continue
     types.push([slugify(label), label])
   }
 
@@ -124,9 +139,10 @@ export function toSummary(p: CatalogProduct): ProductSummary {
   }
 }
 
+const MIN_STYLE_COUNT = 3
 const FACET_LIMITS: Record<FilterKey, number> = { brand: 24, type: 14, for: 3, feature: 10, price: 5 }
 
-export function buildListing(source: CatalogProduct[], filters: ListingFilters): ListingResult {
+export function buildListing(source: CatalogProduct[], filters: ListingFilters, focus?: MerchFocus): ListingResult {
   const facets = {} as Facets
   for (const key of FILTER_KEYS) {
     // Counts reflect every other active filter, so options never lead to zero results.
@@ -143,7 +159,11 @@ export function buildListing(source: CatalogProduct[], filters: ListingFilters):
     options =
       key === 'price'
         ? PRICE_BANDS.map((b) => counts.get(b.id)).filter((o): o is FacetOption => Boolean(o))
-        : options.sort((a, b) => b.count - a.count).slice(0, FACET_LIMITS[key])
+        : options
+            // One-off style values are usually feed typos ("Neckless", "Chasity"); keep the selected one visible.
+            .filter((o) => key !== 'type' || o.count >= MIN_STYLE_COUNT || filters.type === o.value)
+            .sort((a, b) => b.count - a.count)
+            .slice(0, FACET_LIMITS[key])
     facets[key] = options
   }
 
@@ -153,7 +173,7 @@ export function buildListing(source: CatalogProduct[], filters: ListingFilters):
       ? [...filtered].sort((a, b) => a.price - b.price)
       : filters.sort === 'price-desc'
         ? [...filtered].sort((a, b) => b.price - a.price)
-        : [...filtered].sort((a, b) => Number(b.available) - Number(a.available))
+        : merchandise(filtered, focus)
 
   const pageCount = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE))
   const page = Math.min(filters.page ?? 1, pageCount)

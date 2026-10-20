@@ -1,7 +1,8 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { ProductRail } from '@/components/ProductCard'
+import { ProductCard } from '@/components/ProductCard'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { HUBS } from '@/content/hubs'
+import { COLLECTIONS_BY_SLUG } from '@/content/collections'
 import { POSTS } from '@/content/posts'
 import { SITE } from '@/config/site'
 import { getHomeData } from '@/lib/catalog'
@@ -25,21 +26,27 @@ export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
-const NEEDS = [
+const AUDIENCES = [
   {
+    key: 'forHer',
     slug: 'sex-toys-for-women',
     label: 'For Her',
-    line: 'Vibrators, wands and air-pulse toys chosen for real pleasure.',
+    line: 'Vibrators, wands and air-pulse toys chosen for real pleasure. Start small and quiet, or go straight to the cult favorites.',
+    links: ['clitoral-vibrators', 'wand-vibrators', 'rabbit-vibrators', 'bullet-vibrators'],
   },
   {
+    key: 'forHim',
     slug: 'sex-toys-for-men',
     label: 'For Him',
-    line: 'Strokers, rings and prostate toys, from first-time to expert.',
+    line: 'Strokers, rings and prostate toys, from first-time to expert. Most of the best ones cost less than a nice dinner.',
+    links: ['automatic-strokers', 'prostate-vibrators', 'vibrating-cock-rings', 'tenga'],
   },
   {
+    key: 'forCouples',
     slug: 'couples-sex-toys',
     label: 'For Couples',
-    line: 'Wearables and app-controlled toys made to be shared.',
+    line: 'Wearables and app-controlled toys made to be shared, in the same room or across the country.',
+    links: ['app-controlled-sex-toys', 'remote-control-vibrators', 'we-vibe', 'lovense'],
   },
 ] as const
 
@@ -49,128 +56,162 @@ const PROMISES = [
   ['Discreet Delivery', 'Every order ships in plain packaging from our trusted retail partner.'],
 ] as const
 
-function Row({
-  title,
-  kicker,
-  slug,
-  products,
-}: {
-  title: string
-  kicker: string
-  slug: string
-  products: ProductSummary[]
-}) {
-  if (!products.length) return null
+function ProductRow({ products, cols = 3 }: { products: ProductSummary[]; cols?: 3 | 4 }) {
   return (
-    <section className="wrap pt-24 sm:pt-32 reveal">
-      <div className="flex items-end justify-between gap-6 mb-8 sm:mb-10">
-        <h2 className="display-m max-w-3xl">
-          {title}. <span className="text-graphite">{kicker}.</span>
-        </h2>
-        <Link to="/shop/$slug" params={{ slug }} className="more hidden sm:inline-flex">
-          View All
-        </Link>
-      </div>
-      <ProductRail products={products} />
-      <Link to="/shop/$slug" params={{ slug }} className="more mt-8 sm:hidden">
-        View All
-      </Link>
-    </section>
+    <div className={`rail ${cols === 3 ? 'lg:!grid-cols-3' : ''}`}>
+      {products.map((product) => (
+        <ProductCard key={product.handle} product={product} size="small" />
+      ))}
+    </div>
   )
 }
 
 function HomePage() {
-  const { hubCounts, luxury, forHim, forHer, forCouples } = Route.useLoaderData()
+  const data = Route.useLoaderData()
+  const { hubCounts, firstPicks, splurge } = data
   const hubs = HUBS.filter((hub) => (hubCounts[hub.slug] ?? 0) > 0)
   const [lead] = POSTS
-  const hero = luxury[0]
-  const tileProducts: Record<string, ProductSummary | undefined> = {
-    'sex-toys-for-women': forHer[0],
-    'sex-toys-for-men': forHim[0],
-    'couples-sex-toys': forCouples[0],
-  }
 
   return (
     <div>
-      <section className="bg-mist overflow-hidden">
-        <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-6 items-center min-h-[min(86vh,880px)] pt-16 pb-12 lg:py-20">
-          <div className="lg:col-span-6 relative z-10">
-            <p className="eyebrow text-graphite rise">Curated Pleasure. Est. 2026.</p>
-            <h1 className="mt-5 display-xl rise">
-              Pleasure,{' '}
-              <br />
-              Explained.
-            </h1>
-            <p className="mt-8 lede text-graphite max-w-lg rise-delay">
+      <section className="bg-stone">
+        <div className="wrap pt-20 sm:pt-32 pb-12">
+          <p className="eyebrow text-graphite rise">Curated Pleasure. Est. 2026.</p>
+          <h1 className="mt-5 display-xl rise">
+            Luxury Adult Toys,{' '}
+            <br />
+            Explained.
+          </h1>
+          <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end rise-delay">
+            <p className="lg:col-span-5 lede text-graphite">
               The world's best adult toys, chosen with care and explained without the blush. Compare honestly, then
               buy discreetly.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 rise-delay">
-              <a href="#shop-by-need" className="btn">
-                Begin Shopping
+            <p className="lg:col-span-6 lg:col-start-7 font-display text-[1.625rem] sm:text-[2.125rem] font-semibold tracking-[-0.03em] leading-[1.2]">
+              Shop{' '}
+              <a href="#for-her" className="underline decoration-1 underline-offset-[6px] hover:text-graphite">
+                for her
               </a>
-              <Link to="/blog" className="more">
-                Read {SITE.guidesName}
-              </Link>
-            </div>
+              ,{' '}
+              <a href="#for-him" className="underline decoration-1 underline-offset-[6px] hover:text-graphite">
+                for him
+              </a>{' '}
+              or{' '}
+              <a href="#for-couples" className="underline decoration-1 underline-offset-[6px] hover:text-graphite">
+                for the two of you
+              </a>
+              .
+            </p>
           </div>
-          {hero && (
-            <Link
-              to="/products/$productId"
-              params={{ productId: hero.handle }}
-              className="group lg:col-span-6 block w-full max-w-md mx-auto lg:max-w-none"
-            >
-              <div className="relative aspect-square">
-                <img
-                  src={getOptimizedImageUrl(hero.image, 1200)}
-                  alt={`${hero.title} by ${hero.brand}`}
-                  width={1200}
-                  height={1200}
-                  fetchPriority="high"
-                  className="absolute inset-0 w-full h-full object-contain mix-blend-multiply transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                />
-              </div>
-              <p className="mt-4 text-sm text-graphite">
-                <span className="text-ink font-medium">{hero.title}</span> · {formatPrice(hero.price)}
-              </p>
-            </Link>
-          )}
+          <ul className="mt-20 sm:mt-28 grid sm:grid-cols-3 gap-x-10 border-t border-ink/15">
+            {PROMISES.map(([title, body]) => (
+              <li key={title} className="pt-5 pb-2">
+                <p className="text-sm font-semibold tracking-[-0.01em]">{title}</p>
+                <p className="mt-1 text-sm text-graphite leading-relaxed max-w-xs">{body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section id="shop-by-need" className="wrap pt-3 grid md:grid-cols-3 gap-3 scroll-mt-24">
-        {NEEDS.map((need) => {
-          const product = tileProducts[need.slug]
-          return (
-            <Link
-              key={need.slug}
-              to="/shop/$slug"
-              params={{ slug: need.slug }}
-              className="group relative block aspect-[4/5] bg-mist overflow-hidden"
-            >
-              {product && (
-                <img
-                  src={getOptimizedImageUrl(product.image, 900)}
-                  alt=""
-                  loading="lazy"
-                  width={900}
-                  height={1125}
-                  className="absolute inset-0 w-full h-full object-contain p-[16%] pb-[30%] mix-blend-multiply transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                />
-              )}
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <h2 className="display-m">{need.label}</h2>
-                <p className="mt-2 text-[0.9375rem] text-graphite max-w-xs leading-snug">{need.line}</p>
-                <span className="mt-5 btn min-h-10 px-5 text-sm">Shop</span>
-              </div>
-            </Link>
-          )
-        })}
-      </section>
+      {firstPicks.length > 0 && (
+        <section className="wrap pt-24 sm:pt-32 reveal">
+          <div className="grid lg:grid-cols-12 gap-6 items-end mb-10">
+            <h2 className="lg:col-span-7 display-m">Easy First Picks</h2>
+            <p className="lg:col-span-4 lg:col-start-9 text-graphite leading-relaxed">
+              Well made, easy to use and under $50. The ones we point friends to first.{' '}
+              <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
+                Shop under $50
+              </Link>
+            </p>
+          </div>
+          <ProductRow products={firstPicks} cols={4} />
+        </section>
+      )}
 
-      <Row title="Luxury Picks" kicker="The investment pieces" slug="luxury-sex-toys" products={luxury} />
-      <Row title="Her Favorites" kicker="Chosen for her" slug="sex-toys-for-women" products={forHer} />
-      <Row title="His Favorites" kicker="Chosen for him" slug="sex-toys-for-men" products={forHim} />
+      {AUDIENCES.map((a, i) => {
+        const products = data[a.key]
+        const flip = i % 2 === 1
+        return (
+          <section
+            key={a.slug}
+            id={a.key === 'forHer' ? 'for-her' : a.key === 'forHim' ? 'for-him' : 'for-couples'}
+            className={`scroll-mt-24 ${flip ? 'bg-stone mt-24 sm:mt-32 py-20 sm:py-28' : 'pt-24 sm:pt-32'}`}
+          >
+            <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-14 reveal">
+              <div className={`lg:col-span-4 ${flip ? 'lg:order-2 lg:col-start-9' : ''}`}>
+                <h2 className="display-l">{a.label}</h2>
+                <p className="mt-5 text-[1.0625rem] text-graphite leading-relaxed max-w-sm">{a.line}</p>
+                <ul className="mt-8 border-t border-ink/15 max-w-sm">
+                  {a.links.map((slug) => (
+                    <li key={slug} className="border-b border-ink/15">
+                      <Link
+                        to="/shop/$slug"
+                        params={{ slug }}
+                        className="group flex items-center justify-between py-3 text-[0.9375rem] font-medium"
+                      >
+                        {COLLECTIONS_BY_SLUG[slug]?.name}
+                        <span aria-hidden="true" className="text-graphite transition-transform group-hover:translate-x-1">
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/shop/$slug" params={{ slug: a.slug }} className="mt-8 more">
+                  Shop All {a.label}
+                </Link>
+              </div>
+              <div className={`lg:col-span-8 ${flip ? 'lg:order-1 [&_.bg-stone]:bg-canvas' : ''}`}>
+                {products.length > 0 && <ProductRow products={products} />}
+              </div>
+            </div>
+          </section>
+        )
+      })}
+
+      {splurge.length > 0 && (
+        <section className="wrap pt-24 sm:pt-36 grid lg:grid-cols-12 gap-10 reveal">
+          <div className="lg:col-span-4">
+            <h2 className="display-m">Worth the Splurge</h2>
+            <p className="mt-4 text-graphite leading-relaxed max-w-xs">
+              Stronger, quieter motors and better materials. Three we think earn the price.
+            </p>
+            <Link to="/shop/$slug" params={{ slug: 'luxury-sex-toys' }} className="mt-6 more">
+              Shop Luxury
+            </Link>
+          </div>
+          <ul className="lg:col-span-8 border-t border-ink">
+            {splurge.map((p) => (
+              <li key={p.handle} className="border-b border-line">
+                <Link
+                  to="/products/$productId"
+                  params={{ productId: p.handle }}
+                  className="group grid grid-cols-[4.5rem_1fr_auto] sm:grid-cols-[6rem_1fr_auto] items-center gap-5 py-4"
+                >
+                  <span className="relative block aspect-square bg-stone overflow-hidden">
+                    <img
+                      src={getOptimizedImageUrl(p.image, 240)}
+                      alt={`${p.title} by ${p.brand}`}
+                      loading="lazy"
+                      width={240}
+                      height={240}
+                      className="absolute inset-0 w-full h-full object-contain p-[14%] mix-blend-multiply saturate-[0.85]"
+                    />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-display text-lg sm:text-xl font-semibold tracking-[-0.02em] leading-snug group-hover:underline underline-offset-4 decoration-1">
+                      {p.title}
+                    </span>
+                    <span className="block mt-0.5 text-sm text-graphite">{p.brand}</span>
+                  </span>
+                  <span className="text-[0.9375rem] font-medium tabular-nums">{formatPrice(p.price)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="mt-28 sm:mt-36 bg-night text-canvas">
         <div className="wrap py-24 sm:py-32 grid lg:grid-cols-12 gap-12">
@@ -214,17 +255,8 @@ function HomePage() {
         </section>
       )}
 
-      <section className="wrap pt-24 sm:pt-36">
-        <div className="grid md:grid-cols-3 gap-12 md:gap-10 border-t border-ink pt-10 reveal">
-          {PROMISES.map(([title, body], i) => (
-            <div key={title}>
-              <span className="text-sm font-semibold text-graphite tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-              <h2 className="mt-4 font-display text-[1.75rem] font-semibold tracking-[-0.03em] leading-tight">{title}</h2>
-              <p className="mt-3 text-graphite leading-relaxed max-w-sm">{body}</p>
-            </div>
-          ))}
-        </div>
-        <AffiliateNotice className="pt-16" />
+      <section className="wrap pt-16">
+        <AffiliateNotice />
       </section>
     </div>
   )

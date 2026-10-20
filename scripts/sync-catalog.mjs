@@ -40,6 +40,24 @@ function toNumber(value) {
   return Number.isFinite(n) && n > 0 ? n : undefined
 }
 
+// Some feed titles arrive as the bare handle ("svakom-plume-rechargeable-...")
+// or repeat the vendor ("Lelo LELO SMART WAND 2"). Clean both before display.
+function cleanTitle(rawTitle, handle, brand) {
+  let title = String(rawTitle ?? '').trim().replace(/\s+/g, ' ')
+  if (!title || /^[a-z0-9]+(-[a-z0-9]+)+$/.test(title) || title === handle) {
+    title = String(handle ?? title)
+      .split('-')
+      .map((w) => (w.length <= 2 && /\d/.test(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)))
+      .join(' ')
+  }
+  const b = String(brand ?? '').trim()
+  if (b) {
+    const esc = b.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    title = title.replace(new RegExp(`^${esc}\\s+(?=${esc}\\b)`, 'i'), '')
+  }
+  return title
+}
+
 function normalize(raw) {
   const tags = Array.isArray(raw.tags)
     ? raw.tags
@@ -56,7 +74,7 @@ function normalize(raw) {
     }
   })
   const lowest = variants.reduce((min, v) => (min && min.price <= v.price ? min : v), null)
-  const title = String(raw.title ?? '').trim()
+  const title = cleanTitle(raw.title, raw.handle, raw.vendor)
   return {
     handle: raw.handle,
     title,
