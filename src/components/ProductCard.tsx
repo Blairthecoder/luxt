@@ -3,7 +3,7 @@ import type { ProductSummary } from '@/lib/listing'
 import { getOptimizedImageUrl } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
 
-export function ProductCard({ product }: { product: ProductSummary }) {
+export function ProductCard({ product, size = 'default' }: { product: ProductSummary; size?: 'default' | 'small' }) {
   const flag = !product.available ? 'Sold Out' : product.compareAtPrice ? 'Sale' : null
   return (
     <Link
@@ -11,14 +11,14 @@ export function ProductCard({ product }: { product: ProductSummary }) {
       params={{ productId: product.handle }}
       className="group flex flex-col"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-mist">
+      <div className={`relative overflow-hidden ${size === 'small' ? 'aspect-[5/4] bg-stone' : 'aspect-[4/5] bg-mist'}`}>
         <img
           src={getOptimizedImageUrl(product.image, 600)}
           alt={`${product.title} by ${product.brand}`}
           loading="lazy"
           width={600}
           height={750}
-          className="absolute inset-0 w-full h-full object-contain p-[9%] mix-blend-multiply transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+          className={`absolute inset-0 w-full h-full object-contain mix-blend-multiply ${size === 'small' ? 'p-[18%] saturate-[0.85]' : 'p-[9%]'} transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
         />
       </div>
       <div className="pt-4 space-y-0.5">
@@ -53,11 +53,11 @@ export function ProductGrid({ products }: { products: ProductSummary[] }) {
 }
 
 /** Horizontal scroller on small screens, four-up grid on desktop. */
-export function ProductRail({ products }: { products: ProductSummary[] }) {
+export function ProductRail({ products, size }: { products: ProductSummary[]; size?: 'default' | 'small' }) {
   return (
     <div className="rail">
       {products.map((product) => (
-        <ProductCard key={product.handle} product={product} />
+        <ProductCard key={product.handle} product={product} size={size} />
       ))}
     </div>
   )

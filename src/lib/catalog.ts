@@ -5,23 +5,17 @@ import type { ListingFilters } from '@/lib/listing'
 export const getHomeData = createServerFn({ method: 'GET' }).handler(async () => {
   const store = await import('@/server/catalog-store')
   const { toSummary } = await import('@/server/listing')
-  const { COLLECTIONS } = await import('@/content/collections')
-  const pick = (slug: string, n: number) => {
-    const c = COLLECTIONS.find((x) => x.slug === slug)
-    return c
-      ? store
-          .productsMatchingRule(c.slug, c.rule)
-          .filter((p) => p.available && p.images.length > 0)
-          .slice(0, n)
-          .map(toSummary)
-      : []
-  }
+  const { pickRow } = await import('@/server/home-picks')
+  const products = store.allProducts()
+  const used = new Set<string>()
+  const forHer = pickRow(products, { hubs: ['vibrators', 'couples'], tags: ['female'] }, used)
+  const forHim = pickRow(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'] }, used)
+  const luxury = pickRow(products, { hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'], minPrice: 150 }, used)
   return {
     hubCounts: store.hubCounts(),
-    luxury: pick('luxury-sex-toys', 4),
-    forHim: pick('sex-toys-for-men', 4),
-    forHer: pick('sex-toys-for-women', 4),
-    forCouples: pick('couples-sex-toys', 1),
+    luxury: luxury.map(toSummary),
+    forHim: forHim.map(toSummary),
+    forHer: forHer.map(toSummary),
   }
 })
 
