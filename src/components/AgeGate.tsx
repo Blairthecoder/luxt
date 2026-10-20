@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Logo } from '@/components/Logo'
 
 const STORAGE_KEY = 'ns_age_confirmed'
 // A first-party cookie as well as localStorage, so Safari private windows and
@@ -45,9 +46,7 @@ export function AgeGate() {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-canvas/80 backdrop-blur-2xl px-5"
     >
       <div className="w-full max-w-md text-center rise">
-        <p className="font-display text-lg font-bold tracking-[-0.045em] text-ink">
-          Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
-        </p>
+        <Logo className="mx-auto h-14 w-auto" />
         <h2 id="age-gate-title" className="mt-10 display-m">
           Adults Only.
         </h2>
