@@ -49,6 +49,8 @@ Browse all [app-controlled toys](/shop/app-controlled-sex-toys)[[from:app-contro
 
 ## Making It Work
 
+For a full playbook on video dates, privacy and what to say, see our guide to [long-distance relationship intimacy](/blog/long-distance-relationship-video-call-intimacy).
+
 The toy is a tool. What makes a long-distance session good is the connection:
 
 - **Talk or video chat** while you play. Hearing your partner matters more than the vibration.
