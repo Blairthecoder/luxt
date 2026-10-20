@@ -408,7 +408,7 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
   },
 
   'shop:sex-toys-for-men': {
-    h1: 'Sex Toys for Men: Strokers, Rings & Prostate Toys to Enjoy',
+    h1: 'Sex Toys for Men That Feel Good, Solo or Together',
     body: [
       "There is nothing to feel awkward about here. Toys for men are simply a way to enjoy more sensation, feel more confident and learn what you like, solo or with a partner. They fall into a few clear groups. Strokers and masturbation sleeves replace your hand with texture and suction. Penis rings and pumps focus on firmness and sensation during solo or partnered sex. Prostate massagers explore internal sensation, and vibrating options across all three add intensity. Choosing the group first makes the rest easy.",
       "Material and care deserve attention. Most stroker sleeves are made from soft TPE or similar materials that feel lifelike but are porous, so they need thorough rinsing, complete drying and water-based lube only. Rings and prostate toys are usually silicone, which is easier to clean and lasts longer. Keep oil-based products away from sleeves and latex condoms.",
@@ -603,7 +603,7 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
   // Brand collections
   // ---------------------------------------------------------------------------
   'shop:lelo': {
-    h1: 'LELO Vibrators, Sonic Toys & Prostate Massagers to Enjoy',
+    h1: 'LELO Vibrators & Sonic Toys Made to Feel Good',
     body: [
       "LELO is a Swedish pleasure brand founded in Stockholm by a group of designers, and its toys are made to feel as good in the hand as they do in use. Sleek, sculpted shapes and soft silicone finishes are its signature, with rechargeable, waterproof builds and minimal, intuitive controls across most models, which makes them easy to pick up and enjoy.",
       "Several lines are especially well known. SONA and ENIGMA use sonic technology that pulses around the clitoris rather than vibrating against it, with ENIGMA adding an internal shaft for dual stimulation. SORAYA is the brand's rabbit, GIGI and INA cover G-spot and dual play, and the Smart Wand is its rechargeable wand massager. For prostate play, HUGO and LOKI are curved, vibrating massagers. TIANI is a wearable couples vibrator, and F1S is an app-connected stroker for penis owners.",

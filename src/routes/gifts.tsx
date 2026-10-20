@@ -24,7 +24,7 @@ export const Route = createFileRoute('/gifts')({
     pageHead({
       title: `Sex Toy Gift Ideas for Her, Him & Couples | ${SITE.shortName}`,
       description:
-        'Adult gift ideas sorted by who you are buying for and what you want to spend: gift guides, gift sets, stocking stuffers and premium picks that help them feel cared for.',
+        'Adult gift ideas that help someone feel cared for, sorted by who it is for and what you want to spend: gift guides, gift sets and stocking stuffers.',
       path: '/gifts',
       jsonLd: [
         breadcrumbJsonLd([

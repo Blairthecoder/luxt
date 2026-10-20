@@ -417,7 +417,7 @@ export const COLLECTIONS: Collection[] = [
     group: 'By Budget',
     metaTitle: 'Luxury Sex Toys: Considered Picks Worth Investing In',
     metaDescription:
-      'Luxury sex toys from LELO, Womanizer, Kiiroo and more, chosen for how they feel: quiet motors, soft materials, long warranties. Buy once, enjoy for years.',
+      'Luxury sex toys from LELO, Womanizer, Kiiroo and more, chosen for how they feel: quiet motors and soft, body-safe materials. Buy once, enjoy for years.',
     intro:
       'Spending more makes sense when a toy feels better every time you reach for it. These premium picks earn their price with quieter, stronger motors, softer materials and longer warranties, so you can buy once and enjoy it for years.',
     rule: { minPrice: 150 },
