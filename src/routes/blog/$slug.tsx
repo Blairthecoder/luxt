@@ -1,6 +1,7 @@
 import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
+import { NewsletterSignup } from '@/components/NewsletterSignup'
 import { POSTS_BY_SLUG, relatedPosts } from '@/content/posts'
 import { HUBS_BY_SLUG } from '@/content/hubs'
 import { TOPICS_BY_SLUG } from '@/content/topics'
@@ -191,6 +192,7 @@ function PostPage() {
               </dl>
             </section>
           ) : null}
+          <NewsletterSignup source={`guide:${post.slug}`} className="mt-14" />
           <AffiliateNotice className="mt-12 pt-6 border-t border-line" />
 
           {hubs.length > 0 && (
