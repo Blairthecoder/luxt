@@ -56,6 +56,8 @@ function Wordmark() {
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  // The desktop menu opens on hover/focus, so after a link is clicked it would stay open over the new page.
+  const [shopDismissed, setShopDismissed] = useState(false)
   const close = () => setMobileOpen(false)
 
   useEffect(() => {
@@ -89,11 +91,22 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <div className="group h-full flex items-center">
+            <div className="group h-full flex items-center" onMouseLeave={() => setShopDismissed(false)}>
               <button type="button" className={`${navLink} h-full`} aria-haspopup="true">
                 Shop All
               </button>
-              <div className="invisible opacity-0 -translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-[opacity,transform,visibility] duration-300 ease-out absolute left-0 right-0 top-full bg-canvas border-b border-line">
+              <div
+                onClick={(e) => {
+                  if (!(e.target as HTMLElement).closest('a')) return
+                  setShopDismissed(true)
+                  ;(document.activeElement as HTMLElement | null)?.blur()
+                }}
+                className={`invisible opacity-0 -translate-y-1 ${
+                  shopDismissed
+                    ? ''
+                    : 'group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0'
+                } transition-[opacity,transform,visibility] duration-300 ease-out absolute left-0 right-0 top-full bg-canvas border-b border-line`}
+              >
                 <div className="wrap pt-10 pb-14 grid grid-cols-[1.35fr_1fr_1fr_1fr_1fr] gap-10">
                   <MenuColumn title="Categories" size="lg">
                     {HUBS.map((hub) => (
