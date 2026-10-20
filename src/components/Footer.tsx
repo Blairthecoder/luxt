@@ -3,6 +3,7 @@ import { SITE } from '@/config/site'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
+import { NewsletterSignup } from '@/components/NewsletterSignup'
 
 const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'Gift Ideas', 'By Budget'].includes(c.group))
 
@@ -20,6 +21,7 @@ export function Footer() {
               Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
             </p>
             <p className="text-sm text-graphite leading-relaxed">{SITE.description}</p>
+            <NewsletterSignup source="footer" variant="footer" />
           </div>
 
           <div>

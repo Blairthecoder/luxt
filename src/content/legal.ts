@@ -55,6 +55,12 @@ export const PRIVACY: LegalDoc = {
       ],
     },
     {
+      heading: 'Email Signup',
+      body: [
+        'If you subscribe to our email list, we collect the email address you enter and the page you signed up on. Signups are received through Netlify Forms. We use your email only to send you new guides and deals, and you can unsubscribe at any time using the link in our emails or by contacting us. We do not sell your email address.',
+      ],
+    },
+    {
       heading: 'Affiliate Links and Our Retail Partner',
       body: [
         "Buy buttons link through our own /go/ address, which sends you to our retail partner's product page with a tracking link so the retailer can credit us for the referral. When you land on the retailer's site, its own privacy policy and cookies apply to everything you do there, including checkout, billing and shipping.",
@@ -78,7 +84,7 @@ export const PRIVACY: LegalDoc = {
       body: ['Information is shared only with the services that make the site work, and only as described above:'],
       bullets: [
         'Google, for analytics.',
-        'Netlify, for hosting.',
+        'Netlify, for hosting and for receiving email signups.',
         'Our retail partner, when you click through to buy, under its own privacy policy.',
         'Authorities, if the law requires it.',
       ],
