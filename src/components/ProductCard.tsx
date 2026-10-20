@@ -4,37 +4,37 @@ import { getOptimizedImageUrl } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
 
 export function ProductCard({ product }: { product: ProductSummary }) {
+  const flag = !product.available ? 'Sold Out' : product.compareAtPrice ? 'Sale' : null
   return (
     <Link
       to="/products/$productId"
       params={{ productId: product.handle }}
       className="group flex flex-col"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-tile">
+      <div className="relative aspect-[4/5] overflow-hidden bg-mist">
         <img
           src={getOptimizedImageUrl(product.image, 600)}
           alt={`${product.title} by ${product.brand}`}
           loading="lazy"
           width={600}
           height={750}
-          className="absolute inset-0 w-full h-full object-contain p-6 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          className="absolute inset-0 w-full h-full object-contain p-[9%] mix-blend-multiply transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
         />
-        {product.compareAtPrice ? (
-          <span className="eyebrow absolute top-3 left-3 bg-ink text-gold px-2.5 py-1">Sale</span>
-        ) : null}
-        {!product.available && (
-          <span className="eyebrow absolute top-3 right-3 bg-ink/80 text-muted px-2.5 py-1">Sold Out</span>
-        )}
       </div>
-      <div className="pt-4 space-y-1.5">
-        <p className="eyebrow text-gold-deep">{product.brand}</p>
-        <h3 className="font-display text-lg leading-snug text-ivory group-hover:text-gold transition-colors line-clamp-2">
+      <div className="pt-4 space-y-0.5">
+        {flag && (
+          <p className={`text-[0.8125rem] font-semibold ${flag === 'Sale' ? 'text-signal' : 'text-graphite'}`}>
+            {flag}
+          </p>
+        )}
+        <h3 className="font-sans text-[0.9375rem] font-medium tracking-[-0.01em] leading-snug text-ink line-clamp-2 group-hover:underline underline-offset-4 decoration-1">
           {product.title}
         </h3>
-        <p className="text-sm text-ivory/90">
+        <p className="text-[0.9375rem] text-graphite">{product.brand}</p>
+        <p className="pt-1.5 text-[0.9375rem] font-medium text-ink">
           {formatPrice(product.price)}
           {product.compareAtPrice && (
-            <span className="ml-2 text-faint line-through">{formatPrice(product.compareAtPrice)}</span>
+            <span className="ml-2 font-normal text-silver line-through">{formatPrice(product.compareAtPrice)}</span>
           )}
         </p>
       </div>
@@ -44,7 +44,18 @@ export function ProductCard({ product }: { product: ProductSummary }) {
 
 export function ProductGrid({ products }: { products: ProductSummary[] }) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 sm:gap-x-8">
+    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-12 sm:gap-x-4">
+      {products.map((product) => (
+        <ProductCard key={product.handle} product={product} />
+      ))}
+    </div>
+  )
+}
+
+/** Horizontal scroller on small screens, four-up grid on desktop. */
+export function ProductRail({ products }: { products: ProductSummary[] }) {
+  return (
+    <div className="rail">
       {products.map((product) => (
         <ProductCard key={product.handle} product={product} />
       ))}

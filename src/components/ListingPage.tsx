@@ -25,55 +25,61 @@ export function ListingPage({
   guides?: Post[]
 }) {
   return (
-    <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-      <header className="pt-10 pb-14 border-b border-line">
+    <div className="wrap">
+      <header className="pt-6 pb-12 sm:pb-16">
         <Breadcrumbs items={breadcrumbs} />
-        <div className="mt-10 grid lg:grid-cols-[1.2fr_1fr] gap-10 items-end">
-          <div>
-            <p className="eyebrow text-gold">{eyebrow}</p>
-            <h1 className="mt-4 text-5xl sm:text-6xl text-ivory leading-[1.05]">{title}</h1>
+        <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+          <div className="lg:col-span-7 rise">
+            <p className="eyebrow text-graphite">{eyebrow}</p>
+            <h1 className="mt-3 display-l">{title}</h1>
           </div>
-          <div className="space-y-4">
-            <p className="text-muted leading-relaxed">{intro}</p>
+          <div className="lg:col-span-5 space-y-4 rise-delay">
+            <p className="text-[1.0625rem] leading-relaxed text-graphite">{intro}</p>
             <AffiliateNotice />
           </div>
         </div>
       </header>
 
-      <div className="py-12">
+      <div className="pb-8">
         <ListingView result={result} filters={filters} />
       </div>
 
       {(tips?.length || guides.length > 0) && (
-        <section className="border-t border-line pt-14 grid lg:grid-cols-2 gap-14">
+        <section className="mt-24 pt-14 border-t border-ink grid lg:grid-cols-2 gap-16">
           {tips?.length ? (
-            <div>
-              <p className="eyebrow text-gold">Before You Buy</p>
-              <h2 className="mt-3 text-3xl text-ivory">What to Know</h2>
-              <ol className="mt-6 space-y-4">
+            <div className="reveal">
+              <h2 className="display-m">
+                What to Know. <span className="text-graphite">Before You Buy.</span>
+              </h2>
+              <ol className="mt-10 border-t border-line">
                 {tips.map((tip, i) => (
-                  <li key={tip} className="flex gap-5 text-muted leading-relaxed">
-                    <span className="font-display text-2xl text-gold-deep leading-none">
+                  <li key={tip} className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 border-b border-line leading-relaxed">
+                    <span className="font-display text-sm font-semibold text-graphite tabular-nums pt-0.5">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    {tip}
+                    <span className="text-[1.0625rem]">{tip}</span>
                   </li>
                 ))}
               </ol>
             </div>
           ) : null}
           {guides.length > 0 && (
-            <div>
-              <p className="eyebrow text-gold">Nightstand Notes</p>
-              <h2 className="mt-3 text-3xl text-ivory">Read the Guide</h2>
-              <ul className="mt-6 divide-y divide-line border-y border-line">
+            <div className="reveal">
+              <h2 className="display-m">
+                Read the Guide. <span className="text-graphite">Nightstand Notes.</span>
+              </h2>
+              <ul className="mt-10 border-t border-line">
                 {guides.map((post) => (
-                  <li key={post.slug}>
-                    <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block py-5">
-                      <span className="font-display text-xl text-ivory group-hover:text-gold transition-colors">
+                  <li key={post.slug} className="border-b border-line">
+                    <Link
+                      to="/blog/$slug"
+                      params={{ slug: post.slug }}
+                      className="group flex items-baseline justify-between gap-6 py-5"
+                    >
+                      <span className="font-display text-xl font-semibold tracking-[-0.02em] group-hover:underline underline-offset-4 decoration-1">
                         {post.title}
                       </span>
-                      <span className="block mt-1 text-sm text-faint">{post.readMinutes} Minute Read</span>
+                      <span className="shrink-0 text-xs text-graphite">{post.readMinutes} min read</span>
                     </Link>
                   </li>
                 ))}

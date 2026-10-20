@@ -6,81 +6,86 @@ import { TOPICS } from '@/content/topics'
 
 const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'Gift Ideas', 'By Budget'].includes(c.group))
 
+const heading = 'text-xs font-semibold text-ink mb-4'
+const list = 'space-y-2.5 text-xs text-graphite'
+const link = 'hover:text-ink hover:underline underline-offset-2'
+
 export function Footer() {
   return (
-    <footer className="border-t border-line mt-24">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 py-16 grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="space-y-5 max-w-sm">
-          <p>
-            <span className="block font-display text-2xl tracking-[0.18em] text-ivory">NIGHTSTAND</span>
-            <span className="block eyebrow text-gold mt-1 !tracking-[0.42em]">Supply Co.</span>
-          </p>
-          <p className="text-sm text-muted leading-relaxed">{SITE.description}</p>
-          <p className="text-xs text-faint leading-relaxed">
+    <footer className="bg-mist mt-28 sm:mt-36">
+      <div className="wrap pt-16 pb-10">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div className="space-y-5 max-w-sm">
+            <p className="font-display text-2xl font-bold tracking-[-0.045em] text-ink">
+              Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
+            </p>
+            <p className="text-sm text-graphite leading-relaxed">{SITE.description}</p>
+          </div>
+
+          <div>
+            <p className={heading}>Shop</p>
+            <ul className={list}>
+              {SHOP.map((c) => (
+                <li key={c.slug}>
+                  <Link to="/shop/$slug" params={{ slug: c.slug }} className={link}>
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className={heading}>Categories</p>
+            <ul className={list}>
+              {HUBS.map((hub) => (
+                <li key={hub.slug}>
+                  <Link to="/category/$slug" params={{ slug: hub.slug }} className={link}>
+                    {hub.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className={heading}>{SITE.guidesName}</p>
+            <ul className={list}>
+              {TOPICS.map((topic) => (
+                <li key={topic.slug}>
+                  <Link to="/blog/topic/$topic" params={{ topic: topic.slug }} className={link}>
+                    {topic.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/gifts" className={link}>
+                  The Gift Shop
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-ink font-medium hover:underline underline-offset-2">
+                  All Guides
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-14 pt-6 border-t border-line space-y-4 text-xs text-graphite">
+          <p className="max-w-3xl leading-relaxed">
             We earn a commission when you buy through our links, at no extra cost to you. Orders are placed and
             shipped by our retail partner.{' '}
-            <Link to="/disclosure" className="underline underline-offset-2 hover:text-gold">
+            <Link to="/disclosure" className="text-ink underline underline-offset-2">
               Disclosure
             </Link>
           </p>
-        </div>
-
-        <div>
-          <p className="eyebrow text-gold-deep mb-4">Shop</p>
-          <ul className="space-y-2.5 text-sm text-muted">
-            {SHOP.map((c) => (
-              <li key={c.slug}>
-                <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
-                  {c.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="eyebrow text-gold-deep mb-4">Categories</p>
-          <ul className="space-y-2.5 text-sm text-muted">
-            {HUBS.map((hub) => (
-              <li key={hub.slug}>
-                <Link to="/category/$slug" params={{ slug: hub.slug }} className="hover:text-gold">
-                  {hub.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <p className="eyebrow text-gold-deep mb-4">{SITE.guidesName}</p>
-          <ul className="space-y-2.5 text-sm text-muted">
-            {TOPICS.map((topic) => (
-              <li key={topic.slug}>
-                <Link to="/blog/topic/$topic" params={{ topic: topic.slug }} className="hover:text-gold">
-                  {topic.name}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link to="/gifts" className="hover:text-gold">
-                The Gift Shop
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog" className="text-gold hover:underline">
-                All Guides
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-line">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 py-6 flex flex-col sm:flex-row justify-between gap-3 eyebrow text-faint">
-          <span>
-            &copy; {new Date().getFullYear()} {SITE.name}
-          </span>
-          <span>For Adults 18+ Only</span>
+          <div className="flex flex-col sm:flex-row justify-between gap-2">
+            <span>
+              Copyright &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
+            </span>
+            <span>For adults 18+ only</span>
+          </div>
         </div>
       </div>
     </footer>

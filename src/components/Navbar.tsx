@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
@@ -19,18 +19,38 @@ const GIFTS_AND_COUPLES = [
   ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
 ]
 
+const navLink = 'text-[0.8125rem] font-medium text-ink/80 hover:text-ink transition-colors'
+
 function MenuColumn({
   title,
   children,
+  size = 'sm',
 }: {
   title: string
   children: React.ReactNode
+  size?: 'sm' | 'lg'
 }) {
   return (
     <div>
-      <p className="eyebrow text-gold-deep mb-4">{title}</p>
-      <ul className="space-y-2.5 text-sm text-muted">{children}</ul>
+      <p className="text-xs font-medium text-graphite mb-4">{title}</p>
+      <ul
+        className={
+          size === 'lg'
+            ? 'space-y-1.5 font-display text-xl font-semibold tracking-[-0.02em] text-ink'
+            : 'space-y-2.5 text-[0.8125rem] font-medium text-ink/75'
+        }
+      >
+        {children}
+      </ul>
     </div>
+  )
+}
+
+function Wordmark() {
+  return (
+    <span className="font-display text-[1.25rem] font-bold tracking-[-0.045em] text-ink leading-none">
+      Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
+    </span>
   )
 }
 
@@ -38,37 +58,40 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const close = () => setMobileOpen(false)
 
+  useEffect(() => {
+    document.documentElement.style.overflow = mobileOpen ? 'hidden' : ''
+  }, [mobileOpen])
+
   return (
-    <header className="sticky top-0 z-40 bg-ink/95 backdrop-blur border-b border-line">
-      <div className="text-center py-2 border-b border-line">
-        <p className="eyebrow text-faint">
-          Discreet Shipping<span className="hidden sm:inline"> From Our Trusted Retail Partner</span>
+    <header className="sticky top-0 z-40">
+      <div className="bg-mist text-center py-2">
+        <p className="text-xs text-graphite">
+          Discreet shipping<span className="hidden sm:inline"> from our trusted retail partner</span>
         </p>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-20">
-          <nav aria-label="Main" className="hidden lg:flex items-center gap-8">
+      <div className="bg-canvas/85 backdrop-blur-xl backdrop-saturate-150 border-b border-line">
+        <div className="wrap grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center h-14">
+          <Link to="/" aria-label={`${SITE.name} home`} className="justify-self-start">
+            <Wordmark />
+          </Link>
+
+          <nav aria-label="Main" className="hidden lg:flex items-center gap-9 h-full">
             {PRIMARY.map((item) => (
-              <Link
-                key={item.slug}
-                to="/shop/$slug"
-                params={{ slug: item.slug }}
-                className="eyebrow text-ivory hover:text-gold transition-colors"
-              >
+              <Link key={item.slug} to="/shop/$slug" params={{ slug: item.slug }} className={navLink}>
                 {item.label}
               </Link>
             ))}
-            <div className="group relative">
-              <button type="button" className="eyebrow text-ivory hover:text-gold transition-colors py-8">
+            <div className="group h-full flex items-center">
+              <button type="button" className={`${navLink} h-full`} aria-haspopup="true">
                 Shop All
               </button>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity fixed left-0 right-0 top-[7.25rem] bg-surface border-y border-line">
-                <div className="max-w-[1400px] mx-auto px-8 py-10 grid grid-cols-5 gap-10">
-                  <MenuColumn title="Categories">
+              <div className="invisible opacity-0 -translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-[opacity,transform,visibility] duration-300 ease-out absolute left-0 right-0 top-full bg-canvas border-b border-line">
+                <div className="wrap pt-10 pb-14 grid grid-cols-[1.35fr_1fr_1fr_1fr_1fr] gap-10">
+                  <MenuColumn title="Categories" size="lg">
                     {HUBS.map((hub) => (
                       <li key={hub.slug}>
-                        <Link to="/category/$slug" params={{ slug: hub.slug }} className="hover:text-gold">
+                        <Link to="/category/$slug" params={{ slug: hub.slug }} className="hover:text-graphite transition-colors">
                           {hub.name}
                         </Link>
                       </li>
@@ -77,7 +100,7 @@ export function Navbar() {
                   <MenuColumn title="By Style">
                     {STYLES.map((c) => (
                       <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
+                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
                           {c.name}
                         </Link>
                       </li>
@@ -85,13 +108,13 @@ export function Navbar() {
                   </MenuColumn>
                   <MenuColumn title="Gifts & Couples">
                     <li>
-                      <Link to="/gifts" className="text-gold hover:underline">
+                      <Link to="/gifts" className="text-ink font-semibold hover:underline underline-offset-4">
                         The Gift Shop
                       </Link>
                     </li>
                     {GIFTS_AND_COUPLES.map((c) => (
                       <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
+                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
                           {c.name}
                         </Link>
                       </li>
@@ -100,121 +123,134 @@ export function Navbar() {
                   <MenuColumn title="Featured Brands">
                     {BRANDS.map((c) => (
                       <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
+                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
                           {c.name}
                         </Link>
                       </li>
                     ))}
                   </MenuColumn>
-                  <MenuColumn title="By Budget">
-                    {BUDGET.map((c) => (
-                      <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-gold">
-                          {c.name}
-                        </Link>
-                      </li>
-                    ))}
-                    <li className="pt-6">
-                      <p className="eyebrow text-gold-deep mb-3">Guides by Topic</p>
-                    </li>
-                    {TOPICS.map((t) => (
-                      <li key={t.slug}>
-                        <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className="hover:text-gold">
-                          {t.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </MenuColumn>
+                  <div className="space-y-10">
+                    <MenuColumn title="By Budget">
+                      {BUDGET.map((c) => (
+                        <li key={c.slug}>
+                          <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
+                            {c.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </MenuColumn>
+                    <MenuColumn title="Guides by Topic">
+                      {TOPICS.map((t) => (
+                        <li key={t.slug}>
+                          <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className="hover:text-ink">
+                            {t.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </MenuColumn>
+                  </div>
                 </div>
               </div>
             </div>
-          </nav>
-
-          <button
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden eyebrow text-ivory justify-self-start"
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu"
-          >
-            {mobileOpen ? 'Close' : 'Menu'}
-          </button>
-
-          <Link to="/" className="text-center" aria-label={`${SITE.name} home`}>
-            <span className="block font-display text-2xl sm:text-[1.75rem] tracking-[0.18em] text-ivory leading-none">
-              NIGHTSTAND
-            </span>
-            <span className="block eyebrow text-gold mt-1.5 !tracking-[0.42em]">Supply Co.</span>
-          </Link>
-
-          <nav aria-label="Secondary" className="hidden lg:flex justify-end items-center gap-8">
-            <Link to="/gifts" className="eyebrow text-ivory hover:text-gold transition-colors">
+            <Link to="/gifts" className={navLink}>
               Gifts
             </Link>
-            <Link to="/blog" className="eyebrow text-ivory hover:text-gold transition-colors">
+          </nav>
+
+          <div className="justify-self-end flex items-center gap-6">
+            <Link to="/blog" className={`hidden lg:inline ${navLink}`}>
               {SITE.guidesName}
             </Link>
-          </nav>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden relative w-8 h-8 -mr-1.5"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            >
+              <span
+                aria-hidden="true"
+                className={`absolute left-1.5 right-1.5 h-[1.5px] bg-ink transition-transform duration-300 ${
+                  mobileOpen ? 'top-1/2 rotate-45' : 'top-[11px]'
+                }`}
+              />
+              <span
+                aria-hidden="true"
+                className={`absolute left-1.5 right-1.5 h-[1.5px] bg-ink transition-transform duration-300 ${
+                  mobileOpen ? 'top-1/2 -rotate-45' : 'top-[19px]'
+                }`}
+              />
+            </button>
+          </div>
         </div>
       </div>
 
       {mobileOpen && (
-        <nav id="mobile-menu" aria-label="Mobile" className="lg:hidden border-t border-line bg-surface px-5 py-8 space-y-8 max-h-[75vh] overflow-y-auto">
-          <ul className="space-y-4">
-            {PRIMARY.map((item) => (
-              <li key={item.slug}>
-                <Link to="/shop/$slug" params={{ slug: item.slug }} onClick={close} className="font-display text-2xl text-ivory">
-                  {item.label}
+        <nav
+          id="mobile-menu"
+          aria-label="Mobile"
+          className="lg:hidden fixed inset-x-0 bottom-0 top-[5.5rem] bg-canvas overflow-y-auto"
+        >
+          <div className="wrap pt-6 pb-16 space-y-12">
+            <ul className="space-y-1 font-display text-[2rem] font-bold tracking-[-0.04em] leading-tight">
+              {PRIMARY.map((item) => (
+                <li key={item.slug} className="rise">
+                  <Link to="/shop/$slug" params={{ slug: item.slug }} onClick={close}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="rise">
+                <Link to="/gifts" onClick={close}>
+                  Gifts
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link to="/gifts" onClick={close} className="font-display text-2xl text-ivory">
-                Gifts
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog" onClick={close} className="font-display text-2xl text-ivory">
-                {SITE.guidesName}
-              </Link>
-            </li>
-          </ul>
-          <MenuColumn title="Categories">
-            {HUBS.map((hub) => (
-              <li key={hub.slug}>
-                <Link to="/category/$slug" params={{ slug: hub.slug }} onClick={close}>
-                  {hub.name}
+              <li className="rise">
+                <Link to="/blog" onClick={close}>
+                  {SITE.guidesName}
                 </Link>
               </li>
-            ))}
-          </MenuColumn>
-          <MenuColumn title="By Style">
-            {STYLES.map((c) => (
-              <li key={c.slug}>
-                <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
-                  {c.name}
-                </Link>
-              </li>
-            ))}
-          </MenuColumn>
-          <MenuColumn title="Gifts & Couples">
-            {GIFTS_AND_COUPLES.map((c) => (
-              <li key={c.slug}>
-                <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
-                  {c.name}
-                </Link>
-              </li>
-            ))}
-          </MenuColumn>
-          <MenuColumn title="Guides by Topic">
-            {TOPICS.map((t) => (
-              <li key={t.slug}>
-                <Link to="/blog/topic/$topic" params={{ topic: t.slug }} onClick={close}>
-                  {t.name}
-                </Link>
-              </li>
-            ))}
-          </MenuColumn>
+            </ul>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-10">
+              <MenuColumn title="Categories">
+                {HUBS.map((hub) => (
+                  <li key={hub.slug}>
+                    <Link to="/category/$slug" params={{ slug: hub.slug }} onClick={close}>
+                      {hub.name}
+                    </Link>
+                  </li>
+                ))}
+              </MenuColumn>
+              <MenuColumn title="By Style">
+                {STYLES.map((c) => (
+                  <li key={c.slug}>
+                    <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
+                      {c.name}
+                    </Link>
+                  </li>
+                ))}
+              </MenuColumn>
+              <MenuColumn title="Gifts & Couples">
+                {GIFTS_AND_COUPLES.map((c) => (
+                  <li key={c.slug}>
+                    <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
+                      {c.name}
+                    </Link>
+                  </li>
+                ))}
+              </MenuColumn>
+              <MenuColumn title="Guides by Topic">
+                {TOPICS.map((t) => (
+                  <li key={t.slug}>
+                    <Link to="/blog/topic/$topic" params={{ topic: t.slug }} onClick={close}>
+                      {t.name}
+                    </Link>
+                  </li>
+                ))}
+              </MenuColumn>
+            </div>
+          </div>
         </nav>
       )}
     </header>
