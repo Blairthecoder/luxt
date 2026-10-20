@@ -35,6 +35,12 @@ import { LE_WAND_VS_MAGIC_WAND } from '@/content/guides/le-wand-vs-magic-wand'
 import { BEGINNERS_GUIDE } from '@/content/guides/sex-toys-for-beginners'
 import { BLACK_FRIDAY_DEALS } from '@/content/guides/black-friday-sex-toy-deals'
 import { BUYING_DISCREETLY } from '@/content/guides/buying-sex-toys-discreetly'
+import { RECONNECT_UNSEEN } from '@/content/guides/reconnect-with-your-husband-when-you-feel-unseen'
+import { INTRODUCE_KINK } from '@/content/guides/how-to-introduce-kink-to-your-marriage'
+import { SEXY_ADVENT } from '@/content/guides/sexy-advent-calendar-ideas-for-couples'
+import { BEST_TIME_TO_BUY } from '@/content/guides/best-time-to-buy-sex-toys'
+import { MENS_QUESTIONS } from '@/content/guides/sex-toy-questions-men-are-afraid-to-ask'
+import { TALK_TO_PARTNER } from '@/content/guides/how-to-talk-to-your-partner-about-sex-toys'
 import { BEST_FLESHLIGHT_BEGINNERS } from '@/content/guides/best-fleshlight-for-beginners'
 import { CLEAN_FLESHLIGHT } from '@/content/guides/how-to-clean-a-fleshlight'
 
@@ -99,6 +105,12 @@ export const POSTS: Post[] = [
   BEGINNERS_GUIDE,
   BLACK_FRIDAY_DEALS,
   BUYING_DISCREETLY,
+  RECONNECT_UNSEEN,
+  INTRODUCE_KINK,
+  SEXY_ADVENT,
+  BEST_TIME_TO_BUY,
+  MENS_QUESTIONS,
+  TALK_TO_PARTNER,
   BEST_FLESHLIGHT_BEGINNERS,
   CLEAN_FLESHLIGHT,
   {
