@@ -5,17 +5,17 @@ export const LONG_DISTANCE: Post = {
   title: 'Long-Distance Sex Toys: How to Stay Close From Anywhere',
   metaTitle: 'Long-Distance Sex Toys: App-Controlled Toys for Couples',
   metaDescription:
-    'The best long-distance sex toys for couples: how app-controlled vibrators and strokers work, what to buy, setup and privacy tips, with current prices.',
+    'Long-distance sex toys that help you feel close from anywhere: how app-controlled vibrators and strokers work, what to buy, plus setup and privacy tips.',
   excerpt:
-    'App-controlled toys let one partner control the other from anywhere. Here is how they work and what to buy first.',
+    'Miles apart can still feel close. How app-controlled toys let you share touch and pleasure from anywhere, and what to buy first.',
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['couples', 'vibrators', 'strokers'],
   topics: ['couples', 'how-to'],
   body: `
-A long-distance relationship is hard on physical intimacy. App-controlled toys are the closest thing to being in the same room: one partner controls the other's toy over the internet, in real time, with video or voice if you want it.
+Missing someone is hard, and missing their touch can be the hardest part. App-controlled toys are the closest thing to being in the same room: one partner controls the other's toy over the internet, in real time, with video or voice if you want it. That shared moment can help you both feel wanted and connected between visits.
 
-They are also popular with couples who live together, for teasing across a room or a dinner table.
+They are also popular with couples who live together, for teasing across a room or a dinner table. This guide explains how they work and what to buy first.
 
 ## How They Work
 
