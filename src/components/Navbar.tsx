@@ -21,6 +21,14 @@ const GIFTS_AND_COUPLES = [
   ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
 ]
 
+const SHEET_LINKS = [
+  { label: 'For Her', to: '/shop/$slug', params: { slug: 'sex-toys-for-women' } },
+  { label: 'For Him', to: '/shop/$slug', params: { slug: 'sex-toys-for-men' } },
+  { label: 'For Couples', to: '/shop/$slug', params: { slug: 'couples-sex-toys' } },
+  { label: 'Gifts', to: '/gifts' },
+  { label: SITE.guidesName, to: '/blog' },
+] as const
+
 const SearchIcon = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
     <circle cx="11" cy="11" r="6.5" />
@@ -301,64 +309,41 @@ export function Navbar() {
                 </button>
               </div>
             </div>
-          <div className="px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-2 space-y-10">
-            <ul className="flex flex-wrap gap-2">
-              {PRIMARY.map((item) => (
-                <li key={item.slug}>
-                  <Link to="/shop/$slug" params={{ slug: item.slug }} onClick={close} className="chip !min-h-[2.75rem] !px-5 !text-sm">
+          <div className="px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-1">
+            <ul className="space-y-2">
+              {SHEET_LINKS.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    {...('params' in item ? { params: item.params } : {})}
+                    onClick={close}
+                    className="press flex h-[3.75rem] items-center justify-between rounded-2xl bg-mist px-5 text-[1.0625rem] font-semibold tracking-[-0.01em]"
+                  >
                     {item.label}
+                    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-graphite" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m9 6 6 6-6 6" />
+                    </svg>
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link to="/gifts" onClick={close} className="chip !min-h-[2.75rem] !px-5 !text-sm">
-                  Gifts
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" onClick={close} className="chip !min-h-[2.75rem] !px-5 !text-sm">
-                  {SITE.guidesName}
-                </Link>
-              </li>
             </ul>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-10">
-              <MenuColumn title="Categories">
+            <details className="group mt-3 rounded-2xl border border-line">
+              <summary className="flex h-14 cursor-pointer list-none items-center justify-between px-5 text-[0.9375rem] font-medium [&::-webkit-details-marker]:hidden">
+                All Categories
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-graphite transition-transform group-open:rotate-90" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m9 6 6 6-6 6" />
+                </svg>
+              </summary>
+              <ul className="flex flex-wrap gap-2 px-4 pb-4">
                 {HUBS.map((hub) => (
                   <li key={hub.slug}>
-                    <Link to="/category/$slug" params={{ slug: hub.slug }} onClick={close}>
+                    <Link to="/category/$slug" params={{ slug: hub.slug }} onClick={close} className="chip !min-h-[2.5rem]">
                       {hub.name}
                     </Link>
                   </li>
                 ))}
-              </MenuColumn>
-              <MenuColumn title="By Style">
-                {STYLES.map((c) => (
-                  <li key={c.slug}>
-                    <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
-                      {c.name}
-                    </Link>
-                  </li>
-                ))}
-              </MenuColumn>
-              <MenuColumn title="Gifts & Couples">
-                {GIFTS_AND_COUPLES.map((c) => (
-                  <li key={c.slug}>
-                    <Link to="/shop/$slug" params={{ slug: c.slug }} onClick={close}>
-                      {c.name}
-                    </Link>
-                  </li>
-                ))}
-              </MenuColumn>
-              <MenuColumn title="Guides by Topic">
-                {TOPICS.map((t) => (
-                  <li key={t.slug}>
-                    <Link to="/blog/topic/$topic" params={{ topic: t.slug }} onClick={close}>
-                      {t.name}
-                    </Link>
-                  </li>
-                ))}
-              </MenuColumn>
-            </div>
+              </ul>
+            </details>
           </div>
           </nav>
         </div>
