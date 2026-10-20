@@ -118,7 +118,7 @@ function HomePage() {
             <Link
               to="/products/$productId"
               params={{ productId: hero.handle }}
-              className="group lg:col-span-6 block"
+              className="group lg:col-span-6 block w-full max-w-md mx-auto lg:max-w-none"
             >
               <div className="relative aspect-square">
                 <img
