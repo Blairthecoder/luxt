@@ -1,4 +1,5 @@
 import type { ProductCopy } from '@/types/catalog'
+import { BRAND_PRODUCT_COPY } from '@/content/product-copy-brands'
 
 /**
  * Original editorial copy keyed by product handle. A product page is indexable
@@ -645,4 +646,6 @@ export const PRODUCT_COPY: Record<string, ProductCopy> = {
       },
     ],
   },
+
+  ...BRAND_PRODUCT_COPY,
 }
