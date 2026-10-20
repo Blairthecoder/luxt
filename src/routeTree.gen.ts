@@ -15,6 +15,7 @@ import { Route as DisclosureRouteImport } from './routes/disclosure'
 import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as GlossaryRouteImport } from './routes/glossary'
 import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
@@ -52,6 +53,11 @@ const GlossaryRoute = GlossaryRouteImport.update({
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/gifts': typeof GiftsRoute
   '/glossary': typeof GlossaryRoute
   '/quiz': typeof QuizRoute
+  '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/gifts': typeof GiftsRoute
   '/glossary': typeof GlossaryRoute
   '/quiz': typeof QuizRoute
+  '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/gifts': typeof GiftsRoute
   '/glossary': typeof GlossaryRoute
   '/quiz': typeof QuizRoute
+  '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/glossary'
     | '/quiz'
+    | '/search'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/category/$slug'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/glossary'
     | '/quiz'
+    | '/search'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/category/$slug'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/glossary'
     | '/quiz'
+    | '/search'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/category/$slug'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   GiftsRoute: typeof GiftsRoute
   GlossaryRoute: typeof GlossaryRoute
   QuizRoute: typeof QuizRoute
+  SearchRoute: typeof SearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
@@ -254,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/quiz'
       fullPath: '/quiz'
       preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -322,6 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   GiftsRoute: GiftsRoute,
   GlossaryRoute: GlossaryRoute,
   QuizRoute: QuizRoute,
+  SearchRoute: SearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,
