@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /go/
+# Internal search results are noindex duplicates with endless URL variants.
+Disallow: /search
 # Filtered and sorted listing views are noindex duplicates of the clean listing.
 # ?page=N stays crawlable.
 Disallow: /*?*type=

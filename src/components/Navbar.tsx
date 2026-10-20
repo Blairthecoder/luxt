@@ -46,6 +46,37 @@ function MenuColumn({
   )
 }
 
+function SearchIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <circle cx="8.5" cy="8.5" r="5.5" />
+      <path d="m13 13 4 4" />
+    </svg>
+  )
+}
+
+function SearchForm({ id, className = '', onSubmit }: { id: string; className?: string; onSubmit?: () => void }) {
+  return (
+    <form action="/search" method="get" role="search" onSubmit={onSubmit} className={`relative ${className}`}>
+      <label htmlFor={id} className="sr-only">
+        Search toys and guides
+      </label>
+      <input
+        id={id}
+        name="q"
+        type="search"
+        maxLength={80}
+        autoComplete="off"
+        placeholder="Search"
+        className="w-full h-9 rounded-full bg-mist pl-4 pr-10 text-[0.8125rem] text-ink placeholder:text-graphite outline-none focus:ring-2 focus:ring-ink"
+      />
+      <button type="submit" aria-label="Search" className="absolute right-0 top-0 h-9 w-10 flex items-center justify-center text-graphite hover:text-ink">
+        <SearchIcon />
+      </button>
+    </form>
+  )
+}
+
 function Wordmark() {
   return (
     <span className="font-display text-[1.25rem] font-bold tracking-[-0.045em] text-ink leading-none">
@@ -168,6 +199,10 @@ export function Navbar() {
             <Link to="/blog" className={`hidden lg:inline ${navLink}`}>
               {SITE.guidesName}
             </Link>
+            <SearchForm id="header-search" className="hidden lg:block w-44 xl:w-52" />
+            <Link to="/search" aria-label="Search" className="lg:hidden w-8 h-8 -mr-3 flex items-center justify-center text-ink">
+              <SearchIcon />
+            </Link>
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -200,6 +235,7 @@ export function Navbar() {
           className="lg:hidden fixed inset-x-0 bottom-0 top-[5.75rem] bg-canvas overflow-y-auto"
         >
           <div className="wrap pt-6 pb-16 space-y-12">
+            <SearchForm id="mobile-search" onSubmit={close} />
             <ul className="space-y-1 font-display text-[2rem] font-bold tracking-[-0.04em] leading-tight">
               {PRIMARY.map((item) => (
                 <li key={item.slug} className="rise">
