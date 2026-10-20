@@ -5,6 +5,9 @@ import { AffiliateNotice } from '@/components/AffiliateNotice'
 import type { ListingFilters, ListingResult } from '@/lib/listing'
 import type { Post } from '@/content/posts'
 import type { ListingExtra } from '@/content/listing-extras'
+import { getOptimizedImageUrl } from '@/lib/image'
+
+type SubcategoryTile = { slug: string; name: string; line: string; image: string | null }
 
 export function ListingPage({
   eyebrow,
@@ -17,6 +20,7 @@ export function ListingPage({
   guides = [],
   extra,
   extraName,
+  subcats = [],
 }: {
   eyebrow: string
   title: string
@@ -28,22 +32,58 @@ export function ListingPage({
   guides?: Post[]
   extra?: ListingExtra | null
   extraName?: string
+  subcats?: SubcategoryTile[]
 }) {
   return (
     <div className="wrap">
-      <header className="pt-6 pb-12 sm:pb-16">
+      <header className="pt-6 pb-8 sm:pb-10">
         <Breadcrumbs items={breadcrumbs} />
-        <div className="mt-14 sm:mt-20 grid lg:grid-cols-12 gap-8 lg:gap-12 items-end">
-          <div className="lg:col-span-7 rise">
+        <div className="mt-8 sm:mt-12 grid lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+          <div className="lg:col-span-6 rise">
             <p className="eyebrow text-graphite">{eyebrow}</p>
-            <h1 className="mt-3 display-l">{title}</h1>
+            <h1 className="mt-2 display-m">{title}</h1>
           </div>
-          <div className="lg:col-span-5 space-y-4 rise-delay">
-            <p className="text-[1.0625rem] leading-relaxed text-graphite">{intro}</p>
+          <div className="lg:col-span-6 space-y-3 rise-delay">
+            <p className="text-[1rem] leading-relaxed text-graphite">{intro}</p>
             <AffiliateNotice />
           </div>
         </div>
       </header>
+
+      {subcats.length > 0 && (
+        <nav aria-label="Shop by type" className="pb-8">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3">
+            {subcats.map((tile) => (
+              <li key={tile.slug}>
+                <Link
+                  to="/shop/$slug"
+                  params={{ slug: tile.slug }}
+                  className="group flex items-center gap-3 h-full rounded-2xl bg-mist p-2.5 pr-4 hover:bg-line/70 transition-colors"
+                >
+                  <span className="relative shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-canvas overflow-hidden">
+                    {tile.image && (
+                      <img
+                        src={getOptimizedImageUrl(tile.image, 160)}
+                        alt=""
+                        loading="lazy"
+                        width={160}
+                        height={160}
+                        className="absolute inset-0 w-full h-full object-contain p-[14%] mix-blend-multiply saturate-[0.85]"
+                      />
+                    )}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold tracking-[-0.01em] leading-snug group-hover:underline underline-offset-4">
+                      {tile.name}
+                    </span>
+                    {tile.line && <span className="hidden sm:block mt-0.5 text-xs text-graphite leading-snug">{tile.line}</span>}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
       <div className="pb-8">
         <ListingView result={result} filters={filters} />

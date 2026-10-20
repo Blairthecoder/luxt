@@ -68,6 +68,7 @@ function CategoryPage() {
       ]}
       result={result}
       filters={filters}
+      subcats={result.subcats}
       tips={hub.buyingTips}
       guides={postsForHub(hub.slug)}
     />

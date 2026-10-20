@@ -64,10 +64,17 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="bg-mist text-center py-2">
-        <p className="text-xs text-graphite">
-          Discreet shipping<span className="hidden sm:inline"> from our trusted retail partner</span>
-        </p>
+      <div className="bg-plum text-canvas">
+        <div className="wrap flex items-center justify-center sm:justify-between gap-6 h-9 text-xs">
+          <p className="hidden sm:block text-canvas/70">Discreet shipping from our trusted retail partner</p>
+          <p className="font-medium">
+            Good first toys from under $50.{' '}
+            <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="underline underline-offset-2">
+              Shop Now
+            </Link>
+          </p>
+          <p className="hidden lg:block text-canvas/70">Body-safe picks. Honest guides.</p>
+        </div>
       </div>
 
       <div className="bg-canvas/85 backdrop-blur-xl backdrop-saturate-150 border-b border-line">
@@ -190,7 +197,7 @@ export function Navbar() {
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="lg:hidden fixed inset-x-0 bottom-0 top-[5.5rem] bg-canvas overflow-y-auto"
+          className="lg:hidden fixed inset-x-0 bottom-0 top-[5.75rem] bg-canvas overflow-y-auto"
         >
           <div className="wrap pt-6 pb-16 space-y-12">
             <ul className="space-y-1 font-display text-[2rem] font-bold tracking-[-0.04em] leading-tight">

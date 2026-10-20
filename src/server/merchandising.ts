@@ -15,7 +15,7 @@ export const DESIGN_BRANDS = new Set([
 export const EXPLICIT =
   /slut|fuck|pussy|cock|\bass\b|anal|dildo|dong|doll|vagina|nipple|bondage|bdsm|gag|whip|flog|machine|sling|swing|harness|strap|realistic|porn|celebrity|girls|fetish|chastity|pump/i
 
-const POPULAR_TAG = /best ?sell|top ?sell|popular|staff ?pick|fan fav/i
+export const POPULAR_TAG = /best ?sell|top ?sell|popular|staff ?pick|fan fav/i
 
 export type MerchFocus = {
   /** Hubs that belong at the front of this listing. */

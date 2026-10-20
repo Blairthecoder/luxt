@@ -73,6 +73,7 @@ function CollectionPage() {
       ]}
       result={result}
       filters={filters}
+      subcats={result.subcats}
       guides={guide ? [guide] : []}
     />
   )

@@ -13,6 +13,11 @@
   --color-night: #000000;
   --color-night-line: #2a2a2c;
   --color-signal: #d12c1f;
+  /* Warm shop-window tones for promo tiles and bands. */
+  --color-blush: #f6e9e4;
+  --color-petal: #ecd6ce;
+  --color-plum: #2a1a22;
+  --color-plum-line: #45303a;
 
   --font-display: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -188,6 +193,97 @@ h3 {
 
 .more:hover::after {
   transform: translateX(2px) rotate(45deg);
+}
+
+/* Horizontal scroller at every width, used for Best Sellers style carousels. */
+.carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 46%;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .carousel {
+    grid-auto-columns: calc((100% - 2rem) / 3);
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel {
+    grid-auto-columns: calc((100% - 4.5rem) / 5);
+    gap: 1.125rem;
+  }
+}
+
+/* Round shortcut row; scrolls sideways on phones. */
+.shortcuts {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: calc(clamp(1.25rem, 4vw, 3rem) * -1);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.shortcuts::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .shortcuts {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 1.5rem;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: var(--color-canvas);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--color-ink);
+}
+
+.chip[aria-pressed='true'],
+.chip[aria-expanded='true'] {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-canvas);
 }
 
 /* Horizontal product rail on small screens, grid on large. */
