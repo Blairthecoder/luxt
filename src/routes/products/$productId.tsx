@@ -197,8 +197,18 @@ function ProductPage() {
               price={product.price}
               className="w-full"
             />
+            <ul aria-label={`Shipping and billing from ${merchant}`} className="grid grid-cols-3 gap-2 text-center text-xs leading-snug text-graphite">
+              {['Plain packaging and labeling', 'Discreet billing', 'Most orders arrive in 3 to 4 days'].map((item) => (
+                <li key={item} className="rounded-xl bg-mist px-2 py-3">
+                  {item}
+                </li>
+              ))}
+            </ul>
             <p className="text-xs text-graphite text-center">
-              Secure checkout and discreet shipping from {merchant}
+              Secure checkout from {merchant}.{' '}
+              <Link to="/blog/$slug" params={{ slug: 'buying-sex-toys-discreetly' }} className="underline underline-offset-2 hover:text-ink">
+                How we keep it private
+              </Link>
             </p>
           </div>
 
