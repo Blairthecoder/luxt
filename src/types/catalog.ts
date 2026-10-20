@@ -44,6 +44,16 @@ export interface ProductCopy {
   faqs?: { q: string; a: string }[]
 }
 
+/** Step-by-step guide shown on a product page, written from the maker's own instructions. */
+export interface HowToUse {
+  /** Short numbered steps for a first try. */
+  start: string[]
+  /** Honest, hedged description of what it tends to feel like. */
+  expect: string
+  /** Practical facts: waterproofing, charging, cleaning, sizing. */
+  goodToKnow?: string[]
+}
+
 export interface Hub {
   slug: string
   name: string
