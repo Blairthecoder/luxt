@@ -1,74 +1,484 @@
 @import "tailwindcss" source("../");
 
-:root {
-  --color-primary: #B02A6A;
-  --color-secondary: #D4A373;
-  --color-accent: #E24A84;
-  --color-noir: #0A0B10;
-  --color-surface: #12131C;
+@theme {
+  /* Monochrome base with a single accent. */
+  --color-canvas: #ffffff;
+  --color-mist: #f5f5f7;
+  --color-stone: #efece7;
+  --color-sand: #e5dfd6;
+  --color-ink: #0a0a0a;
+  --color-graphite: #6e6e73;
+  --color-silver: #a1a1a6;
+  --color-line: #e3e3e6;
+  --color-night: #000000;
+  --color-night-line: #2a2a2c;
+  --color-signal: #d12c1f;
+
+  --font-display: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background-color: var(--color-canvas);
 }
 
 body {
   margin: 0;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  background-color: #0A0B10;
-  color: #F1F3F9;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, .font-serif {
-  font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-code {
-  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+::selection {
+  background: var(--color-ink);
+  color: var(--color-canvas);
 }
 
-/* Custom subtle scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
 }
 
-::-webkit-scrollbar-track {
-  background: #0D0E15;
+@layer components {
+/* Page gutter shared by every template. */
+.wrap {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #282B3E;
-  border-radius: 9999px;
+/* Display scale: large contrast between headline and body. */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 9.5vw, 9rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #B02A6A;
+.display-l {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5.25rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
-/* Animations */
-@keyframes fadeIn {
+.display-m {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+  letter-spacing: -0.011em;
+}
+
+/* Small label above headings. */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0 1.75rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s ease, transform 0.2s var(--ease-out-soft);
+}
+
+.btn:hover {
+  background: #3a3a3c;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-lg {
+  min-height: 3.75rem;
+  font-size: 1rem;
+}
+
+.btn-light {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+.btn-light:hover {
+  background: var(--color-mist);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: border-color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-ink);
+}
+
+/* Text link with a chevron, used for "View All" style links. */
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.more::after {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--ease-out-soft);
+}
+
+.more:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.more:hover::after {
+  transform: translateX(2px) rotate(45deg);
+}
+
+/* Horizontal product rail on small screens, grid on large. */
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 72%;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-inline: calc(clamp(1.25rem, 4vw, 3rem) * -1);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  scroll-padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.rail > * {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .rail {
+    grid-auto-columns: 42%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+}
+
+/* Subtle entrance motion. Content is visible by default; the root script
+   adds .reveal-ready only when IntersectionObserver is available. */
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s var(--ease-out-soft);
+}
+
+.reveal-ready .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.9s var(--ease-out-soft) both;
+  }
+
+  .rise-delay {
+    animation: rise 0.9s 0.12s var(--ease-out-soft) both;
+  }
+}
+
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* Long-form article typography */
+.prose-notes {
+  color: #1d1d1f;
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  letter-spacing: -0.012em;
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(226, 74, 132, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(226, 74, 132, 0.5);
+.prose-notes h2 {
+  font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin: 3.5rem 0 1rem;
+}
+
+.prose-notes h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-ink);
+  margin: 2.25rem 0 0.75rem;
+}
+
+.prose-notes p {
+  margin: 0 0 1.4rem;
+}
+
+.prose-notes ul,
+.prose-notes ol {
+  margin: 0 0 1.6rem;
+  padding-left: 1.25rem;
+}
+
+.prose-notes ul {
+  list-style: disc;
+}
+
+.prose-notes ol {
+  list-style: decimal;
+}
+
+.prose-notes li {
+  margin-bottom: 0.55rem;
+  padding-left: 0.25rem;
+}
+
+.prose-notes li::marker {
+  color: var(--color-silver);
+}
+
+.prose-notes a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-silver);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.prose-notes a:hover {
+  text-decoration-color: var(--color-ink);
+}
+
+.prose-notes strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.prose-notes table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.prose-notes th,
+.prose-notes td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.85rem 0.75rem 0.85rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-notes th {
+  color: var(--color-ink);
+  font-weight: 600;
+  border-bottom-color: var(--color-ink);
+}
+
+/* Product picks embedded in Nightstand Notes ([[picks:id]]). */
+.prose-notes .picks {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 3rem;
+  border-top: 1px solid var(--color-ink);
+}
+
+.prose-notes .pick {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1.25rem;
+  padding: 1.75rem 0;
+  margin: 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+@media (min-width: 640px) {
+  .prose-notes .pick {
+    grid-template-columns: 11rem 1fr;
+    gap: 2rem;
   }
 }
 
-.pulse-glow {
-  animation: pulseGlow 3s infinite ease-in-out;
+.prose-notes .pick-image {
+  display: block;
+  aspect-ratio: 4 / 5;
+  background: var(--color-mist);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.prose-notes .pick-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+  mix-blend-mode: multiply;
+  transition: transform 0.6s var(--ease-out-soft);
+}
+
+.prose-notes .pick-image:hover img {
+  transform: scale(1.04);
+}
+
+.prose-notes .pick-body p {
+  margin: 0;
+}
+
+.prose-notes .pick-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--color-signal);
+}
+
+.prose-notes .pick-title {
+  margin: 0.35rem 0 0.3rem;
+  font-size: 1.3125rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.prose-notes .pick-title a {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.prose-notes .pick-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.prose-notes .pick-meta {
+  font-size: 0.9375rem;
+  color: var(--color-graphite);
+}
+
+.prose-notes .pick-price {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.prose-notes .pick-price s {
+  margin-left: 0.4rem;
+  color: var(--color-silver);
+  font-weight: 400;
+}
+
+.prose-notes .pick-note {
+  margin-top: 0.65rem !important;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #3a3a3c;
+}
+
+.prose-notes .pick-buy {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  margin-top: 1rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--color-canvas);
+  background: var(--color-ink);
+  transition: background-color 0.2s ease;
+}
+
+.prose-notes .pick-buy-merchant {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .prose-notes .pick-buy-merchant {
+    display: inline;
+    white-space: pre;
+  }
+}
+
+.prose-notes .pick-buy:hover {
+  background: #3a3a3c;
 }

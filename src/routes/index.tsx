@@ -1,468 +1,315 @@
-import { useState, useMemo, useEffect } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import { getCatalogProducts, seedDatabaseIfEmpty } from '@/lib/db-service'
-import { Product, CATEGORIES } from '@/data/products'
+import { Link, createFileRoute } from '@tanstack/react-router'
 import { ProductCard } from '@/components/ProductCard'
-import { Navbar } from '@/components/Navbar'
-import { Footer } from '@/components/Footer'
-import { CartDrawer } from '@/components/CartDrawer'
-import { VibeQuizModal } from '@/components/VibeQuizModal'
+import { AffiliateNotice } from '@/components/AffiliateNotice'
+import { HUBS } from '@/content/hubs'
+import { COLLECTIONS_BY_SLUG } from '@/content/collections'
+import { POSTS } from '@/content/posts'
+import { SITE } from '@/config/site'
+import { getHomeData } from '@/lib/catalog'
+import { formatPrice } from '@/lib/format'
 import { getOptimizedImageUrl } from '@/lib/image'
-import {
-  Search,
-  X,
-  Sparkles,
-  ShieldCheck,
-  Volume2,
-  Heart,
-  Award,
-  ArrowRight,
-  Flame,
-  Check,
-} from 'lucide-react'
+import type { ProductSummary } from '@/lib/listing'
+import { organizationJsonLd, pageHead } from '@/lib/seo'
+import { absoluteUrl } from '@/config/site'
+
+function itemList(name: string, products: ProductSummary[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: absoluteUrl(`/products/${p.handle}`),
+      name: p.title,
+    })),
+  }
+}
+
+/** Shown first in Shop by Category; the rest follow as a quieter line of links. */
+const FEATURED_HUBS = ['vibrators', 'couples', 'lubricants', 'strokers', 'penis-rings', 'prostate-massagers', 'lingerie', 'anal-toys']
 
 export const Route = createFileRoute('/')({
-  component: ProductsIndex,
-  loader: async () => {
-    // Initiate seed check in background if DB is ready
-    seedDatabaseIfEmpty().catch(() => {})
-    const catalog = await getCatalogProducts()
-    return { catalog }
+  loader: () => getHomeData(),
+  head: ({ loaderData }) => {
+    const from = loaderData?.firstPicks.length ? Math.min(...loaderData.firstPicks.map((p) => p.price)) : null
+    return pageHead({
+      title: `${SITE.name} | Luxury Adult Toys, Honestly Explained`,
+      description: from
+        ? `Luxury vibrators, couples toys and more from ${formatPrice(from)}. Compare LELO, Womanizer and We-Vibe with plain-English guides and real specs. Ships discreetly.`
+        : SITE.description,
+      path: '/',
+      jsonLd: [
+        organizationJsonLd(),
+        { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url },
+        ...(loaderData
+          ? [
+              itemList('Easy First Picks', loaderData.firstPicks),
+              itemList('For Her', loaderData.forHer),
+              itemList('For Him', loaderData.forHim),
+              itemList('For Couples', loaderData.forCouples),
+            ].filter((l) => l.itemListElement.length > 0)
+          : []),
+      ],
+    })
   },
+  component: HomePage,
 })
 
-function ProductsIndex() {
-  const { catalog } = Route.useLoaderData()
-  const [productsList, setProductsList] = useState<Product[]>(catalog)
+const AUDIENCES = [
+  {
+    key: 'forHer',
+    slug: 'sex-toys-for-women',
+    label: 'For Her',
+    line: 'Vibrators, wands and air-pulse toys chosen for real pleasure. Start small and quiet, or go straight to the cult favorites.',
+    links: ['clitoral-vibrators', 'wand-vibrators', 'rabbit-vibrators', 'bullet-vibrators'],
+  },
+  {
+    key: 'forHim',
+    slug: 'sex-toys-for-men',
+    label: 'For Him',
+    line: 'Strokers, rings and prostate toys, from first-time to expert. Most of the best ones cost less than a nice dinner.',
+    links: ['automatic-strokers', 'prostate-vibrators', 'vibrating-cock-rings', 'tenga'],
+  },
+  {
+    key: 'forCouples',
+    slug: 'couples-sex-toys',
+    label: 'For Couples',
+    line: 'Wearables and app-controlled toys made to be shared, in the same room or across the country.',
+    links: ['app-controlled-sex-toys', 'remote-control-vibrators', 'we-vibe', 'lovense'],
+  },
+] as const
 
-  // Filters state
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState<string>('All Collections')
-  const [priceRange, setPriceRange] = useState<string>('all')
-  const [featureFilter, setFeatureFilter] = useState<string>('all')
-  const [sortBy, setSortBy] = useState<string>('featured')
-  const [quizOpen, setQuizOpen] = useState(false)
+const PROMISES = [
+  ['Straight Answers', 'Plain-English guidance on sizing, materials and where to start. No judgment.'],
+  ['Real Comparisons', 'Specs, prices and options side by side, so you can choose with confidence.'],
+  ['Discreet Delivery', 'Every order ships in plain packaging from our trusted retail partner.'],
+] as const
 
-  // Sync if catalog changes
-  useEffect(() => {
-    if (catalog && catalog.length > 0) {
-      setProductsList(catalog)
-    }
-  }, [catalog])
+function ProductRow({ products, cols = 3 }: { products: ProductSummary[]; cols?: 3 | 4 }) {
+  return (
+    <div className={`rail ${cols === 3 ? 'lg:!grid-cols-3' : ''}`}>
+      {products.map((product) => (
+        <ProductCard key={product.handle} product={product} size="small" context="home_card" />
+      ))}
+    </div>
+  )
+}
 
-  // Filter and sort products
-  const filteredProducts = useMemo(() => {
-    return productsList
-      .filter((product) => {
-        // Search query
-        if (searchQuery.trim()) {
-          const q = searchQuery.toLowerCase().trim()
-          const matchName = product.name.toLowerCase().includes(q)
-          const matchDesc = product.description.toLowerCase().includes(q)
-          const matchTagline = product.tagline.toLowerCase().includes(q)
-          const matchCategory = product.category.toLowerCase().includes(q)
-          const matchFeatures = product.features.some((f) => f.toLowerCase().includes(q))
-          if (!matchName && !matchDesc && !matchTagline && !matchCategory && !matchFeatures) {
-            return false
-          }
-        }
-
-        // Category filter
-        if (selectedCategory !== 'All Collections' && product.category !== selectedCategory) {
-          return false
-        }
-
-        // Price range
-        if (priceRange === 'under-100' && product.price >= 100) return false
-        if (priceRange === '100-150' && (product.price < 100 || product.price > 150)) return false
-        if (priceRange === 'over-150' && product.price <= 150) return false
-
-        // Feature filter
-        if (featureFilter === 'sonic' && !product.category.includes('Sonic')) return false
-        if (featureFilter === 'wand' && !product.category.includes('Wand')) return false
-        if (featureFilter === 'couples' && !product.category.includes('Couple')) return false
-        if (featureFilter === 'waterproof' && !product.waterproof.includes('IPX8')) return false
-
-        return true
-      })
-      .sort((a, b) => {
-        if (sortBy === 'price-low') return a.price - b.price
-        if (sortBy === 'price-high') return b.price - a.price
-        if (sortBy === 'rating') return parseFloat(b.rating) - parseFloat(a.rating)
-        if (sortBy === 'reviews') return b.reviewsCount - a.reviewsCount
-        return a.id - b.id // Default featured
-      })
-  }, [productsList, searchQuery, selectedCategory, priceRange, featureFilter, sortBy])
-
-  const activeFilterCount =
-    (selectedCategory !== 'All Collections' ? 1 : 0) +
-    (priceRange !== 'all' ? 1 : 0) +
-    (featureFilter !== 'all' ? 1 : 0) +
-    (searchQuery.trim() ? 1 : 0)
-
-  const resetAllFilters = () => {
-    setSearchQuery('')
-    setSelectedCategory('All Collections')
-    setPriceRange('all')
-    setFeatureFilter('all')
-    setSortBy('featured')
-  }
+function HomePage() {
+  const data = Route.useLoaderData()
+  const { hubCounts, firstPicks, splurge } = data
+  const hubs = HUBS.filter((hub) => (hubCounts[hub.slug] ?? 0) > 0)
+  const featuredHubs = FEATURED_HUBS.map((slug) => hubs.find((h) => h.slug === slug)).filter((h) => h !== undefined)
+  const otherHubs = hubs.filter((h) => !FEATURED_HUBS.includes(h.slug))
+  const [lead] = POSTS
 
   return (
-    <div className="min-h-screen bg-[#0A0B10] text-slate-100 font-sans selection:bg-[#B02A6A] selection:text-white">
-      {/* Navigation */}
-      <Navbar onOpenQuiz={() => setQuizOpen(true)} />
-
-      {/* Cart Drawer & Quiz Modal */}
-      <CartDrawer />
-      <VibeQuizModal isOpen={quizOpen} onClose={() => setQuizOpen(false)} />
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-32 border-b border-[#1E202D]">
-        {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-[#9B2C68]/20 via-[#E24A84]/15 to-transparent rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-10 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Headline Copy */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A1C29] border border-[#303348] text-amber-200 text-xs font-semibold tracking-wider uppercase shadow-inner">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>The Art of Sensual Wellness • 2026 Collection</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.08]">
-                Whisper Quiet. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5E97] via-[#E29A72] to-[#F3D5B5]">
-                  Profoundly Ecstatic.
-                </span>
-              </h1>
-
-              <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
-                Sculpted from hypoallergenic liquid silicone and powered by sound-dampened acoustic resonance. Experience deep clitoral air aeration and dual stimulation without intrusive motor drone.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <a
-                  href="#catalog"
-                  className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#B02A6A] via-[#E24A84] to-[#C88A58] text-white text-xs font-semibold tracking-widest uppercase hover:opacity-95 transition-all shadow-xl shadow-rose-950/50 flex items-center justify-center gap-2"
-                >
-                  Explore Creations <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <button
-                  onClick={() => setQuizOpen(true)}
-                  className="w-full sm:w-auto px-7 py-4 rounded-full bg-[#181A27] hover:bg-[#222538] border border-[#31354D] text-slate-200 text-xs font-semibold tracking-widest uppercase transition-all flex items-center justify-center gap-2"
-                >
-                  <Sparkles className="w-4 h-4 text-amber-300" />
-                  Sensory Match Quiz
-                </button>
-              </div>
-
-              {/* Trust Badges */}
-              <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left border-t border-[#1F2232] text-xs text-slate-400">
-                <div className="flex items-center gap-2">
-                  <Volume2 className="w-4 h-4 text-rose-400 flex-shrink-0" />
-                  <span>&lt; 34dB Whisper Silent</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span>100% Blind Box Shipping</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Heart className="w-4 h-4 text-amber-300 flex-shrink-0" />
-                  <span>Body-Safe Pure Silicone</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-purple-400 flex-shrink-0" />
-                  <span>2-Year Full Warranty</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Hero Visual Banner */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden bg-gradient-to-tr from-[#1B1226] via-[#10121C] to-[#251528] p-2 border border-[#38304B] shadow-2xl shadow-rose-950/40 group">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
-                  <img
-                    src={getOptimizedImageUrl('/img/hero-banner.png', 900)}
-                    alt="Velvet and Pulse Sensory Collection"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                  />
-                  
-                  {/* Floating Pill Overlay */}
-                  <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 text-white flex items-center justify-between">
-                    <div>
-                      <span className="text-[10px] tracking-wider uppercase text-amber-300 font-semibold block">
-                        Featured Debut
-                      </span>
-                      <span className="text-sm font-serif font-bold">Velvet Pulse Arc™</span>
-                    </div>
-                    <span className="text-sm font-mono font-bold text-amber-200">$169</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Main Catalog Section: Filterable, Searchable Grid */}
-      <section id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
-        
-        {/* Catalog Header & Search */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#202232]">
-          <div className="space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#D4A373] font-semibold flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5" /> Curated Intimacy Catalog
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-serif font-black text-white">
-              Explore Our Creations
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-md">
-              Filter by sensation, whisper rating, or play style. Each piece is tested for flawless ergonomic bliss.
+    <div>
+      <section className="bg-stone">
+        <div className="wrap pt-20 sm:pt-32 pb-12">
+          <p className="eyebrow text-graphite rise">Curated Pleasure. Est. 2026.</p>
+          <h1 className="mt-5 display-xl rise">
+            Luxury Adult Toys,{' '}
+            <br />
+            Explained.
+          </h1>
+          <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end rise-delay">
+            <p className="lg:col-span-5 lede text-graphite">
+              The world's best adult toys, chosen with care and explained without the blush. Compare honestly, then
+              buy discreetly.{' '}
+              <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
+                Most first picks are under $50.
+              </Link>
+            </p>
+            <p className="lg:col-span-6 lg:col-start-7 font-display text-[1.625rem] sm:text-[2.125rem] font-semibold tracking-[-0.03em] leading-[1.2]">
+              Shop{' '}
+              <a href="#for-her" className="underline decoration-1 underline-offset-[6px] hover:text-graphite">
+                for her
+              </a>
+              ,{' '}
+              <a href="#for-him" className="underline decoration-1 underline-offset-[6px] hover:text-graphite">
+                for him
+              </a>{' '}
+              or{' '}
+              <a href="#for-couples" className="underline decoration-1 underline-offset-[6px] hover:text-graphite">
+                for the two of you
+              </a>
+              .
             </p>
           </div>
-
-          {/* Search Box */}
-          <div className="w-full md:w-80 relative">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Search by vibe, wand, sonic, glass..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-9 py-3 bg-[#131520] border border-[#2A2D40] rounded-2xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-300 transition-colors shadow-inner"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Filter Controls Bar */}
-        <div className="space-y-4">
-          
-          {/* Category Pills Slider */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {CATEGORIES.map((cat) => {
-              const count =
-                cat === 'All Collections'
-                  ? productsList.length
-                  : productsList.filter((p) => p.category === cat).length
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2.5 rounded-full text-xs font-semibold tracking-wider whitespace-nowrap transition-all flex items-center gap-2 ${
-                    selectedCategory === cat
-                      ? 'bg-gradient-to-r from-[#9B2C68] to-[#C88A58] text-white shadow-lg shadow-rose-950/40'
-                      : 'bg-[#141622] hover:bg-[#1E2132] text-slate-300 border border-[#272A3C]'
-                  }`}
-                >
-                  <span>{cat}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                      selectedCategory === cat ? 'bg-white/20 text-white' : 'bg-[#222538] text-slate-400'
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Secondary Filters & Sort Controls */}
-          <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-[#12141E] border border-[#222535]">
-            <div className="flex flex-wrap items-center gap-3">
-              
-              {/* Price Filter */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400">Price:</span>
-                <select
-                  value={priceRange}
-                  onChange={(e) => setPriceRange(e.target.value)}
-                  className="bg-[#1A1C29] border border-[#2E3146] text-xs text-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-amber-300"
-                >
-                  <option value="all">All Prices</option>
-                  <option value="under-100">Under $100</option>
-                  <option value="100-150">$100 – $150</option>
-                  <option value="over-150">Over $150</option>
-                </select>
-              </div>
-
-              {/* Special Features Filter */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400">Feature:</span>
-                <select
-                  value={featureFilter}
-                  onChange={(e) => setFeatureFilter(e.target.value)}
-                  className="bg-[#1A1C29] border border-[#2E3146] text-xs text-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-amber-300"
-                >
-                  <option value="all">All Features</option>
-                  <option value="sonic">Sonic &amp; Aeropulse</option>
-                  <option value="wand">Wand &amp; Deep Rumble</option>
-                  <option value="couples">Couples &amp; Wearables</option>
-                  <option value="waterproof">IPX8 Submersible</option>
-                </select>
-              </div>
-
-              {/* Active Filter Reset */}
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={resetAllFilters}
-                  className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-950/30 border border-rose-900/40"
-                >
-                  <X className="w-3.5 h-3.5" /> Clear Filters ({activeFilterCount})
-                </button>
-              )}
-            </div>
-
-            {/* Sort Options */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400">Sort By:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="bg-[#1A1C29] border border-[#2E3146] text-xs text-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-amber-300"
-              >
-                <option value="featured">Featured Curations</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-                <option value="reviews">Most Reviewed</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Results Counter */}
-        <div className="flex items-center justify-between text-xs text-slate-400">
-          <span>
-            Showing <strong className="text-white font-mono">{filteredProducts.length}</strong> creations
-          </span>
-          {searchQuery && (
-            <span>
-              Matching query <em className="text-amber-200 not-italic">"{searchQuery}"</em>
-            </span>
-          )}
-        </div>
-
-        {/* Product Cards Grid */}
-        {filteredProducts.length === 0 ? (
-          <div className="py-20 text-center rounded-3xl bg-[#12141F] border border-[#252838] p-8 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-[#1F2232] flex items-center justify-center mx-auto text-slate-400">
-              <Search className="w-8 h-8 opacity-40" />
-            </div>
-            <h3 className="text-xl font-serif font-bold text-white">No creations matched your criteria</h3>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto">
-              We couldn't find items matching your active combination of filters. Try widening your price range or clearing your search.
-            </p>
-            <button
-              onClick={resetAllFilters}
-              className="mt-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#9B2C68] to-[#C88A58] text-white text-xs font-semibold tracking-wider uppercase"
-            >
-              Reset All Filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+          <ul className="mt-20 sm:mt-28 grid sm:grid-cols-3 gap-x-10 border-t border-ink/15">
+            {PROMISES.map(([title, body]) => (
+              <li key={title} className="pt-5 pb-2">
+                <p className="text-sm font-semibold tracking-[-0.01em]">{title}</p>
+                <p className="mt-1 text-sm text-graphite leading-relaxed max-w-xs">{body}</p>
+              </li>
             ))}
-          </div>
-        )}
-
-      </section>
-
-      {/* Technology & Whisper-Quiet Section */}
-      <section id="technology" className="py-20 bg-[#0E0F16] border-y border-[#1E202D] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1C1E2B] border border-[#2F3246] text-xs font-medium text-amber-200">
-                <Volume2 className="w-3.5 h-3.5 text-rose-400" />
-                <span>The Whisper Standard (&lt;34 dB)</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-5xl font-serif font-black text-white leading-tight">
-                Designed for Absolute Discretion.
-              </h2>
-
-              <p className="text-sm text-slate-300 leading-relaxed font-light">
-                Nothing ruins intimate immersion faster than a loud, buzzing electric motor. Every Velvet &amp; Pulse device is housed inside an acoustically insulated chamber that dampens airborne noise to less than 34 decibels—softer than a quiet library whisper.
-              </p>
-
-              <div className="space-y-3 pt-2">
-                {[
-                  { title: 'Harmonic Low Frequency Motors', desc: 'Vibrations resonate deep into muscle tissue rather than wasting energy buzzing the surface.' },
-                  { title: 'Submersible IPX8 Waterproofing', desc: 'Hermetically sealed charging ports ensure complete peace of mind in relaxing hot water.' },
-                  { title: 'Medical-Grade Soft Touch', desc: 'Zero phthalates, latex, or harsh chemicals. Smooth, non-porous and warm to the touch.' },
-                ].map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#151722] border border-[#242738]">
-                    <div className="p-1 rounded-full bg-emerald-500/10 text-emerald-400 mt-0.5">
-                      <Check className="w-3.5 h-3.5" />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-semibold text-white">{feat.title}</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">{feat.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Interactive Blind Box Preview */}
-            <div className="lg:col-span-6">
-              <div className="p-8 rounded-3xl bg-[#141520] border border-[#282B3E] shadow-2xl space-y-6">
-                <div className="flex items-center justify-between border-b border-[#232535] pb-4">
-                  <span className="text-xs uppercase tracking-widest text-amber-200 font-semibold flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400" /> Blind Box Security Guarantee
-                  </span>
-                  <span className="text-[11px] text-slate-400 font-mono">100% UNBRANDED</span>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-[#1E202F] border border-[#303348] space-y-4">
-                  <div className="text-xs text-slate-300">
-                    <strong className="text-white block mb-1">Exterior Shipping Label:</strong>
-                    <div className="font-mono text-[11px] bg-[#12131C] p-3 rounded-lg text-slate-300 border border-[#242636] space-y-1">
-                      <div>SHIP TO: Valued Patron (Private Address)</div>
-                      <div>RETURN: Fulfillment Center Suite 400</div>
-                      <div>NO LOGOS • NO PRODUCT MENTION • TAMPER SEALED</div>
-                    </div>
-                  </div>
-
-                  <div className="text-xs text-slate-300">
-                    <strong className="text-white block mb-1">Bank Statement Descriptor:</strong>
-                    <div className="font-mono text-[11px] bg-[#12131C] p-3 rounded-lg text-amber-200 border border-[#242636]">
-                      "VP STUDIO SERVICES LLC"
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Whether delivered to your home, office, or apartment lobby, no one can tell what is inside. Your privacy is guaranteed from click to doorstep.
-                </p>
-              </div>
-            </div>
-
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* Footer */}
-      <Footer />
+      {firstPicks.length > 0 && (
+        <section className="wrap pt-24 sm:pt-32 reveal">
+          <div className="grid lg:grid-cols-12 gap-6 items-end mb-10">
+            <h2 className="lg:col-span-7 display-m">Easy First Picks</h2>
+            <p className="lg:col-span-4 lg:col-start-9 text-graphite leading-relaxed">
+              Well made, easy to use and under $50. The ones we point friends to first.{' '}
+              <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
+                Shop under $50
+              </Link>
+            </p>
+          </div>
+          <ProductRow products={firstPicks} cols={4} />
+        </section>
+      )}
+
+      {AUDIENCES.map((a, i) => {
+        const products = data[a.key]
+        const flip = i % 2 === 1
+        return (
+          <section
+            key={a.slug}
+            id={a.key === 'forHer' ? 'for-her' : a.key === 'forHim' ? 'for-him' : 'for-couples'}
+            className={`scroll-mt-24 ${flip ? 'bg-stone mt-24 sm:mt-32 py-20 sm:py-28' : 'pt-24 sm:pt-32'}`}
+          >
+            <div className="wrap grid lg:grid-cols-12 gap-10 lg:gap-14 reveal">
+              <div className={`lg:col-span-4 ${flip ? 'lg:order-2 lg:col-start-9' : ''}`}>
+                <h2 className="display-l">{a.label}</h2>
+                <p className="mt-5 text-[1.0625rem] text-graphite leading-relaxed max-w-sm">{a.line}</p>
+                <ul className="mt-8 border-t border-ink/15 max-w-sm">
+                  {a.links.map((slug) => (
+                    <li key={slug} className="border-b border-ink/15">
+                      <Link
+                        to="/shop/$slug"
+                        params={{ slug }}
+                        className="group flex items-center justify-between py-3 text-[0.9375rem] font-medium"
+                      >
+                        {COLLECTIONS_BY_SLUG[slug]?.name}
+                        <span aria-hidden="true" className="text-graphite transition-transform group-hover:translate-x-1">
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/shop/$slug" params={{ slug: a.slug }} className="mt-8 more">
+                  Shop All {a.label}
+                </Link>
+              </div>
+              <div className={`lg:col-span-8 ${flip ? 'lg:order-1 [&_.bg-stone]:bg-canvas' : ''}`}>
+                {products.length > 0 && <ProductRow products={products} />}
+              </div>
+            </div>
+          </section>
+        )
+      })}
+
+      {splurge.length > 0 && (
+        <section className="wrap pt-24 sm:pt-36 grid lg:grid-cols-12 gap-10 reveal">
+          <div className="lg:col-span-4">
+            <h2 className="display-m">Worth the Splurge</h2>
+            <p className="mt-4 text-graphite leading-relaxed max-w-xs">
+              Stronger, quieter motors and better materials. Three we think earn the price.
+            </p>
+            <Link to="/shop/$slug" params={{ slug: 'luxury-sex-toys' }} className="mt-6 more">
+              Shop Luxury
+            </Link>
+          </div>
+          <ul className="lg:col-span-8 border-t border-ink">
+            {splurge.map((p) => (
+              <li key={p.handle} className="border-b border-line">
+                <Link
+                  to="/products/$productId"
+                  params={{ productId: p.handle }}
+                  className="group grid grid-cols-[4.5rem_1fr_auto] sm:grid-cols-[6rem_1fr_auto] items-center gap-5 py-4"
+                >
+                  <span className="relative block aspect-square bg-stone overflow-hidden">
+                    <img
+                      src={getOptimizedImageUrl(p.image, 240)}
+                      alt={`${p.title} by ${p.brand}`}
+                      loading="lazy"
+                      width={240}
+                      height={240}
+                      className="absolute inset-0 w-full h-full object-contain p-[14%] mix-blend-multiply saturate-[0.85]"
+                    />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-display text-lg sm:text-xl font-semibold tracking-[-0.02em] leading-snug group-hover:underline underline-offset-4 decoration-1">
+                      {p.title}
+                    </span>
+                    <span className="block mt-0.5 text-sm text-graphite">
+                      {p.brand}
+                      {p.why && <span className="hidden sm:inline"> · {p.why}</span>}
+                    </span>
+                  </span>
+                  <span className="text-[0.9375rem] font-medium tabular-nums">{formatPrice(p.price)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="mt-28 sm:mt-36 bg-night text-canvas">
+        <div className="wrap py-24 sm:py-32 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-4 reveal">
+            <h2 className="display-l">
+              Shop by{' '}
+              <br />
+              Category.
+            </h2>
+            <p className="mt-6 text-[#a1a1a6] max-w-xs leading-relaxed">
+              Every category, sorted by what it does and who it is for.
+            </p>
+          </div>
+          <ul className="lg:col-span-8 grid sm:grid-cols-2 gap-x-12 border-t border-night-line reveal">
+            {featuredHubs.map((hub) => (
+              <li key={hub.slug} className="border-b border-night-line">
+                <Link
+                  to="/category/$slug"
+                  params={{ slug: hub.slug }}
+                  className="group flex items-baseline justify-between gap-4 py-5"
+                >
+                  <span className="font-display text-2xl sm:text-[1.75rem] font-semibold tracking-[-0.03em] text-canvas/85 group-hover:text-canvas transition-colors">
+                    {hub.name}
+                  </span>
+                  <span className="text-xs text-[#86868b] tabular-nums">{hubCounts[hub.slug].toLocaleString()}</span>
+                </Link>
+              </li>
+            ))}
+            {otherHubs.length > 0 && (
+              <li className="sm:col-span-2 pt-6 text-sm text-[#86868b] leading-relaxed">
+                Also browse{' '}
+                {otherHubs.map((hub, i) => (
+                  <span key={hub.slug}>
+                    {i > 0 && (i === otherHubs.length - 1 ? ' and ' : ', ')}
+                    <Link to="/category/$slug" params={{ slug: hub.slug }} className="text-canvas/70 hover:text-canvas underline underline-offset-4 decoration-night-line">
+                      {hub.name}
+                    </Link>
+                  </span>
+                ))}
+                .
+              </li>
+            )}
+          </ul>
+        </div>
+      </section>
+
+      {lead && (
+        <section className="wrap pt-24 sm:pt-36 reveal">
+          <Link to="/blog/$slug" params={{ slug: lead.slug }} className="group block max-w-5xl">
+            <p className="eyebrow text-signal">From {SITE.guidesName}</p>
+            <h2 className="mt-4 display-l group-hover:text-graphite transition-colors">{lead.title}</h2>
+            <p className="mt-6 lede text-graphite max-w-2xl">{lead.excerpt}</p>
+            <span className="mt-8 more">Read the Guide</span>
+          </Link>
+        </section>
+      )}
+
+      <section className="wrap pt-16">
+        <AffiliateNotice />
+      </section>
     </div>
   )
 }

@@ -1,7 +1,17 @@
 [build]
-  command = "vite build"
+  command = "node scripts/sync-catalog.mjs && vite build"
   publish = "dist/client"
+[build.environment]
+  # sync-catalog.mjs relies on the global fetch in Node 18+
+  NODE_VERSION = "22"
 [dev]
   command = "npm run dev"
   targetPort = 3000
   port = 8888
+
+# Preview copies must never be indexed: pages render meta robots noindex and
+# Netlify's default X-Robots-Tag stays on.
+[context.deploy-preview.environment]
+  VITE_NOINDEX = "1"
+[context.branch-deploy.environment]
+  VITE_NOINDEX = "1"

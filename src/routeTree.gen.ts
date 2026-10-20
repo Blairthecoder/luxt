@@ -10,23 +10,55 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CheckoutCancelRouteImport } from './routes/checkout/cancel'
-import { Route as CheckoutSuccessRouteImport } from './routes/checkout/success'
+import { Route as DisclosureRouteImport } from './routes/disclosure'
+import { Route as GiftsRouteImport } from './routes/gifts'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as CategorySlugRouteImport } from './routes/category/$slug'
+import { Route as GoHandleRouteImport } from './routes/go/$handle'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
+import { Route as ShopSlugRouteImport } from './routes/shop/$slug'
+import { Route as BlogTopicTopicRouteImport } from './routes/blog/topic/$topic'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheckoutCancelRoute = CheckoutCancelRouteImport.update({
-  id: '/checkout/cancel',
-  path: '/checkout/cancel',
+const DisclosureRoute = DisclosureRouteImport.update({
+  id: '/disclosure',
+  path: '/disclosure',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
-  id: '/checkout/success',
-  path: '/checkout/success',
+const GiftsRoute = GiftsRouteImport.update({
+  id: '/gifts',
+  path: '/gifts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategorySlugRoute = CategorySlugRouteImport.update({
+  id: '/category/$slug',
+  path: '/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoHandleRoute = GoHandleRouteImport.update({
+  id: '/go/$handle',
+  path: '/go/$handle',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
@@ -34,45 +66,111 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
   path: '/products/$productId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopSlugRoute = ShopSlugRouteImport.update({
+  id: '/shop/$slug',
+  path: '/shop/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogTopicTopicRoute = BlogTopicTopicRouteImport.update({
+  id: '/blog/topic/$topic',
+  path: '/blog/topic/$topic',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/checkout/cancel': typeof CheckoutCancelRoute
-  '/checkout/success': typeof CheckoutSuccessRoute
+  '/disclosure': typeof DisclosureRoute
+  '/gifts': typeof GiftsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/category/$slug': typeof CategorySlugRoute
+  '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
+  '/shop/$slug': typeof ShopSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/checkout/cancel': typeof CheckoutCancelRoute
-  '/checkout/success': typeof CheckoutSuccessRoute
+  '/disclosure': typeof DisclosureRoute
+  '/gifts': typeof GiftsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/category/$slug': typeof CategorySlugRoute
+  '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
+  '/shop/$slug': typeof ShopSlugRoute
+  '/blog': typeof BlogIndexRoute
+  '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/checkout/cancel': typeof CheckoutCancelRoute
-  '/checkout/success': typeof CheckoutSuccessRoute
+  '/disclosure': typeof DisclosureRoute
+  '/gifts': typeof GiftsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/category/$slug': typeof CategorySlugRoute
+  '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
+  '/shop/$slug': typeof ShopSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/checkout/cancel' | '/checkout/success' | '/products/$productId'
+    | '/'
+    | '/disclosure'
+    | '/gifts'
+    | '/sitemap.xml'
+    | '/blog/$slug'
+    | '/category/$slug'
+    | '/go/$handle'
+    | '/products/$productId'
+    | '/shop/$slug'
+    | '/blog/'
+    | '/blog/topic/$topic'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/checkout/cancel' | '/checkout/success' | '/products/$productId'
+  to:
+    | '/'
+    | '/disclosure'
+    | '/gifts'
+    | '/sitemap.xml'
+    | '/blog/$slug'
+    | '/category/$slug'
+    | '/go/$handle'
+    | '/products/$productId'
+    | '/shop/$slug'
+    | '/blog'
+    | '/blog/topic/$topic'
   id:
     | '__root__'
     | '/'
-    | '/checkout/cancel'
-    | '/checkout/success'
+    | '/disclosure'
+    | '/gifts'
+    | '/sitemap.xml'
+    | '/blog/$slug'
+    | '/category/$slug'
+    | '/go/$handle'
     | '/products/$productId'
+    | '/shop/$slug'
+    | '/blog/'
+    | '/blog/topic/$topic'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CheckoutCancelRoute: typeof CheckoutCancelRoute
-  CheckoutSuccessRoute: typeof CheckoutSuccessRoute
+  DisclosureRoute: typeof DisclosureRoute
+  GiftsRoute: typeof GiftsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  CategorySlugRoute: typeof CategorySlugRoute
+  GoHandleRoute: typeof GoHandleRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
+  ShopSlugRoute: typeof ShopSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  BlogTopicTopicRoute: typeof BlogTopicTopicRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -84,18 +182,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/checkout/cancel': {
-      id: '/checkout/cancel'
-      path: '/checkout/cancel'
-      fullPath: '/checkout/cancel'
-      preLoaderRoute: typeof CheckoutCancelRouteImport
+    '/disclosure': {
+      id: '/disclosure'
+      path: '/disclosure'
+      fullPath: '/disclosure'
+      preLoaderRoute: typeof DisclosureRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/checkout/success': {
-      id: '/checkout/success'
-      path: '/checkout/success'
-      fullPath: '/checkout/success'
-      preLoaderRoute: typeof CheckoutSuccessRouteImport
+    '/gifts': {
+      id: '/gifts'
+      path: '/gifts'
+      fullPath: '/gifts'
+      preLoaderRoute: typeof GiftsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/category/$slug': {
+      id: '/category/$slug'
+      path: '/category/$slug'
+      fullPath: '/category/$slug'
+      preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/go/$handle': {
+      id: '/go/$handle'
+      path: '/go/$handle'
+      fullPath: '/go/$handle'
+      preLoaderRoute: typeof GoHandleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/$productId': {
@@ -105,14 +238,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/$slug': {
+      id: '/shop/$slug'
+      path: '/shop/$slug'
+      fullPath: '/shop/$slug'
+      preLoaderRoute: typeof ShopSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/topic/$topic': {
+      id: '/blog/topic/$topic'
+      path: '/blog/topic/$topic'
+      fullPath: '/blog/topic/$topic'
+      preLoaderRoute: typeof BlogTopicTopicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CheckoutCancelRoute: CheckoutCancelRoute,
-  CheckoutSuccessRoute: CheckoutSuccessRoute,
+  DisclosureRoute: DisclosureRoute,
+  GiftsRoute: GiftsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  CategorySlugRoute: CategorySlugRoute,
+  GoHandleRoute: GoHandleRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
+  ShopSlugRoute: ShopSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  BlogTopicTopicRoute: BlogTopicTopicRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
