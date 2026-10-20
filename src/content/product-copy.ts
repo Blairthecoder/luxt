@@ -18,6 +18,8 @@ import type { ProductCopy } from '@/types/catalog'
  * },
  */
 
+import { BRAND_PRODUCT_COPY_2 } from '@/content/product-copy-brands-2'
+
 const WATER_LUBE_FAQ = {
   q: 'What kind of lube should I use with it?',
   a: 'A water-based lube. It is kind to silicone and to every stroker material, it keeps things comfortable, and it rinses off easily.',
@@ -29,6 +31,7 @@ const STROKER_LUBE_FAQ = {
 }
 
 export const PRODUCT_COPY: Record<string, ProductCopy> = {
+  ...BRAND_PRODUCT_COPY_2,
   // Homepage
   'kiiroo-power-blow': {
     summary:
