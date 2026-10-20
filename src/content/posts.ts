@@ -100,15 +100,15 @@ export const POSTS: Post[] = [
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',
     metaTitle: 'Fleshlight vs. Tenga: Which Stroker to Buy First',
     metaDescription:
-      'Fleshlight or Tenga? We compare feel, reusability, cleanup, discretion and cost so you can pick the right first stroker.',
+      'Fleshlight vs. Tenga: we compare feel, reusability, cleanup, discretion and cost so you can pick a first stroker that feels comfortable and suits you.',
     excerpt:
-      'Two of the biggest names in strokers take very different approaches. Here is how to decide which one fits you.',
+      'Two very different ways to enjoy solo time. How Fleshlight and Tenga compare, so you can choose the stroker that fits you and how you like to play.',
     publishedAt: '2026-10-19',
     readMinutes: 6,
     hubs: ['strokers'],
     topics: ['for-him'],
     body: `
-If you are shopping for your first stroker, you will run into two names almost immediately: **Fleshlight** and **Tenga**. Both are well made and both are worth buying. They just solve the problem differently, and the right choice depends on how you plan to use it.
+Solo time is a chance to relax, learn what you like and feel good in your own body. If you are shopping for your first stroker, you will run into two names almost immediately: **Fleshlight** and **Tenga**. Both are well made and both are worth buying. They just solve the problem differently, and this guide helps you choose based on how you plan to use it.
 
 ## The Short Answer
 
@@ -156,15 +156,15 @@ If you like the feeling but want hands-free play, look at [automatic strokers](/
     title: 'How to Choose Your First Vibrator',
     metaTitle: 'How to Choose Your First Vibrator: A Simple Guide',
     metaDescription:
-      'Bullet, wand, rabbit or suction? A plain-English guide to vibrator types, power, noise, materials and budget so you buy the right one first.',
+      'How to choose your first vibrator with confidence: a plain-English guide to bullets, wands, rabbits and suction toys, plus power, noise and materials.',
     excerpt:
-      'Bullet, wand, rabbit or suction? Start with where you want sensation, then narrow it down by power, noise and material.',
+      'Your first vibrator should feel exciting, not confusing. Start with where you want sensation, then narrow it down by power, noise and material.',
     publishedAt: '2026-10-19',
     readMinutes: 7,
     hubs: ['vibrators', 'couples'],
     topics: ['for-her', 'how-to'],
     body: `
-Walking into the world of vibrators can feel like a lot. There are hundreds of shapes, a dozen technologies and prices from $15 to $300. The good news is that choosing well comes down to three questions.
+Your first vibrator is a chance to learn what feels good to you, at your own pace and on your own terms. Walking into the world of vibrators can feel like a lot. There are hundreds of shapes, a dozen technologies and a wide range of prices. The good news is that choosing well comes down to three questions.
 
 ## 1. Where Do You Want Sensation?
 
@@ -199,7 +199,7 @@ If you are not sure, a small wand or an air-pulse toy covers the most ground. [W
 
 ## How Much to Spend
 
-You can get a great first vibrator for under $50. See our [picks under $50](/shop/sex-toys-under-50). Spending more usually buys a quieter motor, better silicone and a longer warranty, which is why [premium brands](/shop/luxury-sex-toys) are worth it if you already know what you like.
+You can get a great first vibrator for under $50. See our [picks under $50](/shop/sex-toys-under-50). Spending more usually buys a quieter motor, better silicone and a longer warranty, which is why [premium brands](/shop/luxury-sex-toys) can be worth it once you know what you like.
 
 ## Our Advice
 
@@ -211,15 +211,15 @@ Start external, start body-safe, and do not overspend on your first toy. Once yo
     title: 'Which Lube Should You Use With Your Toys?',
     metaTitle: 'Best Lube for Sex Toys: Water, Silicone or Hybrid?',
     metaDescription:
-      'Water-based, silicone, hybrid or oil? Which lube works with silicone toys, condoms and anal play, explained in plain English.',
+      'Best lube for sex toys: water-based, silicone, hybrid or oil? How to keep silicone toys, condoms and anal play comfortable, all in plain, simple English.',
     excerpt:
-      'The right lube makes everything more comfortable and protects your toys. Here is how to match lube to the toy you own.',
+      'Comfort changes everything. The right lube makes play smoother and easier and protects your toys. Here is how to match lube to the toy you own.',
     publishedAt: '2026-10-19',
     readMinutes: 5,
     hubs: ['lubricants', 'anal-toys', 'strokers', 'dildos'],
     topics: ['how-to'],
     body: `
-Lube is the cheapest upgrade you can make to any toy. It makes play more comfortable, reduces friction and helps toys last. But not every lube works with every toy, and picking the wrong one can quietly damage something you paid good money for.
+Feeling comfortable is the foundation of feeling good, and lube is the simplest way to get there. It is the cheapest upgrade you can make to any toy: it reduces friction, makes play smoother and helps toys last. But not every lube works with every toy, and picking the wrong one can quietly damage a toy you love.
 
 ## The Quick Rule
 

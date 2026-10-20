@@ -2,18 +2,18 @@ import type { Post } from '@/content/posts'
 
 export const GIFTS_FOR_HIM: Post = {
   slug: 'sex-toy-gifts-for-him',
-  title: 'The Best Sex Toy Gifts for Him, From First Stroker to Luxury Tech',
+  title: 'The Best Sex Toy Gifts for Him, From First Stroker to Hands-Free Tech',
   metaTitle: 'Best Sex Toy Gifts for Him: 2026 Holiday Gift Guide',
   metaDescription:
-    'Sex toy gifts for your husband, boyfriend or partner: strokers, penis rings, prostate toys and couples picks by budget, with current prices.',
+    'Sex toy gifts for your husband, boyfriend or partner that help him feel cared for and confident: strokers, rings, prostate and couples picks by budget.',
   excerpt:
-    'Most men have never owned a toy, which makes a good one an easy win. Here is what to buy at every budget and how to choose.',
+    'Most men have never owned a toy, so a thoughtful one feels like a real treat. What to buy at every budget, and how to choose something he will enjoy.',
   publishedAt: '2026-10-19',
   readMinutes: 10,
   hubs: ['strokers', 'penis-rings', 'prostate-massagers'],
   topics: ['gift-guides', 'for-him'],
   body: `
-Here is the good news about buying a sex toy for a man: most have never owned one, so almost anything well chosen feels new. The risk is buying something novelty-shaped that gets used once. This guide sticks to toys men keep using, sorted by what he is into and what you want to spend.
+A good gift can help him feel cared for, a little spoiled and more at ease exploring what he enjoys. Here is the good news about buying a sex toy for a man: most have never owned one, so almost anything well chosen feels new. The risk is buying something novelty-shaped that gets used once. This guide sticks to toys men keep using, sorted by what he is into and what you want to spend.
 
 ## Pick the Category First
 
@@ -106,7 +106,7 @@ See the [best sex toy gifts for her](/blog/sex-toy-gifts-for-her), or if you wan
       slots: [
         {
           label: 'Best Hands-Free',
-          note: 'Does the motion for him, with adjustable speed and stroke. A true luxury gift for the tech-minded.',
+          note: 'Does the motion for him, with adjustable speed and stroke. A generous gift for the tech-minded.',
           rules: [
             { hubs: ['strokers'], tags: ['masturbation type_automatic'], minPrice: 100, maxPrice: 300 },
             { hubs: ['strokers'], title: 'automatic|thrust|rotat', minPrice: 80, maxPrice: 300 },

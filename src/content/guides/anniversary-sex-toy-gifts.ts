@@ -5,15 +5,17 @@ export const ANNIVERSARY_GIFTS: Post = {
   title: 'Sexy Anniversary Gifts: Intimate Ideas for Every Milestone',
   metaTitle: 'Sexy Anniversary Gifts for Him, Her & Couples',
   metaDescription:
-    'Intimate anniversary gift ideas for your husband, wife or partner, from first anniversary to silver, sorted by budget with current prices.',
+    'Sexy anniversary gifts that help you both feel wanted and close again, for him, her or couples, from the first year to silver, sorted by budget.',
   excerpt:
-    'An anniversary is the one gift occasion that is about the two of you. Intimate ideas for every year and budget.',
+    'An anniversary is about the two of you. Intimate gift ideas for every year and budget that help you both feel wanted, close and a little giddy again.',
   publishedAt: '2026-10-19',
   readMinutes: 10,
   hubs: ['couples', 'vibrators', 'lingerie', 'sex-machines-furniture'],
   topics: ['gift-guides', 'couples'],
   body: `
-Birthdays and holidays are about one person. An anniversary is about both of you, which makes it the best occasion there is for an intimate gift. The best ones say "I still want you" and give you a reason to spend the night celebrating.
+The best anniversary gift leaves you both feeling chosen. Not just remembered, but wanted, the way you felt early on, with a night that is about the two of you and nobody else.
+
+Birthdays and holidays are about one person. An anniversary is about both of you, which makes it the best occasion there is for an intimate gift. This guide helps you choose one by milestone and budget, so it says "I still want you" and gives you a reason to spend the night celebrating.
 
 ## The Rule for Anniversary Gifts
 
@@ -35,7 +37,7 @@ This range buys a quality couples toy or a premium solo toy from a known brand, 
 
 ### $200 and Up: The Milestone Gift
 
-For a tenth, twentieth or twenty-fifth anniversary, a bigger gesture fits. Luxury toys come in presentation boxes and carry long warranties. Furniture and machines are a commitment to trying something new together. See [luxury sex toys](/shop/luxury-sex-toys) and [machines and furniture](/category/sex-machines-furniture).
+For a tenth, twentieth or twenty-fifth anniversary, a bigger gesture fits. Higher-end toys come in presentation boxes and carry long warranties, so the gift keeps giving long after the night itself. Furniture and machines are a commitment to trying something new together. See [premium sex toys](/shop/luxury-sex-toys) and [machines and furniture](/category/sex-machines-furniture).
 
 [[picks:milestone]]
 
@@ -50,7 +52,7 @@ Traditional anniversary themes make an easy hook for an intimate gift.
 | 3rd | Leather | Leather or faux-leather restraints from a [bondage kit](/shop/bondage-kits) |
 | 5th | Wood | A firm positioning wedge or a weekend away |
 | 6th | Iron | A stainless steel or metal toy, such as a weighted plug or wand |
-| 10th | Tin or aluminum | A luxury couples toy in a presentation box |
+| 10th | Tin or aluminum | A premium couples toy in a presentation box |
 | 15th | Crystal | A glass toy, which is non-porous and beautiful on display |
 | 25th | Silver | A premium wand or a sex swing for the next chapter |
 
@@ -66,7 +68,7 @@ Traditional anniversary themes make an easy hook for an intimate gift.
 
 - **Write the plan down.** A card that says what the night holds builds anticipation all day.
 - **Set the room.** Clean sheets, low light and the phone in another room.
-- **Wrap it beautifully.** Luxury toys come gift-ready; anything else deserves real wrapping paper.
+- **Wrap it beautifully.** Many higher-end toys come gift-ready; anything else deserves real wrapping paper.
 - **Give it before dinner.** Then it is on both your minds all evening.
 
 For more ideas that last past the anniversary, read [how to spice up your marriage](/blog/how-to-spice-up-your-marriage).
@@ -113,8 +115,8 @@ For more ideas that last past the anniversary, read [how to spice up your marria
     milestone: {
       slots: [
         {
-          label: 'Best Luxury Gift',
-          note: 'The top of a premium brand’s range. Flawless silicone, serious power and the kind of finish that feels like jewelry.',
+          label: 'Best Treat-Yourself Gift',
+          note: 'The top of a premium brand’s range. Flawless silicone, serious power and a finish that feels lovely in the hand.',
           rules: [
             { brands: ['lelo', 'womanizer', 'we-vibe', 'we vibe'], minPrice: 180, maxPrice: 400 },
             { hubs: ['vibrators', 'couples'], minPrice: 200, maxPrice: 400 },
@@ -143,7 +145,7 @@ For more ideas that last past the anniversary, read [how to spice up your marria
     },
     {
       q: 'What do you give for a 25th anniversary that is a little naughty?',
-      a: 'A luxury toy in a presentation box, a premium wand, or a sex swing. Pair it with a weekend away.',
+      a: 'A premium toy in a presentation box, a wand you will both enjoy, or a sex swing. Pair it with a weekend away so the focus stays on the two of you.',
     },
   ],
 }

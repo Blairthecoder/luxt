@@ -5,17 +5,17 @@ export const BONDAGE_BEGINNERS: Post = {
   title: 'Bondage for Beginners: Safe Words, Gear and a Gentle First Time',
   metaTitle: 'Bondage for Beginners: Safety, Gear & First-Time Tips',
   metaDescription:
-    'A beginner guide to bondage for couples: consent and safe words, beginner kits, what to avoid and how to try restraint safely.',
+    'A gentle bondage for beginners guide for couples: consent and safe words, beginner kits, what to avoid and how to try restraint so you both feel safe.',
   excerpt:
-    'Light bondage is one of the easiest ways to try something new together. Here is how to do it safely, from the conversation to the gear.',
+    'Light bondage is built on trust. How to talk about it, choose soft beginner gear and try restraint so you both feel safe, cared for and excited.',
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['bdsm', 'couples'],
   topics: ['couples', 'how-to'],
   body: `
-Bondage means restraining a partner, with their consent, during sex or play. For most couples it starts light: a blindfold, soft cuffs or a scarf. The appeal is trust, anticipation and the thrill of giving up or taking control.
+Light bondage is really about trust. Done well, it lets one of you feel held and cared for while the other feels confident and attentive, and it brings a lovely charge of anticipation to a familiar night. Bondage means restraining a partner, with their consent, during sex or play. For most couples it starts light: a blindfold, soft cuffs or a scarf.
 
-It is easy to start and easy to do safely, as long as you set the ground rules first.
+It is easy to start and easy to do safely, as long as you set the ground rules first. This guide walks you through the conversation, the gear and a gentle first time.
 
 ## Start With Consent
 

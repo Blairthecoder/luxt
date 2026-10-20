@@ -5,15 +5,15 @@ export const VALENTINES_GIFTS: Post = {
   title: "Valentine's Day Sex Toy Gifts for Couples, Her and Him",
   metaTitle: "Valentine's Day Sex Toy Gifts: Ideas for Every Couple",
   metaDescription:
-    "Valentine's Day gift ideas that skip the flowers: couples toys, a gift for her, a gift for him and a night plan, by budget, with current prices.",
+    "Valentine's Day sex toy gifts that help you both feel close and wanted: couples toys, a gift for her, a gift for him and a night plan, sorted by budget.",
   excerpt:
-    "Flowers fade by Sunday. Here is how to give something intimate on February 14, from a $20 add-on to a night you plan around it.",
+    'Flowers fade by Sunday. Give something that helps you both feel wanted on February 14, from a $20 add-on to a whole night planned around it.',
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['couples', 'vibrators', 'lingerie', 'bdsm'],
   topics: ['gift-guides', 'couples'],
   body: `
-Valentine's Day is the one holiday where an intimate gift fits almost anywhere, from a long marriage to the third month of dating. The trick is the same as any gift: make it about them, add a plan for the night, and match the intensity to where you are in the relationship.
+The best Valentine's gift leaves your partner feeling chosen, and leaves you both closer by the end of the night. Valentine's Day is the one holiday where an intimate gift fits almost anywhere, from a long marriage to the third month of dating. The trick is the same as any gift: make it about them, add a plan for the night, and match the intensity to where you are in the relationship.
 
 Order early. Popular toys sell out in the first two weeks of February, and shipping from the retailer takes longer in the days before the 14th.
 
@@ -23,7 +23,7 @@ Order early. Popular toys sell out in the first two weeks of February, and shipp
 |---|---|---|
 | New relationship (under a year) | Lingerie in their size, or a bottle of good lube and a massage oil | A small [bullet vibrator](/shop/bullet-vibrators) to try together |
 | Established (1 to 5 years) | A [couples toy](/shop/couples-sex-toys) | A [remote control vibrator](/shop/remote-control-vibrators) for the dinner out |
-| Long-term (5+ years) | A [bondage kit](/shop/bondage-kits) or a [positioning wedge](/category/sex-machines-furniture) | A [luxury piece](/shop/luxury-sex-toys) and a hotel night |
+| Long-term (5+ years) | A [bondage kit](/shop/bondage-kits) or a [positioning wedge](/category/sex-machines-furniture) | A [premium piece](/shop/luxury-sex-toys) and a hotel night |
 | Long-distance | An [app-controlled toy](/shop/app-controlled-sex-toys) for each of you | A matched pair you can both control |
 
 ## Gifts to Share

@@ -5,15 +5,15 @@ export const CLEAN_TOYS: Post = {
   title: 'How to Clean Sex Toys: Silicone, Glass, Strokers and Electronics',
   metaTitle: 'How to Clean Sex Toys: A Guide by Material',
   metaDescription:
-    'How to clean and store sex toys by material: silicone, glass, metal, TPE and strokers, plus electronics, toy cleaners and what to avoid.',
+    'How to clean sex toys by material so you can relax and use them with confidence: silicone, glass, metal, TPE, strokers, electronics and what to avoid.',
   excerpt:
-    'Cleaning depends on the material. Here is what works for silicone, glass, strokers and rechargeables, and what damages them.',
+    'A clean toy is one less thing to think about. Simple care for silicone, glass, strokers and rechargeables, and what to keep away from them.',
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['more-toys', 'lubricants', 'strokers'],
   topics: ['how-to'],
   body: `
-Clean toys are safer and last longer. The method depends on the material, and the wrong cleaner can damage a toy. This guide covers the common materials and the electronics inside many toys.
+Part of feeling relaxed in the moment is knowing your toys are clean, safe and ready when you are. Clean toys are kinder to your body and last longer. The method depends on the material, and the wrong cleaner can damage a toy. This guide covers the common materials and the electronics inside many toys, so care becomes a quick, easy habit.
 
 ## The Basic Rule
 

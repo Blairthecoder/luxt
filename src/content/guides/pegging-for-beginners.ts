@@ -5,17 +5,17 @@ export const PEGGING_BEGINNERS: Post = {
   title: 'Pegging for Beginners: Gear, Prep and a Gentle First Time',
   metaTitle: 'Pegging for Beginners: Strap-On Gear & First-Time Guide',
   metaDescription:
-    'A beginner guide to pegging: what to buy, how to prepare, how to start comfortably and how to talk about it. Strap-on kits with current prices.',
+    'A gentle pegging for beginners guide: what to buy, how to prepare, how to talk about it and how to start so you both feel comfortable. Strap-on kits too.',
   excerpt:
-    'Pegging is when a partner uses a strap-on for anal play. Here is what to buy, how to prepare and how to make the first time comfortable.',
+    'Pegging goes best when you both feel safe, curious and unhurried. What to buy, how to prepare and how to make the first time comfortable.',
   publishedAt: '2026-10-20',
   readMinutes: 10,
   hubs: ['strap-ons', 'anal-toys', 'lubricants'],
   topics: ['couples', 'how-to'],
   body: `
-Pegging is when one partner uses a strap-on to penetrate another partner anally. It is often, but not always, a woman penetrating a man. It is increasingly common, and it works for any couple.
+Trying something new together goes best when you both feel safe, curious and free to go at your own pace. Pegging is when one partner uses a strap-on to penetrate another partner anally. It is often, but not always, a woman penetrating a man. It is increasingly common, and it works for any couple who wants to explore it.
 
-The recipient may enjoy the prostate stimulation, the role reversal or the intimacy. The giver may enjoy the control. Both need preparation to make it comfortable.
+The recipient may enjoy the prostate stimulation, the role reversal or the intimacy. The giver may enjoy the confidence of leading. Both deserve preparation that makes it comfortable, and this guide covers the gear, the prep and the conversation.
 
 ## Start With the Conversation
 

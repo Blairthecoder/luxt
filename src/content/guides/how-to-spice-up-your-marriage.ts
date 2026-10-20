@@ -5,15 +5,15 @@ export const SPICE_UP_MARRIAGE: Post = {
   title: 'How to Spice Up Your Marriage: 15 Ideas That Actually Work',
   metaTitle: 'How to Spice Up Your Marriage: 15 Bedroom Ideas',
   metaDescription:
-    'Practical ways to spice up your marriage in the bedroom, from the conversation to new toys, positions and date nights. Easy first steps for long-term couples.',
+    'How to spice up your marriage with ideas that help you both feel wanted again, from an easy conversation to new toys, positions and date nights at home.',
   excerpt:
-    'Long-term desire does not run on autopilot. Fifteen practical ideas, from a five-minute conversation to your first shared toy.',
+    'Feeling desired after years together takes a little attention. Fifteen easy ideas, from a five-minute conversation to your first shared toy.',
   publishedAt: '2026-10-19',
   readMinutes: 12,
   hubs: ['couples', 'bdsm', 'lingerie', 'sex-machines-furniture'],
   topics: ['couples', 'how-to'],
   body: `
-Almost every long relationship hits the same point. Sex becomes predictable, schedules get in the way and one or both of you starts wondering where the spark went. That is normal, and it is fixable. Desire in a long marriage is less about chemistry and more about attention, novelty and making time.
+Most people in a long marriage want the same thing: to feel wanted by the person they chose, and to look forward to time together again. Almost every long relationship hits a point where that gets harder. Sex becomes predictable, schedules get in the way and one or both of you starts wondering where the spark went. That is normal, and it is fixable. Desire in a long marriage is less about chemistry and more about attention, novelty and making time.
 
 The ideas below run from easy to adventurous. You do not need all fifteen. Pick two that sound good to both of you and start there.
 

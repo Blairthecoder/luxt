@@ -34,9 +34,9 @@ export const Route = createFileRoute('/')({
   head: ({ loaderData }) => {
     const from = loaderData?.firstPicks.length ? Math.min(...loaderData.firstPicks.map((p) => p.price)) : null
     return pageHead({
-      title: `${SITE.name} | Luxury Adult Toys, Honestly Explained`,
+      title: `Adult Toys for Confidence & Pleasure | ${SITE.shortName}`,
       description: from
-        ? `Luxury vibrators, couples toys and more from ${formatPrice(from)}. Compare LELO, Womanizer and We-Vibe with plain-English guides and real specs. Ships discreetly.`
+        ? `Adult toys that help you and your partner feel comfortable, confident and close, from ${formatPrice(from)}. Honest guides, body-safe picks, discreet delivery.`
         : SITE.description,
       path: '/',
       jsonLd: [
@@ -61,29 +61,29 @@ const AUDIENCES = [
     key: 'forHer',
     slug: 'sex-toys-for-women',
     label: 'For Her',
-    line: 'Vibrators, wands and air-pulse toys chosen for real pleasure. Start small and quiet, or go straight to the cult favorites.',
+    line: 'Toys that put her pleasure first, from quiet, palm-sized starters to cult-favorite air-pulse toys. Go at whatever pace feels right.',
     links: ['clitoral-vibrators', 'wand-vibrators', 'rabbit-vibrators', 'bullet-vibrators'],
   },
   {
     key: 'forHim',
     slug: 'sex-toys-for-men',
     label: 'For Him',
-    line: 'Strokers, rings and prostate toys, from first-time to expert. Most of the best ones cost less than a nice dinner.',
+    line: 'Strokers, rings and prostate toys that make it easier to relax and enjoy yourself. Many of the best cost less than a nice dinner.',
     links: ['automatic-strokers', 'prostate-vibrators', 'vibrating-cock-rings', 'tenga'],
   },
   {
     key: 'forCouples',
     slug: 'couples-sex-toys',
     label: 'For Couples',
-    line: 'Wearables and app-controlled toys made to be shared, in the same room or across the country.',
+    line: 'Wearables and app-controlled toys that help you feel closer and try something new together, in the same room or miles apart.',
     links: ['app-controlled-sex-toys', 'remote-control-vibrators', 'we-vibe', 'lovense'],
   },
 ] as const
 
 const PROMISES = [
-  ['Straight Answers', 'Plain-English guidance on sizing, materials and where to start. No judgment.'],
-  ['Real Comparisons', 'Specs, prices and options side by side, so you can choose with confidence.'],
-  ['Discreet Delivery', 'Every order ships in plain packaging from our trusted retail partner.'],
+  ['Comfort First', 'Body-safe materials, gentle starting points and plain answers to the questions people feel shy asking.'],
+  ['Choose With Confidence', 'Honest comparisons and real specs, so you know what you are getting before you buy.'],
+  ['Private by Default', 'Plain packaging and a discreet checkout with our retail partner.'],
 ] as const
 
 function ProductRow({ products, cols = 3 }: { products: ProductSummary[]; cols?: 3 | 4 }) {
@@ -108,18 +108,18 @@ function HomePage() {
     <div>
       <section className="bg-stone">
         <div className="wrap pt-20 sm:pt-32 pb-12">
-          <p className="eyebrow text-graphite rise">Curated Pleasure. Est. 2026.</p>
-          <h1 className="mt-5 display-xl rise">
-            Luxury Adult Toys,{' '}
-            <br />
-            Explained.
+          <p className="eyebrow text-graphite rise">For You. For Two. No Judgment.</p>
+          <h1 className="mt-5 display-l max-w-5xl rise">
+            Adult Toys for Confidence,{' '}
+            <br className="hidden sm:block" />
+            Comfort and Connection.
           </h1>
           <div className="mt-12 grid lg:grid-cols-12 gap-10 items-end rise-delay">
             <p className="lg:col-span-5 lede text-graphite">
-              The world's best adult toys, chosen with care and explained without the blush. Compare honestly, then
-              buy discreetly.{' '}
+              Feeling good should feel easy. We help you find toys that suit your body, your pace and your
+              relationship, with honest advice and discreet delivery.{' '}
               <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
-                Most first picks are under $50.
+                Most good first toys cost under $50.
               </Link>
             </p>
             <p className="lg:col-span-6 lg:col-start-7 font-display text-[1.625rem] sm:text-[2.125rem] font-semibold tracking-[-0.03em] leading-[1.2]">
@@ -154,7 +154,7 @@ function HomePage() {
           <div className="grid lg:grid-cols-12 gap-6 items-end mb-10">
             <h2 className="lg:col-span-7 display-m">Easy First Picks</h2>
             <p className="lg:col-span-4 lg:col-start-9 text-graphite leading-relaxed">
-              Well made, easy to use and under $50. The ones we point friends to first.{' '}
+              Gentle, simple to use and under $50. A comfortable place to start, solo or together.{' '}
               <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="text-ink underline underline-offset-4">
                 Shop under $50
               </Link>
@@ -208,12 +208,12 @@ function HomePage() {
       {splurge.length > 0 && (
         <section className="wrap pt-24 sm:pt-36 grid lg:grid-cols-12 gap-10 reveal">
           <div className="lg:col-span-4">
-            <h2 className="display-m">Worth the Splurge</h2>
+            <h2 className="display-m">When You Want to Treat Yourself</h2>
             <p className="mt-4 text-graphite leading-relaxed max-w-xs">
-              Stronger, quieter motors and better materials. Three we think earn the price.
+              Quieter motors, softer materials and builds that last. Three we think are worth it.
             </p>
             <Link to="/shop/$slug" params={{ slug: 'luxury-sex-toys' }} className="mt-6 more">
-              Shop Luxury
+              Shop Premium Picks
             </Link>
           </div>
           <ul className="lg:col-span-8 border-t border-ink">
@@ -260,7 +260,7 @@ function HomePage() {
               Category.
             </h2>
             <p className="mt-6 text-[#a1a1a6] max-w-xs leading-relaxed">
-              Every category, sorted by what it does and who it is for.
+              Browse by what feels right for you, at your own pace.
             </p>
           </div>
           <ul className="lg:col-span-8 grid sm:grid-cols-2 gap-x-12 border-t border-night-line reveal">

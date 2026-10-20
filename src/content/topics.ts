@@ -18,9 +18,9 @@ export const TOPICS: Topic[] = [
     name: 'Gift Guides',
     metaTitle: 'Sex Toy Gift Guides for Her, Him & Couples',
     metaDescription:
-      'Gift guides for every budget: sex toy gifts for her, for him, for couples and for anniversaries, with current prices and honest picks.',
+      'Sex toy gift guides for her, him, couples and anniversaries: thoughtful picks at every budget that help the people you love feel seen and wanted.',
     intro:
-      'Buying for someone else is harder than buying for yourself. These guides pick a safe bet and a bolder option for each person and budget, so you can decide in minutes.',
+      'A thoughtful intimate gift helps someone feel seen and wanted. These guides pick a safe bet and a bolder option for each person and budget, so you can choose with confidence in minutes.',
     collections: ['sex-toy-gift-sets', 'stocking-stuffers', 'sex-toys-under-50', 'sex-toys-under-100', 'luxury-sex-toys', 'black-friday-sex-toy-deals'],
   },
   {
@@ -28,9 +28,9 @@ export const TOPICS: Topic[] = [
     name: 'Couples & Relationships',
     metaTitle: 'Couples Guides: Spice Up Your Relationship',
     metaDescription:
-      'Practical guides for couples: how to bring toys into the bedroom, keep a long relationship exciting and pick toys you will both use.',
+      'Couples guides for feeling closer: how to bring toys into the bedroom with ease, keep a long relationship exciting and choose toys you will both enjoy.',
     intro:
-      'Long relationships are worth investing in. These guides cover the conversation, the first toy you share and the small changes that keep things interesting years in.',
+      'Feeling close takes a little attention at any stage of a relationship. These guides cover the conversation, the first toy you share and the small changes that help you both feel wanted years in.',
     collections: ['couples-sex-toys', 'remote-control-vibrators', 'vibrating-cock-rings', 'app-controlled-sex-toys', 'bondage-kits', 'sex-swings'],
   },
   {
@@ -38,9 +38,9 @@ export const TOPICS: Topic[] = [
     name: 'For Her',
     metaTitle: 'Sex Toy Guides for Women: Vibrators & More',
     metaDescription:
-      'Guides for women on choosing vibrators, clitoral and G-spot toys, and getting more from solo and partnered play.',
+      'Guides for women on choosing vibrators, clitoral and G-spot toys, and feeling more comfortable and confident in solo and partnered pleasure.',
     intro:
-      'Straight answers on vibrators, suction toys and everything in between, written for the person who will be using them.',
+      'Warm, straight answers on vibrators, suction toys and everything in between, written for you, so you can find what feels good with confidence.',
     collections: ['sex-toys-for-women', 'clitoral-vibrators', 'rabbit-vibrators', 'wand-vibrators', 'g-spot-vibrators', 'bullet-vibrators', 'quiet-vibrators'],
   },
   {
@@ -48,9 +48,9 @@ export const TOPICS: Topic[] = [
     name: 'For Him',
     metaTitle: 'Sex Toy Guides for Men: Strokers, Rings & More',
     metaDescription:
-      'Guides for men on strokers, penis rings, prostate massagers and pumps. Comparisons, how-tos and what to buy first.',
+      'Guides for men on strokers, penis rings, prostate massagers and pumps, so you can explore what you enjoy with confidence. Comparisons and first picks.',
     intro:
-      'Comparisons and how-tos for strokers, rings, prostate toys and pumps, with the cleanup and discretion questions answered up front.',
+      'Comparisons and how-tos for strokers, rings, prostate toys and pumps, with cleanup and discretion answered up front, so you can explore what you enjoy with ease.',
     collections: ['sex-toys-for-men', 'automatic-strokers', 'pocket-pussies', 'prostate-vibrators', 'vibrating-cock-rings', 'fleshlight'],
   },
   {
@@ -58,9 +58,9 @@ export const TOPICS: Topic[] = [
     name: 'How-To & Care',
     metaTitle: 'How to Use Sex Toys: Guides, Lube & Care',
     metaDescription:
-      'How to use sex toys alone or with a partner, which lube to choose and how to keep toys clean and lasting.',
+      'How to use sex toys alone or with a partner, choose a comfortable lube and keep toys clean, so you can relax and enjoy every moment with confidence.',
     intro:
-      'The practical side: using toys with a partner, choosing lube, and keeping everything clean so it lasts.',
+      'The practical side of feeling at ease: using toys with a partner, choosing a lube that keeps things comfortable and caring for toys so they are always ready.',
     collections: ['sex-toys-for-beginners', 'water-based-lube', 'silicone-lube', 'discreet-sex-toys', 'bullet-vibrators', 'vibrating-cock-rings', 'butt-plugs', 'anal-beads'],
   },
 ]

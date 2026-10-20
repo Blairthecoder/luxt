@@ -18,7 +18,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: `${SITE.name} | Adult Toys, Explained` },
+      { title: `Adult Toys for Confidence & Pleasure | ${SITE.shortName}` },
       { name: 'description', content: SITE.description },
       { name: 'rating', content: 'adult' },
       { property: 'og:site_name', content: SITE.name },
