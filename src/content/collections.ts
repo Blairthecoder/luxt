@@ -31,6 +31,8 @@ export interface Collection {
   rule: CollectionRule
   /** Related guide slug in Nightstand Notes. */
   guide?: string
+  /** Further guide slugs linked under the grid, after `guide`. */
+  guides?: string[]
 }
 
 export const COLLECTIONS: Collection[] = [
@@ -211,6 +213,7 @@ export const COLLECTIONS: Collection[] = [
       'Fleshlight is the best-known stroker brand, with reusable sleeves in dozens of internal textures, including models molded from adult performers. Pick a texture that matches the intensity you like, and the right accessories make cleanup easy.',
     rule: { brands: ['fleshlight'] },
     guide: 'fleshlight-vs-tenga',
+    guides: ['best-fleshlight-for-beginners', 'how-to-clean-a-fleshlight', 'best-lube-for-sex-toys'],
   },
   {
     slug: 'tenga',
@@ -223,6 +226,7 @@ export const COLLECTIONS: Collection[] = [
       'Tenga makes clean, thoughtfully designed strokers, from single-use cups to reusable Flip and Spinner models. Trying a few cups is a low-pressure way to find out which sensations you like best.',
     rule: { brands: ['tenga'] },
     guide: 'fleshlight-vs-tenga',
+    guides: ['how-to-clean-sex-toys', 'best-lube-for-sex-toys'],
   },
   {
     slug: 'lelo',
@@ -234,6 +238,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'LELO is a Swedish brand known for soft silicone, quiet motors and long warranties. That quiet matters if you share a home, and the smooth finish makes its toys easy to relax with.',
     rule: { brands: ['lelo'] },
+    guides: ['womanizer-vs-lelo-sona', 'how-to-choose-your-first-vibrator'],
   },
   {
     slug: 'womanizer',
@@ -245,6 +250,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Womanizer invented air-pulse clitoral stimulation, which uses gentle suction waves instead of direct vibration. Many people find it a softer, more comfortable way to reach orgasm, especially if direct vibration feels like too much.',
     rule: { brands: ['womanizer'] },
+    guides: ['womanizer-vs-lelo-sona', 'clitoral-vs-g-spot-vibrators'],
   },
   {
     slug: 'lovense',
@@ -256,6 +262,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'Lovense specializes in app-controlled toys that help couples stay close across any distance. Share the controls with a partner, or set your own patterns for solo play.',
     rule: { brands: ['lovense'] },
+    guides: ['lovense-vs-we-vibe', 'long-distance-sex-toys'],
   },
   {
     slug: 'we-vibe',
@@ -267,6 +274,7 @@ export const COLLECTIONS: Collection[] = [
     intro:
       'We-Vibe pioneered the wearable couples vibrator, designed to stay comfortable during sex so both of you feel more. Most models pair with the We-Connect app for remote play.',
     rule: { brands: ['we-vibe', 'we vibe'] },
+    guides: ['lovense-vs-we-vibe', 'best-couples-sex-toys'],
   },
   {
     slug: 'sex-toy-gift-sets',

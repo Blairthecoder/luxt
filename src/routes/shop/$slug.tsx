@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 import { ListingPage } from '@/components/ListingPage'
-import { COLLECTIONS_BY_SLUG } from '@/content/collections'
+import { COLLECTIONS, COLLECTIONS_BY_SLUG } from '@/content/collections'
 import { POSTS_BY_SLUG } from '@/content/posts'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getCollectionListing } from '@/lib/catalog'
@@ -59,7 +59,13 @@ export const Route = createFileRoute('/shop/$slug')({
 
 function CollectionPage() {
   const { collection, result, filters } = Route.useLoaderData()
-  const guide = collection.guide ? POSTS_BY_SLUG[collection.guide] : undefined
+  const guides = [collection.guide, ...(collection.guides ?? [])]
+    .map((slug) => (slug ? POSTS_BY_SLUG[slug] : undefined))
+    .filter((post): post is NonNullable<typeof post> => Boolean(post))
+  const otherBrands =
+    collection.group === 'By Brand'
+      ? COLLECTIONS.filter((c) => c.group === 'By Brand' && c.slug !== collection.slug).map((c) => ({ slug: c.slug, name: c.name }))
+      : []
   return (
     <ListingPage
       eyebrow={collection.group}
@@ -74,7 +80,8 @@ function CollectionPage() {
       result={result}
       filters={filters}
       subcats={result.subcats}
-      guides={guide ? [guide] : []}
+      guides={guides}
+      otherBrands={otherBrands}
     />
   )
 }
