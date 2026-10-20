@@ -5,6 +5,7 @@ import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
 import { SearchDialog } from '@/components/SearchDialog'
 import { MobileTabBar } from '@/components/MobileTabBar'
+import { Logo } from '@/components/Logo'
 import { SITE } from '@/config/site'
 
 const PRIMARY = [
@@ -64,11 +65,7 @@ function MenuColumn({
 }
 
 function Wordmark() {
-  return (
-    <span className="font-display text-[1.25rem] font-bold tracking-[-0.045em] text-ink leading-none">
-      Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
-    </span>
-  )
+  return <Logo alt="" className="h-10 w-auto lg:h-11" />
 }
 
 export function Navbar() {

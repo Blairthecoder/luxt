@@ -4,6 +4,7 @@ import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { TOPICS } from '@/content/topics'
 import { NewsletterSignup } from '@/components/NewsletterSignup'
+import { Logo } from '@/components/Logo'
 
 const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'Gift Ideas', 'By Budget'].includes(c.group))
 
@@ -17,9 +18,7 @@ export function Footer() {
       <div className="wrap pt-16 pb-10">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="space-y-5 max-w-sm">
-            <p className="font-display text-2xl font-bold tracking-[-0.045em] text-ink">
-              Nightstand<span className="text-graphite font-semibold"> Supply Co.</span>
-            </p>
+            <Logo className="h-12 w-auto" />
             <p className="text-sm text-graphite leading-relaxed">{SITE.description}</p>
             <NewsletterSignup source="footer" variant="footer" />
           </div>

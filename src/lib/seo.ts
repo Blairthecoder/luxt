@@ -31,7 +31,12 @@ export function pageHead({
       { property: 'og:title', content: title },
       { property: 'og:description', content: desc },
       { property: 'og:url', content: url },
-      ...(image ? [{ property: 'og:image', content: image }] : []),
+      ...(image
+        ? [
+            { property: 'og:image', content: image },
+            { name: 'twitter:image', content: image },
+          ]
+        : []),
     ],
     links: [{ rel: 'canonical', href: url }],
     scripts: jsonLd.map((data) => ({
@@ -60,6 +65,7 @@ export function organizationJsonLd() {
     '@type': 'Organization',
     name: SITE.name,
     url: SITE.url,
+    logo: absoluteUrl('/icon-512.png'),
   }
 }
 

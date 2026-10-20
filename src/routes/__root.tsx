@@ -2,7 +2,7 @@ import { HeadContent, Link, Scripts, createRootRoute } from '@tanstack/react-rou
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { AgeGate } from '@/components/AgeGate'
-import { SITE } from '@/config/site'
+import { SITE, absoluteUrl } from '@/config/site'
 import '../styles.css'
 // Self-hosted variable fonts (latin subset): no render-blocking third-party stylesheet.
 import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
@@ -24,6 +24,9 @@ export const Route = createRootRoute({
       { property: 'og:site_name', content: SITE.name },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
+      { property: 'og:image', content: absoluteUrl('/og-image.jpg') },
+      { property: 'og:image:alt', content: 'Nightstand Supply: discreet intimacy essentials' },
+      { name: 'twitter:image', content: absoluteUrl('/og-image.jpg') },
       { name: 'theme-color', content: '#ffffff' },
       { name: 'mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
@@ -34,6 +37,8 @@ export const Route = createRootRoute({
       { rel: 'preload', href: interTightFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'preload', href: interFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'preconnect', href: 'https://cdn.shopify.com' },
+      { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
       { rel: 'manifest', href: '/manifest.webmanifest' },
       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
     ],
