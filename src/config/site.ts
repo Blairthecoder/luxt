@@ -8,6 +8,8 @@ export const SITE = {
   guidesName: 'Nightstand Notes',
   /** Byline for guides with no named author. */
   editorialTeam: 'The Nightstand Notes Editors',
+  /** Shown on the privacy and terms pages. Leave empty to hide the contact section. */
+  contactEmail: 'nightstandsupplynsfw@gmail.com' as string,
 } as const
 
 export function absoluteUrl(path: string): string {
