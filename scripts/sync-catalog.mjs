@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Pulls the LuxuryToyX Shopify catalog into src/data/catalog.json.
-// Runs before every Netlify build. On a network failure the existing
-// catalog.json is kept so a deploy never ships an empty store.
+// Runs before every Netlify build. Each page is retried with backoff. On
+// Netlify (or with --strict) a failed or implausibly small sync fails the
+// build, so the last good deploy stays live instead of an empty store going out.
+// Locally the existing catalog.json is kept on failure.
 //
 // Usage:
 //   node scripts/sync-catalog.mjs                 # fetch live catalog
@@ -22,7 +24,10 @@ const PAGE_SIZE = 250
 const MAX_PAGES = 60
 
 const args = process.argv.slice(2)
-const strict = args.includes('--strict')
+// Netlify sets NETLIFY=true during builds; never ship a build with a broken catalog.
+const strict = args.includes('--strict') || process.env.NETLIFY === 'true'
+const MIN_PRODUCTS = Number(process.env.MIN_CATALOG_PRODUCTS ?? 1000)
+const RETRIES = 6
 const fromFileIdx = args.indexOf('--from-file')
 const fromFile = fromFileIdx >= 0 ? args[fromFileIdx + 1] : null
 
@@ -96,13 +101,35 @@ function normalize(raw) {
   }
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+
+async function fetchPage(url) {
+  let lastError
+  for (let attempt = 1; attempt <= RETRIES; attempt++) {
+    let wait = attempt * 2000
+    try {
+      const res = await fetch(url, {
+        headers: { 'User-Agent': 'NightstandSupplyCatalogSync/1.0', Accept: 'application/json' },
+        signal: AbortSignal.timeout(30000),
+      })
+      if (res.ok) return await res.json()
+      lastError = new Error(`${url} returned ${res.status}`)
+      if (res.status !== 429 && res.status < 500) throw lastError
+      const retryAfter = Number(res.headers.get('retry-after'))
+      if (retryAfter > 0) wait = retryAfter * 1000
+    } catch (err) {
+      lastError = err
+    }
+    if (attempt < RETRIES) await sleep(wait)
+  }
+  throw lastError
+}
+
 async function fetchAll() {
   const all = []
   for (let page = 1; page <= MAX_PAGES; page++) {
     const url = `${SOURCE}/products.json?limit=${PAGE_SIZE}&page=${page}`
-    const res = await fetch(url, { headers: { 'User-Agent': 'NightstandSupplyCatalogSync/1.0' } })
-    if (!res.ok) throw new Error(`${url} returned ${res.status}`)
-    const body = await res.json()
+    const body = await fetchPage(url)
     const batch = Array.isArray(body.products) ? body.products : []
     all.push(...batch)
     if (batch.length < PAGE_SIZE) break
@@ -125,6 +152,9 @@ async function main() {
     .filter((p) => p.price > 0 && p.images.length > 0)
 
   if (products.length === 0) throw new Error('No products returned')
+  if (!fromFile && products.length < MIN_PRODUCTS) {
+    throw new Error(`Only ${products.length} products returned (expected at least ${MIN_PRODUCTS})`)
+  }
 
   fs.writeFileSync(
     OUT,
@@ -138,6 +168,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.warn(`[catalog] sync failed, keeping existing catalog: ${err.message}`)
+  console.error(`[catalog] sync failed${strict ? ', failing the build' : ', keeping existing catalog'}: ${err.message}`)
   process.exit(strict ? 1 : 0)
 })
