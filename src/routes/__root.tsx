@@ -38,6 +38,7 @@ export const Route = createRootRoute({
       { rel: 'preload', href: interTightFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'preload', href: interFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'preconnect', href: 'https://cdn.shopify.com' },
+      { rel: 'preconnect', href: 'https://cdn.lovense.com' },
       { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
       { rel: 'manifest', href: '/manifest.webmanifest' },

@@ -137,7 +137,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40">
       <div className="bg-plum text-canvas">
         <div className="wrap flex items-center justify-center sm:justify-between gap-6 h-9 text-xs">
-          <p className="hidden sm:block text-canvas/70">Discreet shipping from our trusted retail partner</p>
+          <p className="hidden sm:block text-canvas/70">Shipped by our trusted retail partners</p>
           <p className="font-medium">
             Good first toys from under $50.{' '}
             <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="underline underline-offset-2">

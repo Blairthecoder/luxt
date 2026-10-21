@@ -13,6 +13,7 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 ## Key files
 
 - `scripts/sync-catalog.mjs`: pulls `https://www.luxurytoyx.com/products.json` into `src/data/catalog.json` before every build. Keeps the existing file on failure.
+- `scripts/sync-lovense.mjs`: builds `src/data/lovense.json` (products, prices, images) from lovense.com product pages and `src/data/lovense-links.json` (per-product affiliate links) from `src/data/lovense-affiliate-links.json`, the dashboard export of item names and links. Lovense links are per-item short links, not deep links. `catalog-store.ts` merges Lovense over any LuxuryToyX product with the same handle. Keeps existing files on failure.
 - `src/data/hub-rules.json`: ordered regex rules mapping each product to one category hub.
 - `src/content/hubs.ts`: category names, meta and original intro copy.
 - `src/content/product-copy.ts`: original product copy keyed by handle. Product pages are `noindex` until they have an entry. Never paste merchant descriptions.

@@ -1,5 +1,5 @@
 [build]
-  command = "node scripts/sync-catalog.mjs && vite build"
+  command = "node scripts/sync-catalog.mjs && node scripts/sync-lovense.mjs && vite build"
   publish = "dist/client"
 [build.environment]
   # sync-catalog.mjs relies on the global fetch in Node 18+

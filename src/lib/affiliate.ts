@@ -1,3 +1,5 @@
+import lovenseLinks from '@/data/lovense-links.json'
+
 /**
  * Affiliate programs. Every outbound purchase link is built here and only
  * served through the /go/<handle> redirect, so a program change is one edit.
@@ -6,9 +8,13 @@ export interface AffiliateProgram {
   id: string
   merchantName: string
   /** Merchant product page for a given product handle. */
-  productUrl: (handle: string) => string
+  productUrl?: (handle: string) => string
   /** Tracking link; the merchant landing page is appended as ?url=<encoded>. */
-  deepLinkBase: string
+  deepLinkBase?: string
+  /** Per-product tracking links, for programs that issue one short link per item. */
+  productLinks?: Record<string, string>
+  /** Used when a product has no link of its own. */
+  fallbackLink?: string
 }
 
 export const PROGRAMS: Record<string, AffiliateProgram> = {
@@ -17,6 +23,13 @@ export const PROGRAMS: Record<string, AffiliateProgram> = {
     merchantName: 'LuxuryToyX',
     productUrl: (handle) => `https://www.luxurytoyx.com/products/${handle}`,
     deepLinkBase: 'https://luxurytoyx.fxo.co/g/1559545/250145/3789407/DxCPTgc',
+  },
+  lovense: {
+    id: 'lovense',
+    merchantName: 'Lovense',
+    productLinks: lovenseLinks,
+    // Lovense home page tracking link.
+    fallbackLink: 'https://www.lovense.com/r/3t7vuu',
   },
 }
 
@@ -34,7 +47,12 @@ export function getProgram(programId: string = DEFAULT_PROGRAM_ID): AffiliatePro
 
 export function buildAffiliateUrl(handle: string, programId?: string): string {
   const program = getProgram(programId)
-  return `${program.deepLinkBase}?url=${encodeURIComponent(program.productUrl(handle))}`
+  const own = program.productLinks?.[handle]
+  if (own) return own
+  if (program.deepLinkBase && program.productUrl) {
+    return `${program.deepLinkBase}?url=${encodeURIComponent(program.productUrl(handle))}`
+  }
+  return program.fallbackLink ?? '/'
 }
 
 /** Internal path used by every buy button. */

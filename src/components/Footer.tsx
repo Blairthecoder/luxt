@@ -76,7 +76,7 @@ export function Footer() {
         <div className="mt-14 pt-6 border-t border-line space-y-4 text-xs text-graphite">
           <p className="max-w-3xl leading-relaxed">
             We earn a commission when you buy through our links, at no extra cost to you. Orders are placed and
-            shipped by our retail partner.{' '}
+            shipped by the retailer you buy from.{' '}
             <Link to="/disclosure" className="text-ink underline underline-offset-2">
               Disclosure
             </Link>

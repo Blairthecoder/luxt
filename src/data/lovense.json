@@ -1,0 +1,870 @@
+{
+  "syncedAt": "2026-10-21T18:39:33.537Z",
+  "source": "https://www.lovense.com",
+  "products": [
+    {
+      "handle": "lovense-ambi",
+      "title": "Lovense Ambi Bullet Vibrator",
+      "brand": "Lovense",
+      "productType": "Bullet Vibrators",
+      "tags": [
+        "Bullet Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 69,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/ambi.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 69,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-calor",
+      "title": "Lovense Calor Bluetooth Depth-Controlled Vibrating Pocket Pussy",
+      "brand": "Lovense",
+      "productType": "Masturbators",
+      "tags": [
+        "Masturbators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/calor.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-diamo",
+      "title": "Lovense Diamo Vibrating Cock Ring",
+      "brand": "Lovense",
+      "productType": "Cock Rings",
+      "tags": [
+        "Cock Rings",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "penis-rings",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/diamo.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-dolce",
+      "title": "Lovense Dolce Dual Clitoral and G-Spot Vibrator",
+      "brand": "Lovense",
+      "productType": "G-spot and Clit Vibrators",
+      "tags": [
+        "G-spot and Clit Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/quake.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-domi-2",
+      "title": "Lovense Domi 2 App-Controlled Mini Personal Wand Vibrator",
+      "brand": "Lovense",
+      "productType": "Wand Vibrators",
+      "tags": [
+        "Wand Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/domi2.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-edge-2",
+      "title": "Lovense Edge 2 Adjustable Dual-Motor App-Controlled Prostate Massager",
+      "brand": "Lovense",
+      "productType": "Prostate Massagers",
+      "tags": [
+        "Prostate Massagers",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "prostate-massagers",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/edge2.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-exomoon",
+      "title": "Lovense Exomoon Remote Control Mini Lipstick Bullet Vibrator",
+      "brand": "Lovense",
+      "productType": "Bullet Vibrators",
+      "tags": [
+        "Bullet Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 79,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/exomoon.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 79,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-ferri",
+      "title": "Lovense Ferri Remote-Controlled Magnetic Vibrating Panties",
+      "brand": "Lovense",
+      "productType": "Vibrating Panties",
+      "tags": [
+        "Vibrating Panties",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/ferri.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-flexer",
+      "title": "Lovense Flexer Dual-Stimulation Panty Vibrator",
+      "brand": "Lovense",
+      "productType": "Vibrating Panties",
+      "tags": [
+        "Vibrating Panties",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/ei01.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-gemini",
+      "title": "Lovense Gemini App-Controlled Vibrating Nipple Stimulators with Clips",
+      "brand": "Lovense",
+      "productType": "Nipple Clamps",
+      "tags": [
+        "Nipple Clamps",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "bdsm",
+      "price": 79,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/gemini001.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 79,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-gravity",
+      "title": "Lovense Gravity Thrusting Vibrating Dildo",
+      "brand": "Lovense",
+      "productType": "Dildos",
+      "tags": [
+        "Dildos",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "dildos",
+      "price": 149,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/ea01.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 149,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-gush-2-motion",
+      "title": "Lovense Gush 2 Motion",
+      "brand": "Lovense",
+      "productType": "Masturbators",
+      "tags": [
+        "Masturbators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://www.lovense.com/images/product/gush2motion/gush2motion-main.jpg"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-hush-2",
+      "title": "Lovense Hush 2 App-Controlled Vibrating Butt Plug",
+      "brand": "Lovense",
+      "productType": "Vibrating Butt Plugs",
+      "tags": [
+        "Vibrating Butt Plugs",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "anal-toys",
+      "price": 89,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/hush2s.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 89,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-hyphy",
+      "title": "Lovense Hyphy Dual-End Vibrator",
+      "brand": "Lovense",
+      "productType": "Clitoral Vibrators",
+      "tags": [
+        "Clitoral Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/hifre.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-kraken",
+      "title": "Lovense Kraken Pocket Masturbator",
+      "brand": "Lovense",
+      "productType": "Masturbators",
+      "tags": [
+        "Masturbators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 30,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/9535b0f52e78402ead1908a03147d91e.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 30,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lapis",
+      "title": "Lovense Lapis Strapless Strap-On Dildo",
+      "brand": "Lovense",
+      "productType": "Dildos",
+      "tags": [
+        "Dildos",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "dildos",
+      "price": 149,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/lapis.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 149,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-3",
+      "title": "Lovense Lush 3 Remote Control G-Spot Vibrator",
+      "brand": "Lovense",
+      "productType": "Lush Series",
+      "tags": [
+        "Lush Series",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/lush3.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-4",
+      "title": "Lovense Lush 4 Remote Control G-Spot Vibrator",
+      "brand": "Lovense",
+      "productType": "Remote Control Vibrators",
+      "tags": [
+        "Remote Control Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 129,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/lush4.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 129,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-anal-app-controlled-vibrating-plug-light-up-silicone-remote-toy",
+      "title": "Lovense Lush Anal Vibrating Anal Toy",
+      "brand": "Lovense",
+      "productType": "Butt Plugs",
+      "tags": [
+        "Butt Plugs",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "anal-toys",
+      "price": 129,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/lushanal.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 129,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-mini",
+      "title": "Lovense Lush Mini Remote Control G-Spot Vibrator",
+      "brand": "Lovense",
+      "productType": "Lush Series",
+      "tags": [
+        "Lush Series",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 129,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/lushmini.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 129,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-max-2",
+      "title": "Lovense Max 2 App-Controlled Male Masturbator",
+      "brand": "Lovense",
+      "productType": "Male Masturbators",
+      "tags": [
+        "Male Masturbators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/max2.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-mini-sex-machine",
+      "title": "Lovense Mini Sex Machine",
+      "brand": "Lovense",
+      "productType": "Sex Machines",
+      "tags": [
+        "Sex Machines",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "sex-machines-furniture",
+      "price": 399,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/minism.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 399,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-mission-2",
+      "title": "Lovense Mission 2 Real-Time Control Vibrating Dildo",
+      "brand": "Lovense",
+      "productType": "Dildos",
+      "tags": [
+        "Dildos",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "dildos",
+      "price": 129,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/testtoyc15.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 129,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-nora",
+      "title": "Lovense Nora Bluetooth Remote Control Rabbit Vibrator",
+      "brand": "Lovense",
+      "productType": "Rabbit Vibrators",
+      "tags": [
+        "Rabbit Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/nora.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-osci-3",
+      "title": "Lovense Osci 3 Remote Control G-Spot & Clitoral Dual Stimulation Thumper Rabbit Vibrator",
+      "brand": "Lovense",
+      "productType": "Rabbit Vibrators",
+      "tags": [
+        "Rabbit Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/osci3.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-ridge",
+      "title": "Lovense Ridge Vibrating Anal Beads",
+      "brand": "Lovense",
+      "productType": "Anal Beads",
+      "tags": [
+        "Anal Beads",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "anal-toys",
+      "price": 139,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/z09.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 139,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-sex-machine",
+      "title": "Lovense App-Controlled Automatic Thrusting Sex Machine",
+      "brand": "Lovense",
+      "productType": "Sex Machines",
+      "tags": [
+        "Sex Machines",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "sex-machines-furniture",
+      "price": 699,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/blast.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 699,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-solace",
+      "title": "Lovense Solace App-Controlled Automatic Thrusting Male Stroker",
+      "brand": "Lovense",
+      "productType": "Masturbators",
+      "tags": [
+        "Masturbators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 184,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/solace.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 184,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-solace-pro",
+      "title": "Lovense Solace Pro AI-Powered Remote Control Thrusting Blowjob Machine",
+      "brand": "Lovense",
+      "productType": "Masturbators",
+      "tags": [
+        "Masturbators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 199,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/solace22.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 199,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-spinel-app-controlled-thrusting-vibrating-heating-dildo",
+      "title": "Lovense Spinel App-Controlled Thrusting Vibrating Dildo",
+      "brand": "Lovense",
+      "productType": "Dildos",
+      "tags": [
+        "Dildos",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "dildos",
+      "price": 198.99,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/spinel.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 198.99,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-tenera-2",
+      "title": "Lovense Tenera 2 Clitoral Suction Vibrator",
+      "brand": "Lovense",
+      "productType": "Clitoral Vibrators",
+      "tags": [
+        "Clitoral Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 129,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/tenera2.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 129,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-vulse",
+      "title": "Lovense Vulse Handsfree G Spot Remote Control Thrusting Egg Vibrator",
+      "brand": "Lovense",
+      "productType": "G-spot Vibrators",
+      "tags": [
+        "G-spot Vibrators",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/category/product/vulse.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    }
+  ]
+}

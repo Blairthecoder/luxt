@@ -7,7 +7,7 @@ export const Route = createFileRoute('/about')({
   head: () =>
     pageHead({
       title: `About ${SITE.shortName} | Adult Toy Buying Guides`,
-      description: `${SITE.name} is an independent adult toy buying guide: original product copy, plain-language advice and honest affiliate links to a retail partner.`,
+      description: `${SITE.name} is an independent adult toy buying guide: original product copy, plain-language advice and honest affiliate links to our retail partners.`,
       path: '/about',
       jsonLd: [
         organizationJsonLd(),
@@ -39,7 +39,7 @@ export const Route = createFileRoute('/about')({
         {
           heading: 'How We Make Money',
           body: [
-            'We do not sell anything ourselves. Buy buttons send readers to our retail partner through an affiliate link, and we may earn a commission on qualifying purchases at no extra cost to the reader. Pages that link out carry a disclosure, and our full policy is on the affiliate disclosure page.',
+            'We do not sell anything ourselves. Buy buttons send readers to our retail partners (currently LuxuryToyX and Lovense) through affiliate links, and we may earn a commission on qualifying purchases at no extra cost to the reader. Pages that link out carry a disclosure, and our full policy is on the affiliate disclosure page.',
           ],
         },
         {

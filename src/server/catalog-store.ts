@@ -1,12 +1,22 @@
 // Server-only catalog access. Imported dynamically from server functions and
 // server routes so the full catalog never ships in the client bundle.
 import catalogData from '@/data/catalog.json'
+import lovenseData from '@/data/lovense.json'
 import { PRODUCT_COPY } from '@/content/product-copy'
 import type { Catalog, CatalogProduct } from '@/types/catalog'
 import type { CollectionRule } from '@/content/collections'
 import { merchandise } from '@/server/merchandising'
 
-const catalog = catalogData as Catalog
+// Lovense is a direct affiliate program with its own product pages. Where a
+// handle is also in the LuxuryToyX feed, the Lovense listing replaces it so the
+// existing copy and guide picks keep working and the click earns through Lovense.
+const lovenseProducts = (lovenseData as Catalog).products
+const lovenseHandles = new Set(lovenseProducts.map((p) => p.handle))
+const baseCatalog = catalogData as Catalog
+const catalog: Catalog = {
+  ...baseCatalog,
+  products: [...baseCatalog.products.filter((p) => !lovenseHandles.has(p.handle)), ...lovenseProducts],
+}
 
 const byHandle = new Map<string, CatalogProduct>(
   catalog.products.map((p) => [p.handle, p])
