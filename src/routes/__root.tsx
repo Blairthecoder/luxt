@@ -21,6 +21,7 @@ export const Route = createRootRoute({
       { title: `Adult Toys for Confidence & Pleasure | ${SITE.shortName}` },
       { name: 'description', content: SITE.description },
       { name: 'rating', content: 'adult' },
+      { name: 'fo-verify', content: 'eb0e8fdc-12dd-4d63-8b08-0deb664480ec' },
       { property: 'og:site_name', content: SITE.name },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
