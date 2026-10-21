@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-21T18:39:33.537Z",
+  "syncedAt": "2026-10-21T19:12:32.638Z",
   "source": "https://www.lovense.com",
   "products": [
     {
@@ -13,7 +13,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 69,
+      "price": 59,
       "available": true,
       "images": [
         {
@@ -23,7 +23,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 69,
+          "price": 59,
           "available": true
         }
       ],
@@ -40,7 +40,7 @@
         "Remote Control"
       ],
       "hub": "strokers",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -50,7 +50,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -67,7 +67,7 @@
         "Remote Control"
       ],
       "hub": "penis-rings",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -77,7 +77,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -121,7 +121,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -131,7 +131,32 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-domi-domi-2-male-attachment",
+      "title": "Lovense Domi/Domi 2 Male Attachment",
+      "brand": "Lovense",
+      "productType": "Accessory",
+      "tags": [
+        "Accessory"
+      ],
+      "hub": "more-toys",
+      "price": 20,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260130/b2d2bab0ef3c4efb9a08bf61e33c0053.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 20,
           "available": true
         }
       ],
@@ -148,7 +173,7 @@
         "Remote Control"
       ],
       "hub": "prostate-massagers",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -158,7 +183,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -175,7 +200,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 79,
+      "price": 69,
       "available": true,
       "images": [
         {
@@ -185,7 +210,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 79,
+          "price": 69,
           "available": true
         }
       ],
@@ -202,7 +227,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -212,7 +237,30 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-fizz-dual-head-clitoral-vibrator",
+      "title": "Lovense Fizz Dual-Head Clitoral Vibrator with Suction & Tapping Stimulation",
+      "brand": "Lovense",
+      "productType": "",
+      "tags": [],
+      "hub": "vibrators",
+      "price": 129,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20250925/2e3b2b3fa84449c6b48c644ed0cff365.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 129,
           "available": true
         }
       ],
@@ -229,7 +277,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -239,7 +287,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -256,7 +304,7 @@
         "Remote Control"
       ],
       "hub": "bdsm",
-      "price": 79,
+      "price": 69,
       "available": true,
       "images": [
         {
@@ -266,7 +314,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 79,
+          "price": 69,
           "available": true
         }
       ],
@@ -283,7 +331,7 @@
         "Remote Control"
       ],
       "hub": "dildos",
-      "price": 149,
+      "price": 129,
       "available": true,
       "images": [
         {
@@ -293,7 +341,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 149,
+          "price": 129,
           "available": true
         }
       ],
@@ -337,7 +385,7 @@
         "Remote Control"
       ],
       "hub": "anal-toys",
-      "price": 89,
+      "price": 79,
       "available": true,
       "images": [
         {
@@ -347,7 +395,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 89,
+          "price": 79,
           "available": true
         }
       ],
@@ -364,7 +412,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -374,7 +422,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -386,12 +434,10 @@
       "brand": "Lovense",
       "productType": "Masturbators",
       "tags": [
-        "Masturbators",
-        "App Controlled",
-        "Remote Control"
+        "Masturbators"
       ],
       "hub": "strokers",
-      "price": 30,
+      "price": 5,
       "available": true,
       "images": [
         {
@@ -401,7 +447,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 30,
+          "price": 5,
           "available": true
         }
       ],
@@ -418,7 +464,7 @@
         "Remote Control"
       ],
       "hub": "dildos",
-      "price": 149,
+      "price": 129,
       "available": true,
       "images": [
         {
@@ -428,7 +474,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 149,
+          "price": 129,
           "available": true
         }
       ],
@@ -553,7 +599,7 @@
         "Remote Control"
       ],
       "hub": "strokers",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -563,7 +609,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -634,7 +680,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -644,7 +690,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
           "available": true
         }
       ],
@@ -661,7 +707,7 @@
         "Remote Control"
       ],
       "hub": "vibrators",
-      "price": 119,
+      "price": 99,
       "available": true,
       "images": [
         {
@@ -671,7 +717,30 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 119,
+          "price": 99,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-personal-lubricant-jelly",
+      "title": "Lovense Personal Lubricant Jelly, Water-Based",
+      "brand": "Lovense",
+      "productType": "",
+      "tags": [],
+      "hub": "lubricants",
+      "price": 15,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/41313d54fb874bf9adb647d9ba1b1da4.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 15,
           "available": true
         }
       ],
@@ -688,7 +757,7 @@
         "Remote Control"
       ],
       "hub": "anal-toys",
-      "price": 139,
+      "price": 119,
       "available": true,
       "images": [
         {
@@ -698,7 +767,7 @@
       "variants": [
         {
           "title": "Default Title",
-          "price": 139,
+          "price": 119,
           "available": true
         }
       ],
@@ -813,6 +882,29 @@
       "program": "lovense"
     },
     {
+      "handle": "lovense-strapless-harness-for-lapis-adjustable-o-ring-support-harness",
+      "title": "Lovense Harness",
+      "brand": "Lovense",
+      "productType": "",
+      "tags": [],
+      "hub": "strap-ons",
+      "price": 39,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/04e968f47e87470b9baf02e73b20d92d.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 39,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
       "handle": "lovense-tenera-2",
       "title": "Lovense Tenera 2 Clitoral Suction Vibrator",
       "brand": "Lovense",
@@ -840,6 +932,54 @@
       "program": "lovense"
     },
     {
+      "handle": "lovense-toy-cleaner",
+      "title": "Lovense Toy Cleaner Spray",
+      "brand": "Lovense",
+      "productType": "Toy Cleaner",
+      "tags": [
+        "Toy Cleaner"
+      ],
+      "hub": "more-toys",
+      "price": 19.99,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260609/f2256ee3cde94e60ae3ac2458ae21e83.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 19.99,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-velvo-rotating-rabbit-vibrator-app-controlled-silicone-dual-stimulator",
+      "title": "Lovense Velvo World's First Patented Rolling Bead G-Spot & Clit Rabbit Vibrator",
+      "brand": "Lovense",
+      "productType": "",
+      "tags": [],
+      "hub": "vibrators",
+      "price": 119,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260106/f27700b6f21b4ee8b8ca7cbdb7a10f23.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
       "handle": "lovense-vulse",
       "title": "Lovense Vulse Handsfree G Spot Remote Control Thrusting Egg Vibrator",
       "brand": "Lovense",
@@ -861,6 +1001,56 @@
         {
           "title": "Default Title",
           "price": 119,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-water-based-lubricant",
+      "title": "Lovense Water-Based Lubricant, 100 ml",
+      "brand": "Lovense",
+      "productType": "Lubricant",
+      "tags": [
+        "Lubricant"
+      ],
+      "hub": "lubricants",
+      "price": 15,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/web/productpage/20250911/09114ff47dd641089fc4be46506ed0ea.jpg"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 15,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-webcam-2",
+      "title": "Lovense Webcam 2 for Cam Models and Live Streaming",
+      "brand": "Lovense",
+      "productType": "Webcam",
+      "tags": [
+        "Webcam"
+      ],
+      "hub": "more-toys",
+      "price": 149.99,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20250319/fdd2bb1ac9a54e77b6fa8ed214e55ccd.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 149.99,
           "available": true
         }
       ],
