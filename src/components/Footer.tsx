@@ -9,8 +9,8 @@ import { Logo } from '@/components/Logo'
 const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'Gift Ideas', 'By Budget'].includes(c.group))
 
 const heading = 'text-xs font-semibold text-ink mb-4'
-const list = 'space-y-2.5 text-xs text-graphite'
-const link = 'hover:text-ink hover:underline underline-offset-2'
+const list = 'space-y-2.5 max-lg:space-y-0 max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-4 text-xs text-graphite'
+const link = 'hover:text-ink hover:underline underline-offset-2 max-lg:inline-block max-lg:py-2.5'
 
 export function Footer() {
   return (

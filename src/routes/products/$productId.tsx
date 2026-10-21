@@ -141,7 +141,7 @@ function ProductPage() {
             </div>
           )}
           {product.images.length > 1 && (
-            <div className="lg:hidden flex justify-center gap-2 pt-1" role="tablist" aria-label="Product images">
+            <div className="lg:hidden flex flex-wrap justify-center pt-1" role="tablist" aria-label="Product images">
               {product.images.map((img, i) => (
                 <button
                   key={img.src}
@@ -150,7 +150,7 @@ function ProductPage() {
                   aria-selected={i === imageIndex}
                   aria-label={`Show image ${i + 1}`}
                   onClick={() => setImageIndex(i)}
-                  className="flex h-5 w-5 items-center justify-center"
+                  className="flex h-8 w-8 items-center justify-center"
                 >
                   <span className={`block h-2 rounded-full transition-all ${i === imageIndex ? 'w-5 bg-ink' : 'w-2 bg-silver'}`} />
                 </button>
