@@ -137,6 +137,23 @@ export const getGiftData = createServerFn({ method: 'GET' }).handler(async () =>
   }
 })
 
+/** Live site totals for the Partners page, counted from the catalog and content files. */
+export const getSiteStats = createServerFn({ method: 'GET' }).handler(async () => {
+  const store = await import('@/server/catalog-store')
+  const { POSTS } = await import('@/content/posts')
+  const { COLLECTIONS } = await import('@/content/collections')
+  const { HUBS } = await import('@/content/hubs')
+  const products = store.allProducts()
+  const counts = store.hubCounts()
+  return {
+    products: products.length,
+    brands: new Set(products.map((p) => p.brand).filter(Boolean)).size,
+    categories: HUBS.filter((h) => counts[h.slug]).length,
+    guides: POSTS.length,
+    collections: COLLECTIONS.length,
+  }
+})
+
 export const searchCatalog = createServerFn({ method: 'GET' })
   .validator((query: string) => query)
   .handler(async ({ data: query }) => {

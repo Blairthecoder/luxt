@@ -86,6 +86,18 @@ export function Footer() {
               Copyright &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
             </span>
             <span className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <Link to="/about" className={link}>
+                About
+              </Link>
+              <Link to="/editorial-policy" className={link}>
+                Editorial Policy
+              </Link>
+              <Link to="/partners" className={link}>
+                Partners
+              </Link>
+              <Link to="/contact" className={link}>
+                Contact
+              </Link>
               <Link to="/privacy" className={link}>
                 Privacy
               </Link>
