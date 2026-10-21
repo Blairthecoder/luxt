@@ -35,15 +35,35 @@ const HANDLE_ALIASES = {
   'lush mini': 'lovense-lush-mini',
   'lush anal': 'lovense-lush-anal-app-controlled-vibrating-plug-light-up-silicone-remote-toy',
   spinel: 'lovense-spinel-app-controlled-thrusting-vibrating-heating-dildo',
+  fizz: 'lovense-fizz-dual-head-clitoral-vibrator',
+  velvo: 'lovense-velvo-rotating-rabbit-vibrator-app-controlled-silicone-dual-stimulator',
+  harness: 'lovense-strapless-harness-for-lapis-adjustable-o-ring-support-harness',
 }
 
 // Pages that publish no category.
-const CATEGORY_FALLBACKS = { 'gush 2 motion': 'Masturbators' }
+const CATEGORY_FALLBACKS = {
+  'gush 2 motion': 'Masturbators',
+  'toy cleaner': 'Toy Cleaner',
+  'webcam 2': 'Webcam',
+  'domi domi 2 male attachment': 'Accessory',
+}
+
+// Cleaner titles where the store description would read awkwardly after the name.
+const TITLE_OVERRIDES = {
+  'personal lubricant jelly': 'Lovense Personal Lubricant Jelly, Water-Based',
+  'toy cleaner': 'Lovense Toy Cleaner Spray',
+  'webcam 2': 'Lovense Webcam 2 for Cam Models and Live Streaming',
+}
+
+// Items with no store listing card, read from their own page instead.
+const PAGE_FALLBACKS = {
+  'water based lubricant': { path: '/water-based-lubricant', title: 'Lovense Water-Based Lubricant, 100 ml', category: 'Lubricant' },
+}
 
 const SMALL_WORDS = new Set(['a', 'and', 'for', 'of', 'the', 'with', 'to', 'in'])
 const titleCase = (s) =>
-  s.replace(/\b([a-z])([a-z]*)/g, (m, a, rest, offset) =>
-    offset > 0 && SMALL_WORDS.has(m) ? m : a.toUpperCase() + rest
+  s.replace(/(^|[\s(/-])([a-z])([a-z']*)/g, (m, lead, a, rest, offset) =>
+    offset > 0 && SMALL_WORDS.has(a + rest) ? m : lead + a.toUpperCase() + rest
   )
 
 const rules = HUB_RULES.rules.map((r) => ({ hub: r.hub, re: new RegExp(r.pattern, 'i') }))
@@ -95,7 +115,63 @@ function priceOf(offers) {
   return Number.isFinite(n) && n > 0 ? n : 0
 }
 
+// Store listing pages show the price shoppers actually pay and cover items that
+// have no product page of their own (accessories, lube, some toys).
+const STORE_PAGES = [
+  'best-selling-sex-toys',
+  'sex-accessories',
+  'webcams',
+  'anal-lube',
+  'female-anal-toys',
+  'male-anal-toys',
+  'butt-plugs',
+  'masturbators',
+  'wand-vibrators',
+  'clitoral-vibrators',
+  'g-spot-vibrators',
+  'rabbit-vibrators',
+  'dildos',
+  'sex-machines',
+  'bundles-sex-toys',
+  'sex-toys-for-women',
+]
+
+const lastMatch = (text, re) => {
+  const all = [...text.matchAll(re)]
+  return all.length ? all[all.length - 1][1] : undefined
+}
+
+/** Cards from the store listings: { code, name, desc, href, img, price } keyed by product code. */
+async function loadStoreCards() {
+  const cards = new Map()
+  for (const page of STORE_PAGES) {
+    let html
+    try {
+      html = await get(`${SOURCE}/store/${page}`)
+    } catch (err) {
+      console.warn(`[lovense] store page ${page} skipped: ${err.message}`)
+      continue
+    }
+    let i = -1
+    while ((i = html.indexOf('<p class="toy_price">', i + 1)) >= 0) {
+      const before = html.slice(Math.max(0, i - 4000), i)
+      const priceHtml = html.slice(i, i + 700).split('</p>')[0].replace(/<[^>]+>/g, ' ')
+      // The first price is what shoppers pay; a second one is a struck-through list price.
+      const price = Number.parseFloat((priceHtml.match(/\$(\d+(?:\.\d\d)?)/) ?? [])[1])
+      const code = lastMatch(before, /data-product-code="([^"]*)"/g)
+      if (!code || !(price > 0) || cards.has(code)) continue
+      const name = lastMatch(before, /<p class="toy_name">([^<]*)<\/p>/g)?.replace(/\s+/g, ' ').trim()
+      const desc = lastMatch(before, /<p class="toy_desc"[^>]*>([^<]*)<\/p>/g)?.replace(/&amp;/g, '&').trim()
+      const href = lastMatch(before, /href="(\/[^"]+)"/g)
+      const img = lastMatch(before, /(?:data-original|data-src|src)="(https:\/\/cdn\.lovense\.com\/[^"]+\.(?:png|jpg|webp)[^"]*)"/g)
+      cards.set(code, { code, name, desc, href: href?.split('?')[0], img: img?.replace(/\?v=\d+$/, ''), price })
+    }
+  }
+  return cards
+}
+
 async function main() {
+  const cards = await loadStoreCards()
   const affiliateLinks = JSON.parse(fs.readFileSync(LINKS_IN, 'utf8'))
   const byName = new Map(Object.entries(affiliateLinks).map(([name, link]) => [norm(name), { name, link }]))
 
@@ -120,7 +196,15 @@ async function main() {
     const candidates = [ld.alternateName, ld.name].filter(Boolean)
     const hit = candidates.map((c) => byName.get(norm(c))).find(Boolean)
     if (!hit || matched.has(hit.name)) continue
-    const price = priceOf(ld.offers)
+    // Prefer the price on the store listing; the cheapest listing wins where a page
+    // sells several pack sizes (Kraken single vs 6 pack).
+    const path = url.replace(SOURCE, '')
+    const listed = [...cards.values()].filter((c) => c.href === path).map((c) => c.price)
+    const structured = priceOf(ld.offers)
+    const price = listed.length ? Math.min(...listed) : structured
+    if (listed.length && price !== structured) {
+      console.warn(`[lovense] ${hit.name}: store price $${price} used instead of page data $${structured}`)
+    }
     const images = (Array.isArray(ld.image) ? ld.image : [ld.image]).filter(Boolean)
     if (!price || images.length === 0) {
       console.warn(`[lovense] ${hit.name}: missing price or image, skipped`)
@@ -140,7 +224,8 @@ async function main() {
       ? name
       : titleCase(`Lovense ${model && !name.toLowerCase().includes(model.toLowerCase()) ? `${model} ` : ''}${name}`)
     const category = String(ld.category ?? CATEGORY_FALLBACKS[key] ?? '').trim()
-    const tags = [category, 'App Controlled', 'Remote Control'].filter(Boolean)
+    // Kraken is a plain pocket masturbator; every other toy here pairs with the Lovense Remote app.
+    const tags = (key === 'kraken' ? [category] : [category, 'App Controlled', 'Remote Control']).filter(Boolean)
     const offer = Array.isArray(ld.offers) ? ld.offers[0] : ld.offers
     const available = !/OutOfStock|SoldOut|Discontinued/i.test(String(offer?.availability ?? ''))
 
@@ -158,6 +243,70 @@ async function main() {
       program: PROGRAM,
     })
     links[handle] = hit.link
+  }
+
+  // Items with no product page: build them from their store listing card.
+  for (const item of byName.values()) {
+    if (matched.has(item.name)) continue
+    const card = [...cards.values()].find((c) => c.name && norm(c.name) === norm(item.name))
+    if (!card || !card.img) continue
+    matched.add(item.name)
+    const key = norm(item.name)
+    const handle = HANDLE_ALIASES[key] ?? `lovense-${slug(item.name)}`.replace(/^lovense-lovense-/, 'lovense-')
+    if (handles.has(handle)) continue
+    handles.add(handle)
+
+    const desc = card.desc ?? ''
+    const base = /^lovense\b/i.test(card.name) ? card.name : `Lovense ${card.name}`
+    // Descriptions that restate the name add nothing.
+    const title =
+      TITLE_OVERRIDES[key] ?? titleCase(desc && !desc.toLowerCase().includes(norm(card.name)) ? `${base} ${desc}` : base)
+    const category = CATEGORY_FALLBACKS[key] ?? ''
+    products.push({
+      handle,
+      title,
+      brand: 'Lovense',
+      productType: category,
+      tags: [category].filter(Boolean),
+      hub: assignHub(`${category} | ${desc}`, title),
+      price: card.price,
+      available: true,
+      images: [{ src: card.img }],
+      variants: [{ title: 'Default Title', price: card.price, available: true }],
+      program: PROGRAM,
+    })
+    links[handle] = item.link
+  }
+
+  for (const item of byName.values()) {
+    const fb = PAGE_FALLBACKS[norm(item.name)]
+    if (matched.has(item.name) || !fb) continue
+    try {
+      const html = await get(SOURCE + fb.path)
+      const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ')
+      const price = Number.parseFloat((text.match(/\$(\d+(?:\.\d\d)?)/) ?? [])[1])
+      const img = (html.match(/og:image" content="([^"]+)"/) ?? [])[1]
+      if (!(price > 0) || !img) throw new Error('no price or image')
+      const handle = `lovense-${slug(item.name)}`.replace(/^lovense-lovense-/, 'lovense-')
+      matched.add(item.name)
+      handles.add(handle)
+      products.push({
+        handle,
+        title: fb.title,
+        brand: 'Lovense',
+        productType: fb.category,
+        tags: [fb.category],
+        hub: assignHub(fb.category, fb.title),
+        price,
+        available: true,
+        images: [{ src: img.replace(/\?v=\d+$/, '') }],
+        variants: [{ title: 'Default Title', price, available: true }],
+        program: PROGRAM,
+      })
+      links[handle] = item.link
+    } catch (err) {
+      console.warn(`[lovense] ${item.name}: ${fb.path} skipped: ${err.message}`)
+    }
   }
 
   const missing = [...byName.values()].filter((v) => !matched.has(v.name)).map((v) => v.name)
