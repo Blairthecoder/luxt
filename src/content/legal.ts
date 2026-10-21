@@ -33,7 +33,7 @@ export const PRIVACY: LegalDoc = {
     {
       heading: 'What We Do and Do Not Collect',
       body: [
-        "Nightstand Supply Co. is a buying guide. You browse here, and if you decide to buy, you check out on our retail partner's website. We never see your payment details, your shipping address or what you order.",
+        "Nightstand Supply Co. is a buying guide. You browse here, and if you decide to buy, you check out on the retailer's website. We never see your payment details, your shipping address or what you order.",
         'There are no user accounts, carts or saved lists on this site.',
       ],
     },
@@ -63,7 +63,7 @@ export const PRIVACY: LegalDoc = {
     {
       heading: 'Affiliate Links and Our Retail Partner',
       body: [
-        "Buy buttons link through our own /go/ address, which sends you to our retail partner's product page with a tracking link so the retailer can credit us for the referral. When you land on the retailer's site, its own privacy policy and cookies apply to everything you do there, including checkout, billing and shipping.",
+        "Buy buttons link through our own /go/ address, which sends you to the product page of the retailer that sells it (currently LuxuryToyX or Lovense) with a tracking link so the retailer can credit us for the referral. When you land on the retailer's site, its own privacy policy and cookies apply to everything you do there, including checkout, billing and shipping.",
         'We may earn a commission if you buy. See our affiliate disclosure for details.',
       ],
     },
@@ -85,7 +85,7 @@ export const PRIVACY: LegalDoc = {
       bullets: [
         'Google, for analytics.',
         'Netlify, for hosting and for receiving email signups.',
-        'Our retail partner, when you click through to buy, under its own privacy policy.',
+        'Our retail partners (the merchants you buy from), when you click through to buy, under their own privacy policies.',
         'Authorities, if the law requires it.',
       ],
     },
@@ -142,7 +142,7 @@ export const TERMS: LegalDoc = {
     {
       heading: 'What This Site Is',
       body: [
-        'Nightstand Supply Co. publishes buying guides, product information and comparisons. We are not the seller. When you click a buy button you leave this site and purchase from our retail partner, which handles payment, shipping, returns, warranty and customer service under its own terms and policies.',
+        'Nightstand Supply Co. publishes buying guides, product information and comparisons. We are not the seller. When you click a buy button you leave this site and purchase from the retailer that sells it, which handles payment, shipping, returns, warranty and customer service under its own terms and policies.',
       ],
     },
     {
@@ -154,7 +154,7 @@ export const TERMS: LegalDoc = {
     {
       heading: 'Product Information and Prices',
       body: [
-        "Product names, images, prices, availability and some specifications come from our retail partner or from the manufacturers and can change at any time. We work to keep them accurate, but the price and details shown on the retailer's checkout page are the ones that apply. Always check them before you buy.",
+        "Product names, images, prices, availability and some specifications come from our retail partners or from the manufacturers and can change at any time. We work to keep them accurate, but the price and details shown on the retailer's checkout page are the ones that apply. Always check them before you buy.",
       ],
     },
     {
@@ -179,7 +179,7 @@ export const TERMS: LegalDoc = {
     {
       heading: 'Third-Party Sites',
       body: [
-        'Links to our retail partner and other sites are provided for convenience. We do not control those sites and are not responsible for their content, products, policies or practices.',
+        'Links to our retail partners and other sites are provided for convenience. We do not control those sites and are not responsible for their content, products, policies or practices.',
       ],
     },
     {

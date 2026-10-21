@@ -84,7 +84,7 @@ const AUDIENCES = [
 ] as const
 
 const PROMISES = [
-  ['Discreet Delivery', 'Plain packaging and a private checkout with our retail partner.', 'box'],
+  ['Discreet Delivery', 'A private checkout with our retail partners, and a guide to buying discreetly.', 'box'],
   ['Body-Safe Picks', 'We favor medical-grade silicone, glass and steel from brands that list their materials.', 'drop'],
   ['Honest Guides', 'Plain answers and real specs, so you know what you are getting before you buy.', 'book'],
   ['Comfort First', 'Gentle starting points and no judgment, solo or together.', 'heart'],
@@ -503,7 +503,7 @@ function HomePage() {
             you can relax with at home.
           </p>
           <p>
-            Every product here is sold and shipped by our retail partner in plain packaging. We focus on body-safe
+            Every product here is sold and shipped by our retail partners. We focus on body-safe
             materials, brands that stand behind their products and honest notes on what each toy does well. Pair any
             toy with a{' '}
             <Link to="/shop/$slug" params={{ slug: 'water-based-lube' }} className="underline underline-offset-4">

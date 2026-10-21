@@ -23,7 +23,7 @@ function DisclosurePage() {
           commission from the retailer. The price you pay is the same as going to the retailer directly.
         </p>
         <p>
-          We do not sell products ourselves. Orders are placed on our retail partner's website, and they handle
+          We do not sell products ourselves. Orders are placed on our retail partners' websites, and they handle
           payment, shipping, returns and customer service.
         </p>
         <p>

@@ -28,7 +28,7 @@ export const Route = createFileRoute('/contact')({
         {
           heading: 'Orders and Shipping',
           body: [
-            'We do not take orders. Payment, shipping, returns and customer service are handled by our retail partner, so please contact them directly about an existing order.',
+            'We do not take orders. Payment, shipping, returns and customer service are handled by the retailer you buy from, so please contact them directly about an existing order.',
           ],
         },
       ]}

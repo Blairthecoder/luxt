@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "node scripts/sync-catalog.mjs && vite build",
+    "build": "node scripts/sync-catalog.mjs && node scripts/sync-lovense.mjs && vite build",
     "sync:catalog": "node scripts/sync-catalog.mjs",
+    "sync:lovense": "node scripts/sync-lovense.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
