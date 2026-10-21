@@ -234,7 +234,7 @@ function HomePage() {
                 Feeling good should feel easy. We help you find toys that suit your body, your pace and your
                 relationship, with honest advice and discreet delivery.
               </p>
-              <div className="mt-5 sm:mt-7 flex max-sm:flex-nowrap flex-wrap gap-2 sm:gap-3">
+              <div className="mt-5 sm:mt-7 flex flex-wrap gap-2 sm:gap-3">
                 <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="btn max-sm:!px-4 max-sm:!text-sm whitespace-nowrap">
                   Shop Picks Under $50
                 </Link>

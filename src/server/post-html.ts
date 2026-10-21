@@ -96,6 +96,8 @@ export async function renderPostHtml(post: Post): Promise<{ html: string; topPic
   const used = new Set<string>()
   let topPick: TopPick | null = null
   let html = await marked.parse(post.body.trim())
+  // Wide tables scroll inside their own box instead of pushing the page sideways on small screens.
+  html = html.split('<table>').join('<div class="table-scroll"><table>').split('</table>').join('</table></div>')
 
   html = html.replace(/<p>\[\[picks:([a-z0-9-]+)\]\]<\/p>/g, (_, id: string) => {
     const block = post.picks?.[id]

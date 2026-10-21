@@ -6,7 +6,7 @@ type Props = {
   onSearch: () => void
 }
 
-const base = 'press flex flex-1 flex-col items-center justify-end gap-1 pb-2 pt-2.5 text-[0.6875rem] font-medium'
+const base = 'press flex flex-1 flex-col items-center justify-end gap-1 pb-2 pt-2.5 text-xs font-medium'
 
 function Icon({ children }: { children: React.ReactNode }) {
   return (

@@ -186,6 +186,12 @@ h3 {
   transition: transform 0.25s var(--ease-out-soft);
 }
 
+@media (max-width: 1023px) {
+  .more {
+    min-height: 2.5rem;
+  }
+}
+
 .more:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -590,7 +596,7 @@ html {
 /* Room for the fixed bottom tab bar (or the product page buy bar). */
 @media (max-width: 1023px) {
   body {
-    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   }
 }
 
@@ -634,4 +640,15 @@ html {
   .sheet-up {
     animation: none;
   }
+}
+
+/* Wide guide tables scroll sideways inside their own box on small screens. */
+.table-scroll {
+  margin: 0 0 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll > table {
+  margin: 0;
 }

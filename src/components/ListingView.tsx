@@ -105,7 +105,7 @@ export function ListingView({ result, filters }: { result: ListingResult; filter
                     sort: s.id === 'featured' ? undefined : s.id,
                     page: undefined,
                   })}
-                  className={`text-sm whitespace-nowrap transition-colors ${
+                  className={`text-sm whitespace-nowrap transition-colors max-lg:py-2.5 ${
                     current ? 'text-ink font-medium underline underline-offset-[6px] decoration-[1.5px]' : 'text-graphite hover:text-ink'
                   }`}
                 >

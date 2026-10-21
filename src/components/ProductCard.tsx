@@ -31,7 +31,7 @@ export function ProductCard({
             className={`absolute inset-0 w-full h-full object-contain mix-blend-multiply ${size === 'small' ? 'p-[18%] saturate-[0.85]' : 'p-[9%]'} transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
           />
           {flag === 'Sale' && (
-            <span className="absolute top-2.5 left-2.5 rounded-full bg-signal px-2.5 py-1 text-[0.6875rem] font-semibold leading-none text-canvas">
+            <span className="absolute top-2.5 left-2.5 rounded-full bg-signal px-2.5 py-1 text-xs font-semibold leading-none text-canvas">
               Sale
             </span>
           )}
@@ -61,7 +61,7 @@ export function ProductCard({
           target="_blank"
           rel="sponsored nofollow noopener"
           data-link-context={context}
-          className="mt-2 self-start text-[0.8125rem] font-medium text-graphite underline underline-offset-4 decoration-silver hover:text-ink hover:decoration-ink"
+          className="mt-2 max-lg:mt-0 max-lg:py-2.5 self-start text-[0.8125rem] font-medium text-graphite underline underline-offset-4 decoration-silver hover:text-ink hover:decoration-ink"
         >
           Check Price
         </a>
