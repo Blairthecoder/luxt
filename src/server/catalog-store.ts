@@ -3,6 +3,7 @@
 import catalogData from '@/data/catalog.json'
 import lovenseData from '@/data/lovense.json'
 import bundleData from '@/data/lovense-bundles.json'
+import shopifyData from '@/data/shopify.json'
 import { PRODUCT_COPY } from '@/content/product-copy'
 import type { Catalog, CatalogProduct } from '@/types/catalog'
 import type { CollectionRule } from '@/content/collections'
@@ -12,17 +13,21 @@ import { merchandise } from '@/server/merchandising'
 // own product pages. The LuxuryToyX feed is still synced, but only to send old
 // product URLs to the closest live category (see retiredProductHub).
 // Bundles come from the affiliate dashboard (src/data/lovense-bundles.json), not the product sync.
+// Lingerie comes from our own Shopify store (scripts/sync-shopify.mjs), with checkout on Shopify.
 const lovenseProducts = [...(lovenseData as Catalog).products, ...(bundleData as Catalog).products]
 const lovenseHandles = new Set(lovenseProducts.map((p) => p.handle))
+const shopifyProducts = (shopifyData as Catalog).products.filter((p) => !lovenseHandles.has(p.handle))
 const retiredCatalog = catalogData as Catalog
 const catalog: Catalog = {
   syncedAt: (lovenseData as Catalog).syncedAt ?? retiredCatalog.syncedAt,
   source: (lovenseData as Catalog).source,
-  products: lovenseProducts,
+  products: [...lovenseProducts, ...shopifyProducts],
 }
 
 const retiredHubs = new Map<string, string>(
-  retiredCatalog.products.filter((p) => !lovenseHandles.has(p.handle)).map((p) => [p.handle, p.hub])
+  retiredCatalog.products
+    .filter((p) => !lovenseHandles.has(p.handle) && !shopifyProducts.some((s) => s.handle === p.handle))
+    .map((p) => [p.handle, p.hub])
 )
 
 /** Hub of a product that was removed with the LuxuryToyX feed, if the handle was ever listed. */
