@@ -44,6 +44,13 @@ export const Route = createFileRoute('/editorial-policy')({
           ],
         },
         {
+          heading: 'How We Review',
+          body: [
+            'Every product review answers the same questions in the same order: who the toy is best for, what we like, what to keep in mind and how to use it. Reviews draw on the manufacturer’s specifications and manuals, published material information, app features and how the toy compares with others in its category.',
+            'We do not award star ratings or scores, and we never accept payment for a review or a higher placement. Buying guides name a best overall pick, a budget pick and the trade-offs. Comparisons put two products side by side on feel, noise, build, app and price, then say which one we would choose and who should pick the other.',
+          ],
+        },
+        {
           heading: 'Prices, Sales and Availability',
           body: [
             'Prices, availability and sale markdowns are read from the retailer’s product feed, not typed by hand. We show a sale price only when the retailer lists a higher compare-at price, and we use a best-seller label only when the retailer tags products that way. The retailer’s checkout page always has the final price.',

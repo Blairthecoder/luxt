@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { POSTS } from '@/content/posts'
+import { POSTS, latestPosts } from '@/content/posts'
 import { TOPICS } from '@/content/topics'
 import { SITE } from '@/config/site'
 import { PostGrid } from '@/components/PostGrid'
@@ -8,9 +8,9 @@ import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 export const Route = createFileRoute('/blog/')({
   head: () =>
     pageHead({
-      title: `${SITE.guidesName}: Sex Toy Guides & Honest Advice | ${SITE.shortName}`,
+      title: `Sex Toy Reviews, Guides & Honest Advice | ${SITE.guidesName}`,
       description:
-        'Friendly, judgment-free advice on choosing, using and caring for adult toys, solo or with a partner. Buying guides, comparisons and how-tos.',
+        'Independent sex toy reviews, buying guides, head-to-head comparisons and how-tos. Friendly, judgment-free advice for solo play and couples.',
       path: '/blog',
       jsonLd: [
         breadcrumbJsonLd([
@@ -23,14 +23,16 @@ export const Route = createFileRoute('/blog/')({
 })
 
 function BlogIndex() {
-  const [lead, ...rest] = POSTS
+  const [lead] = POSTS
+  const rest = latestPosts().filter((p) => p !== lead)
   return (
     <div>
       <header className="wrap pt-16 sm:pt-28 pb-12 sm:pb-16">
-        <p className="eyebrow text-graphite rise">The Journal</p>
+        <p className="eyebrow text-graphite rise">Reviews, Guides & Comparisons</p>
         <h1 className="mt-3 display-xl rise">{SITE.guidesName}</h1>
         <p className="mt-8 lede text-graphite max-w-xl rise-delay">
-          Friendly, judgment-free advice to help you feel more comfortable and confident, solo or with a partner.
+          Independent reviews and friendly, judgment-free advice to help you choose with confidence, solo or with a
+          partner.
         </p>
         <nav aria-label="Guide topics" className="mt-10 rise-delay">
           <ul className="flex flex-wrap gap-2">
@@ -65,6 +67,7 @@ function BlogIndex() {
       )}
 
       <div className="wrap mt-16 sm:mt-24">
+        <h2 className="display-m mb-8">Latest.</h2>
         <PostGrid posts={rest} />
       </div>
     </div>

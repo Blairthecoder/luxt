@@ -11,7 +11,7 @@ export const CREATOR_TOYS: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['vibrators', 'strokers', 'couples', 'more-toys'],
-  topics: ['creators', 'how-to'],
+  topics: ['creators', 'how-to', 'buying-guides'],
   body: `
 Toys are a core part of many adult creators' content, and the right ones make your work look and sound better. The wrong ones can ruin a shoot with a loud motor, a flat look or a battery that dies mid-scene. This guide explains what to look for in toys for content, which types suit which kinds of creators and how to keep everything clean and ready. It is aimed at consenting adults creating content, and every product here is for adults 18 and older.
 
@@ -42,19 +42,19 @@ Toys are a core part of many adult creators' content, and the right ones make yo
 Best for clean audio and everyday use. See [quiet vibrators](/shop/quiet-vibrators) and our guide to [choosing your first vibrator](/blog/how-to-choose-your-first-vibrator).
 
 ### Wands and Air-Pulse Toys
-Wands give strong, visible, dramatic reactions, and air-pulse toys such as [Womanizer](/shop/womanizer) and [LELO](/shop/lelo) offer a distinct style. See [wand vibrators](/shop/wand-vibrators) and the [best wand vibrators](/blog/best-wand-vibrators).
+Wands give strong, visible, dramatic reactions, and air-pulse toys such as Womanizer and LELO offer a distinct style. See [wand vibrators](/shop/wand-vibrators) and the [best wand vibrators](/blog/best-wand-vibrators).
 
 ### App-Controlled and Interactive Toys
 These connect to a phone app, so a partner, or a fan on platforms that allow it, can control the toy. Lovense markets toys such as the Max 2 stroker and the Edge 2 prostate massager as camera and tip-friendly, with tip-activated play on its app. Support depends on the platform you use, so check that platform's rules and integrations first. See [app-controlled sex toys](/shop/app-controlled-sex-toys), [Lovense](/shop/lovense) and [Lovense vs. We-Vibe](/blog/lovense-vs-we-vibe).
 
 ### Strokers and Automatic Strokers
-Popular for male creators and couple content, with different looks and sounds. See [Fleshlight](/shop/fleshlight), [Tenga](/shop/tenga) and [automatic strokers](/shop/automatic-strokers).
+Popular for male creators and couple content, with different looks and sounds. See Fleshlight, Tenga and [automatic strokers](/shop/automatic-strokers).
 
 ### Couples Toys
 Wearable and remote-control toys are well suited to couple creators. See [couples sex toys](/shop/couples-sex-toys) and the guide to [couple creators](/blog/onlyfans-couple-creator-guide).
 
 ### Bondage and Play Kits
-Great for roleplay and variety. See [bondage kits](/shop/bondage-kits) and our [bondage for beginners](/blog/bondage-for-beginners) guide.
+Great for roleplay and variety. See [bondage kits](/category/bdsm) and our [bondage for beginners](/blog/bondage-for-beginners) guide.
 
 [[picks:creators]]
 

@@ -40,7 +40,7 @@ Wanting to please your husband is lovely, and it works best when you are also be
 
 1. **Protect a little time.** Even 20 minutes alone, with a bath, a book or a quiet room, is a good start.
 2. **Reconnect with your own body.** Many women find that solo time, with no one to please, is where confidence and curiosity come back. A small, quiet vibrator is an easy way in. See our [quiet vibrators](/shop/quiet-vibrators) and the guide to [choosing your first vibrator](/blog/how-to-choose-your-first-vibrator).
-3. **Wear something that makes you feel good.** It does not need to be dramatic. Comfortable and flattering counts. Browse [lingerie](/category/lingerie).
+3. **Wear something that makes you feel good.** It does not need to be dramatic. Comfortable and flattering counts.
 4. **Ask for help at home.** Intimacy gets easier when you are not running everything.
 
 ## Step 2: Start the Conversation
@@ -72,7 +72,7 @@ Choose toys that are quick, quiet and easy to hide:
 |---|---|
 | Quick, quiet solo time | A bullet or a small wand, see [quiet vibrators](/shop/quiet-vibrators) |
 | Easy partner play | A vibrating ring or a wearable, see [couples sex toys](/shop/couples-sex-toys) |
-| Gentle, no-direct-touch feel | An air-pulse toy, see [Womanizer](/shop/womanizer) |
+| Gentle, no-direct-touch feel | An air-pulse toy, see Womanizer |
 | Something that stays private | Compact and plain-looking, see [discreet sex toys](/shop/discreet-sex-toys) |
 | Comfort | A good water-based [lube](/shop/water-based-lube) |
 

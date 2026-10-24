@@ -49,7 +49,7 @@ Traditional anniversary themes make an easy hook for an intimate gift.
 |---|---|---|
 | 1st | Paper | A handwritten "menu" of things you want to try, plus a first shared toy |
 | 2nd | Cotton | New bedding and a massage oil for a slow night in |
-| 3rd | Leather | Leather or faux-leather restraints from a [bondage kit](/shop/bondage-kits) |
+| 3rd | Leather | Leather or faux-leather restraints from a [bondage kit](/category/bdsm) |
 | 5th | Wood | A firm positioning wedge or a weekend away |
 | 6th | Iron | A stainless steel or metal toy, such as a weighted plug or wand |
 | 10th | Tin or aluminum | A premium couples toy in a presentation box |

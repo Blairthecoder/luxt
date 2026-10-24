@@ -37,7 +37,7 @@ A different room, a hotel night or even new sheets and low lighting can make fam
 Most couples rush it. Set a rule that the first twenty minutes are hands, mouths and massage only. A warming massage oil helps. You will find it in our [lubricant range](/category/lubricants).
 
 ### 6. Dress for Each Other
-Lingerie is not only for special occasions, and it is not only for her. Pick something together, or surprise each other. Stretch lace and bodystockings fit most bodies. See [lingerie](/category/lingerie).
+Lingerie is not only for special occasions, and it is not only for her. Pick something together, or surprise each other. Stretch lace and bodystockings fit most bodies.
 
 ### 7. Send a Message During the Day
 A flirty text at lunch builds anticipation for the evening. Keep it light, and keep it to your private phones.
@@ -60,15 +60,15 @@ Browse a site together and each pick one thing under a set budget. Choosing toge
 ## When You Are Ready for More
 
 ### 11. Try Light Restraint
-A blindfold and soft cuffs change the dynamic more than you would expect. Agree on a safe word, keep it playful and check in often. A [bondage kit](/shop/bondage-kits) has everything in one box.
+A blindfold and soft cuffs change the dynamic more than you would expect. Agree on a safe word, keep it playful and check in often. A [bondage kit](/category/bdsm) has everything in one box.
 
 [[picks:adventure]]
 
 ### 12. Explore Role Reversal
-Swapping who leads, including trying a strap-on, can be eye-opening for both partners. Start slowly with a [strap-on kit](/shop/strap-on-kits) and lots of lube.
+Swapping who leads, including trying a strap-on, can be eye-opening for both partners. Start slowly with a [strap-on](/category/strap-ons) and lots of lube.
 
 ### 13. Experiment With Positions
-A positioning wedge makes some positions more comfortable and deeper, and it is easy to store. A [sex swing](/shop/sex-swings) takes it further. See [machines and furniture](/category/sex-machines-furniture).
+A positioning wedge makes some positions more comfortable and deeper, and it is easy to store. A sex swing takes it further. See [machines and furniture](/category/sex-machines-furniture).
 
 ### 14. Take Turns Planning a Night
 Alternate who plans date night, including what happens after. The planner sets the theme; the other says yes or no to each part.

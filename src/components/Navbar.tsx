@@ -8,7 +8,16 @@ import { MobileTabBar } from '@/components/MobileTabBar'
 import { Logo } from '@/components/Logo'
 import { SITE } from '@/config/site'
 
+/** Editorial sections first: the site reads as a review publication, with the catalog one menu away. */
 const PRIMARY = [
+  { label: 'Reviews', to: '/reviews' },
+  { label: 'Buying Guides', to: '/blog/topic/$topic', params: { topic: 'buying-guides' } },
+  { label: 'Comparisons', to: '/blog/topic/$topic', params: { topic: 'comparisons' } },
+  { label: 'Gift Guides', to: '/blog/topic/$topic', params: { topic: 'gift-guides' } },
+  { label: 'Learn', to: '/blog/topic/$topic', params: { topic: 'how-to' } },
+] as const
+
+const AUDIENCES = [
   { label: 'For Her', slug: 'sex-toys-for-women' },
   { label: 'For Him', slug: 'sex-toys-for-men' },
   { label: 'For Couples', slug: 'couples-sex-toys' },
@@ -22,13 +31,7 @@ const GIFTS_AND_COUPLES = [
   ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
 ]
 
-const SHEET_LINKS = [
-  { label: 'For Her', to: '/shop/$slug', params: { slug: 'sex-toys-for-women' } },
-  { label: 'For Him', to: '/shop/$slug', params: { slug: 'sex-toys-for-men' } },
-  { label: 'For Couples', to: '/shop/$slug', params: { slug: 'couples-sex-toys' } },
-  { label: 'Gifts', to: '/gifts' },
-  { label: SITE.guidesName, to: '/blog' },
-] as const
+const SHEET_LINKS = [...PRIMARY, { label: `All ${SITE.guidesName}`, to: '/blog' }] as const
 
 const SearchIcon = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
@@ -137,14 +140,14 @@ export function Navbar() {
     <header className="sticky top-0 z-40">
       <div className="bg-plum text-canvas">
         <div className="wrap flex items-center justify-center sm:justify-between gap-6 h-9 text-xs">
-          <p className="hidden sm:block text-canvas/70">Shipped by our trusted retail partners</p>
+          <p className="hidden sm:block text-canvas/70">Independent reviews and guides</p>
           <p className="font-medium">
-            Good first toys from under $50.{' '}
-            <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="underline underline-offset-2">
-              Shop Now
+            Reader-supported. We may earn a commission.{' '}
+            <Link to="/disclosure" className="underline underline-offset-2">
+              How We Make Money
             </Link>
           </p>
-          <p className="hidden lg:block text-canvas/70">Body-safe picks. Honest guides.</p>
+          <p className="hidden lg:block text-canvas/70">Body-safe picks. No judgment.</p>
         </div>
       </div>
 
@@ -154,9 +157,9 @@ export function Navbar() {
             <Wordmark />
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:flex items-center gap-9 h-full">
+          <nav aria-label="Main" className="hidden lg:flex items-center gap-7 xl:gap-9 h-full">
             {PRIMARY.map((item) => (
-              <Link key={item.slug} to="/shop/$slug" params={{ slug: item.slug }} className={navLink}>
+              <Link key={item.label} to={item.to} {...('params' in item ? { params: item.params } : {})} className={navLink}>
                 {item.label}
               </Link>
             ))}
@@ -176,7 +179,7 @@ export function Navbar() {
                 aria-expanded={shopOpen}
                 onClick={() => setShopOpen(true)}
               >
-                Shop All
+                Browse Toys
               </button>
               <div
                 onClick={(e) => {
@@ -206,6 +209,13 @@ export function Navbar() {
                     ))}
                   </MenuColumn>
                   <MenuColumn title="Gifts & Couples">
+                    {AUDIENCES.map((a) => (
+                      <li key={a.slug}>
+                        <Link to="/shop/$slug" params={{ slug: a.slug }} className="hover:text-ink">
+                          {a.label}
+                        </Link>
+                      </li>
+                    ))}
                     <li>
                       <Link to="/gifts" className="text-ink font-semibold hover:underline underline-offset-4">
                         The Gift Shop
@@ -251,14 +261,11 @@ export function Navbar() {
                 </div>
               </div>
             </div>
-            <Link to="/gifts" className={navLink}>
-              Gifts
-            </Link>
           </nav>
 
           <div className="justify-self-end flex items-center gap-6">
             <Link to="/blog" className={`hidden lg:inline ${navLink}`}>
-              {SITE.guidesName}
+              All Guides
             </Link>
             <button
               type="button"
@@ -294,13 +301,13 @@ export function Navbar() {
           <button type="button" aria-label="Close menu" tabIndex={-1} className="absolute inset-0 bg-ink/40 fade-in" onClick={close} />
           <nav
             id="mobile-menu"
-            aria-label="Shop menu"
+            aria-label="Site menu"
             className="sheet-up absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto overscroll-contain rounded-t-[28px] bg-canvas"
           >
             <div className="sticky top-0 z-10 bg-canvas px-5 pb-3 pt-3">
               <span aria-hidden="true" className="mx-auto mb-3 block h-1 w-10 rounded-full bg-line" />
               <div className="flex items-center justify-between">
-                <p className="font-display text-xl font-semibold tracking-[-0.02em]">Shop</p>
+                <p className="font-display text-xl font-semibold tracking-[-0.02em]">Menu</p>
                 <button type="button" onClick={close} className="press rounded-full bg-mist px-4 py-2 text-sm font-medium">
                   Close
                 </button>
@@ -323,6 +330,21 @@ export function Navbar() {
                   </Link>
                 </li>
               ))}
+            </ul>
+            <p className="mt-6 mb-2 px-1 text-xs font-medium text-graphite">Browse Toys</p>
+            <ul className="flex flex-wrap gap-2">
+              {AUDIENCES.map((a) => (
+                <li key={a.slug}>
+                  <Link to="/shop/$slug" params={{ slug: a.slug }} onClick={close} className="chip !min-h-[2.5rem]">
+                    {a.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/gifts" onClick={close} className="chip !min-h-[2.5rem]">
+                  The Gift Shop
+                </Link>
+              </li>
             </ul>
             <details className="group mt-3 rounded-2xl border border-line">
               <summary className="flex h-14 cursor-pointer list-none items-center justify-between px-5 text-[0.9375rem] font-medium [&::-webkit-details-marker]:hidden">

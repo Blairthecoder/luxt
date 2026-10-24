@@ -24,19 +24,18 @@ export const BLACK_FRIDAY_DEALS: Post = {
   excerpt:
     'A sale is a good moment to finally get the toy you have been curious about. How to shop calmly, spot a genuine deal and choose what is worth buying.',
   publishedAt: '2026-10-20',
+  updatedAt: '2026-10-24',
   readMinutes: 8,
   hubs: ['vibrators', 'strokers', 'couples', 'lubricants'],
   topics: ['gift-guides'],
   body: `
 Maybe there is a toy you have been curious about for months, or one you know would make your partner feel spoiled. Black Friday and the weeks around it are when many toy retailers mark down their ranges, so it is a sensible time to buy something you have been considering for a while. It is also a time when it is easy to buy things you do not need because the price looks good.
 
-This guide is about shopping sales well. It does not list specific discounts, because those change constantly. Instead, it explains what is worth buying on sale, how to judge a deal, and where on this site you can see what is currently reduced. Our [current deals](/shop/black-friday-sex-toy-deals) page[[from:black-friday-sex-toy-deals]] lists every product our retail partner has marked down at the moment, and it updates with each catalog sync.
+This guide is about shopping sales well. It does not list specific discounts, because those change constantly. Instead, it explains what is worth buying on sale, how to judge a deal, and where on this site you can see what is currently reduced. Every [Lovense toy we review](/reviews) shows its live price, including any markdown, and prices update with each catalog sync.
 
-## How Our Deals Page Works
+## How We Show Sale Prices
 
-Every product page and card on this site shows the current price from our retail partner. When the retailer marks a product down, the usual price appears struck through beside the sale price. The [deals collection](/shop/black-friday-sex-toy-deals) shows only those marked-down products.
-
-That means the page is short at some times of year and much longer at others. If it is empty when you visit, nothing is currently reduced, and you can still browse by category or brand.
+Every review and product card on this site shows the current price from our retail partner. When the retailer marks a product down, the usual price appears struck through beside the sale price, so you can spot a real markdown at a glance. Browse the full [Lovense range](/shop/lovense) to see what is reduced right now.
 
 ## What Is Worth Buying on Sale
 
@@ -44,7 +43,7 @@ The best sale purchases are things you would happily buy at full price, just che
 
 ### Premium Toys You Already Want
 
-Design-led brands such as LELO, Womanizer and We-Vibe rarely cost little, so a markdown makes the biggest difference here. If you have been considering a flagship air-pulse toy, a couples vibrator or a premium wand, a sale is a good time to buy. Our [premium collection](/shop/luxury-sex-toys) and brand pages for [LELO](/shop/lelo), [Womanizer](/shop/womanizer) and [We-Vibe](/shop/we-vibe) are good places to start.
+Design-led brands such as LELO, Womanizer and We-Vibe rarely cost little, so a markdown makes the biggest difference here. If you have been considering a flagship air-pulse toy, a couples vibrator or a premium wand, a sale is a good time to buy. Our [premium collection](/shop/luxury-sex-toys) and [Lovense reviews](/reviews) are good places to start.
 
 [[picks:premium]]
 
@@ -56,13 +55,13 @@ Connected toys and automatic strokers are among the most expensive products in t
 
 ### Couples Toys and Gifts
 
-Sales overlap with the start of the holiday gift season. A couples vibrator, a vibrating ring or a gift set bought on markdown leaves room in the budget for a good lube or something small to go with it. See [couples sex toys](/shop/couples-sex-toys) and [sex toy gift sets](/shop/sex-toy-gift-sets).
+Sales overlap with the start of the holiday gift season. A couples vibrator, a vibrating ring or a gift set bought on markdown leaves room in the budget for a good lube or something small to go with it. See [couples sex toys](/shop/couples-sex-toys) and [Lovense bundles](/shop/lovense-bundles).
 
 [[picks:couples]]
 
 ### Stocking Up on Basics
 
-Lube and toy cleaner are small purchases, but you use them constantly. A sale is a good time to buy a larger bottle of the [water-based lube](/shop/water-based-lube) or [silicone lube](/shop/silicone-lube) you already like.
+Lube and toy cleaner are small purchases, but you use them constantly. A sale is a good time to buy a larger bottle of the [water-based lube](/shop/water-based-lube) or silicone lube you already like.
 
 ## How to Tell a Good Deal
 

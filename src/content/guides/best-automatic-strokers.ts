@@ -11,7 +11,7 @@ export const AUTOMATIC_STROKERS: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['strokers'],
-  topics: ['for-him', 'how-to'],
+  topics: ['for-him', 'how-to', 'buying-guides'],
   body: `
 Sometimes the best part of solo time is letting go of the effort and simply noticing how good it feels. An automatic stroker uses a motor to create motion, suction or rotation, so you can go hands-free, relax and stay present. Some pair with an app or video for an interactive experience, or sync with a partner's toy so you can feel close from a distance.
 

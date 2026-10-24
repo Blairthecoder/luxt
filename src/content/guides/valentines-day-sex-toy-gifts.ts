@@ -23,7 +23,7 @@ Order early. Popular toys sell out in the first two weeks of February, and shipp
 |---|---|---|
 | New relationship (under a year) | Lingerie in their size, or a bottle of good lube and a massage oil | A small [bullet vibrator](/shop/bullet-vibrators) to try together |
 | Established (1 to 5 years) | A [couples toy](/shop/couples-sex-toys) | A [remote control vibrator](/shop/remote-control-vibrators) for the dinner out |
-| Long-term (5+ years) | A [bondage kit](/shop/bondage-kits) or a [positioning wedge](/category/sex-machines-furniture) | A [premium piece](/shop/luxury-sex-toys) and a hotel night |
+| Long-term (5+ years) | A [bondage kit](/category/bdsm) or a [positioning wedge](/category/sex-machines-furniture) | A [premium piece](/shop/luxury-sex-toys) and a hotel night |
 | Long-distance | An [app-controlled toy](/shop/app-controlled-sex-toys) for each of you | A matched pair you can both control |
 
 ## Gifts to Share

@@ -17,6 +17,7 @@ import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
@@ -65,6 +66,11 @@ const PartnersRoute = PartnersRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -161,6 +169,7 @@ export interface FileRoutesById {
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
+  '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -182,6 +191,7 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/partners'
     | '/privacy'
+    | '/reviews'
     | '/sitemap.xml'
     | '/terms'
     | '/blog/$slug'
@@ -201,6 +211,7 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/partners'
     | '/privacy'
+    | '/reviews'
     | '/sitemap.xml'
     | '/terms'
     | '/blog/$slug'
@@ -220,6 +231,7 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/partners'
     | '/privacy'
+    | '/reviews'
     | '/sitemap.xml'
     | '/terms'
     | '/blog/$slug'
@@ -240,6 +252,7 @@ export interface RootRouteChildren {
   GiftsRoute: typeof GiftsRoute
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
+  ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -307,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -384,6 +404,7 @@ const rootRouteChildren: RootRouteChildren = {
   GiftsRoute: GiftsRoute,
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
+  ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   BlogSlugRoute: BlogSlugRoute,

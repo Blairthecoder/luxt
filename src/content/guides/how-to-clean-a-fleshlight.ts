@@ -9,6 +9,7 @@ export const CLEAN_FLESHLIGHT: Post = {
   excerpt:
     'A Fleshlight sleeve lasts when you look after it. Rinse it, dry it completely and store it properly, and it will feel good for a long time.',
   publishedAt: '2026-10-20',
+  updatedAt: '2026-10-24',
   readMinutes: 5,
   hubs: ['strokers'],
   topics: ['how-to', 'for-him'],
@@ -53,11 +54,13 @@ A sleeve does not last forever. It is time for a new one if you notice:
 - a sticky feel that renewing powder no longer fixes, or
 - a smell that does not wash away.
 
-A replacement sleeve is usually cheaper than a whole new toy. Browse the [Fleshlight range](/shop/fleshlight)[[from:fleshlight]].
+A replacement sleeve is usually cheaper than a whole new toy.
+
+A dedicated cleaner speeds up the rinse on any sleeve. See our review of the [Lovense toy cleaner](/products/lovense-toy-cleaner), and use a [water-based lube](/blog/best-lube-for-sex-toys) to keep the material in good shape.
 
 ## Cleaning Other Toys
 
-Strokers are one material among many. Our [guide to cleaning sex toys](/blog/how-to-clean-sex-toys) covers silicone, glass, metal and electronics, and you can compare the care routine with [Tenga](/shop/tenga) products, which include single-use options that need no cleaning at all.
+Strokers are one material among many. Our [guide to cleaning sex toys](/blog/how-to-clean-sex-toys) covers silicone, glass, metal and electronics, and you can compare the care routine with Tenga products, which include single-use options that need no cleaning at all.
 `,
   faqs: [
     {

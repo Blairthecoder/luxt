@@ -23,7 +23,7 @@ A good gift can help him feel cared for, a little spoiled and more at ease explo
 | Likes tech and gadgets | An [automatic stroker](/shop/automatic-strokers) | [[price:automatic-strokers]] |
 | Wants something for both of you | A [vibrating cock ring](/shop/vibrating-cock-rings) | [[price:vibrating-cock-rings]] |
 | Is curious about new sensations | A [prostate vibrator](/shop/prostate-vibrators) | [[price:prostate-vibrators]] |
-| Travels a lot or lives with roommates | A compact [Tenga](/shop/tenga) cup or egg | [[price:tenga]] |
+| Travels a lot or lives with roommates | A compact [pocket stroker](/shop/pocket-pussies) | [[price:pocket-pussies]] |
 
 If you are unsure, the stroker is the safest choice. It is the most direct upgrade on what he already does, and there is nothing to learn.
 

@@ -6,8 +6,8 @@ import { breadcrumbJsonLd, organizationJsonLd, pageHead } from '@/lib/seo'
 export const Route = createFileRoute('/about')({
   head: () =>
     pageHead({
-      title: `About ${SITE.shortName} | Adult Toy Buying Guides`,
-      description: `${SITE.name} is an independent adult toy buying guide: original product copy, plain-language advice and honest affiliate links to our retail partners.`,
+      title: `About ${SITE.shortName} | Independent Sex Toy Reviews`,
+      description: `${SITE.name} is an independent sex toy review site: original reviews, buying guides and comparisons, with clearly disclosed affiliate links.`,
       path: '/about',
       jsonLd: [
         organizationJsonLd(),
@@ -21,13 +21,13 @@ export const Route = createFileRoute('/about')({
     <InfoPage
       eyebrow="About"
       title={`About ${SITE.name}`}
-      intro="We help adults choose body-safe toys with confidence: friendly guides, clear comparisons and honest picks, without the awkwardness."
+      intro="We help adults choose body-safe toys with confidence: independent reviews, friendly guides and clear comparisons, without the awkwardness."
       sections={[
         {
           heading: 'What We Do',
           body: [
-            `${SITE.name} is an independent buying guide for adult toys. We organize a large catalog into categories, collections and plain-language guides so readers can find the right product for their body, budget and comfort level.`,
-            `Our editorial section, ${SITE.guidesName}, covers choosing, using and caring for toys, solo or with a partner. Product pages carry our own written summary, who the product suits and its trade-offs.`,
+            `${SITE.name} is an independent review site for adult toys. We publish product reviews, best-of buying guides, head-to-head comparisons and plain-language how-tos so readers can find the right toy for their body, budget and comfort level.`,
+            `Our editorial section, ${SITE.guidesName}, covers choosing, using and caring for toys, solo or with a partner. Every review carries our own written verdict, who the product suits and its trade-offs. Our editorial policy explains how we review.`,
           ],
         },
         {
@@ -39,7 +39,7 @@ export const Route = createFileRoute('/about')({
         {
           heading: 'How We Make Money',
           body: [
-            'We do not sell anything ourselves. Buy buttons send readers to our retail partners (currently Lovense) through affiliate links, and we may earn a commission on qualifying purchases at no extra cost to the reader. Pages that link out carry a disclosure, and our full policy is on the affiliate disclosure page.',
+            'We do not sell anything ourselves. Check Price buttons send readers to our retail partners (currently Lovense) through affiliate links, and we may earn a commission on qualifying purchases at no extra cost to the reader. Pages that link out carry a disclosure, and our full policy is on the affiliate disclosure page.',
           ],
         },
         {

@@ -11,7 +11,7 @@ export const BEST_WANDS: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['vibrators'],
-  topics: ['for-her', 'how-to'],
+  topics: ['for-her', 'how-to', 'buying-guides'],
   body: `
 If small, buzzy toys have ever left you more frustrated than satisfied, you are not alone, and nothing is wrong with you. A wand vibrator has a large, round head on a long handle. It gives broad, deep vibration over a wide area, which many people find easier to relax into than a small, pointed vibration. Wands double as a back and shoulder massager, which makes them a discreet purchase.
 
