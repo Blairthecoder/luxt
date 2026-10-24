@@ -4,6 +4,7 @@ import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { NewsletterSignup } from '@/components/NewsletterSignup'
 import { POSTS_BY_SLUG, relatedPosts } from '@/content/posts'
 import { HUBS_BY_SLUG } from '@/content/hubs'
+import { RETIRED_HUBS } from '@/content/retired'
 import { TOPICS_BY_SLUG } from '@/content/topics'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getPostHtml } from '@/lib/catalog'
@@ -96,7 +97,7 @@ export const Route = createFileRoute('/blog/$slug')({
 function PostPage() {
   const { post, html, topPick, hasPicks } = Route.useLoaderData()
   const more = relatedPosts(post, 2)
-  const hubs = post.hubs.map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
+  const hubs = post.hubs.filter((h) => !(h in RETIRED_HUBS)).map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
 
   return (

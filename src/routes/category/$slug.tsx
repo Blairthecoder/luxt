@@ -72,6 +72,7 @@ function CategoryPage() {
       result={result}
       filters={filters}
       subcats={result.subcats}
+      more={result.page === 1 && !hasActiveFilters(filters) ? result.more : []}
       tips={hub.buyingTips}
       guides={postsForHub(hub.slug)}
     />

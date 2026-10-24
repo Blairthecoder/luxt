@@ -4,7 +4,8 @@ import { ListingView } from '@/components/ListingView'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { MobileSearchField } from '@/components/MobileSearchField'
 import { FaqAccordion } from '@/components/FaqAccordion'
-import type { ListingFilters, ListingResult } from '@/lib/listing'
+import type { ListingFilters, ListingResult, ProductSummary } from '@/lib/listing'
+import { ProductGrid } from '@/components/ProductCard'
 import type { Post } from '@/content/posts'
 import type { ListingExtra } from '@/content/listing-extras'
 import { getOptimizedImageUrl } from '@/lib/image'
@@ -23,6 +24,7 @@ export function ListingPage({
   extra,
   extraName,
   subcats = [],
+  more = [],
   otherBrands = [],
 }: {
   eyebrow: string
@@ -36,6 +38,8 @@ export function ListingPage({
   extra?: ListingExtra | null
   extraName?: string
   subcats?: SubcategoryTile[]
+  /** Related products shown under listings too small to fill a row. */
+  more?: ProductSummary[]
   otherBrands?: { slug: string; name: string }[]
 }) {
   return (
@@ -93,6 +97,13 @@ export function ListingPage({
       <div className="pb-8">
         <ListingView result={result} filters={filters} />
       </div>
+
+      {more.length > 0 && (
+        <section className="mt-16 pt-14 border-t border-line reveal">
+          <h2 className="display-m mb-8">More to Explore</h2>
+          <ProductGrid products={more} context="listing_more" />
+        </section>
+      )}
 
       {extra && (
         <section className="mt-24 pt-14 border-t border-ink grid lg:grid-cols-12 gap-10 lg:gap-16 reveal">

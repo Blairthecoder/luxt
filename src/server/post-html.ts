@@ -5,6 +5,7 @@ import { marked } from 'marked'
 import { productsMatchingRule } from '@/server/catalog-store'
 import { isDiscreet } from '@/server/merchandising'
 import { COLLECTIONS_BY_SLUG, type CollectionRule } from '@/content/collections'
+import { RETIRED_COLLECTIONS, RETIRED_HUBS } from '@/content/retired'
 import type { PickBlock, PickSlot, Post } from '@/content/posts'
 import type { CatalogProduct } from '@/types/catalog'
 import { getProgram, goPath } from '@/lib/affiliate'
@@ -118,6 +119,12 @@ export async function renderPostHtml(post: Post): Promise<{ html: string; topPic
       }
     }
     return `<ul class="picks">${picks.map(({ slot, product }) => pickCard(slot, product)).join('')}</ul>`
+  })
+
+  // Links to retired hubs and collections point straight at the page they 301 to.
+  html = html.replace(/href="\/(category|shop)\/([a-z0-9-]+)"/g, (match, kind: string, slug: string) => {
+    const target = kind === 'category' ? RETIRED_HUBS[slug] : RETIRED_COLLECTIONS[slug]
+    return target ? `href="${target}"` : match
   })
 
   html = html.replace(/\[\[from:([a-z0-9-]+)\]\]/g, (_, slug: string) => {
