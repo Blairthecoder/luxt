@@ -321,6 +321,33 @@
       "program": "lovense"
     },
     {
+      "handle": "lovense-glint",
+      "title": "Lovense Glint App-Controlled Touch-Responsive Vibrating Butt Plug",
+      "brand": "Lovense",
+      "productType": "Vibrating Butt Plugs",
+      "tags": [
+        "Vibrating Butt Plugs",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "anal-toys",
+      "price": 109,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260326/83de562a44974c9c8c065ac6ca4fd367.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 109,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
       "handle": "lovense-gravity",
       "title": "Lovense Gravity Thrusting Vibrating Dildo",
       "brand": "Lovense",

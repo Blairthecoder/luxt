@@ -7,15 +7,25 @@ import type { Catalog, CatalogProduct } from '@/types/catalog'
 import type { CollectionRule } from '@/content/collections'
 import { merchandise } from '@/server/merchandising'
 
-// Lovense is a direct affiliate program with its own product pages. Where a
-// handle is also in the LuxuryToyX feed, the Lovense listing replaces it so the
-// existing copy and guide picks keep working and the click earns through Lovense.
+// The store lists Lovense only. Lovense is a direct affiliate program with its
+// own product pages. The LuxuryToyX feed is still synced, but only to send old
+// product URLs to the closest live category (see retiredProductHub).
 const lovenseProducts = (lovenseData as Catalog).products
 const lovenseHandles = new Set(lovenseProducts.map((p) => p.handle))
-const baseCatalog = catalogData as Catalog
+const retiredCatalog = catalogData as Catalog
 const catalog: Catalog = {
-  ...baseCatalog,
-  products: [...baseCatalog.products.filter((p) => !lovenseHandles.has(p.handle)), ...lovenseProducts],
+  syncedAt: (lovenseData as Catalog).syncedAt ?? retiredCatalog.syncedAt,
+  source: (lovenseData as Catalog).source,
+  products: lovenseProducts,
+}
+
+const retiredHubs = new Map<string, string>(
+  retiredCatalog.products.filter((p) => !lovenseHandles.has(p.handle)).map((p) => [p.handle, p.hub])
+)
+
+/** Hub of a product that was removed with the LuxuryToyX feed, if the handle was ever listed. */
+export function retiredProductHub(handle: string): string | undefined {
+  return retiredHubs.get(handle)
 }
 
 const byHandle = new Map<string, CatalogProduct>(

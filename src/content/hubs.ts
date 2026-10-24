@@ -1,6 +1,7 @@
 import type { Hub } from '@/types/catalog'
+import { RETIRED_HUBS } from '@/content/retired'
 
-export const HUBS: Hub[] = [
+const ALL_HUBS: Hub[] = [
   {
     slug: 'vibrators',
     name: 'Vibrators',
@@ -20,13 +21,13 @@ export const HUBS: Hub[] = [
     slug: 'strokers',
     name: 'Strokers & Masturbators',
     singular: 'Stroker',
-    metaTitle: 'Best Strokers & Masturbators: Fleshlight, Tenga & More',
+    metaTitle: 'Best Strokers & Masturbators: App-Controlled Lovense Picks',
     metaDescription:
-      'Strokers and masturbators that make solo time feel more relaxed and more fun. Compare Fleshlight, Tenga and automatic picks by feel, size and cleanup.',
+      'Lovense strokers and masturbators that make solo time feel more relaxed and more fun. Compare manual, vibrating and automatic picks by feel and cleanup.',
     intro:
       'Making time for yourself is healthy, and a stroker makes it feel more relaxed and more intense than your hand alone. The differences come down to texture, tightness and how easy it is to clean. A manual sleeve is the easiest start; automatic strokers add thrusting or suction when you want to lie back.',
     buyingTips: [
-      'Fleshlight sleeves are reusable and come in many textures; Tenga cups are a low-pressure way to try different feels.',
+      'A simple sleeve like the Lovense Kraken is a low-pressure first try; Max 2, Calor and Solace add vibration, app control or hands-free thrusting.',
       'Use water-based lube only, since silicone lube can damage most sleeve materials.',
       'Rinse with warm water after use and let it dry fully before storing, so it stays fresh for next time.',
     ],
@@ -227,6 +228,9 @@ export const HUBS: Hub[] = [
   },
 ]
 
+/** Live hubs. Retired hubs keep their definitions so old product pages still resolve a name. */
+export const HUBS: Hub[] = ALL_HUBS.filter((hub) => !(hub.slug in RETIRED_HUBS))
+
 export const HUBS_BY_SLUG: Record<string, Hub> = Object.fromEntries(
-  HUBS.map((hub) => [hub.slug, hub])
+  ALL_HUBS.map((hub) => [hub.slug, hub])
 )

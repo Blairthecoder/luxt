@@ -37,7 +37,7 @@ const COLLECTION_FOR: Partial<Record<FilterKey, Record<string, string>>> = {
     thrusting: 'thrusting-vibrators',
     automatic: 'automatic-strokers',
   },
-  brand: { lelo: 'lelo', womanizer: 'womanizer', lovense: 'lovense', 'we-vibe': 'we-vibe', tenga: 'tenga', fleshlight: 'fleshlight' },
+  brand: { lovense: 'lovense' },
 }
 
 /** Product grid with facet filters, sorting and numbered pagination. */

@@ -12,7 +12,8 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 
 ## Key files
 
-- `scripts/sync-catalog.mjs`: pulls `https://www.luxurytoyx.com/products.json` into `src/data/catalog.json` before every build. Keeps the existing file on failure.
+- **The store is Lovense-only.** `catalog-store.ts` serves `src/data/lovense.json` alone. `scripts/sync-catalog.mjs` still pulls the LuxuryToyX feed into `src/data/catalog.json`, but only so old product URLs can 301 to their closest live category. Retired hubs and collections, and LuxuryToyX handles of Lovense toys, are listed in `src/content/retired.ts`; their URLs 301 and they drop out of nav, tiles and the sitemap.
+- `src/content/product-copy-lovense.ts`: original copy for Lovense products.
 - `scripts/sync-lovense.mjs`: builds `src/data/lovense.json` (products, prices, images) from lovense.com product pages and `src/data/lovense-links.json` (per-product affiliate links) from `src/data/lovense-affiliate-links.json`, the dashboard export of item names and links. Lovense links are per-item short links, not deep links. `catalog-store.ts` merges Lovense over any LuxuryToyX product with the same handle. Keeps existing files on failure.
 - `src/data/hub-rules.json`: ordered regex rules mapping each product to one category hub.
 - `src/content/hubs.ts`: category names, meta and original intro copy.

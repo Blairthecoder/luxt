@@ -3,6 +3,8 @@
  * actually type ("rabbit vibrators", "sex toys for men") and is built from a
  * rule over the synced catalog. Intros are original copy.
  */
+import { RETIRED_COLLECTIONS } from '@/content/retired'
+
 export interface CollectionRule {
   hubs?: string[]
   /** Product matches if it has any of these tags (case-insensitive). */
@@ -35,7 +37,7 @@ export interface Collection {
   guides?: string[]
 }
 
-export const COLLECTIONS: Collection[] = [
+const ALL_COLLECTIONS: Collection[] = [
   {
     slug: 'sex-toys-for-men',
     name: 'Sex Toys for Men',
@@ -45,7 +47,7 @@ export const COLLECTIONS: Collection[] = [
       'Sex toys for men that make solo time and partnered sex feel better: strokers, penis rings, pumps and prostate toys, with simple tips on where to start.',
     intro:
       'Feeling good is for everyone, and these toys are made with men\'s bodies in mind, from first strokers to prostate massagers. If you are not sure where to start, a manual stroker and a bottle of water-based lube is an easy, low-pressure first step.',
-    rule: { tags: ['male'] },
+    rule: { hubs: ['strokers', 'prostate-massagers', 'penis-rings'] },
     guide: 'fleshlight-vs-tenga',
   },
   {
@@ -57,7 +59,7 @@ export const COLLECTIONS: Collection[] = [
       'Sex toys for women that help you learn what you love: vibrators, clitoral suction toys, wands and G-spot picks, with friendly advice on where to start.',
     intro:
       'Knowing what you enjoy is a confident place to be, and the right toy makes finding out easy. Most people start with external stimulation, so a clitoral or wand vibrator is a comfortable first pick, with discreet bullets and air-pulse toys close behind.',
-    rule: { tags: ['female'] },
+    rule: { hubs: ['vibrators', 'dildos'], excludeTitle: 'strap' },
     guide: 'how-to-choose-your-first-vibrator',
   },
   {
@@ -69,19 +71,19 @@ export const COLLECTIONS: Collection[] = [
       'Couples sex toys that bring you closer: wearable vibrators, vibrating rings and app-controlled toys made for two. See how each one fits into your sex life.',
     intro:
       'Toys made to share bring more pleasure and more playfulness to sex for both of you. Wearables and vibrating rings work during sex, while app-controlled toys let a partner take over from across the room or across the country.',
-    rule: { title: 'couple|partner|we-vibe|wearable' },
+    rule: { hubs: ['vibrators', 'penis-rings', 'anal-toys', 'dildos', 'bdsm'], text: 'remote control' },
     guide: 'best-couples-sex-toys',
   },
   {
     slug: 'app-controlled-sex-toys',
     name: 'App-Controlled Sex Toys',
     group: 'For Couples',
-    metaTitle: 'App-Controlled Sex Toys: Lovense, We-Vibe & Kiiroo',
+    metaTitle: 'App-Controlled Sex Toys: Every Lovense Toy Compared',
     metaDescription:
-      'App-controlled sex toys that keep you connected, solo or across the miles. Compare Lovense, We-Vibe and Kiiroo for patterns, remote play and easy pairing.',
+      'App-controlled Lovense toys that keep you connected, solo or across the miles. Compare Lush, Nora, Max and more for patterns, remote play and easy pairing.',
     intro:
       'An app-connected toy lets you shape the feeling with custom patterns or hand the controls to a partner anywhere in the world, which can make distance feel a lot smaller. Check that the brand app supports your phone before you buy.',
-    rule: { tags: ['app'] },
+    rule: { text: 'app controlled' },
     guide: 'long-distance-sex-toys',
   },
   {
@@ -114,7 +116,7 @@ export const COLLECTIONS: Collection[] = [
     group: 'By Style',
     metaTitle: 'Best Clitoral Vibrators & Suction Toys',
     metaDescription:
-      'Clitoral vibrators and air-pulse suction toys from Womanizer, Satisfyer and more, for the kind of pleasure most bodies love. Compare noise and feel here.',
+      'Lovense clitoral vibrators and suction toys, from Tenera 2 to Fizz and Hyphy, for the kind of pleasure most bodies love. Compare feel and app features here.',
     intro:
       'External stimulation is how most vulva owners reach orgasm, so a clitoral toy is often the most satisfying place to start. Air-pulse suction toys feel gentler and less direct than traditional vibration, which many people find easier to enjoy.',
     rule: { hubs: ['vibrators'], title: 'clit|suction|air|womanizer' },
@@ -160,10 +162,10 @@ export const COLLECTIONS: Collection[] = [
     group: 'For Him',
     metaTitle: 'Best Automatic Strokers & Hands-Free Masturbators',
     metaDescription:
-      'Automatic strokers that do the work so you can lie back and enjoy it. Compare thrusting, suction and rotating picks from Kiiroo, Lovense, Tenga and more.',
+      'Automatic Lovense strokers that do the work so you can lie back and enjoy it. Compare Solace, Solace Pro and Gush 2 Motion by motion, size and app control.',
     intro:
       'Automatic strokers handle the motion with thrusting, rotation or suction, so you can relax and focus on the feeling. Many pair with apps or video, and some let a partner take control from afar.',
-    rule: { tags: ['masturbation type_automatic'] },
+    rule: { hubs: ['strokers'], title: 'automatic|thrust|motion|blowjob' },
     guide: 'best-automatic-strokers',
   },
   {
@@ -184,10 +186,10 @@ export const COLLECTIONS: Collection[] = [
     group: 'For Him',
     metaTitle: 'Best Vibrating Prostate Massagers',
     metaDescription:
-      'Vibrating prostate massagers from b-Vibe, LELO and Aneros that make a first try feel easy and rewarding. Beginner-friendly picks and gentle how-to tips.',
+      'App-controlled Lovense prostate massagers like Edge 2 that make a first try feel easy and rewarding. Beginner-friendly picks and gentle how-to tips.',
     intro:
       'Vibration brings sensation sooner than hands-free designs, which makes a first try at prostate play feel rewarding rather than like guesswork. Go slowly, breathe and use plenty of lube.',
-    rule: { hubs: ['prostate-massagers'], title: 'vibrat|remote|rechargeable' },
+    rule: { hubs: ['prostate-massagers'], title: 'vibrat|remote|app-controlled|dual-motor' },
     guide: 'prostate-massage-for-beginners',
   },
   {
@@ -425,7 +427,7 @@ export const COLLECTIONS: Collection[] = [
     group: 'By Budget',
     metaTitle: 'Luxury Sex Toys: Considered Picks Worth Investing In',
     metaDescription:
-      'Luxury sex toys from LELO, Womanizer, Kiiroo and more, chosen for how they feel: quiet motors and soft, body-safe materials. Buy once, enjoy for years.',
+      'Premium Lovense toys, from Solace Pro to the Sex Machine, chosen for how they feel: strong motors, app control and body-safe materials. Built to last.',
     intro:
       'Spending more makes sense when a toy feels better every time you reach for it. These premium picks earn their price with quieter, stronger motors, softer materials and longer warranties, so you can buy once and enjoy it for years.',
     rule: { minPrice: 150 },
@@ -461,12 +463,12 @@ export const COLLECTIONS: Collection[] = [
     group: 'By Style',
     metaTitle: 'Quiet Vibrators for Shared Homes and Thin Walls',
     metaDescription:
-      'Quiet vibrators from LELO, We-Vibe, Womanizer, ROMP and more, for when privacy helps you relax. Chosen for shared homes, with tips to keep noise down.',
+      'Quiet Lovense vibrators, including Lush, Ambi and Nora, for when privacy helps you relax. Chosen for shared homes, with tips to keep noise down.',
     intro:
-      'It is easier to let go when you are not worried about being heard. This collection sticks to brands known for well-finished motors and leaves out thrusting toys, the loudest kind. Lower settings, a towel underneath and a rumbly rather than buzzy toy help further.',
+      'It is easier to let go when you are not worried about being heard. This collection sticks to well-finished Lovense motors and leaves out thrusting toys, the loudest kind. Lower settings, a towel underneath and a rumbly rather than buzzy toy help further.',
     rule: {
       hubs: ['vibrators'],
-      brands: ['lelo', 'we-vibe', 'womanizer', 'romp', 'svakom', 'vush'],
+      brands: ['lovense'],
       excludeTitle: 'thrust|strap|harness|attachment|remote$',
     },
     guide: 'how-to-choose-your-first-vibrator',
@@ -482,7 +484,7 @@ export const COLLECTIONS: Collection[] = [
       'Everyone starts somewhere, and a first toy should feel simple, body-safe and easy to understand. These come from brands with a track record, at prices that let you find out what you like before investing more. Add a water-based lube and you are ready.',
     rule: {
       hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings'],
-      brands: ['romp', 'le wand', 'vush', 'tenga', 'lelo', 'we-vibe', 'womanizer', 'svakom', 'arcwave', 'sliquid', 'pjur', 'uber lube'],
+      brands: ['lovense'],
       excludeTitle: 'thrust|strap|harness|attachment|anal|plug|remote$|fisting|warming|tingl',
       maxPrice: 80,
     },
@@ -522,6 +524,9 @@ export const COLLECTIONS: Collection[] = [
     guide: 'black-friday-sex-toy-deals',
   },
 ]
+
+/** Live collections; retired ones redirect (src/content/retired.ts). */
+export const COLLECTIONS: Collection[] = ALL_COLLECTIONS.filter((c) => !(c.slug in RETIRED_COLLECTIONS))
 
 export const COLLECTIONS_BY_SLUG: Record<string, Collection> = Object.fromEntries(
   COLLECTIONS.map((c) => [c.slug, c])
