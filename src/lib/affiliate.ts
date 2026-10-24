@@ -1,4 +1,5 @@
 import lovenseLinks from '@/data/lovense-links.json'
+import lovenseBundles from '@/data/lovense-bundles.json'
 
 /**
  * Affiliate programs. Every outbound purchase link is built here and only
@@ -27,7 +28,7 @@ export const PROGRAMS: Record<string, AffiliateProgram> = {
   lovense: {
     id: 'lovense',
     merchantName: 'Lovense',
-    productLinks: lovenseLinks,
+    productLinks: { ...lovenseLinks, ...lovenseBundles.links },
     // Lovense home page tracking link.
     fallbackLink: 'https://www.lovense.com/r/3t7vuu',
   },

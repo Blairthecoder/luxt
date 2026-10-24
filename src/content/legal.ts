@@ -63,7 +63,7 @@ export const PRIVACY: LegalDoc = {
     {
       heading: 'Affiliate Links and Our Retail Partner',
       body: [
-        "Buy buttons link through our own /go/ address, which sends you to the product page of the retailer that sells it (currently LuxuryToyX or Lovense) with a tracking link so the retailer can credit us for the referral. When you land on the retailer's site, its own privacy policy and cookies apply to everything you do there, including checkout, billing and shipping.",
+        "Buy buttons link through our own /go/ address, which sends you to the product page of the retailer that sells it (currently Lovense) with a tracking link so the retailer can credit us for the referral. When you land on the retailer's site, its own privacy policy and cookies apply to everything you do there, including checkout, billing and shipping.",
         'We may earn a commission if you buy. See our affiliate disclosure for details.',
       ],
     },

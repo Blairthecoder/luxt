@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Link, createFileRoute, notFound } from '@tanstack/react-router'
+import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BuyButton } from '@/components/BuyButton'
 import { ProductGrid } from '@/components/ProductCard'
@@ -20,6 +20,7 @@ export const Route = createFileRoute('/products/$productId')({
   loader: async ({ params }) => {
     const data = await getProductData({ data: params.productId })
     if (!data) throw notFound()
+    if ('redirectTo' in data) throw redirect({ href: data.redirectTo, statusCode: 301 })
     return { ...data, hub: HUBS_BY_SLUG[data.product.hub] ?? HUBS_BY_SLUG['more-toys'] }
   },
   head: ({ loaderData }) => {

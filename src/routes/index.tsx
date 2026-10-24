@@ -71,7 +71,7 @@ const AUDIENCES = [
     slug: 'sex-toys-for-men',
     label: 'For Him',
     line: 'Strokers, rings and prostate toys that make it easier to relax and enjoy yourself. Many of the best cost less than a nice dinner.',
-    links: ['automatic-strokers', 'prostate-vibrators', 'vibrating-cock-rings', 'tenga'],
+    links: ['automatic-strokers', 'prostate-vibrators', 'vibrating-cock-rings', 'pocket-pussies'],
   },
   {
     key: 'forCouples',
@@ -79,7 +79,7 @@ const AUDIENCES = [
     slug: 'couples-sex-toys',
     label: 'For Couples',
     line: 'Wearables and app-controlled toys that help you feel closer and try something new together, in the same room or miles apart.',
-    links: ['app-controlled-sex-toys', 'remote-control-vibrators', 'we-vibe', 'lovense'],
+    links: ['app-controlled-sex-toys', 'remote-control-vibrators', 'vibrating-cock-rings', 'lovense'],
   },
 ] as const
 
@@ -134,11 +134,11 @@ function TileImage({ tile, width, className }: { tile: Tile; width: number; clas
 }
 
 const PROMO_COPY: Record<string, { eyebrow: string; title: string; line: string; cta: string; tone: string }> = {
-  'sex-toy-gift-sets': {
+  'remote-control-vibrators': {
     eyebrow: 'Gift Ideas',
     title: 'Gifts That Feel Thoughtful, Not Awkward',
-    line: 'Ready-to-give sets and easy favorites for birthdays, anniversaries and just because.',
-    cta: 'Shop Gift Sets',
+    line: 'Remote-control favorites for birthdays, anniversaries and just because.',
+    cta: 'Shop Remote Picks',
     tone: 'bg-blush',
   },
   'sex-toys-for-beginners': {
@@ -372,8 +372,8 @@ function HomePage() {
           <Carousel
             title="On Sale Now"
             action={
-              <Link to="/shop/$slug" params={{ slug: 'black-friday-sex-toy-deals' }} className="more hidden md:inline-flex">
-                Shop All Deals
+              <Link to="/shop/$slug" params={{ slug: 'lovense' }} className="more hidden md:inline-flex">
+                Shop All
               </Link>
             }
           >

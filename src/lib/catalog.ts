@@ -36,7 +36,7 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
     shortcuts: buildTiles(HOME_SHORTCUTS, tileImages),
     promoTiles: buildTiles(
       [
-        { kind: 'shop', slug: 'sex-toy-gift-sets' },
+        { kind: 'shop', slug: 'remote-control-vibrators' },
         { kind: 'shop', slug: 'sex-toys-for-beginners' },
         { kind: 'shop', slug: 'quiet-vibrators' },
         { kind: 'shop', slug: 'app-controlled-sex-toys' },
@@ -98,12 +98,28 @@ export const getProductData = createServerFn({ method: 'GET' })
     const { HOW_TO_USE } = await import('@/content/how-to-use')
     const { HOW_TO_USE_2 } = await import('@/content/how-to-use-2')
     const product = store.findProduct(handle)
-    if (!product) return null
+    const { LOVENSE_HANDLE_ALIASES, LOVENSE_COPY_CARRYOVER } = await import('@/content/retired')
+    if (!product) {
+      // LuxuryToyX listings of Lovense toys move to the Lovense listing.
+      const alias = LOVENSE_HANDLE_ALIASES[handle]
+      if (alias && store.findProduct(alias)) return { redirectTo: `/products/${alias}` }
+      // Other products dropped with the LuxuryToyX feed send visitors to the closest live category.
+      const hub = store.retiredProductHub(handle)
+      if (!hub) return null
+      const { hubPath } = await import('@/content/retired')
+      const { HUBS } = await import('@/content/hubs')
+      const path = hubPath(hub)
+      return { redirectTo: path.startsWith('/category/') && !HUBS.some((h) => `/category/${h.slug}` === path) ? '/' : path }
+    }
     const copy: ProductCopy | null = PRODUCT_COPY[handle] ?? null
+    const legacyHowTo = (h: string) => {
+      const old = LOVENSE_COPY_CARRYOVER.find((k) => LOVENSE_HANDLE_ALIASES[k] === h)
+      return old ? (HOW_TO_USE[old] ?? HOW_TO_USE_2[old] ?? null) : null
+    }
     return {
       product,
       copy,
-      howTo: copy ? (HOW_TO_USE[handle] ?? HOW_TO_USE_2[handle] ?? null) : null,
+      howTo: copy ? (HOW_TO_USE[handle] ?? HOW_TO_USE_2[handle] ?? legacyHowTo(handle)) : null,
       related: store.relatedProducts(product).map(toSummary),
     }
   })
@@ -127,12 +143,12 @@ export const getGiftData = createServerFn({ method: 'GET' }).handler(async () =>
     return c ? store.productsMatchingRule(c.slug, c.rule).filter((p) => p.available && p.images.length > 0) : []
   }
   const fromPrices: Record<string, number> = {}
-  for (const slug of ['stocking-stuffers', 'sex-toys-under-50', 'sex-toys-under-100', 'luxury-sex-toys', 'sex-toy-gift-sets']) {
+  for (const slug of ['stocking-stuffers', 'sex-toys-under-50', 'sex-toys-under-100', 'luxury-sex-toys']) {
     const prices = inStock(slug).map((p) => p.price)
     if (prices.length) fromPrices[slug] = Math.min(...prices)
   }
   return {
-    giftSets: inStock('sex-toy-gift-sets').slice(0, 8).map(toSummary),
+    giftSets: inStock('lovense-bundles').slice(0, 8).map(toSummary),
     fromPrices,
   }
 })

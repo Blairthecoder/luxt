@@ -34,7 +34,6 @@ export const COLLECTION_FOCUS: Record<string, MerchFocus> = {
   'sex-toys-under-50': { hubs: ['vibrators', 'strokers', 'lubricants', 'penis-rings'] },
   'sex-toys-under-100': { hubs: ['vibrators', 'strokers', 'prostate-massagers', 'couples'] },
   'stocking-stuffers': { hubs: ['vibrators', 'strokers', 'lubricants'] },
-  'sex-toy-gift-sets': { hubs: ['vibrators', 'couples'] },
 }
 
 function lower(tags: string[]): string[] {

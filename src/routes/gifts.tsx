@@ -24,7 +24,7 @@ export const Route = createFileRoute('/gifts')({
     pageHead({
       title: `Sex Toy Gift Ideas for Her, Him & Couples | ${SITE.shortName}`,
       description:
-        'Adult gift ideas that help someone feel cared for, sorted by who it is for and what you want to spend: gift guides, gift sets and stocking stuffers.',
+        'Lovense gift ideas that help someone feel cared for, sorted by who it is for and what you want to spend: gift guides, Lovense bundles and stocking stuffers.',
       path: '/gifts',
       jsonLd: [
         breadcrumbJsonLd([
@@ -115,9 +115,9 @@ function GiftsPage() {
         <section className="wrap pt-24 sm:pt-32 reveal">
           <div className="flex items-end justify-between gap-6 mb-8 sm:mb-10">
             <h2 className="display-m">
-              Gift Sets & Kits. <span className="text-graphite">Ready to give.</span>
+              Lovense Bundles. <span className="text-graphite">Two toys, one gift.</span>
             </h2>
-            <Link to="/shop/$slug" params={{ slug: 'sex-toy-gift-sets' }} className="more">
+            <Link to="/shop/$slug" params={{ slug: 'lovense-bundles' }} className="more">
               View All
             </Link>
           </div>
@@ -130,7 +130,7 @@ function GiftsPage() {
           Gifts for the Relationship. <span className="text-graphite">For two.</span>
         </h2>
         <ul className="mt-8 flex flex-wrap gap-2">
-          {['couples-sex-toys', 'remote-control-vibrators', 'bondage-kits', 'sex-swings'].map((slug) => (
+          {['couples-sex-toys', 'remote-control-vibrators', 'app-controlled-sex-toys', 'vibrating-cock-rings'].map((slug) => (
             <li key={slug}>
               <Link to="/shop/$slug" params={{ slug }} className="btn-ghost">
                 {COLLECTIONS_BY_SLUG[slug].name}

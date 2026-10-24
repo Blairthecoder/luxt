@@ -39,7 +39,7 @@ export const Route = createFileRoute('/about')({
         {
           heading: 'How We Make Money',
           body: [
-            'We do not sell anything ourselves. Buy buttons send readers to our retail partners (currently LuxuryToyX and Lovense) through affiliate links, and we may earn a commission on qualifying purchases at no extra cost to the reader. Pages that link out carry a disclosure, and our full policy is on the affiliate disclosure page.',
+            'We do not sell anything ourselves. Buy buttons send readers to our retail partners (currently Lovense) through affiliate links, and we may earn a commission on qualifying purchases at no extra cost to the reader. Pages that link out carry a disclosure, and our full policy is on the affiliate disclosure page.',
           ],
         },
         {

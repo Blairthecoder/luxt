@@ -1,4 +1,5 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound, redirect } from '@tanstack/react-router'
+import { RETIRED_HUBS } from '@/content/retired'
 import { ListingPage } from '@/components/ListingPage'
 import { HUBS_BY_SLUG } from '@/content/hubs'
 import { postsForHub } from '@/content/posts'
@@ -13,6 +14,8 @@ export const Route = createFileRoute('/category/$slug')({
   validateSearch: parseListingSearch,
   loaderDeps: ({ search }) => search,
   loader: async ({ params, deps }) => {
+    const retired = RETIRED_HUBS[params.slug]
+    if (retired) throw redirect({ href: retired, statusCode: 301 })
     const hub = HUBS_BY_SLUG[params.slug]
     if (!hub) throw notFound()
     const result = await getHubListing({ data: { slug: hub.slug, filters: deps } })

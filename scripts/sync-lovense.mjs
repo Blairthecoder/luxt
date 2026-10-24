@@ -58,6 +58,7 @@ const TITLE_OVERRIDES = {
 // Items with no store listing card, read from their own page instead.
 const PAGE_FALLBACKS = {
   'water based lubricant': { path: '/water-based-lubricant', title: 'Lovense Water-Based Lubricant, 100 ml', category: 'Lubricant' },
+  glint: { path: '/glint-touch-responsive-vibrating-small-butt-plug', title: 'Lovense Glint App-Controlled Touch-Responsive Vibrating Butt Plug', category: 'Vibrating Butt Plugs' },
 }
 
 const SMALL_WORDS = new Set(['a', 'and', 'for', 'of', 'the', 'with', 'to', 'in'])

@@ -21,6 +21,8 @@ import { BRAND_PRODUCT_COPY } from '@/content/product-copy-brands'
 
 import { BRAND_PRODUCT_COPY_2 } from '@/content/product-copy-brands-2'
 import { BRAND_PRODUCT_COPY_3 } from '@/content/product-copy-brands-3'
+import { LOVENSE_PRODUCT_COPY } from '@/content/product-copy-lovense'
+import { LOVENSE_COPY_CARRYOVER, LOVENSE_HANDLE_ALIASES } from '@/content/retired'
 
 const WATER_LUBE_FAQ = {
   q: 'What kind of lube should I use with it?',
@@ -654,3 +656,9 @@ export const PRODUCT_COPY: Record<string, ProductCopy> = {
 
   ...BRAND_PRODUCT_COPY,
 }
+
+for (const old of LOVENSE_COPY_CARRYOVER) {
+  const handle = LOVENSE_HANDLE_ALIASES[old]
+  if (!PRODUCT_COPY[handle] && PRODUCT_COPY[old]) PRODUCT_COPY[handle] = PRODUCT_COPY[old]
+}
+Object.assign(PRODUCT_COPY, LOVENSE_PRODUCT_COPY)

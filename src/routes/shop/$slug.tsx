@@ -1,4 +1,5 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound, redirect } from '@tanstack/react-router'
+import { RETIRED_COLLECTIONS } from '@/content/retired'
 import { ListingPage } from '@/components/ListingPage'
 import { COLLECTIONS, COLLECTIONS_BY_SLUG } from '@/content/collections'
 import { POSTS_BY_SLUG } from '@/content/posts'
@@ -16,6 +17,8 @@ export const Route = createFileRoute('/shop/$slug')({
   validateSearch: parseListingSearch,
   loaderDeps: ({ search }) => search,
   loader: async ({ params, deps }) => {
+    const retired = RETIRED_COLLECTIONS[params.slug]
+    if (retired) throw redirect({ href: retired, statusCode: 301 })
     const collection = COLLECTIONS_BY_SLUG[params.slug]
     if (!collection) throw notFound()
     const result = await getCollectionListing({ data: { slug: collection.slug, filters: deps } })
