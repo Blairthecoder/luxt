@@ -14,6 +14,7 @@ const PRIMARY = [
   { label: 'Buying Guides', to: '/blog/topic/$topic', params: { topic: 'buying-guides' } },
   { label: 'Comparisons', to: '/blog/topic/$topic', params: { topic: 'comparisons' } },
   { label: 'Gift Guides', to: '/blog/topic/$topic', params: { topic: 'gift-guides' } },
+  { label: 'Sex Ed', to: '/blog/topic/$topic', params: { topic: 'sex-education' } },
   { label: 'Learn', to: '/blog/topic/$topic', params: { topic: 'how-to' } },
 ] as const
 

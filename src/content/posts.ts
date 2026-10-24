@@ -50,6 +50,27 @@ import { PAYWALL_STRATEGY } from '@/content/guides/how-to-price-and-paywall-adul
 import { CREATOR_SAFETY } from '@/content/guides/privacy-and-safety-for-adult-content-creators'
 import { BEST_FLESHLIGHT_BEGINNERS } from '@/content/guides/best-fleshlight-for-beginners'
 import { CLEAN_FLESHLIGHT } from '@/content/guides/how-to-clean-a-fleshlight'
+import { CLITORIS_ANATOMY } from '@/content/guides/clitoris-anatomy-guide'
+import { ORGASM_FOR_WOMEN } from '@/content/guides/how-to-orgasm-for-women'
+import { RESPONSIVE_DESIRE } from '@/content/guides/responsive-vs-spontaneous-desire'
+import { CONSENT_RELATIONSHIPS } from '@/content/guides/consent-in-long-term-relationships'
+import { WHY_SEX_HURTS } from '@/content/guides/why-does-sex-hurt'
+import { FIND_G_SPOT } from '@/content/guides/how-to-find-the-g-spot'
+import { SEX_MYTHS } from '@/content/guides/sex-myths-adults-still-believe'
+import { ASK_IN_BED } from '@/content/guides/how-to-ask-for-what-you-want-in-bed'
+import { NON_SEXUAL_INTIMACY } from '@/content/guides/non-sexual-intimacy-ideas'
+import { MISMATCHED_LIBIDO } from '@/content/guides/mismatched-libido-in-relationships'
+import { SENSATE_FOCUS } from '@/content/guides/sensate-focus-exercises-for-couples'
+import { AFTERCARE } from '@/content/guides/what-is-aftercare'
+import { CONFIDENT_IN_BED } from '@/content/guides/how-to-feel-confident-in-bed'
+import { SELF_PLEASURE_WOMEN } from '@/content/guides/self-pleasure-guide-for-women'
+import { MASTURBATION_BENEFITS } from '@/content/guides/benefits-of-masturbation'
+import { SOLO_DATE_NIGHT } from '@/content/guides/solo-date-night-ideas'
+import { SEXUAL_EMPOWERMENT } from '@/content/guides/sexual-empowerment-for-women'
+import { SEXUAL_BOUNDARIES } from '@/content/guides/how-to-set-sexual-boundaries'
+import { CONFIDENCE_AFTER_DIVORCE } from '@/content/guides/sexual-confidence-after-divorce'
+import { KEGELS_FOR_PLEASURE } from '@/content/guides/kegel-exercises-for-pleasure'
+import { SEX_AFTER_BABY } from '@/content/guides/sex-after-having-a-baby'
 
 export interface PickSlot {
   /** Short badge, e.g. "Best Overall" or "Under $50". */
@@ -85,6 +106,8 @@ export interface Post {
   /** Named writer and medical/sexual-health reviewer. Defaults to the editorial team (SITE.editorialTeam). */
   author?: { name: string; role?: string; url?: string }
   reviewedBy?: { name: string; credentials?: string; url?: string }
+  /** Shows the general-education, not-medical-advice note under the body. */
+  healthNote?: boolean
 }
 
 export const POSTS: Post[] = [
@@ -127,6 +150,27 @@ export const POSTS: Post[] = [
   CREATOR_SAFETY,
   BEST_FLESHLIGHT_BEGINNERS,
   CLEAN_FLESHLIGHT,
+  CLITORIS_ANATOMY,
+  ORGASM_FOR_WOMEN,
+  RESPONSIVE_DESIRE,
+  CONSENT_RELATIONSHIPS,
+  WHY_SEX_HURTS,
+  FIND_G_SPOT,
+  SEX_MYTHS,
+  ASK_IN_BED,
+  NON_SEXUAL_INTIMACY,
+  MISMATCHED_LIBIDO,
+  SENSATE_FOCUS,
+  AFTERCARE,
+  CONFIDENT_IN_BED,
+  SELF_PLEASURE_WOMEN,
+  MASTURBATION_BENEFITS,
+  SOLO_DATE_NIGHT,
+  SEXUAL_EMPOWERMENT,
+  SEXUAL_BOUNDARIES,
+  CONFIDENCE_AFTER_DIVORCE,
+  KEGELS_FOR_PLEASURE,
+  SEX_AFTER_BABY,
   {
     slug: 'fleshlight-vs-tenga',
     title: 'Fleshlight vs. Tenga: Which Stroker Should You Buy First?',
