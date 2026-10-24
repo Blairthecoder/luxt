@@ -1,15 +1,29 @@
+import shopifyMeta from '@/data/shopify-meta.json'
+
 /**
  * Pages retired when the store moved to a Lovense-only catalog. Each one has
  * no Lovense products, so it is dropped from navigation, tiles and the sitemap,
  * and its URL 301s to the closest live page. Old LuxuryToyX product URLs are
  * handled in the product route.
  */
-export const RETIRED_HUBS: Record<string, string> = {
+const shopifyHubs = shopifyMeta.hubs as Record<string, number>
+
+/** True when the Shopify sync put products in this hub, which brings a retired hub back. */
+export function hasShopifyProducts(hub: string): boolean {
+  return (shopifyHubs[hub] ?? 0) > 0
+}
+
+const RETIRED_HUB_TARGETS: Record<string, string> = {
   couples: '/shop/couples-sex-toys',
   'penis-pumps': '/category/penis-rings',
   'sex-dolls': '/category/strokers',
   lingerie: '/category/vibrators',
 }
+
+/** Lingerie returns automatically once the Shopify store has products in it. */
+export const RETIRED_HUBS: Record<string, string> = Object.fromEntries(
+  Object.entries(RETIRED_HUB_TARGETS).filter(([slug]) => !hasShopifyProducts(slug))
+)
 
 export const RETIRED_COLLECTIONS: Record<string, string> = {
   fleshlight: '/category/strokers',

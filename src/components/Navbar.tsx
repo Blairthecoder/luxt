@@ -7,6 +7,7 @@ import { SearchDialog } from '@/components/SearchDialog'
 import { MobileTabBar } from '@/components/MobileTabBar'
 import { Logo } from '@/components/Logo'
 import { SITE } from '@/config/site'
+import { hasShopifyProducts } from '@/content/retired'
 
 /** Editorial sections first: the site reads as a review publication, with the catalog one menu away. */
 const PRIMARY = [
@@ -16,6 +17,8 @@ const PRIMARY = [
   { label: 'Gift Guides', to: '/blog/topic/$topic', params: { topic: 'gift-guides' } },
   { label: 'Sex Ed', to: '/blog/topic/$topic', params: { topic: 'sex-education' } },
   { label: 'Learn', to: '/blog/topic/$topic', params: { topic: 'how-to' } },
+  // Shown once the Shopify store has lingerie in stock on the site.
+  ...(hasShopifyProducts('lingerie') ? [{ label: 'Lingerie', to: '/category/$slug', params: { slug: 'lingerie' } }] : []),
 ] as const
 
 const AUDIENCES = [

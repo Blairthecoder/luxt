@@ -1,5 +1,7 @@
 import lovenseLinks from '@/data/lovense-links.json'
 import lovenseBundles from '@/data/lovense-bundles.json'
+import shopifyLinks from '@/data/shopify-links.json'
+import shopifyMeta from '@/data/shopify-meta.json'
 
 /**
  * Affiliate programs. Every outbound purchase link is built here and only
@@ -31,6 +33,13 @@ export const PROGRAMS: Record<string, AffiliateProgram> = {
     productLinks: { ...lovenseLinks, ...lovenseBundles.links },
     // Lovense home page tracking link.
     fallbackLink: 'https://www.lovense.com/r/3t7vuu',
+  },
+  // Our own Shopify store (lingerie). Links go to the store's product page; checkout happens there.
+  shopify: {
+    id: 'shopify',
+    merchantName: shopifyMeta.shopName || 'Nightstand Supply Shop',
+    productLinks: shopifyLinks as Record<string, string>,
+    fallbackLink: shopifyMeta.storeUrl || '/',
   },
 }
 
