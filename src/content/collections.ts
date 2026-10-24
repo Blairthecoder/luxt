@@ -25,7 +25,7 @@ export interface CollectionRule {
 export interface Collection {
   slug: string
   name: string
-  group: 'For Him' | 'For Her' | 'For Couples' | 'Gift Ideas' | 'By Style' | 'By Brand' | 'By Budget'
+  group: 'For Him' | 'For Her' | 'For Couples' | 'Gift Ideas' | 'By Style' | 'By Brand' | 'By Budget' | 'Lingerie'
   metaTitle: string
   metaDescription: string
   intro: string
@@ -535,6 +535,102 @@ const ALL_COLLECTIONS: Collection[] = [
     },
     guide: 'black-friday-sex-toy-deals',
   },
+  {
+    slug: 'lace-bodysuits',
+    name: 'Lace Bodysuits and Teddies',
+    group: 'Lingerie',
+    metaTitle: 'Lace Bodysuits & Teddies: Sexy One-Piece Lingerie',
+    metaDescription:
+      'Lace bodysuits and teddies in stretch fishnet and plunge styles. One piece, easy to wear, with honest fit notes on every page.',
+    intro:
+      'A bodysuit is the easiest lingerie to put on: one piece, no matching needed. Stretch fishnet fits many shapes, while plunge styles with ties let you adjust at the neck and hips.',
+    rule: { hubs: ['lingerie'], tags: ['bodysuit'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
+  {
+    slug: 'lingerie-sets',
+    name: 'Bra and Panty Lingerie Sets',
+    group: 'Lingerie',
+    metaTitle: 'Lingerie Sets: Matching Bra and Panty Sets for Every Body',
+    metaDescription:
+      'Matching bra and panty lingerie sets in lace, mesh and satin, with wire-free options and plain fit notes so you can pick the right size.',
+    intro:
+      'A set gives you a coordinated look without having to match pieces yourself. Wire-free bralettes are the most forgiving; if you want more lift, read the fit notes and check the cup details before you order.',
+    rule: { hubs: ['lingerie'], tags: ['set'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
+  {
+    slug: 'babydoll-lingerie',
+    name: 'Babydolls and Chemises',
+    group: 'Lingerie',
+    metaTitle: 'Babydoll Lingerie & Chemises: Flowy, Comfortable Styles',
+    metaDescription:
+      'Babydolls and chemises that skim the body instead of clinging, in sizes from S to 4XL, with notes on support, length and fit.',
+    intro:
+      'Babydolls and chemises fit at the bust and flow from there, so they are comfortable and forgiving. Choose underwire cups for support or a soft slip for sleeping in.',
+    rule: { hubs: ['lingerie'], tags: ['babydoll', 'chemise'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
+  {
+    slug: 'plus-size-lingerie',
+    name: 'Plus Size Lingerie',
+    group: 'Lingerie',
+    metaTitle: 'Plus Size Lingerie: Babydolls, Robes & Chemises 1X-5XL',
+    metaDescription:
+      'Plus size lingerie in sizes 1X to 5XL: underwire babydolls, satin chemises and lace robes, with honest fit notes on every piece.',
+    intro:
+      'Good plus size lingerie is about support and ease. Look for underwire cups if you want lift, adjustable straps for fit and flowing shapes that skim the body.',
+    rule: { hubs: ['lingerie'], tags: ['plus-size'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
+  {
+    slug: 'comfortable-lingerie',
+    name: 'Comfortable Lingerie',
+    group: 'Lingerie',
+    metaTitle: 'Comfortable Lingerie: Wire-Free, Seamless & Soft',
+    metaDescription:
+      'Wire-free, seamless and soft lingerie you can wear all day, from bralette sets to satin chemises, with plain sizing notes.',
+    intro:
+      'If lingerie usually itches or pinches, start with wire-free bralettes, seamless knits and satin slips. Comfort is what makes you want to wear it.',
+    rule: { hubs: ['lingerie'], tags: ['comfort'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
+  {
+    slug: 'bridal-lingerie',
+    name: 'Bridal and Honeymoon Lingerie',
+    group: 'Lingerie',
+    metaTitle: 'Bridal & Honeymoon Lingerie: Wedding Night Sets & Teddies',
+    metaDescription:
+      'Bridal and honeymoon lingerie in white and soft tones: strapless bralette sets, plunge teddies and dotted-mesh sets for the wedding night.',
+    intro:
+      'Bridal lingerie works best when it is comfortable under the dress and pretty on its own. Strapless bralettes, white mesh and lace teddies are the most popular picks.',
+    rule: { hubs: ['lingerie'], tags: ['bridal'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
+  {
+    slug: 'lingerie-gifts-for-her',
+    name: 'Lingerie Gifts for Her',
+    group: 'Lingerie',
+    metaTitle: 'Lingerie Gifts for Her: Sets That Fit and Feel Special',
+    metaDescription:
+      'Lingerie gifts for her that are easy to size: forgiving styles, separate top and bottom sizing and pieces that feel special to unwrap.',
+    intro:
+      'Choose stretchy, forgiving styles if you are unsure of their size. Babydolls, robes and bralette sets fit a wider range of bodies than structured bras.',
+    rule: { hubs: ['lingerie'], tags: ['gift'] },
+    guide: 'sex-toy-gifts-for-her',
+  },
+  {
+    slug: 'lingerie-under-30',
+    name: 'Lingerie Under $30',
+    group: 'Lingerie',
+    metaTitle: 'Sexy Lingerie Under $30: Bodysuits, Sets & Babydolls',
+    metaDescription:
+      'Sexy lingerie under $30, from stretch bodysuits and wire-free sets to plus size babydolls and satin chemises.',
+    intro:
+      'You do not need to spend much to feel good in lingerie. These pieces are all under $30 and come with plain fit notes.',
+    rule: { hubs: ['lingerie'], tags: ['under-30'] },
+    guide: 'how-to-feel-confident-in-bed',
+  },
 ]
 
 /** Live collections; retired ones redirect (src/content/retired.ts). */
@@ -552,4 +648,5 @@ export const COLLECTION_GROUPS = [
   'By Style',
   'By Brand',
   'By Budget',
+  'Lingerie',
 ] as const

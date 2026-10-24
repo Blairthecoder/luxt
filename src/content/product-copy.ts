@@ -22,6 +22,7 @@ import { BRAND_PRODUCT_COPY } from '@/content/product-copy-brands'
 import { BRAND_PRODUCT_COPY_2 } from '@/content/product-copy-brands-2'
 import { BRAND_PRODUCT_COPY_3 } from '@/content/product-copy-brands-3'
 import { LOVENSE_PRODUCT_COPY } from '@/content/product-copy-lovense'
+import { LINGERIE_PRODUCT_COPY } from '@/content/product-copy-lingerie'
 import { LOVENSE_COPY_CARRYOVER, LOVENSE_HANDLE_ALIASES } from '@/content/retired'
 
 const WATER_LUBE_FAQ = {
@@ -662,3 +663,4 @@ for (const old of LOVENSE_COPY_CARRYOVER) {
   if (!PRODUCT_COPY[handle] && PRODUCT_COPY[old]) PRODUCT_COPY[handle] = PRODUCT_COPY[old]
 }
 Object.assign(PRODUCT_COPY, LOVENSE_PRODUCT_COPY)
+Object.assign(PRODUCT_COPY, LINGERIE_PRODUCT_COPY)
