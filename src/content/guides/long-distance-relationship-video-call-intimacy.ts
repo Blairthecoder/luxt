@@ -73,7 +73,7 @@ The simplest approach is a toy with an app that lets a partner control it from a
 
 ### What the Brands Say
 
-Lovense says all of its toys can be controlled remotely from anywhere through the Lovense Remote app, and that its Max 2 stroker can also act as a master controller for other Lovense toys. We-Vibe says its app lets a partner control compatible toys across a room or a continent. LELO's app pairs with its app-connected toys. For a side-by-side look, see [Lovense vs. We-Vibe](/blog/lovense-vs-we-vibe), or browse [Lovense](/shop/lovense), [We-Vibe](/shop/we-vibe) and [LELO](/shop/lelo). Always check the current app supports both of your phones before you buy.
+Lovense says all of its toys can be controlled remotely from anywhere through the Lovense Remote app, and that its Max 2 stroker can also act as a master controller for other Lovense toys. We-Vibe says its app lets a partner control compatible toys across a room or a continent. LELO's app pairs with its app-connected toys. For a side-by-side look, see [Lovense vs. We-Vibe](/blog/lovense-vs-we-vibe), or browse [Lovense](/shop/lovense), We-Vibe and LELO. Always check the current app supports both of your phones before you buy.
 
 ## Using Video Calls and Toys Together
 

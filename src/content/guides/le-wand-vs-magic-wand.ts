@@ -11,7 +11,7 @@ export const LE_WAND_VS_MAGIC_WAND: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['vibrators'],
-  topics: ['for-her', 'how-to'],
+  topics: ['for-her', 'how-to', 'comparisons'],
   body: `
 A good wand can make pleasure feel easy: broad, steady sensation you can simply relax into. Wand vibrators have a large, rounded head on a long handle, and they give broad, deep vibration that many people find easier to enjoy than a small, pointed toy. Two brands dominate the category: **Magic Wand**, the classic that defined it, and **Le Wand**, the cordless favorite that brought the format up to date.
 

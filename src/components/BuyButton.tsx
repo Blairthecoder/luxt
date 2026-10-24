@@ -12,7 +12,7 @@ export function BuyButton({
   handle: string
   program?: string
   available?: boolean
-  /** Shown on the button so shoppers see what they'll pay before leaving. */
+  /** Shown on the button so readers see the price before leaving. */
   price?: number
   /** GA4 affiliate_click link_context. */
   context?: string
@@ -29,8 +29,8 @@ export function BuyButton({
     >
       {available
         ? price
-          ? `Buy at ${merchant} for ${formatPrice(price)}`
-          : `Buy Now at ${merchant}`
+          ? `Check Price at ${merchant}: ${formatPrice(price)}`
+          : `Check Price at ${merchant}`
         : `Check Stock at ${merchant}`}
     </a>
   )

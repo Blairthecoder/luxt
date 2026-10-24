@@ -24,7 +24,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className={heading}>Shop</p>
+            <p className={heading}>Browse Toys</p>
             <ul className={list}>
               {SHOP.map((c) => (
                 <li key={c.slug}>
@@ -52,6 +52,11 @@ export function Footer() {
           <div>
             <p className={heading}>{SITE.guidesName}</p>
             <ul className={list}>
+              <li>
+                <Link to="/reviews" className={link}>
+                  Reviews
+                </Link>
+              </li>
               {TOPICS.map((topic) => (
                 <li key={topic.slug}>
                   <Link to="/blog/topic/$topic" params={{ topic: topic.slug }} className={link}>
@@ -91,6 +96,9 @@ export function Footer() {
               </Link>
               <Link to="/editorial-policy" className={link}>
                 Editorial Policy
+              </Link>
+              <Link to="/disclosure" className={link}>
+                Affiliate Disclosure
               </Link>
               <Link to="/partners" className={link}>
                 Partners

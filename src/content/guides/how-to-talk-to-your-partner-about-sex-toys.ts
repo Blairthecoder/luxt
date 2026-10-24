@@ -70,7 +70,7 @@ Wanting to try something new is common. Saying it out loud is the hard part. Thi
 | A small bullet vibrator | Easy to use during sex, see [bullet vibrators](/shop/bullet-vibrators) |
 | A remote-control toy | Playful and easy, see [remote control vibrators](/shop/remote-control-vibrators) |
 | A couples toy | Made to be shared, see [couples sex toys](/shop/couples-sex-toys) |
-| A starter kit | Variety in one box, see [gift sets](/shop/sex-toy-gift-sets) |
+| A starter kit | Variety in one box, see [Lovense bundles](/shop/lovense-bundles) |
 
 For ideas on using toys together, see [how to use sex toys with a partner](/blog/how-to-use-sex-toys-with-a-partner).
 

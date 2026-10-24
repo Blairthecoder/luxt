@@ -1,6 +1,6 @@
 # AGENTS.md — Nightstand Supply Co.
 
-Affiliate storefront for adult toys built on **TanStack Start**, **React 19**, **Tailwind CSS v4** and Netlify. Products are presented on-site with original copy; every purchase goes to the merchant through a tracked affiliate redirect. There is no cart or checkout.
+Independent sex toy review site (editorial publication, not a store) built on **TanStack Start**, **React 19**, **Tailwind CSS v4** and Netlify. Products are presented on-site with original copy; every purchase goes to the merchant through a tracked affiliate redirect. There is no cart or checkout.
 
 ## How a click earns credit
 
@@ -20,8 +20,9 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 - `src/content/product-copy.ts`: original product copy keyed by handle. Product pages are `noindex` until they have an entry. Never paste merchant descriptions.
 - `src/content/collections.ts`: search-led collection pages at `/shop/<slug>`, each a rule over the catalog (tags, title regex, brand, price).
 - `src/content/posts.ts`: Nightstand Notes guides at `/blog/<slug>`, Markdown rendered server-side with `marked`. Long guides live in `src/content/guides/`. Bodies embed live catalog data with `[[picks:<id>]]` (product cards from the post's `picks` rules), `[[from:<collection>]]` and `[[price:<collection>]]`; `src/server/post-html.ts` resolves them at render, so never type prices into copy.
-- `src/content/topics.ts`: guide topic hubs at `/blog/topic/<slug>`. Every post lists its `topics`.
-- `src/content/shortcuts.ts`: homepage shortcut tiles, brand grid and the sub-category rows above listing grids.
+- `src/content/topics.ts`: guide topic hubs at `/blog/topic/<slug>`. Every post lists its `topics`; the first one sets the breadcrumb, so add `buying-guides` (best-of roundups) or `comparisons` (X vs. Y) after the audience topic.
+- `src/routes/reviews.tsx`: the `/reviews` index of every product with original copy, grouped by hub. Product pages with copy are the reviews (title "<Product> Review", Product schema with an editorial `review` carrying pros and cons as `positiveNotes`/`negativeNotes`, no star rating).
+- `src/content/shortcuts.ts`: the sub-category rows above listing grids.
 - `src/routes/gifts.tsx`: the Gift Shop hub at `/gifts`.
 - `src/server/listing.ts`: facet extraction (style, designed for, features, price, brand), filtering, sorting, pagination (48 per page). Filtered views are noindex with a canonical to the clean listing; `?page=N` is self-canonical.
 - `src/server/catalog-store.ts`: server-only catalog access. Import it dynamically inside server functions or server routes so the catalog stays out of the client bundle.
@@ -29,6 +30,10 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 - `src/lib/seo.ts`: `pageHead()` for title, description, robots, canonical and JSON-LD.
 - `src/routes/sitemap[.]xml.ts`: lists home, non-empty hubs and products with copy.
 - `src/components/AgeGate.tsx`: client-only 18+ overlay; server HTML stays fully crawlable.
+
+## Editorial voice
+
+The site reads as a review publication. Navigation leads with Reviews, Buying Guides, Comparisons, Gift Guides and Learn; the catalog sits under Browse Toys. Outbound buttons say "Check Price", never "Buy" or "Shop Now". The homepage is a lead story, the latest guides and reviewed picks; only products with original copy appear there. Never claim hands-on testing or invent ratings: reviews are based on manufacturer specs, manuals and materials, as the editorial policy says. Guides may cover brands we do not link to (Fleshlight, Tenga, Womanizer, LELO); mention them as plain text and point to the closest Lovense review.
 
 ## Design
 

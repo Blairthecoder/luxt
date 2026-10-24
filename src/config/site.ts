@@ -2,9 +2,9 @@ export const SITE = {
   name: 'Nightstand Supply Co.',
   shortName: 'Nightstand Supply',
   url: 'https://nightstandsupply.com',
-  tagline: 'Adult toys and honest advice for feeling good, solo or together.',
+  tagline: 'Independent sex toy reviews and honest guides, solo or together.',
   description:
-    'Adult toys and honest advice to help you and your partner feel comfortable, confident and pleasured. Body-safe picks from trusted brands, shipped discreetly.',
+    'Independent sex toy reviews, buying guides and comparisons that help you and your partner choose with confidence. Body-safe picks, plain answers, no judgment.',
   guidesName: 'Nightstand Notes',
   /** Byline for guides with no named author. */
   editorialTeam: 'The Nightstand Notes Editors',

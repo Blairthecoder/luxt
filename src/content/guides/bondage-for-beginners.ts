@@ -50,7 +50,7 @@ A beginner kit covers the basics and saves guessing. Look for soft, adjustable c
 | Restraint straps | Under-bed or door straps for variety |
 | Safety shears | For emergencies |
 
-Browse [bondage kits](/shop/bondage-kits)[[from:bondage-kits]] or the full [BDSM and bondage](/category/bdsm) range.
+Browse the full [BDSM and bondage](/category/bdsm) range.
 
 [[picks:kit]]
 
@@ -69,7 +69,7 @@ After play, take time to reconnect. Some people feel emotional or vulnerable. Of
 
 ## Going Further
 
-If you enjoy it, build on it slowly. Try different restraints, sensation play or role play. Keep communicating. For other ideas, see [how to spice up your marriage](/blog/how-to-spice-up-your-marriage) and the [best couples sex toys](/blog/best-couples-sex-toys). A [sex swing](/shop/sex-swings) is another step.
+If you enjoy it, build on it slowly. Try different restraints, sensation play or role play. Keep communicating. For other ideas, see [how to spice up your marriage](/blog/how-to-spice-up-your-marriage) and the [best couples sex toys](/blog/best-couples-sex-toys). A [sex swing](/category/sex-machines-furniture) is another step.
 
 ## Care
 

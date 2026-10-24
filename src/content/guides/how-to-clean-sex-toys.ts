@@ -45,7 +45,7 @@ These materials are porous, so they hold bacteria and can degrade. Wash carefull
 
 ## Strokers
 
-Rinse the sleeve with warm water right after use, inside and out. Use a mild soap. Press out water and air dry on a clean towel or a stand, inside out if possible. Dust with a toy powder if the material feels sticky. Browse [strokers](/category/strokers) and [Fleshlight](/shop/fleshlight) sleeves.
+Rinse the sleeve with warm water right after use, inside and out. Use a mild soap. Press out water and air dry on a clean towel or a stand, inside out if possible. Dust with a toy powder if the material feels sticky. Browse [strokers](/category/strokers).
 
 ## Rechargeable and Battery Toys
 

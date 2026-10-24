@@ -136,9 +136,10 @@ export const POSTS: Post[] = [
     excerpt:
       'Two very different ways to enjoy solo time. How Fleshlight and Tenga compare, so you can choose the stroker that fits you and how you like to play.',
     publishedAt: '2026-10-19',
+    updatedAt: '2026-10-24',
     readMinutes: 6,
     hubs: ['strokers'],
-    topics: ['for-him'],
+    topics: ['for-him', 'comparisons'],
     body: `
 Solo time is a chance to relax, learn what you like and feel good in your own body. If you are shopping for your first stroker, you will run into two names almost immediately: **Fleshlight** and **Tenga**. Both are well made and both are worth buying. They just solve the problem differently, and this guide helps you choose based on how you plan to use it.
 
@@ -164,13 +165,19 @@ Fleshlight sleeves are made from a soft, skin-like material housed in a rigid ca
 
 The trade-off is care. A sleeve needs to be rinsed with warm water after every use and dried completely, ideally by removing it from the case and letting it air out. Skip that and it will not last. Our guide to [cleaning a Fleshlight](/blog/how-to-clean-a-fleshlight) walks through it, and the [best Fleshlight for beginners](/blog/best-fleshlight-for-beginners) helps you pick a first sleeve.
 
-[Browse Fleshlight](/shop/fleshlight)
-
 ## Tenga: Simple and Consistent
 
 Tenga is a Japanese brand known for clean, considered design. Its single-use **cups** and **eggs** come ready to go, many with lube inside, which makes them a very low-effort way to find out what textures you like. When you are ready to commit, the reusable **Flip** and **Spinner** lines offer more intense, repeatable sensations.
 
-[Browse Tenga](/shop/tenga)
+## Prefer App Control? Our Lovense Picks
+
+Fleshlight and Tenga are manual toys. If you would rather have a stroker that moves on its own or that a partner can control from their phone, these are the app-connected options we review:
+
+- **[Lovense Max 2](/products/lovense-max-2):** a sleeve with air-pressure contractions and vibration, controllable from the app or a partner's Lovense toy.
+- **[Lovense Calor](/products/lovense-calor):** a vibrating pocket stroker with a depth sensor that responds to movement.
+- **[Lovense Solace](/products/lovense-solace):** an automatic thrusting stroker for hands-free play.
+
+Read every review in our [Lovense reviews](/reviews#strokers).
 
 ## What to Buy With Either
 
@@ -194,7 +201,7 @@ If you like the feeling but want hands-free play, look at [automatic strokers](/
     publishedAt: '2026-10-19',
     readMinutes: 7,
     hubs: ['vibrators', 'couples'],
-    topics: ['for-her', 'how-to'],
+    topics: ['for-her', 'how-to', 'buying-guides'],
     body: `
 Your first vibrator is a chance to learn what feels good to you, at your own pace and on your own terms. Walking into the world of vibrators can feel like a lot. There are hundreds of shapes, a dozen technologies and a wide range of prices. The good news is that choosing well comes down to three questions.
 
@@ -249,7 +256,7 @@ Start external, start body-safe, and do not overspend on your first toy. Once yo
     publishedAt: '2026-10-19',
     readMinutes: 5,
     hubs: ['lubricants', 'anal-toys', 'strokers', 'dildos'],
-    topics: ['how-to'],
+    topics: ['how-to', 'buying-guides'],
     body: `
 Feeling comfortable is the foundation of feeling good, and lube is the simplest way to get there. It is the cheapest upgrade you can make to any toy: it reduces friction, makes play smoother and helps toys last. But not every lube works with every toy, and picking the wrong one can quietly damage a toy you love.
 
@@ -301,6 +308,19 @@ export function postsForHub(hub: string): Post[] {
 
 export function postsForTopic(topic: string): Post[] {
   return POSTS.filter((p) => p.topics.includes(topic))
+}
+
+/** Last published or updated date, for sorting and bylines. */
+export function postDate(post: Pick<Post, 'publishedAt' | 'updatedAt'>): string {
+  return post.updatedAt ?? post.publishedAt
+}
+
+/** Newest first; guides from the same day keep their POSTS order. */
+export function latestPosts(limit = POSTS.length): Post[] {
+  return POSTS.map((p, i) => ({ p, i }))
+    .sort((a, b) => postDate(b.p).localeCompare(postDate(a.p)) || a.i - b.i)
+    .slice(0, limit)
+    .map(({ p }) => p)
 }
 
 /** Guides that share the most topics with this one, newest first on ties. */

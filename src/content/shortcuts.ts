@@ -1,40 +1,10 @@
 /**
- * Shop-window shortcuts: the image tiles on the homepage and the sub-category
- * row on listing pages. Each tile links to an existing indexable page and takes
- * its image from the top discreet product on that page, so nothing here goes
- * stale when the catalog changes.
+ * Sub-category shortcuts: the image tiles above listing grids. Each tile links
+ * to an existing indexable page and takes its image from the top discreet
+ * product on that page, so nothing here goes stale when the catalog changes.
  */
 
 export type TileTarget = { kind: 'shop' | 'hub'; slug: string }
-
-export interface Shortcut extends TileTarget {
-  label: string
-}
-
-/** Round shortcuts under the homepage hero. */
-export const HOME_SHORTCUTS: Shortcut[] = [
-  { label: 'For Her', kind: 'shop', slug: 'sex-toys-for-women' },
-  { label: 'For Him', kind: 'shop', slug: 'sex-toys-for-men' },
-  { label: 'For Couples', kind: 'shop', slug: 'couples-sex-toys' },
-  { label: 'Beginners', kind: 'shop', slug: 'sex-toys-for-beginners' },
-  { label: 'Under $50', kind: 'shop', slug: 'sex-toys-under-50' },
-  { label: 'Quiet Picks', kind: 'shop', slug: 'quiet-vibrators' },
-  { label: 'Lube', kind: 'hub', slug: 'lubricants' },
-  { label: 'Treat Yourself', kind: 'shop', slug: 'luxury-sex-toys' },
-]
-
-/** Featured Categories grid on the homepage. */
-export const FEATURED_HUBS = ['vibrators', 'strokers', 'dildos', 'anal-toys', 'sex-machines-furniture', 'prostate-massagers', 'penis-rings', 'lubricants']
-
-/** Shop Lovense grid on the homepage: the brand page plus the Lovense-led collections. Each slug is a live collection. */
-export const BRAND_TILES: { slug: string; name: string; line: string }[] = [
-  { slug: 'lovense', name: 'Lovense', line: 'App control, near or far' },
-  { slug: 'lovense-bundles', name: 'Bundles', line: 'Two toys that play together' },
-  { slug: 'app-controlled-sex-toys', name: 'App-Controlled', line: 'Control from a phone, anywhere' },
-  { slug: 'remote-control-vibrators', name: 'Remote Control', line: 'Hand your partner the controls' },
-  { slug: 'couples-sex-toys', name: 'For Couples', line: 'Made to share, in bed or apart' },
-  { slug: 'quiet-vibrators', name: 'Quiet Picks', line: 'Low noise for shared walls' },
-]
 
 /** One line under each sub-category tile. */
 export const COLLECTION_LINES: Record<string, string> = {

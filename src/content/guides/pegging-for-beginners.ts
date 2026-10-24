@@ -31,7 +31,7 @@ Talk about it first, outside the bedroom. Explain what appeals to you, ask about
 | Starter toy | A small plug or finger for the recipient to warm up |
 | Condoms | Optional; change between anal and other use |
 
-Start with a kit, which pairs a harness with a compatible dildo. Browse [strap-on kits](/shop/strap-on-kits) or the full [strap-ons and harnesses](/category/strap-ons) range.
+Start with a kit, which pairs a harness with a compatible dildo. Browse the full [strap-ons and harnesses](/category/strap-ons) range.
 
 [[picks:gear]]
 

@@ -11,7 +11,7 @@ export const MENOPAUSE_TOYS: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['vibrators', 'lubricants'],
-  topics: ['for-her', 'how-to'],
+  topics: ['for-her', 'how-to', 'buying-guides'],
   body: `
 You deserve to feel comfortable, desired and at home in your body through every stage of life, and menopause is no exception. Menopause and perimenopause change the body in ways that affect sex. Lower estrogen can cause vaginal dryness, thinner tissue, less natural lubrication and reduced sensitivity or arousal. These changes are common and manageable.
 

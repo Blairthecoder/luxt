@@ -10,9 +10,10 @@ import { SITE, absoluteUrl } from '@/config/site'
 import { getPostHtml } from '@/lib/catalog'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 import { BuyButton } from '@/components/BuyButton'
-import { formatPrice } from '@/lib/format'
+import { formatPostDate, formatPrice } from '@/lib/format'
 import { getOptimizedImageUrl } from '@/lib/image'
 import type { Post } from '@/content/posts'
+import { PostMeta } from '@/components/PostGrid'
 
 /** Home > Nightstand Notes > first topic > guide. */
 function crumbs(post: Pick<Post, 'slug' | 'title' | 'topics'>) {
@@ -23,14 +24,6 @@ function crumbs(post: Pick<Post, 'slug' | 'title' | 'topics'>) {
     ...(topic ? [{ name: topic.name, path: `/blog/topic/${topic.slug}` }] : []),
     { name: post.title, path: `/blog/${post.slug}` },
   ]
-}
-
-function formatDate(iso: string) {
-  return new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
 }
 
 export const Route = createFileRoute('/blog/$slug')({
@@ -108,12 +101,16 @@ function PostPage() {
           <p className="text-sm text-graphite rise">
             <span className="text-signal font-semibold">{SITE.guidesName}</span>
             <span className="mx-2 text-silver">·</span>
-            {formatDate(post.updatedAt ?? post.publishedAt)}
+            {post.updatedAt ? 'Updated ' : ''}
+            {formatPostDate(post.updatedAt ?? post.publishedAt)}
             <span className="mx-2 text-silver">·</span>
             {post.readMinutes} min read
           </p>
           <p className="mt-2 text-sm text-graphite rise">
-            By {post.author?.name ?? SITE.editorialTeam}
+            By{' '}
+            <Link to="/about" className="text-ink underline underline-offset-2 decoration-silver hover:decoration-ink">
+              {post.author?.name ?? SITE.editorialTeam}
+            </Link>
             {post.reviewedBy && (
               <>
                 <span className="mx-2 text-silver">·</span>
@@ -121,6 +118,10 @@ function PostPage() {
                 {post.reviewedBy.credentials ? `, ${post.reviewedBy.credentials}` : ''}
               </>
             )}
+            <span className="mx-2 text-silver">·</span>
+            <Link to="/editorial-policy" className="underline underline-offset-2 decoration-silver hover:text-ink">
+              How We Review
+            </Link>
           </p>
           <h1 className="mt-5 display-l rise">{post.title}</h1>
           <p className="mt-8 lede text-graphite max-w-3xl rise-delay">{post.excerpt}</p>
@@ -198,7 +199,7 @@ function PostPage() {
 
           {hubs.length > 0 && (
             <section className="mt-14">
-              <h2 className="font-sans text-[0.9375rem] font-semibold tracking-[-0.01em] mb-4">Shop This Guide</h2>
+              <h2 className="font-sans text-[0.9375rem] font-semibold tracking-[-0.01em] mb-4">Browse the Toys in This Guide</h2>
               <div className="flex flex-wrap gap-2">
                 {hubs.map((hub) => (
                   <Link key={hub.slug} to="/category/$slug" params={{ slug: hub.slug }} className="btn-ghost">
@@ -223,7 +224,7 @@ function PostPage() {
                 className="group bg-mist p-8 sm:p-12 flex flex-col justify-between min-h-[22rem]"
               >
                 <div>
-                  <p className="text-sm text-graphite">{p.readMinutes} min read</p>
+                  <PostMeta post={p} />
                   <h3 className="mt-4 font-display text-[1.875rem] sm:text-[2.25rem] font-bold tracking-[-0.035em] leading-[1.05]">
                     {p.title}
                   </h3>

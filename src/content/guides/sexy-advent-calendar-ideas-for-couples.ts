@@ -41,7 +41,7 @@ A back or foot massage, phones away. Add warm oil and music.
 Make a shared playlist of songs that remind you of each other.
 
 ### Day 4: Lingerie or Something That Feels Good
-Choose something you feel good in, and let your partner pick something for you too. See [lingerie](/category/lingerie).
+Choose something you feel good in, and let your partner pick something for you too.
 
 ### Day 5: A Date Night In
 Cook something together, light candles and keep the phones in another room.
@@ -50,7 +50,7 @@ Cook something together, light candles and keep the phones in another room.
 A new water-based lube is a simple, inexpensive upgrade. See [water-based lube](/shop/water-based-lube) and our [lube guide](/blog/best-lube-for-sex-toys).
 
 ### Day 7: A Blindfold Evening
-Take turns being blindfolded for slow, teasing touch. Agree on a word to stop. See [bondage kits](/shop/bondage-kits) for easy starter items.
+Take turns being blindfolded for slow, teasing touch. Agree on a word to stop. See [bondage kits](/category/bdsm) for easy starter items.
 
 ### Day 8: A Question Night
 Ask each other: what is one thing you would like more of, and one thing you would like to try?
@@ -71,13 +71,13 @@ Spend an evening with no tasks, no screens and nothing to prove. Let it go where
 
 | Day | Idea | Browse |
 |---|---|---|
-| Day 4 | Something that feels good to wear | [Lingerie](/category/lingerie) |
+| Day 4 | Something that feels good to wear | Lingerie you already own or love |
 | Day 6 | A new lube | [Water-based lube](/shop/water-based-lube) |
-| Day 7 | A blindfold or soft cuffs | [Bondage kits](/shop/bondage-kits) |
+| Day 7 | A blindfold or soft cuffs | [Bondage kits](/category/bdsm) |
 | Day 9 | A vibrating ring or couples toy | [Couples sex toys](/shop/couples-sex-toys) |
 | Any day | A small surprise | [Stocking stuffers under $30](/shop/stocking-stuffers) |
 
-[Browse sex toy gift sets](/shop/sex-toy-gift-sets)[[from:sex-toy-gift-sets]]
+[Browse Lovense bundles](/shop/lovense-bundles)[[from:lovense-bundles]]
 
 ## Keeping It Private
 

@@ -61,9 +61,9 @@ You do not need a dungeon. These first steps are simple, inexpensive and easy to
 | A feather or soft touch | Teasing and slow, with no intensity |
 | A vibrating ring | Adds vibration for both of you, see [vibrating cock rings](/shop/vibrating-cock-rings) |
 | A remote-control toy | Playful control, see [remote control vibrators](/shop/remote-control-vibrators) |
-| A starter kit | Everything in one box, see [bondage kits](/shop/bondage-kits) |
+| A starter kit | Everything in one box, see [bondage kits](/category/bdsm) |
 
-[Browse bondage kits](/shop/bondage-kits)[[from:bondage-kits]]
+[Browse BDSM and bondage](/category/bdsm)
 
 ## Step 5: Let Her Lead Sometimes
 

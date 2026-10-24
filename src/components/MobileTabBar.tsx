@@ -25,8 +25,8 @@ export function MobileTabBar({ shopOpen, onShop, onSearch }: Props) {
   if (pathname.startsWith('/products/')) return null
 
   const onHome = pathname === '/'
-  const onShopArea = shopOpen || pathname.startsWith('/shop') || pathname.startsWith('/category')
-  const onGifts = pathname.startsWith('/gifts')
+  const onMenu = shopOpen
+  const onReviews = pathname.startsWith('/reviews')
   const onGuides = pathname.startsWith('/blog')
   const tone = (active: boolean) => (active ? 'text-ink' : 'text-graphite')
 
@@ -43,14 +43,14 @@ export function MobileTabBar({ shopOpen, onShop, onSearch }: Props) {
           Home
         </Link>
 
-        <button type="button" onClick={onShop} aria-haspopup="dialog" aria-expanded={shopOpen} className={`${base} ${tone(onShopArea)}`}>
+        <button type="button" onClick={onShop} aria-haspopup="dialog" aria-expanded={shopOpen} className={`${base} ${tone(onMenu)}`}>
           <Icon>
             <rect x="4" y="4" width="6.5" height="6.5" rx="1.5" />
             <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5" />
             <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5" />
             <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" />
           </Icon>
-          Shop
+          Menu
         </button>
 
         <div className="flex flex-1 justify-center">
@@ -67,12 +67,11 @@ export function MobileTabBar({ shopOpen, onShop, onSearch }: Props) {
           </button>
         </div>
 
-        <Link to="/gifts" aria-current={onGifts ? 'page' : undefined} className={`${base} ${tone(onGifts)}`}>
+        <Link to="/reviews" aria-current={onReviews ? 'page' : undefined} className={`${base} ${tone(onReviews)}`}>
           <Icon>
-            <rect x="4" y="9" width="16" height="4" rx="1" />
-            <path d="M5.5 13v6.5a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5V13M12 9v11M12 9c-1.5-4-5.5-4-5.5-1.7C6.5 9 12 9 12 9Zm0 0c1.5-4 5.5-4 5.5-1.7C17.5 9 12 9 12 9Z" />
+            <path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 4Z" />
           </Icon>
-          Gifts
+          Reviews
         </Link>
 
         <Link to="/blog" aria-current={onGuides ? 'page' : undefined} className={`${base} ${tone(onGuides)}`}>

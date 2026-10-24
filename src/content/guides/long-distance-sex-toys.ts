@@ -11,7 +11,7 @@ export const LONG_DISTANCE: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['couples', 'vibrators', 'strokers'],
-  topics: ['couples', 'how-to'],
+  topics: ['couples', 'how-to', 'buying-guides'],
   body: `
 Missing someone is hard, and missing their touch can be the hardest part. App-controlled toys are the closest thing to being in the same room: one partner controls the other's toy over the internet, in real time, with video or voice if you want it. That shared moment can help you both feel wanted and connected between visits.
 

@@ -63,9 +63,9 @@ Toys give you new visuals, sounds and stories. Choose ones you genuinely enjoy a
 |---|---|---|
 | Quiet vibrators | Clean audio, so your voice is the focus | [Quiet vibrators](/shop/quiet-vibrators) |
 | App-controlled toys | Interactive, fan-controlled or tip-activated sessions on platforms that support it | [App-controlled sex toys](/shop/app-controlled-sex-toys) |
-| Wands and air-pulse toys | Strong visuals and distinct reactions | [Wand vibrators](/shop/wand-vibrators), [Womanizer](/shop/womanizer) |
+| Wands and air-pulse toys | Strong visuals and distinct reactions | [Wand vibrators](/shop/wand-vibrators), Womanizer |
 | Strokers and sleeves | Content for male creators | [Strokers](/category/strokers) |
-| Lingerie and props | Styling and costume variety | [Lingerie](/category/lingerie) |
+| Lingerie and props | Styling and costume variety | Outfits you already own |
 
 [Browse app-controlled sex toys](/shop/app-controlled-sex-toys)[[from:app-controlled-sex-toys]]
 

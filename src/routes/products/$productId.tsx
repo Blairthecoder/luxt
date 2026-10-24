@@ -16,6 +16,13 @@ import { getImageSrcSet, getOptimizedImageUrl } from '@/lib/image'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 import { productHighlights } from '@/lib/product-highlights'
 
+function notesList(items: string[]) {
+  return {
+    '@type': 'ItemList',
+    itemListElement: items.map((name, i) => ({ '@type': 'ListItem', position: i + 1, name })),
+  }
+}
+
 export const Route = createFileRoute('/products/$productId')({
   loader: async ({ params }) => {
     const data = await getProductData({ data: params.productId })
@@ -34,7 +41,10 @@ export const Route = createFileRoute('/products/$productId')({
     const image = product.images[0]?.src
 
     return pageHead({
-      title: `${product.title}: Price & Details | ${SITE.shortName}`,
+      // Long product names drop the pros-and-cons tail so the title stays near 60 characters.
+      title: copy
+        ? `${product.title} Review${product.title.length <= 36 ? ': Pros, Cons & Price' : ''} | ${SITE.shortName}`
+        : `${product.title}: Price & Details | ${SITE.shortName}`,
       description,
       path,
       image,
@@ -64,6 +74,20 @@ export const Route = createFileRoute('/products/$productId')({
               : 'https://schema.org/OutOfStock',
             seller: { '@type': 'Organization', name: getProgram(product.program).merchantName },
           },
+          // Editorial review with pros and cons. No star rating: we do not score products.
+          ...(copy
+            ? {
+                review: {
+                  '@type': 'Review',
+                  name: `${product.title} Review`,
+                  author: { '@type': 'Organization', name: SITE.editorialTeam, url: absoluteUrl('/about') },
+                  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+                  reviewBody: copy.summary,
+                  ...(copy.pros?.length ? { positiveNotes: notesList(copy.pros) } : {}),
+                  ...(copy.cons?.length ? { negativeNotes: notesList(copy.cons) } : {}),
+                },
+              }
+            : {}),
         },
         ...(copy?.faqs?.length
           ? [
@@ -193,7 +217,20 @@ function ProductPage() {
           </p>
           <h1 className="mt-2 font-display text-[2.25rem] sm:text-5xl font-bold tracking-[-0.04em] leading-[1.02]">
             {product.title}
+            {copy && <span className="sr-only"> Review</span>}
           </h1>
+          {copy && (
+            <p className="mt-3 text-sm text-graphite">
+              Reviewed by{' '}
+              <Link to="/about" className="text-ink underline underline-offset-2 decoration-silver hover:decoration-ink">
+                {SITE.editorialTeam}
+              </Link>
+              <span className="mx-2 text-silver">·</span>
+              <Link to="/editorial-policy" className="underline underline-offset-2 decoration-silver hover:text-ink">
+                How We Review
+              </Link>
+            </p>
+          )}
 
           <p className="mt-5 text-xl font-medium">
             {formatPrice(product.price)}
@@ -212,6 +249,12 @@ function ProductPage() {
               ? copy.summary
               : `A ${hub.singular.toLowerCase()} from ${product.brand}. Check the details below and our buying tips, then order from ${merchant}.`}
           </p>
+
+          {copy?.bestFor && (
+            <p className="mt-5 rounded-xl bg-mist px-4 py-3 text-[0.9375rem] leading-relaxed">
+              <span className="font-semibold">Best for:</span> <span className="text-graphite">{copy.bestFor}</span>
+            </p>
+          )}
 
           {highlights.length > 0 && (
             <ul className="mt-6 space-y-2 text-[0.9375rem]">
@@ -277,7 +320,7 @@ function ProductPage() {
             data-link-context="mobile_buy_bar"
             className="btn btn-lg flex-1 !min-h-[3.25rem] press"
           >
-            {product.available ? `Buy at ${merchant}` : `Check Stock at ${merchant}`}
+            {product.available ? `Check Price at ${merchant}` : `Check Stock at ${merchant}`}
           </a>
         </div>
       </div>
@@ -370,28 +413,8 @@ function ProductPage() {
         </section>
       )}
 
-      {/* Mobile buy bar: the main button scrolls away on small screens. */}
+      {/* Room for the fixed mobile price bar. */}
       <div className="lg:hidden h-24" aria-hidden="true" />
-      <div className="lg:hidden fixed inset-x-0 bottom-0 z-30 bg-canvas/95 backdrop-blur-xl border-t border-line">
-        <div className="wrap flex items-center justify-between gap-4 py-3">
-          <div className="min-w-0">
-            <p className="text-sm font-medium truncate">{product.title}</p>
-            <p className="text-sm text-graphite">
-              {formatPrice(product.price)}
-              {savings >= 1 && <span className="ml-2 text-signal font-semibold">Save {formatPrice(savings)}</span>}
-            </p>
-          </div>
-          <a
-            href={goPath(product.handle)}
-            target="_blank"
-            rel="sponsored nofollow noopener"
-            data-link-context="product_sticky"
-            className="btn shrink-0 !min-h-[2.75rem] !px-5 text-sm"
-          >
-            {product.available ? 'Buy Now' : 'Check Stock'}
-          </a>
-        </div>
-      </div>
     </div>
   )
 }

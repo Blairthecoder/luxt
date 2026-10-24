@@ -24,7 +24,7 @@ If you are thinking about buying a toy, you may be wondering whether to wait for
 
 ## When Are the Sales?
 
-In 2026, Black Friday falls on **Friday, November 27**, the day after Thanksgiving, and Cyber Monday falls on **Monday, November 30**. Many retailers start earlier in the month and run offers through the first week of December. We do not list specific discounts here, because they change often. Our [Black Friday guide](/blog/black-friday-sex-toy-deals) explains how to spot a genuine deal, and the [deals collection](/shop/black-friday-sex-toy-deals) shows what is currently reduced.
+In 2026, Black Friday falls on **Friday, November 27**, the day after Thanksgiving, and Cyber Monday falls on **Monday, November 30**. Many retailers start earlier in the month and run offers through the first week of December. We do not list specific discounts here, because they change often. Our [Black Friday guide](/blog/black-friday-sex-toy-deals) explains how to spot a genuine deal, and every [review](/reviews) shows the live price, with any markdown struck through.
 
 ## What Is Worth Buying on Sale
 
@@ -34,7 +34,7 @@ In 2026, Black Friday falls on **Friday, November 27**, the day after Thanksgivi
 | App-controlled toys | Often among the pricier items, see [app-controlled sex toys](/shop/app-controlled-sex-toys) |
 | Strokers and automatic strokers | Big range of prices, see [automatic strokers](/shop/automatic-strokers) |
 | Couples toys | Great for gifts, see [couples sex toys](/shop/couples-sex-toys) |
-| Gift sets and kits | Good value for first-timers, see [gift sets](/shop/sex-toy-gift-sets) |
+| Gift sets and kits | Good value for first-timers, see [Lovense bundles](/shop/lovense-bundles) |
 
 ## What Is Better Without a Sale
 

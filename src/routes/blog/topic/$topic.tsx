@@ -3,6 +3,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { postsForTopic } from '@/content/posts'
 import { TOPICS, TOPICS_BY_SLUG } from '@/content/topics'
 import { COLLECTIONS_BY_SLUG } from '@/content/collections'
+import { RETIRED_COLLECTIONS } from '@/content/retired'
 import { SITE, absoluteUrl } from '@/config/site'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 import { PostGrid } from '@/components/PostGrid'
@@ -50,7 +51,10 @@ export const Route = createFileRoute('/blog/topic/$topic')({
 function TopicPage() {
   const { topic } = Route.useLoaderData()
   const posts = postsForTopic(topic.slug)
-  const collections = topic.collections.map((slug) => COLLECTIONS_BY_SLUG[slug]).filter(Boolean)
+  const collections = topic.collections
+    .filter((slug) => !(slug in RETIRED_COLLECTIONS))
+    .map((slug) => COLLECTIONS_BY_SLUG[slug])
+    .filter(Boolean)
   const others = TOPICS.filter((t) => t.slug !== topic.slug)
 
   return (
@@ -76,7 +80,7 @@ function TopicPage() {
 
       {collections.length > 0 && (
         <section className="pt-20 sm:pt-28 reveal">
-          <h2 className="display-m">Shop the Topic.</h2>
+          <h2 className="display-m">Browse the Toys.</h2>
           <ul className="mt-8 flex flex-wrap gap-2">
             {collections.map((c) => (
               <li key={c.slug}>

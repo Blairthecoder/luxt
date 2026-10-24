@@ -54,7 +54,7 @@ Couples define this differently, so talk about it. Many couples see solo toy use
 
 | Goal | Good first choice |
 |---|---|
-| Solo play | A reusable stroker, see [Fleshlight](/shop/fleshlight) or [Tenga](/shop/tenga) |
+| Solo play | A reusable stroker, see Fleshlight or Tenga |
 | Something small and easy to store | A single-use cup or compact stroker, see [pocket strokers](/shop/pocket-pussies) |
 | Shared pleasure | A vibrating ring, see [vibrating cock rings](/shop/vibrating-cock-rings) |
 | Hands-free | An automatic stroker, see [automatic strokers](/shop/automatic-strokers) |

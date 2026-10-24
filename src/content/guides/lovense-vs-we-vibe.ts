@@ -11,7 +11,7 @@ export const LOVENSE_VS_WE_VIBE: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 9,
   hubs: ['couples', 'vibrators'],
-  topics: ['couples'],
+  topics: ['couples', 'comparisons'],
   body: `
 There is something quietly thrilling about handing a partner the controls, or being trusted with theirs, and feeling connected even when you are apart. If you want a toy a partner can control, from across the room or from another country, two brands come up first: **Lovense** and **We-Vibe**. Both make rechargeable, body-safe toys that pair with a phone app. Both are established and widely used.
 
@@ -32,7 +32,7 @@ They are not interchangeable, though. Lovense is app-first and makes a connected
 | Signature toy | Lush, a wearable egg vibrator | Sync, a couples vibrator worn during sex |
 | Range | Vibrators, wearables, strokers, plugs, rings, machines | Couples vibrators, wearables, rings, plugs, prostate toys |
 | Long-distance | A core feature of the app | Supported through the app |
-| Starting price | See [Lovense](/shop/lovense)[[from:lovense]] | See [We-Vibe](/shop/we-vibe)[[from:we-vibe]] |
+| Starting price | See [Lovense](/shop/lovense)[[from:lovense]] | Check We-Vibe’s own site |
 
 ## The Apps
 
@@ -109,7 +109,7 @@ Both brands use body-safe silicone. Wash with warm water and mild soap or a toy 
 - **You prefer a physical remote:** We-Vibe.
 - **A ring for both of you:** a We-Vibe Pivot or Verge, or see all [couples sex toys](/shop/couples-sex-toys).
 
-Both brands sometimes appear in our [current deals](/shop/black-friday-sex-toy-deals), so check before you buy.
+Both brands often take part in seasonal sales. Our [Black Friday guide](/blog/black-friday-sex-toy-deals) explains how to judge a markdown before you buy.
 `,
   picks: {
     wearable: {

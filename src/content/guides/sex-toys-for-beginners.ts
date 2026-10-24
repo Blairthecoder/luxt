@@ -79,7 +79,7 @@ Avoid toys described as jelly or rubber, especially if they have a strong chemic
 Lube is not a sign that something is wrong. It makes almost every toy more comfortable and more enjoyable, and it is the cheapest upgrade you can make.
 
 - **Water-based lube** works with every toy and every condom, and it rinses off with water. If you only buy one bottle, buy this. Browse [water-based lube](/shop/water-based-lube)[[from:water-based-lube]].
-- **Silicone lube** lasts much longer and works in the shower, but it can damage silicone toys over time. Keep it for sex without toys. See [silicone lube](/shop/silicone-lube).
+- **Silicone lube** lasts much longer and works in the shower, but it can damage silicone toys over time. Keep it for sex without toys.
 
 [[picks:lube]]
 
@@ -119,7 +119,7 @@ If you share a home, a few small choices help:
 
 You do not need to spend much on a first toy. A small, rechargeable silicone vibrator or a single-use stroker from a well-known brand is enough to find out what you like. Spending more usually buys a quieter motor, more settings and a better finish, which makes more sense once you know what you enjoy.
 
-Everything in our [sex toys for beginners](/shop/sex-toys-for-beginners) collection comes from established brands at approachable prices. If you want to wait for a markdown, check [current deals](/shop/black-friday-sex-toy-deals).
+Everything in our [sex toys for beginners](/shop/sex-toys-for-beginners) collection comes from established brands at approachable prices. If you want to wait for a markdown, read our [Black Friday guide](/blog/black-friday-sex-toy-deals).
 
 ## What to Try Next
 

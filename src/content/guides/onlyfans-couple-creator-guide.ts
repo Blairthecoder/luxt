@@ -74,7 +74,7 @@ Choose toys you both enjoy and that suit your boundaries. See our [toys for crea
 | Vibrating rings | Simple, shared and easy on camera | [Vibrating cock rings](/shop/vibrating-cock-rings) |
 | Remote-control toys | Playful control that one partner can hand to the other | [Remote control vibrators](/shop/remote-control-vibrators) |
 | App-controlled toys | Interactive sessions on platforms that support them | [App-controlled sex toys](/shop/app-controlled-sex-toys) |
-| Bondage and play kits | Roleplay and variety | [Bondage kits](/shop/bondage-kits) |
+| Bondage and play kits | Roleplay and variety | [Bondage kits](/category/bdsm) |
 
 [Browse couples sex toys](/shop/couples-sex-toys)[[from:couples-sex-toys]]
 

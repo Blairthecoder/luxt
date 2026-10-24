@@ -11,7 +11,7 @@ export const COUPLES_TOYS: Post = {
   publishedAt: '2026-10-19',
   readMinutes: 12,
   hubs: ['couples', 'penis-rings', 'vibrators', 'bdsm'],
-  topics: ['couples', 'gift-guides'],
+  topics: ['couples', 'gift-guides', 'buying-guides'],
   body: `
 The best nights together are the ones where you both feel relaxed, wanted and fully in the moment. A couples toy is anything that helps with that by making sex better for both of you at the same time. That covers more than the small "couples" shelf in most stores. A vibrating ring, a bullet held in the right place, a remote vibrator worn to dinner and a positioning wedge can all be couples toys.
 
@@ -25,7 +25,7 @@ This guide sorts them by how you want to use one, so you can choose something th
 | Something small either of you can hold | [Bullet vibrator](/shop/bullet-vibrators) | [[price:bullet-vibrators]] |
 | Teasing on a date night or in another room | [Remote control vibrator](/shop/remote-control-vibrators) | [[price:remote-control-vibrators]] |
 | Play while you are apart | [App-controlled toy](/shop/app-controlled-sex-toys) | [[price:app-controlled-sex-toys]] |
-| To try light restraint together | [Bondage kit](/shop/bondage-kits) | [[price:bondage-kits]] |
+| To try light restraint together | [Bondage gear](/category/bdsm) | See current prices |
 | Easier, more comfortable positions | [Wedges, swings and furniture](/category/sex-machines-furniture) | See the category |
 
 If you are buying your first shared toy, start with the first two rows. They work during the sex you already have, which makes them easy to say yes to.

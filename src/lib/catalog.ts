@@ -8,52 +8,31 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const { pickSection } = await import('@/server/home-picks')
   const { PRODUCT_COPY } = await import('@/content/product-copy')
   const { productHighlights } = await import('@/lib/product-highlights')
-  const { buildTiles } = await import('@/server/tiles')
-  const { HOME_SHORTCUTS, FEATURED_HUBS } = await import('@/content/shortcuts')
   const { POPULAR_TAG } = await import('@/server/merchandising')
-  const products = store.allProducts()
+  // The homepage is editorial: products appear only as reviewed picks, so every
+  // row draws from products with original copy.
+  const products = store.allProducts().filter((p) => store.hasCopy(p.handle))
   const used = new Set<string>()
-  // First Picks choose first: the least intimidating first purchases, three small
+  // Best First Toys choose first: the least intimidating first purchases, three small
   // gender-neutral vibrators plus one lube, shown cheapest first. Lovense toys
   // start near $60, so the toy cap is $100.
   const neutral = /stroker|masturbat|sleeve|cock|penis|prostate|plug|egg|thrust|rabbit|dual|g-?spot/i
   const firstToys = pickSection(products, { maxPrice: 100, hubs: ['vibrators', 'couples'], exclude: neutral }, used, 3)
   const firstLube = pickSection(products, { maxPrice: 30, hubs: ['lubricants'] }, used, 1)
   const firstPicks = [...firstToys, ...firstLube].sort((a, b) => a.price - b.price)
-  // The gendered sections choose next so their lineups stay distinct. Lovense
-  // products carry no audience tags, so bundles that pair in a toy for the
-  // other partner are left to For Couples.
-  const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], exclude: /gush|max 2|solace|edge|diamo|calor|kraken/i, audience: 'female' }, used, 4)
-  const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], exclude: /mission|lush|nora|ferri|osci/i, audience: 'male' }, used, 4)
-  const forCouples = pickSection(products, { hubs: ['couples', 'vibrators', 'penis-rings'], title: /couple|partner|app|remote|wearable/i }, used, 4)
   const splurge = pickSection(products, { minPrice: 150, hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'] }, used, 3)
   // Best Sellers only carries that name when the merchant itself tags enough products as best sellers.
-  const popular = pickSection(products, { where: (p) => p.tags.some((t) => POPULAR_TAG.test(t)) }, used, 8)
+  const popular = pickSection(products, { where: (p) => p.tags.some((t) => POPULAR_TAG.test(t)) }, used, 4)
   const popularLabelled = popular.length >= 4
-  const topPicks = popularLabelled ? popular : [...popular, ...pickSection(products, {}, used, 8 - popular.length)]
-  // Real markdowns only: compareAtPrice comes from the merchant feed.
-  const onSale = pickSection(products, { where: (p) => !!p.compareAtPrice && p.compareAtPrice > p.price }, used, 8)
-  const tileImages = new Set<string>()
+  // Without merchant best-seller tags, lead with full-size toys rather than accessories or attachments.
+  const topPicks = popularLabelled
+    ? popular
+    : [...popular, ...pickSection(products, { minPrice: 59, hubs: ['vibrators', 'strokers', 'prostate-massagers', 'dildos'], exclude: /attachment|harness|cleaner/i }, used, 4 - popular.length)]
   return {
     hubCounts: store.hubCounts(),
-    shortcuts: buildTiles(HOME_SHORTCUTS, tileImages),
-    promoTiles: buildTiles(
-      [
-        { kind: 'shop', slug: 'remote-control-vibrators' },
-        { kind: 'shop', slug: 'sex-toys-for-beginners' },
-        { kind: 'shop', slug: 'quiet-vibrators' },
-        { kind: 'shop', slug: 'app-controlled-sex-toys' },
-      ],
-      tileImages
-    ),
-    categoryTiles: buildTiles(FEATURED_HUBS.map((slug) => ({ kind: 'hub' as const, slug })), tileImages),
     topPicks: topPicks.map(toSummary),
     topPicksLabel: popularLabelled ? 'Best Sellers' : 'Our Top Picks',
-    onSale: onSale.length >= 4 ? onSale.map(toSummary) : [],
     firstPicks: firstPicks.map(toSummary),
-    forHer: forHer.map(toSummary),
-    forHim: forHim.map(toSummary),
-    forCouples: forCouples.map(toSummary),
     // A one-line reason each splurge earns its price.
     splurge: splurge.map((p) => ({
       ...toSummary(p),
@@ -185,3 +164,19 @@ export const searchCatalog = createServerFn({ method: 'GET' })
     const { searchSite } = await import('@/server/search')
     return searchSite(query)
   })
+
+/** Every product with original copy, for the /reviews index. Best-merchandised first within each hub. */
+export const getReviewsData = createServerFn({ method: 'GET' }).handler(async () => {
+  const store = await import('@/server/catalog-store')
+  const { toSummary } = await import('@/server/listing')
+  const { merchandise } = await import('@/server/merchandising')
+  const { PRODUCT_COPY } = await import('@/content/product-copy')
+  const reviewed = merchandise(store.allProducts().filter((p) => store.hasCopy(p.handle)))
+  return {
+    reviews: reviewed.map((p) => ({
+      ...toSummary(p),
+      summary: PRODUCT_COPY[p.handle].summary,
+      bestFor: PRODUCT_COPY[p.handle].bestFor ?? null,
+    })),
+  }
+})

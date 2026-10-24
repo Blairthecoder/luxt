@@ -11,7 +11,7 @@ export const CLITORAL_VS_GSPOT: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['vibrators'],
-  topics: ['for-her', 'how-to'],
+  topics: ['for-her', 'how-to', 'comparisons'],
   body: `
 Feeling confident with a toy starts with knowing what your body enjoys, and there is no wrong answer. Clitoral and G-spot vibrators do different jobs, and the right one depends on where you feel the most. Most people with a vulva need clitoral stimulation to orgasm. The G-spot, an area on the front wall of the vagina, is a source of pleasure for many but not all.
 
