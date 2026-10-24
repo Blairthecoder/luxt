@@ -1,10 +1,11 @@
 // Server-only: images for shortcut and sub-category tiles. Each tile shows the
 // top discreet product on the page it links to, and no two tiles in a set
-// share an image.
+// share an image. A page with no discreet product falls back to its top
+// product, so every live category keeps a cover.
 import { COLLECTIONS_BY_SLUG } from '@/content/collections'
 import { HUBS_BY_SLUG } from '@/content/hubs'
-import { COLLECTION_LINES, SUBCATEGORIES, type TileTarget } from '@/content/shortcuts'
-import { productsInHub, productsMatchingRule } from '@/server/catalog-store'
+import { COLLECTION_LINES, RELATED_HUBS, SUBCATEGORIES, type TileTarget } from '@/content/shortcuts'
+import { allProducts, productsInHub, productsMatchingRule } from '@/server/catalog-store'
 import { COLLECTION_FOCUS, isDiscreet, merchandise } from '@/server/merchandising'
 import type { CatalogProduct } from '@/types/catalog'
 
@@ -30,10 +31,9 @@ export function buildTiles(targets: (TileTarget & { label?: string })[], used = 
     const name = t.kind === 'hub' ? HUBS_BY_SLUG[t.slug]?.name : COLLECTIONS_BY_SLUG[t.slug]?.name
     const products = source(t)
     if (!name || products.length === 0) continue
-    const ranked = merchandise(
-      products.filter((p) => p.available && p.images.length > 0 && isDiscreet(p)),
-      t.kind === 'shop' ? COLLECTION_FOCUS[t.slug] : undefined
-    )
+    const pictured = products.filter((p) => p.available && p.images.length > 0)
+    const discreet = pictured.filter(isDiscreet)
+    const ranked = merchandise(discreet.length ? discreet : pictured, t.kind === 'shop' ? COLLECTION_FOCUS[t.slug] : undefined)
     const pick = ranked.find((p) => !used.has(p.handle)) ?? ranked[0]
     if (pick) used.add(pick.handle)
     out.push({
@@ -51,4 +51,29 @@ export function buildTiles(targets: (TileTarget & { label?: string })[], used = 
 export function subcategoryTiles(key: string): Tile[] {
   const self = key.split(':')[1]
   return buildTiles((SUBCATEGORIES[key] ?? []).filter((slug) => slug !== self).map((slug) => ({ kind: 'shop' as const, slug })))
+}
+
+/** First title words that describe a toy rather than name its model. */
+const GENERIC_WORDS = /^(app|mini|remote|personal|water|toy|vibrating|bluetooth)|-/i
+
+/**
+ * Products for the "More to Explore" row under listings too small to fill a
+ * row of four on their own: bundles and sets that include a listed toy first,
+ * then related hubs, the listing's sub-category pages and its own hub.
+ */
+export function moreToExplore(key: string, listed: CatalogProduct[], n = 4): CatalogProduct[] {
+  if (listed.length >= n) return []
+  const seen = new Set(listed.map((p) => p.handle))
+  const take = (products: CatalogProduct[]) => {
+    const fresh = products.filter((p) => !seen.has(p.handle) && p.available && p.images.length > 0)
+    fresh.forEach((p) => seen.add(p.handle))
+    return merchandise(fresh)
+  }
+  // Model names of the listed toys, e.g. "Gemini" from "Lovense Gemini ...".
+  const models = listed.map((p) => p.title.replace(new RegExp(`^${p.brand}\\s+`, 'i'), '').split(/\s+/)[0]).filter((m) => m.length > 2 && !GENERIC_WORDS.test(m))
+  const sets = take(allProducts().filter((p) => models.some((m) => new RegExp(`\\b${m}\\b`, 'i').test(p.title))))
+  const hubs = take((RELATED_HUBS[key] ?? []).flatMap((hub) => productsInHub(hub)))
+  const related = take((SUBCATEGORIES[key] ?? []).flatMap((slug) => source({ kind: 'shop', slug })))
+  const sameHub = take([...new Set(listed.map((p) => p.hub))].flatMap((hub) => productsInHub(hub)))
+  return [...sets, ...hubs, ...related, ...sameHub].slice(0, n)
 }

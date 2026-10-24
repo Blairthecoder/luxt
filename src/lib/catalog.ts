@@ -14,14 +14,17 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const products = store.allProducts()
   const used = new Set<string>()
   // First Picks choose first: the least intimidating first purchases, three small
-  // gender-neutral vibrators plus one lube, shown cheapest first.
+  // gender-neutral vibrators plus one lube, shown cheapest first. Lovense toys
+  // start near $60, so the toy cap is $100.
   const neutral = /stroker|masturbat|sleeve|cock|penis|prostate|plug|egg|thrust|rabbit|dual|g-?spot/i
-  const firstToys = pickSection(products, { maxPrice: 50, hubs: ['vibrators', 'couples'], exclude: neutral }, used, 3)
+  const firstToys = pickSection(products, { maxPrice: 100, hubs: ['vibrators', 'couples'], exclude: neutral }, used, 3)
   const firstLube = pickSection(products, { maxPrice: 30, hubs: ['lubricants'] }, used, 1)
   const firstPicks = [...firstToys, ...firstLube].sort((a, b) => a.price - b.price)
-  // The gendered sections choose next so their lineups stay distinct.
-  const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], tags: ['female'], audience: 'female' }, used, 4)
-  const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], tags: ['male'], audience: 'male' }, used, 4)
+  // The gendered sections choose next so their lineups stay distinct. Lovense
+  // products carry no audience tags, so bundles that pair in a toy for the
+  // other partner are left to For Couples.
+  const forHer = pickSection(products, { hubs: ['vibrators', 'lubricants'], exclude: /gush|max 2|solace|edge|diamo|calor|kraken/i, audience: 'female' }, used, 4)
+  const forHim = pickSection(products, { hubs: ['strokers', 'prostate-massagers', 'penis-rings'], exclude: /mission|lush|nora|ferri|osci/i, audience: 'male' }, used, 4)
   const forCouples = pickSection(products, { hubs: ['couples', 'vibrators', 'penis-rings'], title: /couple|partner|app|remote|wearable/i }, used, 4)
   const splurge = pickSection(products, { minPrice: 150, hubs: ['vibrators', 'couples', 'prostate-massagers', 'strokers'] }, used, 3)
   // Best Sellers only carries that name when the merchant itself tags enough products as best sellers.
@@ -63,12 +66,15 @@ export const getHubListing = createServerFn({ method: 'GET' })
   .validator((input: { slug: string; filters: ListingFilters }) => input)
   .handler(async ({ data }) => {
     const store = await import('@/server/catalog-store')
-    const { buildListing } = await import('@/server/listing')
+    const { buildListing, toSummary } = await import('@/server/listing')
     const { LISTING_EXTRAS } = await import('@/content/listing-extras')
+    const tiles = await import('@/server/tiles')
+    const products = store.productsInHub(data.slug)
     return {
-      ...buildListing(store.productsInHub(data.slug), data.filters),
+      ...buildListing(products, data.filters),
       extra: LISTING_EXTRAS[`hub:${data.slug}`] ?? null,
-      subcats: (await import('@/server/tiles')).subcategoryTiles(`hub:${data.slug}`),
+      subcats: tiles.subcategoryTiles(`hub:${data.slug}`),
+      more: tiles.moreToExplore(`hub:${data.slug}`, products).map(toSummary),
     }
   })
 
@@ -76,16 +82,19 @@ export const getCollectionListing = createServerFn({ method: 'GET' })
   .validator((input: { slug: string; filters: ListingFilters }) => input)
   .handler(async ({ data }) => {
     const store = await import('@/server/catalog-store')
-    const { buildListing } = await import('@/server/listing')
+    const { buildListing, toSummary } = await import('@/server/listing')
     const { COLLECTIONS_BY_SLUG } = await import('@/content/collections')
     const collection = COLLECTIONS_BY_SLUG[data.slug]
     if (!collection) return null
     const { COLLECTION_FOCUS } = await import('@/server/merchandising')
     const { LISTING_EXTRAS } = await import('@/content/listing-extras')
+    const tiles = await import('@/server/tiles')
+    const products = store.productsMatchingRule(collection.slug, collection.rule)
     return {
-      ...buildListing(store.productsMatchingRule(collection.slug, collection.rule), data.filters, COLLECTION_FOCUS[collection.slug]),
+      ...buildListing(products, data.filters, COLLECTION_FOCUS[collection.slug]),
       extra: LISTING_EXTRAS[`shop:${collection.slug}`] ?? null,
-      subcats: (await import('@/server/tiles')).subcategoryTiles(`shop:${collection.slug}`),
+      subcats: tiles.subcategoryTiles(`shop:${collection.slug}`),
+      more: tiles.moreToExplore(`shop:${collection.slug}`, products).map(toSummary),
     }
   })
 

@@ -26,9 +26,14 @@ export const HOME_SHORTCUTS: Shortcut[] = [
 /** Featured Categories grid on the homepage. */
 export const FEATURED_HUBS = ['vibrators', 'strokers', 'dildos', 'anal-toys', 'sex-machines-furniture', 'prostate-massagers', 'penis-rings', 'lubricants']
 
-/** Shop by Brand grid. Only brands with their own collection page. */
+/** Shop Lovense grid on the homepage: the brand page plus the Lovense-led collections. Each slug is a live collection. */
 export const BRAND_TILES: { slug: string; name: string; line: string }[] = [
   { slug: 'lovense', name: 'Lovense', line: 'App control, near or far' },
+  { slug: 'lovense-bundles', name: 'Bundles', line: 'Two toys that play together' },
+  { slug: 'app-controlled-sex-toys', name: 'App-Controlled', line: 'Control from a phone, anywhere' },
+  { slug: 'remote-control-vibrators', name: 'Remote Control', line: 'Hand your partner the controls' },
+  { slug: 'couples-sex-toys', name: 'For Couples', line: 'Made to share, in bed or apart' },
+  { slug: 'quiet-vibrators', name: 'Quiet Picks', line: 'Low noise for shared walls' },
 ]
 
 /** One line under each sub-category tile. */
@@ -84,4 +89,13 @@ export const SUBCATEGORIES: Record<string, string[]> = {
   'shop:app-controlled-sex-toys': ['remote-control-vibrators', 'lovense', 'couples-sex-toys'],
   'shop:quiet-vibrators': ['discreet-sex-toys', 'bullet-vibrators', 'clitoral-vibrators'],
   'shop:discreet-sex-toys': ['quiet-vibrators', 'bullet-vibrators', 'stocking-stuffers', 'sex-toys-for-beginners'],
+}
+
+/** Hubs whose products lead the "More to Explore" row on thin listings, before the sub-category pages. */
+export const RELATED_HUBS: Record<string, string[]> = {
+  'hub:strap-ons': ['dildos'],
+  'hub:sex-machines-furniture': ['dildos', 'strokers'],
+  'hub:penis-rings': ['strokers'],
+  'shop:thrusting-vibrators': ['dildos'],
+  'shop:wand-vibrators': ['vibrators'],
 }

@@ -281,10 +281,10 @@ function HomePage() {
           <div className="section-head">
             <div>
               <h2 className="display-m">Easy First Picks</h2>
-              <p className="mt-2 text-graphite">Gentle, simple to use and under $50. A comfortable place to start, solo or together.</p>
+              <p className="mt-2 text-graphite">Gentle, simple to use and under $100. A comfortable place to start, solo or together.</p>
             </div>
-            <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-50' }} className="more hidden sm:inline-flex">
-              Shop Under $50
+            <Link to="/shop/$slug" params={{ slug: 'sex-toys-under-100' }} className="more hidden sm:inline-flex">
+              Shop Under $100
             </Link>
           </div>
           <ProductRow products={firstPicks} />
@@ -437,7 +437,10 @@ function HomePage() {
 
       <section className="wrap pt-10 sm:pt-24 reveal">
         <div className="section-head">
-          <h2 className="display-m">Shop by Brand</h2>
+          <h2 className="display-m">Shop Lovense</h2>
+          <Link to="/shop/$slug" params={{ slug: 'lovense' }} className="more hidden sm:inline-flex">
+            All Lovense Toys
+          </Link>
         </div>
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {BRAND_TILES.filter((b) => COLLECTIONS_BY_SLUG[b.slug]).map((b) => (
