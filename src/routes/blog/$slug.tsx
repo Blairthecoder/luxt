@@ -181,6 +181,17 @@ function PostPage() {
             </aside>
           )}
           <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
+          {post.healthNote && (
+            <aside aria-label="Health note" className="mt-12 p-5 sm:p-6 bg-mist rounded-2xl text-[0.9375rem] text-graphite leading-relaxed">
+              <span className="font-semibold text-ink">Not medical advice.</span> This guide is general sex education. If
+              something hurts, worries you or does not improve, talk to a doctor, nurse, pelvic floor physiotherapist or
+              sexual health clinic. See our{' '}
+              <Link to="/editorial-policy" className="underline underline-offset-2">
+                editorial policy
+              </Link>
+              .
+            </aside>
+          )}
           {post.faqs?.length ? (
             <section className="mt-20 pt-12 border-t border-ink">
               <h2 className="display-m">Frequently Asked.</h2>

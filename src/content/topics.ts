@@ -84,6 +84,46 @@ export const TOPICS: Topic[] = [
     collections: ['sex-toys-for-beginners', 'water-based-lube', 'discreet-sex-toys', 'bullet-vibrators', 'vibrating-cock-rings', 'butt-plugs', 'anal-beads'],
   },
   {
+    slug: 'sex-education',
+    name: 'Sex Education',
+    metaTitle: 'Sex Education for Adults: Anatomy, Orgasm & Desire',
+    metaDescription:
+      'Sex education for adults: plain-English guides to anatomy, orgasm, desire, consent and comfort, so you can understand your body and enjoy sex with confidence.',
+    intro:
+      'The sex education most of us never got. Clear, judgment-free guides to anatomy, arousal, orgasm, consent and comfort, written for adults of every body and experience level.',
+    collections: ['sex-toys-for-women', 'clitoral-vibrators', 'g-spot-vibrators', 'water-based-lube', 'sex-toys-for-beginners'],
+  },
+  {
+    slug: 'intimacy',
+    name: 'Intimacy & Communication',
+    metaTitle: 'Intimacy & Communication Guides for Couples',
+    metaDescription:
+      'Intimacy and communication guides for couples: how to ask for what you want, handle mismatched libido, build closeness without sex and feel connected after.',
+    intro:
+      'Good sex starts long before the bedroom. These guides cover the conversations, check-ins and small daily habits that help couples feel safe, wanted and close.',
+    collections: ['couples-sex-toys', 'remote-control-vibrators', 'app-controlled-sex-toys', 'water-based-lube'],
+  },
+  {
+    slug: 'body-confidence',
+    name: 'Body Confidence & Self-Pleasure',
+    metaTitle: 'Body Confidence & Self-Pleasure Guides',
+    metaDescription:
+      'Guides to body confidence and self-pleasure: how to feel confident in bed, get to know your own body and make solo time feel relaxed, kind and enjoyable.',
+    intro:
+      'Feeling at home in your body changes everything, alone or with a partner. Practical, kind guides to confidence, self-pleasure and enjoying the moment instead of overthinking it.',
+    collections: ['sex-toys-for-women', 'quiet-vibrators', 'bullet-vibrators', 'clitoral-vibrators', 'discreet-sex-toys'],
+  },
+  {
+    slug: 'womens-empowerment',
+    name: "Women's Empowerment",
+    metaTitle: "Women's Sexual Empowerment & Confidence Guides",
+    metaDescription:
+      "Women's sexual empowerment guides: owning your pleasure, rebuilding confidence after a breakup, pelvic floor health and intimacy after a baby, without shame.",
+    intro:
+      'Your pleasure belongs to you. Guides for women on owning desire, setting boundaries, rebuilding confidence through life changes and asking for what you deserve.',
+    collections: ['sex-toys-for-women', 'clitoral-vibrators', 'wand-vibrators', 'rabbit-vibrators', 'quiet-vibrators'],
+  },
+  {
     slug: 'creators',
     name: 'For Creators',
     metaTitle: 'Guides for Adult Content Creators: Strategy, Toys & Privacy',

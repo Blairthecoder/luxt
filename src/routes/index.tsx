@@ -6,7 +6,7 @@ import { PostGrid, PostMeta } from '@/components/PostGrid'
 import { HUBS } from '@/content/hubs'
 import { POSTS, POSTS_BY_SLUG, latestPosts, postsForTopic } from '@/content/posts'
 import type { Post } from '@/content/posts'
-import { TOPICS } from '@/content/topics'
+import { TOPICS, TOPICS_BY_SLUG } from '@/content/topics'
 import { SITE } from '@/config/site'
 import { getHomeData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
@@ -66,6 +66,9 @@ export const Route = createFileRoute('/')({
 
 /** The lead story. Seasonal guides go first in POSTS, so this follows the editorial calendar. */
 const LEAD = POSTS[0]
+/** Sex education and confidence pillars, featured as one band below the hero. */
+const WELLNESS_TOPICS = ['sex-education', 'intimacy', 'body-confidence', 'womens-empowerment']
+const WELLNESS_LEAD = 'sexual-empowerment-for-women'
 const START_HERE = ['sex-toys-for-beginners', 'how-to-choose-your-first-vibrator', 'how-to-use-sex-toys-with-a-partner', 'how-to-clean-sex-toys']
 
 const STANDARDS = [
@@ -112,6 +115,17 @@ function HomePage() {
   const buyingGuides = topicPosts('buying-guides', 3, shown)
   const comparisons = topicPosts('comparisons', 4)
   const giftGuides = topicPosts('gift-guides', 3, [...shown, ...buyingGuides])
+  const wellnessLead = POSTS_BY_SLUG[WELLNESS_LEAD]
+  // Each guide appears once across the four columns.
+  const wellnessShown: Post[] = wellnessLead ? [wellnessLead] : []
+  const wellness = WELLNESS_TOPICS.map((slug) => TOPICS_BY_SLUG[slug])
+    .filter((t) => t !== undefined)
+    .map((topic) => {
+      const posts = topicPosts(topic.slug, 3, wellnessShown)
+      wellnessShown.push(...posts)
+      return { topic, posts }
+    })
+    .filter(({ posts }) => posts.length > 0)
   const startHere = START_HERE.map((slug) => POSTS_BY_SLUG[slug]).filter((p) => p !== undefined)
 
   return (
@@ -122,8 +136,8 @@ function HomePage() {
           <p className="eyebrow text-graphite">{SITE.guidesName} · Independent Reviews & Guides</p>
           <h1 className="mt-3 display-l max-sm:!text-[2.125rem]">Honest Sex Toy Reviews and Guides</h1>
           <p className="mt-4 lede text-graphite max-w-2xl">
-            Plain-English reviews, buying guides and head-to-head comparisons to help you choose with confidence, solo
-            or together.
+            Plain-English reviews, buying guides, comparisons and sex education to help you choose with confidence and
+            feel good in your body, solo or together.
           </p>
         </header>
 
@@ -183,6 +197,63 @@ function HomePage() {
           </ul>
         </nav>
       </section>
+
+      {wellness.length > 0 && (
+        <section aria-labelledby="wellness-heading" className="wrap pt-14 sm:pt-24 reveal">
+          <div className="rounded-3xl bg-blush p-7 sm:p-12">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+              <div className="lg:col-span-5">
+                <p className="eyebrow text-graphite">Sex Ed, Intimacy & Confidence</p>
+                <h2 id="wellness-heading" className="mt-3 display-m">
+                  The Sex Education Most of Us Never Got
+                </h2>
+                <p className="mt-4 text-graphite leading-relaxed max-w-md">
+                  Plain, kind guides to how pleasure works, how to talk about it and how to feel at home in your body, with
+                  a focus on women's confidence and choice.
+                </p>
+                {wellnessLead && (
+                  <Link to="/blog/$slug" params={{ slug: wellnessLead.slug }} className="group mt-8 block border-t border-ink pt-5">
+                    <PostMeta post={wellnessLead} />
+                    <span className="mt-2 block font-display text-2xl sm:text-[1.75rem] font-bold tracking-[-0.03em] leading-tight group-hover:underline underline-offset-4 decoration-2">
+                      {wellnessLead.title}
+                    </span>
+                    <span className="mt-3 block text-[0.9375rem] text-graphite leading-relaxed">{wellnessLead.excerpt}</span>
+                  </Link>
+                )}
+              </div>
+              <div className="lg:col-span-7 grid sm:grid-cols-2 gap-x-8 gap-y-8">
+                {wellness.map(({ topic, posts }) => (
+                  <div key={topic.slug}>
+                    <Link
+                      to="/blog/topic/$topic"
+                      params={{ topic: topic.slug }}
+                      className="flex items-baseline justify-between border-b border-ink pb-2 font-display text-lg font-semibold tracking-[-0.02em] hover:underline underline-offset-4"
+                    >
+                      {topic.name}
+                    </Link>
+                    <ul>
+                      {posts.map((post) => (
+                        <li key={post.slug} className="border-b border-petal">
+                          <Link
+                            to="/blog/$slug"
+                            params={{ slug: post.slug }}
+                            className="block py-3 text-[0.9375rem] leading-snug hover:underline underline-offset-4"
+                          >
+                            {post.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to="/blog/topic/$topic" params={{ topic: topic.slug }} className="mt-3 more text-sm">
+                      All {topic.name}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {topPicks.length > 0 && (
         <section className="wrap pt-14 sm:pt-24 reveal">
