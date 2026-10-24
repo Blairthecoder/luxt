@@ -31,6 +31,11 @@ const STROKER_CARE = {
   a: 'Remove the sleeve, rinse it with warm water, let it air dry fully and dust it with a little cornstarch if it starts to feel tacky. Keep water away from the motor unit.',
 }
 
+const BUNDLE = {
+  q: 'Can I use each toy on its own?',
+  a: 'Yes. Each toy in the set works on its own with the Lovense Remote app, and the two can be used together or controlled by a partner.',
+}
+
 export const LOVENSE_PRODUCT_COPY: Record<string, ProductCopy> = {
   'lovense-lush-4': {
     summary:
@@ -448,5 +453,186 @@ export const LOVENSE_PRODUCT_COPY: Record<string, ProductCopy> = {
         a: 'No, it works as a webcam on its own. It is most useful alongside Lovense toys and streaming software.',
       },
     ],
+  },
+  // Bundles from the affiliate dashboard (src/data/lovense-bundles.json)
+  'lovense-nora-and-max-2-bundle': {
+    summary:
+      'Lovense’s classic long-distance pair: the Nora rabbit vibrator and the Max 2 stroker, which can sync so each partner feels the other’s movements.',
+    body: [
+      'Nora and Max 2 are built to talk to each other. Link them in the Lovense Remote app and movement on one toy drives the other, so a long-distance session feels shared rather than one-sided. Each also works on its own.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Long-distance couples with one vulva owner and one penis owner.',
+    pros: ['Toys sync to each other', 'Rabbit plus stroker covers both partners', 'Costs less than buying both separately at full price'],
+    cons: ['Both partners need the app for synced play', 'Larger toys to store'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-max-2-and-edge-2-bundle': {
+    summary:
+      'A stroker and an adjustable prostate massager for penis owners, sold together and controllable from one app.',
+    body: [
+      'Max 2 handles the stroking with vibration and contraction, while Edge 2 adds internal prostate stimulation. Used together, solo or with a partner at the controls, they cover both kinds of sensation.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Penis owners and male couples who want stroker and prostate play together.',
+    pros: ['Two kinds of stimulation in one set', 'Partner or long-distance control', 'Edge 2 adjusts to fit'],
+    cons: ['Prostate play takes some patience at first', 'Two toys to charge and clean'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-solace-pro-and-mission-2-bundle': {
+    summary:
+      'An automatic stroker and a touch-sensitive vibrating dildo that sync, so partners can feel each other in real time from anywhere.',
+    body: [
+      'Mission 2 senses touch and movement, and Solace Pro answers with matching thrusts. It is Lovense’s most immersive long-distance pairing, and both toys stand on their own for solo play.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Long-distance couples who want the most interactive set Lovense offers.',
+    pros: ['Real-time sync between partners', 'Automatic thrusting on one side', 'Each toy is strong solo'],
+    cons: ['Premium price', 'Both toys need the app for sync'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-solace-pro-and-edge-2-bundle': {
+    summary:
+      'Lovense’s top automatic stroker paired with the Edge 2 prostate massager, for hands-free stroking and prostate stimulation at once.',
+    body: [
+      'Solace Pro does the stroking while Edge 2 works internally, and the app can run both together or hand control to a partner. It suits people who already enjoy automatic toys and want a fuller experience.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Experienced users who want hands-free stroking plus prostate play.',
+    pros: ['Hands-free stroking', 'Prostate stimulation at the same time', 'One app for both toys'],
+    cons: ['Premium price', 'More setup than a single toy'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-gush-2-motion-and-edge-2-bundle': {
+    summary:
+      'A wearable, motion-sensing penis massager and an adjustable prostate massager in one set, both controlled from the Lovense app.',
+    body: [
+      'Gush 2 Motion wraps around the shaft for hands-free vibration and Edge 2 adds internal stimulation. A partner can steer both from the app, nearby or far away.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Penis owners who want hands-free external and prostate play.',
+    pros: ['Hands-free on both toys', 'Motion-sensing control', 'Works for long-distance play'],
+    cons: ['Prostate play takes practice', 'Two toys to charge'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-lush-4-and-ferri-bundle': {
+    summary:
+      'Lush 4 for the G-spot and Ferri for the clitoris, two wearables a partner can control together from the Lovense app.',
+    body: [
+      'Wear Lush 4 inside and Ferri clipped in your underwear, and a partner can tease both at once, across the table or across the world. It is a strong set for date nights out and long-distance play.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'People who love wearable toys and want internal and external sensation together.',
+    pros: ['Covers G-spot and clitoris', 'Both are wearable under clothes', 'Partner control near or far'],
+    cons: ['Most features need the app', 'Two toys to charge'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-lush-4-and-gemini-bundle': {
+    summary:
+      'Lush 4 and the Gemini vibrating nipple clamps, for a partner to control G-spot and nipple sensation together.',
+    body: [
+      'Gemini adds a new zone to Lush play. Set the clamp pressure to a comfortable level, then let the app or a partner run both toys, in the same room or apart.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Couples who enjoy remote teasing and light sensation play.',
+    pros: ['Two zones at once', 'Adjustable clamp pressure', 'Partner and long-distance control'],
+    cons: ['Clamps are not for everyone', 'Most features need the app'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-gush-2-motion-and-diamo-bundle': {
+    summary:
+      'A hands-free penis massager and a vibrating cock ring, for solo play or a shared toy during sex, both app-controlled.',
+    body: [
+      'Use Gush 2 Motion for hands-free solo sessions and Diamo during sex, where both partners feel the vibration. The app lets either partner take control.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Penis owners who want one toy for solo time and one for partnered sex.',
+    pros: ['Covers solo and partnered play', 'Hands-free massager', 'Shared vibration during sex'],
+    cons: ['Cock ring fit depends on size', 'Two toys to charge'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-ferri-and-gemini-bundle': {
+    summary:
+      'Ferri for the clitoris and Gemini for the nipples, a discreet wearable set a partner can control from their phone.',
+    body: [
+      'Both toys hide under clothes, which makes this set a favorite for playful days out. A partner can run them together or one at a time through the Lovense app.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Couples who enjoy discreet, public-friendly teasing.',
+    pros: ['Discreet under clothes', 'Two zones at once', 'Partner control near or far'],
+    cons: ['External only', 'Clamps need gentle setup'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-lush-4-and-hush-2-bundle': {
+    summary:
+      'Lush 4 and a 1.5 inch Hush 2 butt plug, for G-spot and anal vibration that a partner can control together.',
+    body: [
+      'The pair gives you internal vibration in two places at once. Start slowly with plenty of water-based lube, and let the app or a partner set the intensity of each toy.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'People who enjoy both G-spot and anal play.',
+    pros: ['Two internal zones', 'Beginner-friendly plug size', 'Partner and long-distance control'],
+    cons: ['Needs plenty of lube', 'Two toys to charge and clean'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-lush-4-and-nora-bundle': {
+    summary:
+      'A wearable Lush 4 and a Nora rabbit vibrator, a set for two vulva owners or for one person who wants both.',
+    body: [
+      'Lush 4 is made for hands-free wear and Nora for deeper, rotating sessions. Linked in the app, partners can control each other’s toys or sync them for shared play.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Couples with two vulva owners and anyone who wants a wearable plus a rabbit.',
+    pros: ['Wearable plus rabbit', 'Toys can be linked in the app', 'Strong long-distance option'],
+    cons: ['Both are internal toys', 'Two toys to charge'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-ferri-and-lush-3-bundle': {
+    summary:
+      'Ferri for the clitoris and Lush 3 for the G-spot, a lower-priced wearable pair for remote teasing.',
+    body: [
+      'This set pairs Ferri with the previous-generation Lush 3, which many people still love. Wear both and hand a partner the controls through the app.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'People who want wearable internal and external toys for less.',
+    pros: ['Covers G-spot and clitoris', 'Both are wearable', 'Lower price than the Lush 4 set'],
+    cons: ['Lush 3 is the older model', 'Most features need the app'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-lush-3-and-gemini-bundle': {
+    summary:
+      'Lush 3 and the Gemini nipple clamps, an affordable wearable set for remote-control play.',
+    body: [
+      'Lush 3 brings wearable G-spot vibration and Gemini adds the nipples. A partner can control both from the app, nearby or far away.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Couples trying remote teasing on a budget.',
+    pros: ['Two zones at once', 'Lowest-priced Lush set', 'Partner control near or far'],
+    cons: ['Lush 3 is the older model', 'Clamps are not for everyone'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-lush-4-and-gush-2-bundle': {
+    summary:
+      'Lush 4 and Gush 2, an interactive pair for partners with a vulva and a penis who want to control each other’s toys.',
+    body: [
+      'Each partner wears or holds their toy and can take control of the other’s in the Lovense app. It is a playful set for long-distance couples and for play in the same room.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Long-distance couples with one vulva owner and one penis owner.',
+    pros: ['One toy for each partner', 'Control each other’s toys', 'Hands-free on both sides'],
+    cons: ['Both partners need the app', 'Gush 2 is the earlier model'],
+    faqs: [BUNDLE, APP],
+  },
+  'lovense-gush-2-and-edge-2-bundle': {
+    summary:
+      'Gush 2 and Edge 2, a hands-free penis massager and an adjustable prostate massager at a lower price than the Motion set.',
+    body: [
+      'Gush 2 wraps around the shaft for hands-free vibration and Edge 2 adds internal stimulation. Use them together for a fuller sensation, or hand control to a partner.',
+      'Buying the set gets you both toys in one order, and each toy works on its own as well as together.',
+    ],
+    bestFor: 'Penis owners who want penis and prostate toys for less.',
+    pros: ['Hands-free external toy', 'Adjustable prostate massager', 'App and partner control'],
+    cons: ['Gush 2 lacks motion sensing', 'Prostate play takes practice'],
+    faqs: [BUNDLE, APP],
   },
 }

@@ -291,6 +291,18 @@ const ALL_COLLECTIONS: Collection[] = [
     guide: 'valentines-day-sex-toy-gifts',
   },
   {
+    slug: 'lovense-bundles',
+    name: 'Lovense Bundles',
+    group: 'Gift Ideas',
+    metaTitle: 'Lovense Bundles: Couples and Long-Distance Toy Sets',
+    metaDescription:
+      'Lovense bundles that pair two app-controlled toys, from Lush 4 and Ferri to Nora and Max 2. Matched sets for couples, long-distance play and gifts.',
+    intro:
+      'Some Lovense toys are made to work together. These sets pair two toys that connect in the same app, so partners can feel each other’s movements across the room or across the world. They are also an easy gift: one box, two toys, nothing to match up.',
+    rule: { tags: ['bundle'] },
+    guide: 'long-distance-sex-toys',
+  },
+  {
     slug: 'stocking-stuffers',
     name: 'Stocking Stuffers Under $30',
     group: 'Gift Ideas',

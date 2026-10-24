@@ -2,6 +2,7 @@
 // server routes so the full catalog never ships in the client bundle.
 import catalogData from '@/data/catalog.json'
 import lovenseData from '@/data/lovense.json'
+import bundleData from '@/data/lovense-bundles.json'
 import { PRODUCT_COPY } from '@/content/product-copy'
 import type { Catalog, CatalogProduct } from '@/types/catalog'
 import type { CollectionRule } from '@/content/collections'
@@ -10,7 +11,8 @@ import { merchandise } from '@/server/merchandising'
 // The store lists Lovense only. Lovense is a direct affiliate program with its
 // own product pages. The LuxuryToyX feed is still synced, but only to send old
 // product URLs to the closest live category (see retiredProductHub).
-const lovenseProducts = (lovenseData as Catalog).products
+// Bundles come from the affiliate dashboard (src/data/lovense-bundles.json), not the product sync.
+const lovenseProducts = [...(lovenseData as Catalog).products, ...(bundleData as Catalog).products]
 const lovenseHandles = new Set(lovenseProducts.map((p) => p.handle))
 const retiredCatalog = catalogData as Catalog
 const catalog: Catalog = {

@@ -1,0 +1,428 @@
+{
+  "syncedAt": "2026-10-24T21:05:00.000Z",
+  "source": "https://www.lovense.com/user/affiliate/myLinks",
+  "products": [
+    {
+      "handle": "lovense-nora-and-max-2-bundle",
+      "title": "Lovense Nora and Max 2 Bundle: Long-Distance Relationship Sex Toys",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 230,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/7bf3634b529443f5a71ff890bbb53488.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 230,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-max-2-and-edge-2-bundle",
+      "title": "Lovense Max 2 and Edge 2 Bundle: Penis and Prostate Toys",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 238,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/4cf1660359f64d308304e9c8074090e6.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 238,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-solace-pro-and-mission-2-bundle",
+      "title": "Lovense Solace Pro and Mission 2 Bundle: Long-Distance Real-Time Sync Couples Toys",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 319,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/87b30c57df634d23aec9485680ed18bc.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 319,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-solace-pro-and-edge-2-bundle",
+      "title": "Lovense Solace Pro and Edge 2 Bundle: Automatic Stroker and Prostate Massager Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 318,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/026c1817b990447fabc245e35f6e08ee.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 318,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-gush-2-motion-and-edge-2-bundle",
+      "title": "Lovense Gush 2 Motion and Edge 2 Bundle: Wearable Motion-Sensing Penis and Prostate Massager Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 238,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260703/0067acafa642412c993df43574b92863.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 238,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-4-and-ferri-bundle",
+      "title": "Lovense Lush 4 and Ferri Bundle: Wearable G-Spot and Clitoral Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 248,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/236dca2d20334c638ee15fccbe27049b.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 248,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-4-and-gemini-bundle",
+      "title": "Lovense Lush 4 and Gemini Bundle: G-Spot and Nipple Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 188,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260208/a7108f7e01f84b6d9280f4ae296650e7.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 188,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-gush-2-motion-and-diamo-bundle",
+      "title": "Lovense Gush 2 Motion and Diamo Bundle: Wearable Motion-Sensing Penis Massager and Cock Ring Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 238,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260707/dbfe09a4e82e4ff7ad638a4002bf4014.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 238,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-ferri-and-gemini-bundle",
+      "title": "Lovense Ferri and Gemini Bundle: Wearable Clitoral and Nipple Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 198,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260208/3c6a45085873402c9a75f9feacbccd35.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 198,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-4-and-hush-2-bundle",
+      "title": "Lovense Lush 4 and Hush 2 Bundle: Wearable G-Spot and Butt Plug Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 248,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260208/5f3e4dc4d94e4ac2a4216c2e4590f452.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 248,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-4-and-nora-bundle",
+      "title": "Lovense Lush 4 and Nora Bundle: Interactive G-Spot and Clitoral Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 248,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/7d65794b0386427cb75466467118db7a.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 248,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-ferri-and-lush-3-bundle",
+      "title": "Lovense Ferri and Lush 3 Bundle: Wearable G-Spot and Clitoral Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 238,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20240712/ef3544f7f62b445794c960d3b42450d0.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 238,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-3-and-gemini-bundle",
+      "title": "Lovense Lush 3 and Gemini Bundle: Discreet Wearable Vibrator Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 178,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260208/7db087d37b24481b9c0fc3f2a3e5a875.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 178,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-lush-4-and-gush-2-bundle",
+      "title": "Lovense Lush 4 and Gush 2 Bundle: G-Spot Vibrator and Penis Massager Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "vibrators",
+      "price": 248,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/81244247292142cb913a4ad39c4ac516.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 248,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    },
+    {
+      "handle": "lovense-gush-2-and-edge-2-bundle",
+      "title": "Lovense Gush 2 and Edge 2 Bundle: Penis and Prostate Massager Set",
+      "brand": "Lovense",
+      "productType": "Bundle",
+      "tags": [
+        "Bundle",
+        "App Controlled",
+        "Remote Control"
+      ],
+      "hub": "strokers",
+      "price": 238,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.lovense.com/UploadFiles/protocol/image/20260129/bb713a8f2e0944399d0a0992c9b07a5c.png"
+        }
+      ],
+      "variants": [
+        {
+          "title": "Default Title",
+          "price": 238,
+          "available": true
+        }
+      ],
+      "program": "lovense"
+    }
+  ],
+  "links": {
+    "lovense-nora-and-max-2-bundle": "https://www.lovense.com/r/2b3x02",
+    "lovense-max-2-and-edge-2-bundle": "https://www.lovense.com/r/emnm88",
+    "lovense-solace-pro-and-mission-2-bundle": "https://www.lovense.com/r/gwj7k6",
+    "lovense-solace-pro-and-edge-2-bundle": "https://www.lovense.com/r/3993f1",
+    "lovense-gush-2-motion-and-edge-2-bundle": "https://www.lovense.com/r/ru8ea9",
+    "lovense-lush-4-and-ferri-bundle": "https://www.lovense.com/r/6a0wbp",
+    "lovense-lush-4-and-gemini-bundle": "https://www.lovense.com/r/hdjt80",
+    "lovense-gush-2-motion-and-diamo-bundle": "https://www.lovense.com/r/9lq0kd",
+    "lovense-ferri-and-gemini-bundle": "https://www.lovense.com/r/nzycic",
+    "lovense-lush-4-and-hush-2-bundle": "https://www.lovense.com/r/qlo64b",
+    "lovense-lush-4-and-nora-bundle": "https://www.lovense.com/r/lubigm",
+    "lovense-ferri-and-lush-3-bundle": "https://www.lovense.com/r/mo56j6",
+    "lovense-lush-3-and-gemini-bundle": "https://www.lovense.com/r/tiycoh",
+    "lovense-lush-4-and-gush-2-bundle": "https://www.lovense.com/r/d5nn3q",
+    "lovense-gush-2-and-edge-2-bundle": "https://www.lovense.com/r/yrldac"
+  }
+}

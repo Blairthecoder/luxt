@@ -18,7 +18,7 @@ export const RETIRED_COLLECTIONS: Record<string, string> = {
   womanizer: '/shop/clitoral-vibrators',
   'we-vibe': '/shop/couples-sex-toys',
   'realistic-dildos': '/category/dildos',
-  'sex-toy-gift-sets': '/gifts',
+  'sex-toy-gift-sets': '/shop/lovense-bundles',
   'bondage-kits': '/category/bdsm',
   'strap-on-kits': '/category/strap-ons',
   'sex-swings': '/category/sex-machines-furniture',

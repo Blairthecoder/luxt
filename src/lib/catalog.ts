@@ -148,7 +148,7 @@ export const getGiftData = createServerFn({ method: 'GET' }).handler(async () =>
     if (prices.length) fromPrices[slug] = Math.min(...prices)
   }
   return {
-    giftSets: inStock('remote-control-vibrators').slice(0, 8).map(toSummary),
+    giftSets: inStock('lovense-bundles').slice(0, 8).map(toSummary),
     fromPrices,
   }
 })

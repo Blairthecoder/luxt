@@ -24,7 +24,7 @@ export const Route = createFileRoute('/gifts')({
     pageHead({
       title: `Sex Toy Gift Ideas for Her, Him & Couples | ${SITE.shortName}`,
       description:
-        'Lovense gift ideas that help someone feel cared for, sorted by who it is for and what you want to spend: gift guides, remote-control toys and stocking stuffers.',
+        'Lovense gift ideas that help someone feel cared for, sorted by who it is for and what you want to spend: gift guides, Lovense bundles and stocking stuffers.',
       path: '/gifts',
       jsonLd: [
         breadcrumbJsonLd([
@@ -115,9 +115,9 @@ function GiftsPage() {
         <section className="wrap pt-24 sm:pt-32 reveal">
           <div className="flex items-end justify-between gap-6 mb-8 sm:mb-10">
             <h2 className="display-m">
-              Remote-Control Gifts. <span className="text-graphite">Hand over the controls.</span>
+              Lovense Bundles. <span className="text-graphite">Two toys, one gift.</span>
             </h2>
-            <Link to="/shop/$slug" params={{ slug: 'remote-control-vibrators' }} className="more">
+            <Link to="/shop/$slug" params={{ slug: 'lovense-bundles' }} className="more">
               View All
             </Link>
           </div>
