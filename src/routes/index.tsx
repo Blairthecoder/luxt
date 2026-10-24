@@ -82,6 +82,7 @@ const START_HERE = [
   'kegel-exercises-for-pleasure',
   'sex-toys-for-beginners',
   'how-to-use-sex-toys-with-a-partner',
+  'how-to-clean-sex-toys',
 ]
 /** Topic chips: the pillars first, then the rest. */
 const CHIP_TOPICS = [
