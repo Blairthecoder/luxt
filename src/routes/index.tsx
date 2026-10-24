@@ -31,17 +31,22 @@ function itemList(name: string, products: ProductSummary[]) {
 
 export const Route = createFileRoute('/')({
   loader: () => getHomeData(),
-  head: ({ loaderData }) => {
-    const from = loaderData?.firstPicks.length ? Math.min(...loaderData.firstPicks.map((p) => p.price)) : null
-    return pageHead({
-      title: `Honest Sex Toy Reviews & Guides | ${SITE.shortName}`,
-      description: from
-        ? `Independent sex toy reviews, buying guides and head-to-head comparisons. Body-safe picks from ${formatPrice(from)}, plain answers and no judgment.`
-        : SITE.description,
+  head: ({ loaderData }) =>
+    pageHead({
+      title: `Adult Sex Education, Intimacy & Confidence | ${SITE.shortName}`,
+      description:
+        "Plain-English sex education for adults: guides to pleasure, intimacy and confidence, with a focus on women's empowerment, plus honest Lovense reviews.",
       path: '/',
       jsonLd: [
         organizationJsonLd(),
-        { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: SITE.name,
+          url: SITE.url,
+          description: SITE.description,
+          about: WELLNESS_TOPICS.map((slug) => TOPICS_BY_SLUG[slug]?.name).filter(Boolean),
+        },
         {
           '@context': 'https://schema.org',
           '@type': 'ItemList',
@@ -59,22 +64,35 @@ export const Route = createFileRoute('/')({
             )
           : []),
       ],
-    })
-  },
+    }),
   component: HomePage,
 })
 
-/** The lead story. Seasonal guides go first in POSTS, so this follows the editorial calendar. */
-const LEAD = POSTS[0]
-/** Sex education and confidence pillars, featured as one band below the hero. */
+/** Sex education, intimacy and confidence pillars. They lead the homepage; reviews support them. */
 const WELLNESS_TOPICS = ['sex-education', 'intimacy', 'body-confidence', 'womens-empowerment']
-const WELLNESS_LEAD = 'sexual-empowerment-for-women'
-const START_HERE = ['sex-toys-for-beginners', 'how-to-choose-your-first-vibrator', 'how-to-use-sex-toys-with-a-partner', 'how-to-clean-sex-toys']
+/** The lead story: the women's empowerment pillar guide, falling back to the first pillar guide. */
+const LEAD = POSTS_BY_SLUG['sexual-empowerment-for-women'] ?? POSTS.find((p) => p.topics.some((t) => WELLNESS_TOPICS.includes(t))) ?? POSTS[0]
+const WELLNESS_LEADS = ['clitoris-anatomy-guide', 'how-to-orgasm-for-women', 'how-to-feel-confident-in-bed']
+/** First four not already on the page. */
+const START_HERE = [
+  'how-to-feel-confident-in-bed',
+  'how-to-ask-for-what-you-want-in-bed',
+  'self-pleasure-guide-for-women',
+  'what-is-aftercare',
+  'kegel-exercises-for-pleasure',
+  'sex-toys-for-beginners',
+  'how-to-use-sex-toys-with-a-partner',
+]
+/** Topic chips: the pillars first, then the rest. */
+const CHIP_TOPICS = [
+  ...WELLNESS_TOPICS.map((slug) => TOPICS_BY_SLUG[slug]).filter((t) => t !== undefined),
+  ...TOPICS.filter((t) => !WELLNESS_TOPICS.includes(t.slug)),
+]
 
 const STANDARDS = [
-  ['Independent', 'Commissions never decide what we recommend. We name a cheaper option or a reason not to buy when that serves you.'],
+  ['Judgment-Free', 'We write about bodies, desire and relationships plainly and kindly, for every body and experience level.'],
   ['Original', 'Every guide and review is written by us. We never paste merchant descriptions.'],
-  ['Body-Safe First', 'We favor non-porous silicone and brands that list their materials and stand behind their toys.'],
+  ['Independent', 'Commissions never decide what we recommend. We name a cheaper option or a reason not to buy when that serves you.'],
 ] as const
 
 function SectionHead({ title, sub, to, params, cta }: { title: string; sub?: string; to: string; params?: Record<string, string>; cta: string }) {
@@ -110,14 +128,17 @@ function topicPosts(slug: string, limit: number, skip: Post[] = []) {
 function HomePage() {
   const { hubCounts, firstPicks, splurge, topPicks, topPicksLabel } = Route.useLoaderData()
   const hubs = HUBS.filter((hub) => (hubCounts[hub.slug] ?? 0) > 0)
-  const latest = latestPosts().filter((p) => p !== LEAD).slice(0, 5)
+  // The hero list sticks to the pillars so the top of the page matches the H1.
+  const latest = latestPosts()
+    .filter((p) => p !== LEAD && p.topics.some((t) => WELLNESS_TOPICS.includes(t)))
+    .slice(0, 5)
   const shown = [LEAD, ...latest]
   const buyingGuides = topicPosts('buying-guides', 3, shown)
   const comparisons = topicPosts('comparisons', 4)
   const giftGuides = topicPosts('gift-guides', 3, [...shown, ...buyingGuides])
-  const wellnessLead = POSTS_BY_SLUG[WELLNESS_LEAD]
+  const wellnessLead = WELLNESS_LEADS.map((slug) => POSTS_BY_SLUG[slug]).find((p) => p !== undefined && !shown.includes(p))
   // Each guide appears once across the four columns.
-  const wellnessShown: Post[] = wellnessLead ? [wellnessLead] : []
+  const wellnessShown: Post[] = [...shown, ...(wellnessLead ? [wellnessLead] : [])]
   const wellness = WELLNESS_TOPICS.map((slug) => TOPICS_BY_SLUG[slug])
     .filter((t) => t !== undefined)
     .map((topic) => {
@@ -126,18 +147,20 @@ function HomePage() {
       return { topic, posts }
     })
     .filter(({ posts }) => posts.length > 0)
-  const startHere = START_HERE.map((slug) => POSTS_BY_SLUG[slug]).filter((p) => p !== undefined)
+  const startHere = START_HERE.map((slug) => POSTS_BY_SLUG[slug])
+    .filter((p) => p !== undefined && !wellnessShown.includes(p))
+    .slice(0, 4)
 
   return (
     <div>
       <section className="wrap pt-3 sm:pt-10">
         <MobileSearchField className="mb-5" />
         <header className="max-w-4xl rise">
-          <p className="eyebrow text-graphite">{SITE.guidesName} · Independent Reviews & Guides</p>
-          <h1 className="mt-3 display-l max-sm:!text-[2.125rem]">Honest Sex Toy Reviews and Guides</h1>
+          <p className="eyebrow text-graphite">{SITE.guidesName} · Sex Ed, Intimacy & Confidence</p>
+          <h1 className="mt-3 display-l max-sm:!text-[2.125rem]">Sex Education, Intimacy and Confidence for Adults</h1>
           <p className="mt-4 lede text-graphite max-w-2xl">
-            Plain-English reviews, buying guides, comparisons and sex education to help you choose with confidence and
-            feel good in your body, solo or together.
+            Judgment-free guides to how pleasure works, how to talk about it and how to feel at home in your body, with a
+            focus on women's confidence and choice. When a toy can help, our honest reviews are a click away.
           </p>
         </header>
 
@@ -182,18 +205,18 @@ function HomePage() {
 
         <nav aria-label="Guide topics" className="mt-8 sm:mt-10">
           <ul className="flex gap-2 overflow-x-auto max-sm:-mx-5 max-sm:px-5 [scrollbar-width:none] sm:flex-wrap">
-            <li className="shrink-0">
-              <Link to="/reviews" className="chip !bg-ink !border-ink text-canvas">
-                Reviews
-              </Link>
-            </li>
-            {TOPICS.map((t) => (
+            {CHIP_TOPICS.map((t, i) => (
               <li key={t.slug} className="shrink-0">
-                <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className="chip">
+                <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className={i === 0 ? 'chip !bg-ink !border-ink text-canvas' : 'chip'}>
                   {t.name}
                 </Link>
               </li>
             ))}
+            <li className="shrink-0">
+              <Link to="/reviews" className="chip">
+                Reviews
+              </Link>
+            </li>
           </ul>
         </nav>
       </section>
@@ -203,7 +226,7 @@ function HomePage() {
           <div className="rounded-3xl bg-blush p-7 sm:p-12">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
               <div className="lg:col-span-5">
-                <p className="eyebrow text-graphite">Sex Ed, Intimacy & Confidence</p>
+                <p className="eyebrow text-graphite">Start With the Basics</p>
                 <h2 id="wellness-heading" className="mt-3 display-m">
                   The Sex Education Most of Us Never Got
                 </h2>
@@ -255,11 +278,56 @@ function HomePage() {
         </section>
       )}
 
+      <section className="mt-14 sm:mt-24 bg-plum text-canvas">
+        <div className="wrap py-16 sm:py-24 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5 reveal">
+            <p className="eyebrow text-petal">How We Write</p>
+            <h2 className="mt-4 display-m">Written by People Who Want You to Feel Good.</h2>
+            <p className="mt-5 text-canvas/70 leading-relaxed max-w-md">
+              {SITE.editorialTeam} write the way a trusted friend would talk: plainly, kindly and without judgment. Our
+              guides start with your body, your relationships and your confidence. When we recommend a toy, we compare
+              materials, noise, power and price so you can choose without guesswork.
+            </p>
+            <ul className="mt-8 space-y-4 max-w-md">
+              {STANDARDS.map(([title, body]) => (
+                <li key={title}>
+                  <span className="block text-sm font-semibold">{title}</span>
+                  <span className="block mt-0.5 text-sm text-canvas/60 leading-relaxed">{body}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/editorial-policy" className="btn btn-light">
+                Our Editorial Policy
+              </Link>
+              <Link to="/about" className="btn-ghost border-canvas/30 text-canvas hover:border-canvas">
+                About Us
+              </Link>
+            </div>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7 reveal">
+            <p className="eyebrow text-petal">New Here? Start With These</p>
+            <ul className="mt-4 border-t border-plum-line">
+              {startHere.map((post) => (
+                <li key={post.slug} className="border-b border-plum-line">
+                  <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block py-6">
+                    <span className="block font-display text-xl sm:text-2xl font-semibold tracking-[-0.02em] text-canvas/90 group-hover:text-canvas">
+                      {post.title}
+                    </span>
+                    <span className="mt-1.5 block text-sm text-canvas/60 leading-relaxed line-clamp-2">{post.excerpt}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {topPicks.length > 0 && (
         <section className="wrap pt-14 sm:pt-24 reveal">
           <SectionHead
-            title={topPicksLabel === 'Best Sellers' ? 'Best Sellers We Have Reviewed' : 'Our Top Picks'}
-            sub="The toys we recommend most, with our full review a click away."
+            title={topPicksLabel === 'Best Sellers' ? 'Best Sellers We Have Reviewed' : 'Toys Our Guides Recommend'}
+            sub="Reviewed picks that support what our guides teach, with the full review a click away."
             to="/reviews"
             cta="All Reviews"
           />
@@ -383,72 +451,39 @@ function HomePage() {
         </section>
       )}
 
-      <section className="mt-16 sm:mt-24 bg-plum text-canvas">
-        <div className="wrap py-16 sm:py-24 grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5 reveal">
-            <p className="eyebrow text-petal">How We Review</p>
-            <h2 className="mt-4 display-m">Picked and Explained by People Who Want You to Feel Good.</h2>
-            <p className="mt-5 text-canvas/70 leading-relaxed max-w-md">
-              {SITE.editorialTeam} compare materials, noise, power and price so you can choose without guesswork. We
-              write the way a trusted friend would talk: plainly, kindly and without judgment.
-            </p>
-            <ul className="mt-8 space-y-4 max-w-md">
-              {STANDARDS.map(([title, body]) => (
-                <li key={title}>
-                  <span className="block text-sm font-semibold">{title}</span>
-                  <span className="block mt-0.5 text-sm text-canvas/60 leading-relaxed">{body}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/editorial-policy" className="btn btn-light">
-                Our Editorial Policy
-              </Link>
-              <Link to="/about" className="btn-ghost border-canvas/30 text-canvas hover:border-canvas">
-                About Us
-              </Link>
-            </div>
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7 reveal">
-            <p className="eyebrow text-petal">New Here? Start With These</p>
-            <ul className="mt-4 border-t border-plum-line">
-              {startHere.map((post) => (
-                <li key={post.slug} className="border-b border-plum-line">
-                  <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block py-6">
-                    <span className="block font-display text-xl sm:text-2xl font-semibold tracking-[-0.02em] text-canvas/90 group-hover:text-canvas">
-                      {post.title}
-                    </span>
-                    <span className="mt-1.5 block text-sm text-canvas/60 leading-relaxed line-clamp-2">{post.excerpt}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <section className="wrap pt-14 sm:pt-24 grid lg:grid-cols-12 gap-10 reveal">
-        <h2 className="lg:col-span-4 display-m">Reviews and Advice for Every Body</h2>
+        <h2 className="lg:col-span-4 display-m">Sex Education and Honest Advice for Every Body</h2>
         <div className="lg:col-span-8 grid md:grid-cols-2 gap-x-10 gap-y-5 text-[0.9375rem] leading-relaxed text-[#3a3a3c]">
           <p>
-            {SITE.name} is an independent review site. We read the manuals, check the materials and compare the specs so you
-            do not have to, then tell you who each toy suits. Start with our{' '}
-            <Link to="/reviews" className="underline underline-offset-4">
-              Lovense reviews
+            {SITE.name} is an independent guide to sex, intimacy and confidence for adults. Learn the basics in{' '}
+            <Link to="/blog/topic/$topic" params={{ topic: 'sex-education' }} className="underline underline-offset-4">
+              sex education for adults
             </Link>
-            , the{' '}
-            <Link to="/blog/topic/$topic" params={{ topic: 'buying-guides' }} className="underline underline-offset-4">
-              best-of buying guides
+            , feel closer with{' '}
+            <Link to="/blog/topic/$topic" params={{ topic: 'intimacy' }} className="underline underline-offset-4">
+              intimacy and communication guides
             </Link>{' '}
-            or a{' '}
-            <Link to="/blog/topic/$topic" params={{ topic: 'comparisons' }} className="underline underline-offset-4">
-              head-to-head comparison
+            or explore{' '}
+            <Link to="/blog/topic/$topic" params={{ topic: 'womens-empowerment' }} className="underline underline-offset-4">
+              women's sexual empowerment
             </Link>
             .
           </p>
           <p>
-            Toys are sold and shipped by the retailer you buy from, and we may earn a commission when you buy through our
-            links. That never changes what we recommend. Pair any toy with a{' '}
+            When a toy can help, our{' '}
+            <Link to="/reviews" className="underline underline-offset-4">
+              Lovense reviews
+            </Link>
+            ,{' '}
+            <Link to="/blog/topic/$topic" params={{ topic: 'buying-guides' }} className="underline underline-offset-4">
+              buying guides
+            </Link>{' '}
+            and{' '}
+            <Link to="/blog/topic/$topic" params={{ topic: 'comparisons' }} className="underline underline-offset-4">
+              comparisons
+            </Link>{' '}
+            tell you who each one suits. Toys are sold and shipped by the retailer, and we may earn a commission when you
+            buy through our links. That never changes what we recommend. Pair any toy with a{' '}
             <Link to="/blog/$slug" params={{ slug: 'best-lube-for-sex-toys' }} className="underline underline-offset-4">
               lube that suits it
             </Link>{' '}

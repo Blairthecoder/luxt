@@ -33,7 +33,7 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 
 ## Editorial voice
 
-The site reads as a review publication. Navigation leads with Reviews, Buying Guides, Comparisons, Gift Guides and Learn; the catalog sits under Browse Toys. Outbound buttons say "Check Price", never "Buy" or "Shop Now". The homepage is a lead story, the latest guides and reviewed picks; only products with original copy appear there. Never claim hands-on testing or invent ratings: reviews are based on manufacturer specs, manuals and materials, as the editorial policy says. Guides may cover brands we do not link to (Fleshlight, Tenga, Womanizer, LELO); mention them as plain text and point to the closest Lovense review.
+The site is an editorial publication on sex education, intimacy, women's empowerment and confidence; toy reviews support the guides. Navigation leads with Reviews, Buying Guides, Comparisons, Gift Guides and Learn; the catalog sits under Browse Toys. Outbound buttons say "Check Price", never "Buy" or "Shop Now". The homepage H1 and title target adult sex education, intimacy and confidence; it leads with the women's empowerment pillar guide, the latest guides, the four-pillar band and "How We Write", then reviewed picks and buying guides. Only products with original copy appear there. Never claim hands-on testing or invent ratings: reviews are based on manufacturer specs, manuals and materials, as the editorial policy says. Guides may cover brands we do not link to (Fleshlight, Tenga, Womanizer, LELO); mention them as plain text and point to the closest Lovense review.
 
 ## Design
 
