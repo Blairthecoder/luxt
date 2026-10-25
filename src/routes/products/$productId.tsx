@@ -8,7 +8,8 @@ import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { FaqAccordion } from '@/components/FaqAccordion'
 import { HowToUse } from '@/components/HowToUse'
 import { HUBS_BY_SLUG } from '@/content/hubs'
-import { postsForHub } from '@/content/posts'
+import { POSTS_BY_SLUG, postsForHub } from '@/content/posts'
+import { guidesForProduct } from '@/content/product-links'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
@@ -121,7 +122,12 @@ function ProductPage() {
   const merchant = getProgram(product.program).merchantName
   const ownStore = product.program === 'shopify'
   const options = product.variants.filter((v) => v.title !== 'Default Title')
-  const guides = postsForHub(hub.slug)
+  // Guides that feature this product come first, then guides for its category.
+  const guides = [
+    ...new Set([...guidesForProduct(product.handle).map((slug) => POSTS_BY_SLUG[slug]), ...postsForHub(hub.slug)]),
+  ]
+    .filter((post) => post !== undefined)
+    .slice(0, 6)
   const highlights = copy ? [] : productHighlights(product)
   const savings = product.compareAtPrice ? product.compareAtPrice - product.price : 0
 
@@ -410,7 +416,7 @@ function ProductPage() {
         {guides.length > 0 && (
           <div>
             <h2 className="display-m">
-              Read the Guide. <span className="text-graphite">Nightstand Notes.</span>
+              Read Next. <span className="text-graphite">Nightstand Notes.</span>
             </h2>
             <ul className="mt-10 border-t border-line">
               {guides.map((post) => (
