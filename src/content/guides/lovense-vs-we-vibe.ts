@@ -109,6 +109,8 @@ Both brands use body-safe silicone. Wash with warm water and mild soap or a toy 
 - **You prefer a physical remote:** We-Vibe.
 - **A ring for both of you:** a We-Vibe Pivot or Verge, or see all [couples sex toys](/shop/couples-sex-toys).
 
+Deciding between Lovense wearables? See [Lush 4 vs. Lush 3](/blog/lovense-lush-4-vs-lush-3) and [Lush vs. Ferri](/blog/lovense-lush-vs-ferri).
+
 Both brands often take part in seasonal sales. Our [Black Friday guide](/blog/black-friday-sex-toy-deals) explains how to judge a markdown before you buy.
 `,
   picks: {

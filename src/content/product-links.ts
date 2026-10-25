@@ -27,6 +27,8 @@ export interface PageProduct {
 /** Most specific phrase first: the renderer tries them in order. */
 export const PRODUCT_ANCHORS: Record<string, string[]> = {
   // Lovense
+  'lovense-lush-3': ['Lovense Lush 3', 'Lush 3'],
+  'lovense-lush-mini': ['Lovense Lush Mini', 'Lush Mini'],
   'lovense-lush-4': ['Lovense Lush 4', 'Lush 4', 'Lovense Lush', 'wearable G-spot vibrator', 'wearable vibrator', 'remote-control vibrator', 'remote control vibrator'],
   'lovense-ambi': ['Lovense Ambi', 'Ambi', 'bullet vibrator', 'bullet vibe'],
   'lovense-exomoon': ['Lovense Exomoon', 'Exomoon', 'lipstick vibrator'],
@@ -150,6 +152,11 @@ export const GUIDE_PRODUCTS: Record<string, PageProduct[]> = {
   'womanizer-vs-lelo-sona': [p('lovense-fizz-dual-head-clitoral-vibrator'), p('lovense-water-based-lubricant'), p('lovense-toy-cleaner')],
   'lovense-vs-we-vibe': [p('lovense-lush-4'), p('lovense-gush-2-motion'), p('lovense-max-2'), p('lovense-edge-2'), p('lovense-ferri')],
   'best-couples-sex-toys': [p('lovense-dolce'), p('lovense-lapis'), p('lovense-gemini'), p('lovense-water-based-lubricant')],
+  'best-lovense-toy-for-beginners': [p('lovense-exomoon'), p('lovense-dolce'), p('lovense-water-based-lubricant'), p('lovense-toy-cleaner')],
+  'lovense-lush-4-vs-lush-3': [p('lovense-ferri'), p('lovense-water-based-lubricant'), p('lovense-toy-cleaner')],
+  'lovense-lush-vs-ferri': [p('lovense-lush-mini'), p('lovense-gemini'), p('lovense-water-based-lubricant')],
+  'best-app-controlled-vibrators': [p('lovense-osci-3'), p('lovense-max-2'), p('lovense-vulse'), p('lovense-water-based-lubricant')],
+  'best-quiet-vibrators': [p('lovense-water-based-lubricant'), p('lovense-toy-cleaner')],
   // Gift guides
   'sex-toy-gifts-for-her': [p('lace-kimono-robe-babydoll'), p('green-daisy-lace-babydoll-slip'), p('lovense-lush-4'), p('lovense-water-based-lubricant')],
   'sex-toy-gifts-for-him': [p('lovense-gush-2-motion'), p('lovense-water-based-lubricant'), p('lovense-toy-cleaner')],
@@ -157,6 +164,7 @@ export const GUIDE_PRODUCTS: Record<string, PageProduct[]> = {
   'valentines-day-sex-toy-gifts': [p('alessandra-lace-mesh-teddy', undefined, 'Lingerie in their size'), p('lovense-tenera-2'), p('lovense-water-based-lubricant'), p('lovense-ambi')],
   'naughty-stocking-stuffers': [p('lovense-ambi'), p('lovense-diamo'), p('lovense-toy-cleaner'), p('lace-kimono-robe-babydoll')],
   'black-friday-sex-toy-deals': [p('lovense-tenera-2'), p('lovense-dolce'), p('lovense-diamo'), p('lovense-toy-cleaner')],
+  'lovense-black-friday': [p('lovense-domi-2'), p('lovense-tenera-2'), p('lovense-water-based-lubricant'), p('lovense-toy-cleaner')],
   'best-time-to-buy-sex-toys': [p('lovense-tenera-2'), p('lovense-lush-4'), p('lovense-water-based-lubricant')],
   // Creators
   'best-sex-toys-for-adult-content-creators': [p('lovense-webcam-2'), p('lovense-max-2'), p('lovense-edge-2'), p('lovense-tenera-2')],

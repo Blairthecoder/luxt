@@ -105,7 +105,7 @@ Or browse the [Gift Shop](/gifts) for everything giftable in one place.
 
 ## If You Are New to Toys
 
-Sales can make a first purchase feel urgent. It does not need to be. A simple, body-safe first toy from a well-known brand is affordable at any time of year, and our guide to [sex toys for beginners](/blog/sex-toys-for-beginners) explains where to start. The [sex toys for beginners](/shop/sex-toys-for-beginners) collection is a good shortlist, sale or not.
+Sales can make a first purchase feel urgent. It does not need to be. A simple, body-safe first toy from a well-known brand is affordable at any time of year, and our guide to [sex toys for beginners](/blog/sex-toys-for-beginners) explains where to start. The [sex toys for beginners](/shop/sex-toys-for-beginners) collection is a good shortlist, sale or not. If you have your eye on Lovense in particular, our [Lovense Black Friday](/blog/lovense-black-friday) shortlist covers which toys to watch.
 
 ## Discretion
 

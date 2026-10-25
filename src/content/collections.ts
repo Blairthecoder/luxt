@@ -85,6 +85,7 @@ const ALL_COLLECTIONS: Collection[] = [
       'An app-connected toy lets you shape the feeling with custom patterns or hand the controls to a partner anywhere in the world, which can make distance feel a lot smaller. Check that the brand app supports your phone before you buy.',
     rule: { text: 'app controlled' },
     guide: 'long-distance-sex-toys',
+    guides: ['best-app-controlled-vibrators'],
   },
   {
     slug: 'rabbit-vibrators',
@@ -264,7 +265,7 @@ const ALL_COLLECTIONS: Collection[] = [
     intro:
       'Lovense specializes in app-controlled toys that help couples stay close across any distance. Share the controls with a partner, or set your own patterns for solo play.',
     rule: { brands: ['lovense'] },
-    guides: ['lovense-vs-we-vibe', 'long-distance-sex-toys'],
+    guides: ['lovense-vs-we-vibe', 'best-lovense-toy-for-beginners', 'lovense-lush-4-vs-lush-3', 'long-distance-sex-toys'],
   },
   {
     slug: 'we-vibe',
@@ -340,6 +341,7 @@ const ALL_COLLECTIONS: Collection[] = [
       'Handing the remote to someone you trust is playful and a little thrilling. Wearable panty vibes suit date nights out, and app-controlled models keep the connection going from anywhere.',
     rule: { hubs: ['vibrators', 'couples'], title: 'remote|app' },
     guide: 'long-distance-sex-toys',
+    guides: ['lovense-lush-vs-ferri', 'best-app-controlled-vibrators'],
   },
   {
     slug: 'thrusting-vibrators',
@@ -483,7 +485,8 @@ const ALL_COLLECTIONS: Collection[] = [
       brands: ['lovense'],
       excludeTitle: 'thrust|strap|harness|attachment|remote$',
     },
-    guide: 'how-to-choose-your-first-vibrator',
+    guide: 'best-quiet-vibrators',
+    guides: ['how-to-choose-your-first-vibrator'],
   },
   {
     slug: 'sex-toys-for-beginners',
