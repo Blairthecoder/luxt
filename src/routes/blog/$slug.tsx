@@ -40,13 +40,16 @@ export const Route = createFileRoute('/blog/$slug')({
       html: rendered.html,
       topPick: rendered.topPick,
       products: rendered.products,
+      itemList: rendered.itemList,
       hasPicks: Boolean(_picks) || rendered.products.length > 0,
     }
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    const { post } = loaderData
+    const { post, itemList } = loaderData
     const path = `/blog/${post.slug}`
+    // Best-of roundups and comparisons describe their picks cards as a ranked list.
+    const listed = post.topics.some((t) => t === 'buying-guides' || t === 'comparisons') && itemList.length > 1
     return pageHead({
       title: `${post.metaTitle} | ${SITE.shortName}`,
       description: post.metaDescription,
@@ -76,6 +79,23 @@ export const Route = createFileRoute('/blog/$slug')({
             : {}),
           publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
         },
+        ...(listed
+          ? [
+              {
+                '@context': 'https://schema.org',
+                '@type': 'ItemList',
+                name: post.title,
+                itemListOrder: 'https://schema.org/ItemListOrderAscending',
+                numberOfItems: itemList.length,
+                itemListElement: itemList.map((item, i) => ({
+                  '@type': 'ListItem',
+                  position: i + 1,
+                  name: item.name,
+                  url: absoluteUrl(`/products/${item.handle}`),
+                })),
+              },
+            ]
+          : []),
         ...(post.faqs?.length
           ? [
               {

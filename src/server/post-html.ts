@@ -95,11 +95,15 @@ export type TopPick = {
   note: string
 }
 
+/** A picks card in page order, for the guide's ItemList schema. */
+export type PickListItem = { handle: string; name: string }
+
 export async function renderPostHtml(
   post: Post,
-): Promise<{ html: string; topPick: TopPick | null; products: PageProductCard[] }> {
+): Promise<{ html: string; topPick: TopPick | null; products: PageProductCard[]; itemList: PickListItem[] }> {
   const used = new Set<string>()
   let topPick: TopPick | null = null
+  const itemList: PickListItem[] = []
   let html = await marked.parse(post.body.trim())
   // Wide tables scroll inside their own box instead of pushing the page sideways on small screens.
   html = html.split('<table>').join('<div class="table-scroll"><table>').split('</table>').join('</table></div>')
@@ -109,6 +113,7 @@ export async function renderPostHtml(
     if (!block) return ''
     const picks = resolvePicks(block, used)
     if (!picks.length) return ''
+    for (const { product } of picks) itemList.push({ handle: product.handle, name: product.title })
     if (!topPick) {
       const { slot, product } = picks[0]
       topPick = {
@@ -146,6 +151,6 @@ export async function renderPostHtml(
   html = linkProductMentions(html, mapped).html
   const products = pageProductCards(mapped, used)
 
-  return { html, topPick, products }
+  return { html, topPick, products, itemList }
 }
 

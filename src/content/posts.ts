@@ -32,6 +32,12 @@ import { MENOPAUSE_TOYS } from '@/content/guides/sex-toys-for-menopause'
 import { WOMANIZER_VS_SONA } from '@/content/guides/womanizer-vs-lelo-sona'
 import { LOVENSE_VS_WE_VIBE } from '@/content/guides/lovense-vs-we-vibe'
 import { LE_WAND_VS_MAGIC_WAND } from '@/content/guides/le-wand-vs-magic-wand'
+import { BEST_LOVENSE_BEGINNERS } from '@/content/guides/best-lovense-toy-for-beginners'
+import { LUSH_4_VS_LUSH_3 } from '@/content/guides/lovense-lush-4-vs-lush-3'
+import { LUSH_VS_FERRI } from '@/content/guides/lovense-lush-vs-ferri'
+import { BEST_APP_VIBRATORS } from '@/content/guides/best-app-controlled-vibrators'
+import { BEST_QUIET_VIBRATORS } from '@/content/guides/best-quiet-vibrators'
+import { LOVENSE_BLACK_FRIDAY } from '@/content/guides/lovense-black-friday'
 import { BEGINNERS_GUIDE } from '@/content/guides/sex-toys-for-beginners'
 import { BLACK_FRIDAY_DEALS } from '@/content/guides/black-friday-sex-toy-deals'
 import { BUYING_DISCREETLY } from '@/content/guides/buying-sex-toys-discreetly'
@@ -136,6 +142,12 @@ export const POSTS: Post[] = [
   WOMANIZER_VS_SONA,
   LOVENSE_VS_WE_VIBE,
   LE_WAND_VS_MAGIC_WAND,
+  BEST_LOVENSE_BEGINNERS,
+  LUSH_4_VS_LUSH_3,
+  LUSH_VS_FERRI,
+  BEST_APP_VIBRATORS,
+  BEST_QUIET_VIBRATORS,
+  LOVENSE_BLACK_FRIDAY,
   BEGINNERS_GUIDE,
   BLACK_FRIDAY_DEALS,
   BUYING_DISCREETLY,

@@ -28,7 +28,7 @@ export const TOPICS: Topic[] = [
     name: 'Comparisons',
     metaTitle: 'Sex Toy Comparisons: Brand vs. Brand, Head to Head',
     metaDescription:
-      'Head-to-head sex toy comparisons: Lovense vs. We-Vibe, Womanizer vs. LELO SONA, Le Wand vs. Magic Wand and more, compared on feel, noise, app and price.',
+      'Head-to-head sex toy comparisons: Lovense vs. We-Vibe, Lush 4 vs. Lush 3, Womanizer vs. LELO SONA and more, compared on feel, noise, app and price.',
     intro:
       'Two popular choices, side by side. We compare feel, noise, build, app and price, then tell you which one we would buy and who should pick the other.',
     collections: ['app-controlled-sex-toys', 'wand-vibrators', 'clitoral-vibrators', 'g-spot-vibrators', 'automatic-strokers'],

@@ -129,6 +129,7 @@ Once you know what you enjoy, a second toy should add something new:
 - If you want internal sensation, try a [G-spot vibrator](/shop/g-spot-vibrators).
 - If you love your stroker, try an [automatic stroker](/shop/automatic-strokers).
 - If you want to play together, see our guide to the [best couples sex toys](/blog/best-couples-sex-toys).
+- If you want a connected toy, see the [best Lovense toy for beginners](/blog/best-lovense-toy-for-beginners).
 `,
   picks: {
     vulva: {

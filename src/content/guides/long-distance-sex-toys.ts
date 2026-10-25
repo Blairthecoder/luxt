@@ -68,7 +68,7 @@ The toy is a tool. What makes a long-distance session good is the connection:
 
 ## Beyond the Distance
 
-Even if you live together, an app toy can add something new. See [how to spice up your marriage](/blog/how-to-spice-up-your-marriage) and the [best couples sex toys](/blog/best-couples-sex-toys) for other ways to keep things interesting.
+Even if you live together, an app toy can add something new. Our [best app-controlled vibrators](/blog/best-app-controlled-vibrators) guide picks one for every way of playing. See [how to spice up your marriage](/blog/how-to-spice-up-your-marriage) and the [best couples sex toys](/blog/best-couples-sex-toys) for other ways to keep things interesting.
 
 ## Care
 
