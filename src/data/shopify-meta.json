@@ -1,6 +1,8 @@
 {
-  "syncedAt": null,
-  "shopName": "",
-  "storeUrl": "",
-  "hubs": {}
+  "syncedAt": "2026-10-25T04:00:00Z",
+  "shopName": "Nightstand Supply Shop",
+  "storeUrl": "https://pricgj-tf.myshopify.com",
+  "hubs": {
+    "lingerie": 18
+  }
 }
