@@ -28,6 +28,7 @@ export const Route = createFileRoute('/sitemap.xml')({
         }
         urls.push({ loc: absoluteUrl('/gifts'), lastmod })
         urls.push({ loc: absoluteUrl('/reviews'), lastmod })
+        urls.push({ loc: absoluteUrl('/confidence-kit') })
         for (const path of ['/about', '/editorial-policy', '/disclosure', '/partners', '/contact']) {
           urls.push({ loc: absoluteUrl(path) })
         }

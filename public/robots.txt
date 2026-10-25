@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /go/
+Disallow: /api/
 # Filtered and sorted listing views are noindex duplicates of the clean listing.
 # ?page=N stays crawlable.
 Disallow: /*?*type=

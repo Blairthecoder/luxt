@@ -2,6 +2,7 @@ import { HeadContent, Link, Scripts, createRootRoute } from '@tanstack/react-rou
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { AgeGate } from '@/components/AgeGate'
+import { KitSlideIn } from '@/components/KitSlideIn'
 import { SITE, absoluteUrl } from '@/config/site'
 import '../styles.css'
 // Self-hosted variable fonts (latin subset): no render-blocking third-party stylesheet.
@@ -101,6 +102,7 @@ document.addEventListener('click', function(e){
         <main className="flex-1">{children}</main>
         <Footer />
         <AgeGate />
+        <KitSlideIn />
         <Scripts />
       </body>
     </html>
