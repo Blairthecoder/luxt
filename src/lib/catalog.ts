@@ -144,6 +144,39 @@ export const getGiftData = createServerFn({ method: 'GET' }).handler(async () =>
   }
 })
 
+const LOVENSE_WATCH = ['lovense-lush-4', 'lovense-nora', 'lovense-ferri', 'lovense-dolce', 'lovense-tenera-2', 'lovense-hyphy']
+
+/** The Black Friday deals page: our lingerie bundles and markdowns, then Lovense bundles and toys. */
+export const getDealsData = createServerFn({ method: 'GET' }).handler(async () => {
+  const store = await import('@/server/catalog-store')
+  const { toSummary } = await import('@/server/listing')
+  const { COLLECTIONS_BY_SLUG } = await import('@/content/collections')
+  const live = (p: { handle: string; available: boolean; images: unknown[] }) => p.available && p.images.length > 0 && store.hasCopy(p.handle)
+  const markdown = (p: { price: number; compareAtPrice?: number }) => (p.compareAtPrice && p.compareAtPrice > p.price ? 1 - p.price / p.compareAtPrice : 0)
+  const isBundle = (p: { tags: string[] }) => p.tags.some((t) => t.trim().toLowerCase() === 'bundle')
+  const lingerie = store.productsInHub('lingerie').filter(live)
+  const lovense = store.allProducts().filter((p) => p.brand.toLowerCase() === 'lovense' && live(p))
+  const lovenseBundles = COLLECTIONS_BY_SLUG['lovense-bundles']
+  return {
+    lingerieBundles: lingerie.filter(isBundle).map(toSummary),
+    // Only products the shop itself has marked down, deepest markdown first.
+    lingerieSale: lingerie
+      .filter((p) => !isBundle(p) && markdown(p) > 0)
+      .sort((a, b) => markdown(b) - markdown(a))
+      .slice(0, 8)
+      .map(toSummary),
+    lovenseSale: lovense.filter((p) => markdown(p) > 0).sort((a, b) => markdown(b) - markdown(a)).slice(0, 8).map(toSummary),
+    lovenseBundles: lovenseBundles
+      ? store.productsMatchingRule(lovenseBundles.slug, lovenseBundles.rule).filter(live).slice(0, 4).map(toSummary)
+      : [],
+    // Shown when Lovense has nothing marked down in our latest sync: the gift-friendly favorites worth checking during the sale.
+    lovenseWatch: LOVENSE_WATCH.map((handle) => lovense.find((p) => p.handle === handle))
+      .filter((p) => p !== undefined)
+      .slice(0, 4)
+      .map(toSummary),
+  }
+})
+
 /** Live site totals for the Partners page, counted from the catalog and content files. */
 export const getSiteStats = createServerFn({ method: 'GET' }).handler(async () => {
   const store = await import('@/server/catalog-store')

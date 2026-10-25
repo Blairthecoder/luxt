@@ -101,6 +101,13 @@ const STANDARDS = [
   ['Independent', 'Commissions never decide what we recommend. We name a cheaper option or a reason not to buy when that serves you.'],
 ] as const
 
+/** The Black Friday and gifts band runs through Cyber Monday week, then comes down on its own. */
+const HOLIDAY_BAND_ENDS = Date.parse('2026-12-02T08:00:00Z')
+
+function showHolidayBand() {
+  return Date.now() < HOLIDAY_BAND_ENDS
+}
+
 function SectionHead({ title, sub, to, params, cta }: { title: string; sub?: string; to: string; params?: Record<string, string>; cta: string }) {
   return (
     <div className="section-head">
@@ -226,6 +233,31 @@ function HomePage() {
           </ul>
         </nav>
       </section>
+
+      {showHolidayBand() && (
+        <section aria-labelledby="holiday-heading" className="wrap pt-10 sm:pt-16 reveal">
+          <div className="rounded-3xl bg-plum text-canvas p-7 sm:p-12 grid lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-7">
+              <p className="eyebrow text-petal">Black Friday & Gifts</p>
+              <h2 id="holiday-heading" className="mt-3 display-m">
+                Gifts Worth Unwrapping, at Honest Prices
+              </h2>
+              <p className="mt-4 text-canvas/70 leading-relaxed max-w-xl">
+                Lingerie bundles that ship in one parcel, lingerie markdowns from our own shop and Lovense sale prices,
+                all shown live. No made-up discounts.
+              </p>
+            </div>
+            <div className="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end">
+              <Link to="/deals" className="btn btn-light">
+                See the Deals
+              </Link>
+              <Link to="/gifts" className="btn-ghost border-canvas/30 text-canvas hover:border-canvas">
+                Gift Shop
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section aria-labelledby="pillars-heading" className="wrap pt-14 sm:pt-24 reveal">
         <div className="section-head">
