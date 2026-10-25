@@ -54,6 +54,8 @@ export type ProductSummary = Pick<
   'handle' | 'title' | 'brand' | 'hub' | 'price' | 'compareAtPrice' | 'available'
 > & {
   image?: string
+  /** Alt text for `image` from the store, when set. */
+  imageAlt?: string
   /** True when the product page carries original copy (and is indexable). */
   hasCopy?: boolean
 }

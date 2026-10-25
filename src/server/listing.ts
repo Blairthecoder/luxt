@@ -137,6 +137,7 @@ export function toSummary(p: CatalogProduct): ProductSummary {
     compareAtPrice: p.compareAtPrice,
     available: p.available,
     image: p.images[0]?.src,
+    imageAlt: p.images[0]?.alt,
     hasCopy: p.handle in PRODUCT_COPY,
   }
 }

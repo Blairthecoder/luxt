@@ -2,6 +2,8 @@ export interface CatalogImage {
   src: string
   width?: number
   height?: number
+  /** Alt text from the store's media library, when set. */
+  alt?: string
 }
 
 export interface CatalogVariant {

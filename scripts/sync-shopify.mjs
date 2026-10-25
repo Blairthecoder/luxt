@@ -36,12 +36,18 @@ const HUB = process.env.SHOPIFY_HUB || 'lingerie'
 const API_VERSION = '2025-07'
 const PROGRAM = 'shopify'
 const UTM = 'utm_source=nightstandsupply&utm_medium=referral&utm_campaign=lingerie'
+const MAX_IMAGES = 8
+// Virtual-model renders from supplier listing tools (".../renders/..." in the
+// file name). They read as AI-generated next to real photography, so the site
+// shows the supplier's real photos instead and only falls back to renders when
+// a product has nothing else.
+const RENDER = /(^|[_/])(2F)?renders(_2F|\/)/i
 
 const PRODUCT_FIELDS = `
   handle title vendor productType tags updatedAt onlineStoreUrl availableForSale
   priceRange { minVariantPrice { amount } }
   compareAtPriceRange { minVariantPrice { amount } }
-  images(first: 8) { nodes { url width height } }
+  images(first: 20) { nodes { url width height altText } }
   variants(first: 100) { nodes { id title availableForSale price { amount } compareAtPrice { amount } } }
 `
 
@@ -109,6 +115,11 @@ function withUtm(url) {
   return `${url}${url.includes('?') ? '&' : '?'}${UTM}`
 }
 
+function pickImages(nodes) {
+  const real = nodes.filter((img) => !RENDER.test(img.url.split('?')[0]))
+  return (real.length ? real : nodes).slice(0, MAX_IMAGES)
+}
+
 function toProduct(node) {
   const price = money(node.priceRange.minVariantPrice) ?? 0
   const compareAt = money(node.compareAtPriceRange?.minVariantPrice)
@@ -122,7 +133,12 @@ function toProduct(node) {
     price,
     ...(compareAt && compareAt > price ? { compareAtPrice: compareAt } : {}),
     available: node.availableForSale,
-    images: node.images.nodes.map((img) => ({ src: img.url, width: img.width, height: img.height })),
+    images: pickImages(node.images.nodes).map((img) => ({
+      src: img.url,
+      width: img.width,
+      height: img.height,
+      ...(img.altText ? { alt: img.altText } : {}),
+    })),
     variants: node.variants.nodes.map((v) => {
       const vPrice = money(v.price) ?? price
       const vCompare = money(v.compareAtPrice)

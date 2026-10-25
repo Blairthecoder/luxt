@@ -8,7 +8,7 @@ import type { ListingFilters, ListingResult, ProductSummary } from '@/lib/listin
 import { ProductGrid } from '@/components/ProductCard'
 import type { Post } from '@/content/posts'
 import type { ListingExtra } from '@/content/listing-extras'
-import { getOptimizedImageUrl } from '@/lib/image'
+import { getOptimizedImageUrl, productImageClass } from '@/lib/image'
 
 type SubcategoryTile = { slug: string; name: string; line: string; image: string | null }
 
@@ -77,7 +77,7 @@ export function ListingPage({
                         loading="lazy"
                         width={160}
                         height={160}
-                        className="absolute inset-0 w-full h-full object-contain p-[14%] mix-blend-multiply saturate-[0.85]"
+                        className={`absolute inset-0 w-full h-full ${productImageClass(tile.image, 'object-contain p-[14%] mix-blend-multiply saturate-[0.85]')}`}
                       />
                     )}
                   </span>

@@ -11,7 +11,7 @@ import { getPostHtml } from '@/lib/catalog'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 import { BuyButton } from '@/components/BuyButton'
 import { formatPostDate, formatPrice } from '@/lib/format'
-import { getOptimizedImageUrl } from '@/lib/image'
+import { getOptimizedImageUrl, productImageClass } from '@/lib/image'
 import type { Post } from '@/content/posts'
 import { PostMeta } from '@/components/PostGrid'
 import { ShopTheGuide } from '@/components/ShopTheGuide'
@@ -166,7 +166,7 @@ function PostPage() {
                   alt={`${topPick.title} by ${topPick.brand}`}
                   width={300}
                   height={375}
-                  className="absolute inset-0 w-full h-full object-contain p-3 mix-blend-multiply"
+                  className={`absolute inset-0 w-full h-full ${productImageClass(topPick.image, 'object-contain p-3 mix-blend-multiply')}`}
                 />
               </Link>
               <div className="min-w-0">
