@@ -1,5 +1,6 @@
-import { useId, useState, type FormEvent } from 'react'
+import { useEffect, useId, useState, type FormEvent } from 'react'
 import { Link } from '@tanstack/react-router'
+import { readAttribution, trackSignup, type Attribution } from '@/lib/analytics'
 
 type State = 'idle' | 'pending' | 'success' | 'error'
 
@@ -19,7 +20,10 @@ export function NewsletterSignup({
   className?: string
 }) {
   const [state, setState] = useState<State>('idle')
+  const [attribution, setAttribution] = useState<Attribution>({})
   const id = useId()
+  // Read after hydration so the server HTML and first client render match.
+  useEffect(() => setAttribution(readAttribution()), [])
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -38,6 +42,7 @@ export function NewsletterSignup({
       // A plain preview can return the static registration page with status 200.
       if (/\bdata-netlify\s*=/i.test(await response.text())) throw new Error('Form handling is unavailable')
       setState('success')
+      trackSignup(source)
     } catch {
       setState('error')
     }
@@ -79,6 +84,9 @@ export function NewsletterSignup({
         >
           <input type="hidden" name="form-name" value="newsletter" />
           <input type="hidden" name="source" value={source} />
+          <input type="hidden" name="utm_source" value={attribution.utm_source ?? ''} />
+          <input type="hidden" name="utm_medium" value={attribution.utm_medium ?? ''} />
+          <input type="hidden" name="utm_campaign" value={attribution.utm_campaign ?? ''} />
           <p hidden>
             <label>
               Leave empty

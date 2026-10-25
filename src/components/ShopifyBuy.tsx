@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import type { CatalogProduct } from '@/types/catalog'
-import { addToCart, checkoutUrl } from '@/lib/cart'
+import { addToCart, ga4Item, useCheckoutUrl } from '@/lib/cart'
+import { trackBeginCheckout } from '@/lib/analytics'
 import { formatPrice } from '@/lib/format'
 
 /** Variant picker plus Add to cart / Buy now for products sold from our own Shopify store. */
@@ -12,20 +13,23 @@ export function ShopifyBuy({ product }: { product: CatalogProduct }) {
   const [added, setAdded] = useState(false)
   const variant = variants.find((v) => v.id === variantId)
   const hasOptions = variants.length > 1 || (variants[0] && variants[0].title !== 'Default Title')
+  const buyNowUrl = useCheckoutUrl(variant?.id ? [{ variantId: variant.id, qty: 1 }] : [], 'buy_now')
 
   if (!variant?.id) return null
   const id = variant.id
   const ready = variant.available
+  const line = {
+    variantId: id,
+    handle: product.handle,
+    title: product.title,
+    variantTitle: hasOptions ? variant.title : '',
+    price: variant.price,
+    image: product.images[0]?.src,
+    brand: product.brand,
+  }
 
   const onAdd = () => {
-    addToCart({
-      variantId: id,
-      handle: product.handle,
-      title: product.title,
-      variantTitle: hasOptions ? variant.title : '',
-      price: variant.price,
-      image: product.images[0]?.src,
-    })
+    addToCart(line, 1, 'product_page')
     setAdded(true)
   }
 
@@ -68,7 +72,8 @@ export function ShopifyBuy({ product }: { product: CatalogProduct }) {
             Add to Cart
           </button>
           <a
-            href={checkoutUrl([{ variantId: id, qty: 1 }])}
+            href={buyNowUrl}
+            onClick={() => trackBeginCheckout([ga4Item(line, 1)], 'buy_now')}
             data-link-context="buy_now"
             className="btn btn-lg btn-ghost w-full"
           >

@@ -32,6 +32,7 @@ Never hardcode an affiliate URL in content or components. Add a new program as a
 - `src/lib/catalog.ts`: server functions used by route loaders.
 - `src/lib/seo.ts`: `pageHead()` for title, description, robots, canonical and JSON-LD.
 - `src/routes/sitemap[.]xml.ts`: lists home, non-empty hubs and products with copy.
+- `src/lib/analytics.ts`: GA4 helpers. Lingerie sends the ecommerce events (`view_item`, `add_to_cart`, `remove_from_cart`, `view_cart`, `begin_checkout`), signups send `generate_lead`, `/go/` clicks send `affiliate_click` (root snippet). `checkoutUrl()`/`useCheckoutUrl()` in `src/lib/cart.ts` carry UTMs and the GA client id to Shopify as cart attributes. Shopify purchase setup and GA4 admin steps: `docs/ga4-tracking.md`.
 - `src/components/AgeGate.tsx`: client-only 18+ overlay; server HTML stays fully crawlable.
 
 - `src/content/pillars.ts`: the five pillars (Lingerie, Toys, Confidence, Sex & Intimacy, Erotica). Main nav dropdowns, footer columns, the mobile menu and the homepage pillar band all read from it. Pillars point at existing hubs; add links here rather than hardcoding them in components.
