@@ -21,9 +21,12 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ApiSubscribeRouteImport } from './routes/api/subscribe'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as CategorySlugRouteImport } from './routes/category/$slug'
+import { Route as ConfidenceKitIndexRouteImport } from './routes/confidence-kit/index'
+import { Route as ConfidenceKitPrintableRouteImport } from './routes/confidence-kit/printable'
 import { Route as EroticaIndexRouteImport } from './routes/erotica/index'
 import { Route as EroticaSlugRouteImport } from './routes/erotica/$slug'
 import { Route as GoHandleRouteImport } from './routes/go/$handle'
@@ -91,6 +94,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSubscribeRoute = ApiSubscribeRouteImport.update({
+  id: '/api/subscribe',
+  path: '/api/subscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -104,6 +112,16 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 const CategorySlugRoute = CategorySlugRouteImport.update({
   id: '/category/$slug',
   path: '/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidenceKitIndexRoute = ConfidenceKitIndexRouteImport.update({
+  id: '/confidence-kit/',
+  path: '/confidence-kit/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidenceKitPrintableRoute = ConfidenceKitPrintableRouteImport.update({
+  id: '/confidence-kit/printable',
+  path: '/confidence-kit/printable',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EroticaIndexRoute = EroticaIndexRouteImport.update({
@@ -150,13 +168,16 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/api/subscribe': typeof ApiSubscribeRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/confidence-kit/printable': typeof ConfidenceKitPrintableRoute
   '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/confidence-kit/': typeof ConfidenceKitIndexRoute
   '/erotica/': typeof EroticaIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
@@ -173,13 +194,16 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/api/subscribe': typeof ApiSubscribeRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/confidence-kit/printable': typeof ConfidenceKitPrintableRoute
   '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/confidence-kit': typeof ConfidenceKitIndexRoute
   '/erotica': typeof EroticaIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
@@ -197,13 +221,16 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/api/subscribe': typeof ApiSubscribeRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/confidence-kit/printable': typeof ConfidenceKitPrintableRoute
   '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/confidence-kit/': typeof ConfidenceKitIndexRoute
   '/erotica/': typeof EroticaIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
@@ -222,13 +249,16 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/terms'
+    | '/api/subscribe'
     | '/blog/$slug'
     | '/category/$slug'
+    | '/confidence-kit/printable'
     | '/erotica/$slug'
     | '/go/$handle'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
+    | '/confidence-kit/'
     | '/erotica/'
     | '/blog/topic/$topic'
   fileRoutesByTo: FileRoutesByTo
@@ -245,13 +275,16 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/terms'
+    | '/api/subscribe'
     | '/blog/$slug'
     | '/category/$slug'
+    | '/confidence-kit/printable'
     | '/erotica/$slug'
     | '/go/$handle'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog'
+    | '/confidence-kit'
     | '/erotica'
     | '/blog/topic/$topic'
   id:
@@ -268,13 +301,16 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/terms'
+    | '/api/subscribe'
     | '/blog/$slug'
     | '/category/$slug'
+    | '/confidence-kit/printable'
     | '/erotica/$slug'
     | '/go/$handle'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
+    | '/confidence-kit/'
     | '/erotica/'
     | '/blog/topic/$topic'
   fileRoutesById: FileRoutesById
@@ -292,13 +328,16 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  ApiSubscribeRoute: typeof ApiSubscribeRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
+  ConfidenceKitPrintableRoute: typeof ConfidenceKitPrintableRoute
   EroticaSlugRoute: typeof EroticaSlugRoute
   GoHandleRoute: typeof GoHandleRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
   ShopSlugRoute: typeof ShopSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  ConfidenceKitIndexRoute: typeof ConfidenceKitIndexRoute
   EroticaIndexRoute: typeof EroticaIndexRoute
   BlogTopicTopicRoute: typeof BlogTopicTopicRoute
 }
@@ -389,6 +428,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/subscribe': {
+      id: '/api/subscribe'
+      path: '/api/subscribe'
+      fullPath: '/api/subscribe'
+      preLoaderRoute: typeof ApiSubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -408,6 +454,20 @@ declare module '@tanstack/react-router' {
       path: '/category/$slug'
       fullPath: '/category/$slug'
       preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidence-kit/': {
+      id: '/confidence-kit/'
+      path: '/confidence-kit'
+      fullPath: '/confidence-kit/'
+      preLoaderRoute: typeof ConfidenceKitIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidence-kit/printable': {
+      id: '/confidence-kit/printable'
+      path: '/confidence-kit/printable'
+      fullPath: '/confidence-kit/printable'
+      preLoaderRoute: typeof ConfidenceKitPrintableRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/erotica/': {
@@ -468,13 +528,16 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  ApiSubscribeRoute: ApiSubscribeRoute,
   BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,
+  ConfidenceKitPrintableRoute: ConfidenceKitPrintableRoute,
   EroticaSlugRoute: EroticaSlugRoute,
   GoHandleRoute: GoHandleRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
   ShopSlugRoute: ShopSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
+  ConfidenceKitIndexRoute: ConfidenceKitIndexRoute,
   EroticaIndexRoute: EroticaIndexRoute,
   BlogTopicTopicRoute: BlogTopicTopicRoute,
 }

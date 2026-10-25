@@ -10,6 +10,8 @@ import { TOPICS_BY_SLUG } from '@/content/topics'
 import { PILLARS } from '@/content/pillars'
 import { STORIES } from '@/content/erotica'
 import { EroticaGrid } from '@/components/EroticaCard'
+import { NewsletterSignup } from '@/components/NewsletterSignup'
+import { KIT_CONTENTS } from '@/content/confidence-kit'
 import { SITE } from '@/config/site'
 import { getHomeData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
@@ -337,6 +339,26 @@ function HomePage() {
           </div>
         </section>
       )}
+
+      <section aria-label="Free Confidence Kit" className="wrap pt-14 sm:pt-24 reveal">
+        <div className="rounded-3xl bg-plum text-canvas p-7 sm:p-12 grid lg:grid-cols-12 gap-10">
+          <NewsletterSignup
+            source="home:band"
+            variant="band"
+            title="Feel at Home in Your Body. Start With the Confidence Kit."
+            body="A free printable from Nightstand Notes: seven small exercises for feeling like yourself again, a lingerie fit guide for every body and conversation cards for date night."
+            className="lg:col-span-6"
+          />
+          <ul className="lg:col-span-5 lg:col-start-8 border-t border-plum-line">
+            {KIT_CONTENTS.map((item) => (
+              <li key={item.title} className="border-b border-plum-line py-4">
+                <span className="block font-display text-lg font-semibold tracking-[-0.02em]">{item.title}</span>
+                <span className="mt-1 block text-sm text-canvas/65 leading-relaxed">{item.summary}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {STORIES.length > 0 && (
         <section aria-labelledby="erotica-heading" className="wrap pt-14 sm:pt-24 reveal">

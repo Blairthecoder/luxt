@@ -73,6 +73,9 @@ export function Footer() {
               Copyright &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
             </span>
             <span className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <Link to="/confidence-kit" className={link}>
+                Free Confidence Kit
+              </Link>
               <Link to="/about" className={link}>
                 About
               </Link>

@@ -57,7 +57,8 @@ export const PRIVACY: LegalDoc = {
     {
       heading: 'Email Signup',
       body: [
-        'If you subscribe to our email list, we collect the email address you enter and the page you signed up on. Signups are received through Netlify Forms. We use your email only to send you new guides and deals, and you can unsubscribe at any time using the link in our emails or by contacting us. We do not sell your email address.',
+        'If you subscribe to our email list or request the Confidence Kit, we collect the email address you enter, the page you signed up on and the time you agreed to receive email. Signups are received through Netlify Forms and passed to our email provider (Shopify Email, or Klaviyo if we add it), which stores your address and sends our emails.',
+        'We use your email only to send the Confidence Kit, new guides, stories and offers. Every email has an unsubscribe link, and you can also unsubscribe by contacting us. We do not sell or rent your email address. Our emails are written to be discreet: the sender name is Nightstand Notes and subject lines stay non-explicit.',
       ],
     },
     {
@@ -85,6 +86,7 @@ export const PRIVACY: LegalDoc = {
       bullets: [
         'Google, for analytics.',
         'Netlify, for hosting and for receiving email signups.',
+        'Our email provider (Shopify, and Klaviyo if we add it), to store subscriber addresses and send our emails.',
         'Our retail partners (the merchants you buy from), when you click through to buy, under their own privacy policies.',
         'Authorities, if the law requires it.',
       ],
@@ -102,7 +104,7 @@ export const PRIVACY: LegalDoc = {
     {
       heading: 'Your Rights',
       body: [
-        'Depending on where you live, you may have the right to ask what personal information we hold about you, to ask us to correct or delete it, or to object to certain processing. Because we do not collect names, emails or accounts, we usually hold very little that can be linked to you. To make a request, contact us using the details below.',
+        'Depending on where you live, you may have the right to ask what personal information we hold about you, to ask us to correct or delete it, or to object to certain processing. Unless you join our email list or order lingerie from us, we usually hold very little that can be linked to you. To make a request, contact us using the details below.',
       ],
     },
     {

@@ -652,3 +652,29 @@ html {
 .table-scroll > table {
   margin: 0;
 }
+
+/* The printable Confidence Kit prints (and exports to PDF) without site chrome. */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.6in;
+  }
+  body:has(.kit-print) > *:not(main) {
+    display: none !important;
+  }
+  body:has(.kit-print) {
+    background: #fff;
+  }
+  .kit-print .kit-page {
+    break-after: page;
+  }
+  .kit-print .kit-page:last-child {
+    break-after: auto;
+  }
+  .kit-print .no-print {
+    display: none !important;
+  }
+  .kit-print .kit-card {
+    break-inside: avoid;
+  }
+}

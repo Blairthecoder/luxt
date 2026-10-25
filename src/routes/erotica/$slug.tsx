@@ -125,7 +125,12 @@ function EroticaPage() {
             context="erotica_products"
             className="mt-14 pt-12 border-t border-line"
           />
-          <NewsletterSignup source={`erotica:${entry.slug}`} className="mt-14" />
+          <NewsletterSignup
+            source={`erotica:${entry.slug}`}
+            title="A New Story in Your Inbox"
+            body="New erotica every month, plus our free Confidence Kit when you join. Romantic, never graphic, and discreet in your inbox."
+            className="mt-14"
+          />
         </div>
       </div>
 
