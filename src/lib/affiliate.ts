@@ -37,7 +37,7 @@ export const PROGRAMS: Record<string, AffiliateProgram> = {
   // Our own Shopify store (lingerie). Links go to the store's product page; checkout happens there.
   shopify: {
     id: 'shopify',
-    merchantName: shopifyMeta.shopName || 'Nightstand Supply Shop',
+    merchantName: 'Nightstand Supply Shop',
     productLinks: shopifyLinks as Record<string, string>,
     fallbackLink: shopifyMeta.storeUrl || '/',
   },

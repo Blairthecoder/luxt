@@ -1,5 +1,2585 @@
 {
-  "syncedAt": null,
-  "source": "",
-  "products": []
+  "syncedAt": "2026-10-25T04:00:00Z",
+  "source": "https://pricgj-tf.myshopify.com",
+  "products": [
+    {
+      "handle": "lace-fishnet-bodysuit",
+      "title": "Lace Fishnet Bodysuit with Sleeves, One Size",
+      "brand": "Femstylo",
+      "productType": "Bodysuits",
+      "tags": [
+        "bodysuit",
+        "Femstylo",
+        "lingerie",
+        "one-size",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 21.99,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/rBVa3V-mjXKANCyVAARa3KJU-XM364.jpg?v=1792883566",
+          "width": 790,
+          "height": 1242
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891733463284,
+          "title": "Black / Free Size",
+          "price": 21.99,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T00:22:58Z"
+    },
+    {
+      "handle": "alessandra-lace-mesh-teddy",
+      "title": "Alessandra Lace and Mesh Plunge Teddy",
+      "brand": "OyeraCharisma",
+      "productType": "Bodysuits",
+      "tags": [
+        "bodysuit",
+        "bridal",
+        "gift",
+        "lingerie",
+        "OyeraCharisma",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 32.5,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WH2001725.jpg?v=1792883618",
+          "width": 1333,
+          "height": 2000
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WH2001725A.jpg?v=1792883618",
+          "width": 1333,
+          "height": 2000
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WH2001725B.jpg?v=1792883618",
+          "width": 1333,
+          "height": 2000
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WH2001725C.jpg?v=1792883618",
+          "width": 1333,
+          "height": 2000
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WH2001725D.jpg?v=1792883618",
+          "width": 1333,
+          "height": 2000
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WH2001725E.jpg?v=1792883618",
+          "width": 1333,
+          "height": 2000
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891744276724,
+          "title": "White / S",
+          "price": 32.5,
+          "available": true
+        },
+        {
+          "id": 67891744309492,
+          "title": "White / M",
+          "price": 32.5,
+          "available": true
+        },
+        {
+          "id": 67891744342260,
+          "title": "White / L",
+          "price": 32.5,
+          "available": true
+        },
+        {
+          "id": 67891744375028,
+          "title": "White / XL",
+          "price": 32.5,
+          "available": true
+        },
+        {
+          "id": 67891744407796,
+          "title": "Red / S",
+          "price": 32.5,
+          "available": false
+        },
+        {
+          "id": 67891744440564,
+          "title": "Red / M",
+          "price": 32.5,
+          "available": false
+        },
+        {
+          "id": 67891744473332,
+          "title": "Red / L",
+          "price": 32.5,
+          "available": false
+        },
+        {
+          "id": 67891744506100,
+          "title": "Red / XL",
+          "price": 32.5,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T01:26:13Z"
+    },
+    {
+      "handle": "contrast-daisy-lace-bra-set",
+      "title": "Contrast Daisy Lace Bralette and Panty Set",
+      "brand": "3wishes.com",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "3wishes.com",
+        "gift",
+        "lingerie",
+        "plus-friendly",
+        "set",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 34.95,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Rn5C5LhHI4phtputepcy_2Frenders_2FGgGYrPDyDWyOwKj0LjnjU.png?v=1792883636",
+          "width": 1680,
+          "height": 2528
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Rn5C5LhHI4phtputepcy_2Frenders_2F18OFGVVuAIcdNA9vHasoz.png?v=1792883637",
+          "width": 1680,
+          "height": 2528
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Rn5C5LhHI4phtputepcy_2Frenders_2FkHyHKsFt_mcFlNPbBQGWi.png?v=1792883637",
+          "width": 1680,
+          "height": 2528
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/W8445_wine-red_front.jpg?v=1792883635",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/W8445_wine-red_front_1.jpg?v=1792883635",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/w8445_blue_front_2.jpg?v=1792883635",
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891746734324,
+          "title": "Black/Blue / Small",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746767092,
+          "title": "Black/Blue / Medium",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746799860,
+          "title": "Black/Blue / Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746832628,
+          "title": "Black/Blue / X-Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746865396,
+          "title": "Black/Blue / XX-Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746898164,
+          "title": "Black/Red / Small",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746930932,
+          "title": "Black/Red / Medium",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746963700,
+          "title": "Black/Red / Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891746996468,
+          "title": "Black/Red / X-Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747029236,
+          "title": "Black/Red / XX-Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747062004,
+          "title": "Black/Green / Small",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747094772,
+          "title": "Black/Green / Medium",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747127540,
+          "title": "Black/Green / Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747160308,
+          "title": "Black/Green / X-Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747193076,
+          "title": "Black/Green / XX-Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747225844,
+          "title": "Black/White / Small",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747258612,
+          "title": "Black/White / Medium",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747291380,
+          "title": "Black/White / Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747324148,
+          "title": "Black/White / X-Large",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891747356916,
+          "title": "Black/White / XX-Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747389684,
+          "title": "Black/Gold / Small",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747422452,
+          "title": "Black/Gold / Medium",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747455220,
+          "title": "Black/Gold / Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747487988,
+          "title": "Black/Gold / X-Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747520756,
+          "title": "Black/Gold / XX-Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747553524,
+          "title": "Black/Fuchsia / Small",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747586292,
+          "title": "Black/Fuchsia / Medium",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747619060,
+          "title": "Black/Fuchsia / Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747651828,
+          "title": "Black/Fuchsia / X-Large",
+          "price": 34.95,
+          "available": false
+        },
+        {
+          "id": 67891747684596,
+          "title": "Black/Fuchsia / XX-Large",
+          "price": 34.95,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T01:55:07Z"
+    },
+    {
+      "handle": "french-dot-mesh-bra-set",
+      "title": "White French Dot Mesh Bra and Flutter Panty Set",
+      "brand": "3wishes.com",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "3wishes.com",
+        "bridal",
+        "gift",
+        "lingerie",
+        "set",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 32.95,
+      "available": false,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/ZgO7K88Ocvc9k2sreyjL_2Frenders_2FWjFkla4EhiZQwaU-AbyLr.jpg?v=1792883651",
+          "width": 1680,
+          "height": 2474
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/ZgO7K88Ocvc9k2sreyjL_2Frenders_2FNT09AndaU4Jt9XvB05pIL.png?v=1792883652",
+          "width": 1680,
+          "height": 2528
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/ZgO7K88Ocvc9k2sreyjL_2Frenders_2FTolnph8UmCVI_sLEDBH2Y.jpg?v=1792883651",
+          "width": 1680,
+          "height": 2528
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WF5-766_white_front_2.jpg?v=1792883651",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WF5-766_white_front_3.jpg?v=1792883651",
+          "width": 853,
+          "height": 1279
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/WF5-766_white_front_4.jpg?v=1792883651",
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891752829172,
+          "title": "White / Small",
+          "price": 32.95,
+          "available": false
+        },
+        {
+          "id": 67891752861940,
+          "title": "White / Medium",
+          "price": 32.95,
+          "available": false
+        },
+        {
+          "id": 67891752894708,
+          "title": "White / Large",
+          "price": 32.95,
+          "available": false
+        },
+        {
+          "id": 67891752927476,
+          "title": "White / Extra Large",
+          "price": 32.95,
+          "available": false
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:21:42Z"
+    },
+    {
+      "handle": "strapless-lace-bralette-set",
+      "title": "Strapless Lace Bralette and Brief Set, Wire-Free",
+      "brand": "CurvyCandy",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "bridal",
+        "comfort",
+        "CurvyCandy",
+        "lingerie",
+        "set",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 40.9,
+      "compareAtPrice": 63.9,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S7d441e3f9ca54c4a862db901a8841dacD.webp?v=1792883682",
+          "width": 1350,
+          "height": 1800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S3bc1b1eba9b44e2586f8f28fcbaea588X.webp?v=1792883681",
+          "width": 1350,
+          "height": 1800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S2384ab18c71440ff8c15dabf928523c7o.webp?v=1792883681",
+          "width": 1350,
+          "height": 1800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sb0d450885c4a4b758e06a7362f2459ac7.jpg?v=1792883683",
+          "width": 1350,
+          "height": 1800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sb6d8cbdcbc6a458d97b21eef3ac07c2dP.webp?v=1792883681",
+          "width": 1350,
+          "height": 1800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sab82b0d94e384d68a147ad694c8ea0ba0.webp?v=1792883681",
+          "width": 1350,
+          "height": 1800
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891764199668,
+          "title": "black / L",
+          "price": 43.2,
+          "compareAtPrice": 67.5,
+          "available": true
+        },
+        {
+          "id": 67891764232436,
+          "title": "winered / S",
+          "price": 43.1,
+          "compareAtPrice": 67.35,
+          "available": true
+        },
+        {
+          "id": 67891764265204,
+          "title": "winered / M",
+          "price": 43.92,
+          "compareAtPrice": 68.63,
+          "available": true
+        },
+        {
+          "id": 67891764297972,
+          "title": "winered / XL",
+          "price": 44.16,
+          "compareAtPrice": 69.0,
+          "available": true
+        },
+        {
+          "id": 67891764330740,
+          "title": "black / S",
+          "price": 42.77,
+          "compareAtPrice": 66.83,
+          "available": true
+        },
+        {
+          "id": 67891764363508,
+          "title": "black / M",
+          "price": 43.25,
+          "compareAtPrice": 67.58,
+          "available": true
+        },
+        {
+          "id": 67891764396276,
+          "title": "black / XL",
+          "price": 43.44,
+          "compareAtPrice": 67.88,
+          "available": true
+        },
+        {
+          "id": 67891764429044,
+          "title": "WHITE / L",
+          "price": 40.9,
+          "compareAtPrice": 63.9,
+          "available": true
+        },
+        {
+          "id": 67891764461812,
+          "title": "winered / L",
+          "price": 44.26,
+          "compareAtPrice": 69.15,
+          "available": true
+        },
+        {
+          "id": 67891764494580,
+          "title": "WHITE / S",
+          "price": 43.49,
+          "compareAtPrice": 67.95,
+          "available": true
+        },
+        {
+          "id": 67891764527348,
+          "title": "WHITE / M",
+          "price": 43.25,
+          "compareAtPrice": 67.58,
+          "available": true
+        },
+        {
+          "id": 67891764560116,
+          "title": "WHITE / XL",
+          "price": 44.69,
+          "compareAtPrice": 69.83,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-24T23:45:22Z"
+    },
+    {
+      "handle": "seamless-wire-free-push-up-bra",
+      "title": "Seamless Wire-Free Push-Up Bra, Everyday Comfort",
+      "brand": "CurvyCandy",
+      "productType": "Bras",
+      "tags": [
+        "bra",
+        "comfort",
+        "CurvyCandy",
+        "lingerie",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 30.29,
+      "compareAtPrice": 47.33,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sc0fdfa7004c24e3d8aac06a1053c89efa_d778b611-0bd2-4753-b4c7-cbed5e6579b4.webp?v=1792883705",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S1bc505713fd24662bd63f15d88b0c23c9_f72d3af7-c843-4a35-ac51-baf7ee2c0752.webp?v=1792883705",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Se393816400c54044bf53a4370df62d5b0_7aa805e9-dc3e-4475-8661-7972f9edc3ab.webp?v=1792883705",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S11440af5a99a43c9a5b4031bd1beee8ds_b8d29bb1-b4d4-4389-bd24-caf93c155e70.webp?v=1792883705",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S843ac94c3aeb4d0b9488e3f64f7bad2f6_12885e12-fd5c-4305-b1fc-d274539bcc0c.webp?v=1792883705",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S68aea6e9419547a980c2f10ff03cac168_8e0dc922-9dbf-4ae3-8575-8b00c5ad1274.webp?v=1792883705",
+          "width": 800,
+          "height": 800
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891769082100,
+          "title": "Set6 / One Size / L",
+          "price": 50.35,
+          "compareAtPrice": 78.68,
+          "available": true
+        },
+        {
+          "id": 67891769114868,
+          "title": "White / One Size / 2XL",
+          "price": 30.86,
+          "compareAtPrice": 48.23,
+          "available": true
+        },
+        {
+          "id": 67891769147636,
+          "title": "Set6 / One Size / M",
+          "price": 51.07,
+          "compareAtPrice": 79.8,
+          "available": true
+        },
+        {
+          "id": 67891769180404,
+          "title": "White / One Size / XL",
+          "price": 30.43,
+          "compareAtPrice": 47.55,
+          "available": true
+        },
+        {
+          "id": 67891769213172,
+          "title": "Set6 / One Size / 2XL",
+          "price": 51.89,
+          "compareAtPrice": 81.08,
+          "available": true
+        },
+        {
+          "id": 67891769245940,
+          "title": "White / One Size / L",
+          "price": 30.58,
+          "compareAtPrice": 47.78,
+          "available": true
+        },
+        {
+          "id": 67891769278708,
+          "title": "Set6 / One Size / XL",
+          "price": 50.78,
+          "compareAtPrice": 79.35,
+          "available": true
+        },
+        {
+          "id": 67891769311476,
+          "title": "White / One Size / M",
+          "price": 30.58,
+          "compareAtPrice": 47.78,
+          "available": true
+        },
+        {
+          "id": 67891769344244,
+          "title": "Set5 / One Size / L",
+          "price": 51.07,
+          "compareAtPrice": 79.8,
+          "available": true
+        },
+        {
+          "id": 67891769377012,
+          "title": "Set5 / One Size / M",
+          "price": 49.49,
+          "compareAtPrice": 77.33,
+          "available": true
+        },
+        {
+          "id": 67891769409780,
+          "title": "Set5 / One Size / 2XL",
+          "price": 51.65,
+          "compareAtPrice": 80.7,
+          "available": true
+        },
+        {
+          "id": 67891769442548,
+          "title": "Set5 / One Size / XL",
+          "price": 50.78,
+          "compareAtPrice": 79.35,
+          "available": true
+        },
+        {
+          "id": 67891769475316,
+          "title": "Set4 / One Size / L",
+          "price": 50.88,
+          "compareAtPrice": 79.5,
+          "available": true
+        },
+        {
+          "id": 67891769508084,
+          "title": "Set4 / One Size / M",
+          "price": 50.78,
+          "compareAtPrice": 79.35,
+          "available": true
+        },
+        {
+          "id": 67891769540852,
+          "title": "Set4 / One Size / 2XL",
+          "price": 51.79,
+          "compareAtPrice": 80.93,
+          "available": true
+        },
+        {
+          "id": 67891769573620,
+          "title": "Set4 / One Size / XL",
+          "price": 50.98,
+          "compareAtPrice": 79.65,
+          "available": true
+        },
+        {
+          "id": 67891769606388,
+          "title": "Set3 / One Size / L",
+          "price": 50.35,
+          "compareAtPrice": 78.68,
+          "available": true
+        },
+        {
+          "id": 67891769639156,
+          "title": "Black / One Size / 2XL",
+          "price": 30.62,
+          "compareAtPrice": 47.85,
+          "available": true
+        },
+        {
+          "id": 67891769671924,
+          "title": "Set3 / One Size / M",
+          "price": 50.78,
+          "compareAtPrice": 79.35,
+          "available": true
+        },
+        {
+          "id": 67891769704692,
+          "title": "Black / One Size / XL",
+          "price": 30.67,
+          "compareAtPrice": 47.93,
+          "available": true
+        },
+        {
+          "id": 67891769737460,
+          "title": "Set3 / One Size / 2XL",
+          "price": 51.5,
+          "compareAtPrice": 80.48,
+          "available": true
+        },
+        {
+          "id": 67891769770228,
+          "title": "Black / One Size / L",
+          "price": 30.29,
+          "compareAtPrice": 47.33,
+          "available": true
+        },
+        {
+          "id": 67891769802996,
+          "title": "Set3 / One Size / XL",
+          "price": 50.78,
+          "compareAtPrice": 79.35,
+          "available": true
+        },
+        {
+          "id": 67891769835764,
+          "title": "Black / One Size / M",
+          "price": 30.43,
+          "compareAtPrice": 47.55,
+          "available": true
+        },
+        {
+          "id": 67891769868532,
+          "title": "Set2 / One Size / L",
+          "price": 51.07,
+          "compareAtPrice": 79.8,
+          "available": true
+        },
+        {
+          "id": 67891769901300,
+          "title": "Set2 / One Size / M",
+          "price": 50.69,
+          "compareAtPrice": 79.2,
+          "available": true
+        },
+        {
+          "id": 67891769934068,
+          "title": "Set2 / One Size / 2XL",
+          "price": 51.79,
+          "compareAtPrice": 80.93,
+          "available": true
+        },
+        {
+          "id": 67891769966836,
+          "title": "Set2 / One Size / XL",
+          "price": 51.98,
+          "compareAtPrice": 81.23,
+          "available": true
+        },
+        {
+          "id": 67891769999604,
+          "title": "Set1 / One Size / L",
+          "price": 51.07,
+          "compareAtPrice": 79.8,
+          "available": true
+        },
+        {
+          "id": 67891770032372,
+          "title": "Green / One Size / 2XL",
+          "price": 31.01,
+          "compareAtPrice": 48.45,
+          "available": true
+        },
+        {
+          "id": 67891770065140,
+          "title": "Set1 / One Size / M",
+          "price": 50.54,
+          "compareAtPrice": 78.98,
+          "available": true
+        },
+        {
+          "id": 67891770097908,
+          "title": "Green / One Size / XL",
+          "price": 30.82,
+          "compareAtPrice": 48.15,
+          "available": true
+        },
+        {
+          "id": 67891770130676,
+          "title": "Set1 / One Size / 2XL",
+          "price": 51.89,
+          "compareAtPrice": 81.08,
+          "available": true
+        },
+        {
+          "id": 67891770163444,
+          "title": "Green / One Size / L",
+          "price": 30.43,
+          "compareAtPrice": 47.55,
+          "available": true
+        },
+        {
+          "id": 67891770196212,
+          "title": "Set1 / One Size / XL",
+          "price": 51.07,
+          "compareAtPrice": 79.8,
+          "available": true
+        },
+        {
+          "id": 67891770228980,
+          "title": "Green / One Size / M",
+          "price": 30.48,
+          "compareAtPrice": 47.63,
+          "available": true
+        },
+        {
+          "id": 67891770261748,
+          "title": "Blue / One Size / 2XL",
+          "price": 31.1,
+          "compareAtPrice": 48.6,
+          "available": true
+        },
+        {
+          "id": 67891770294516,
+          "title": "Blue / One Size / XL",
+          "price": 30.82,
+          "compareAtPrice": 48.15,
+          "available": true
+        },
+        {
+          "id": 67891770327284,
+          "title": "Blue / One Size / L",
+          "price": 30.91,
+          "compareAtPrice": 48.3,
+          "available": true
+        },
+        {
+          "id": 67891770360052,
+          "title": "Blue / One Size / M",
+          "price": 30.82,
+          "compareAtPrice": 48.15,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-24T23:45:22Z"
+    },
+    {
+      "handle": "embroidered-lace-wire-free-bra-set",
+      "title": "Embroidered Lace Wire-Free Bra and Brief Set",
+      "brand": "Kawaii Stop",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "comfort",
+        "Kawaii Stop",
+        "lingerie",
+        "set",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 15.99,
+      "compareAtPrice": 16.95,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/embroidered-lingerie-floral-lace-wireless-wire-free-kawaii-stop-bra-734.webp?v=1792883716",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/embroidered-lingerie-floral-lace-wireless-wire-free-kawaii-stop-bra-610.webp?v=1792883716",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/embroidered-lingerie-floral-lace-wireless-wire-free-kawaii-stop-bra-679.webp?v=1792883716",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/embroidered-lingerie-floral-lace-wireless-wire-free-kawaii-stop-bra-941.webp?v=1792883716",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/embroidered-lingerie-floral-lace-wireless-wire-free-kawaii-stop-bra-761.webp?v=1792883716",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/embroidered-lingerie-floral-lace-wireless-wire-free-kawaii-stop-bra-649.webp?v=1792883716",
+          "width": 1200,
+          "height": 1200
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891773473012,
+          "title": "Black / S",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773505780,
+          "title": "Black / M",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773538548,
+          "title": "Black / L",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773571316,
+          "title": "Dark Blue / S",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773604084,
+          "title": "Dark Blue / M",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773636852,
+          "title": "Dark Blue / L",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773669620,
+          "title": "Pink / S",
+          "price": 15.99,
+          "compareAtPrice": 16.95,
+          "available": true
+        },
+        {
+          "id": 67891773702388,
+          "title": "Pink / M",
+          "price": 15.99,
+          "compareAtPrice": 16.95,
+          "available": true
+        },
+        {
+          "id": 67891773735156,
+          "title": "Pink / L",
+          "price": 15.99,
+          "compareAtPrice": 16.95,
+          "available": true
+        },
+        {
+          "id": 67891773767924,
+          "title": "White / S",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773800692,
+          "title": "White / M",
+          "price": 15.99,
+          "compareAtPrice": 16.95,
+          "available": true
+        },
+        {
+          "id": 67891773833460,
+          "title": "White / L",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773866228,
+          "title": "Red / S",
+          "price": 15.99,
+          "compareAtPrice": 16.95,
+          "available": true
+        },
+        {
+          "id": 67891773898996,
+          "title": "Red / M",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        },
+        {
+          "id": 67891773931764,
+          "title": "Red / L",
+          "price": 19.99,
+          "compareAtPrice": 21.95,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T00:46:44Z"
+    },
+    {
+      "handle": "plus-size-eyelash-lace-babydoll-thong",
+      "title": "Plus Size Eyelash Lace Babydoll and Thong, 2X",
+      "brand": "3wishes.com",
+      "productType": "Babydolls",
+      "tags": [
+        "3wishes.com",
+        "babydoll",
+        "gift",
+        "lingerie",
+        "plus-size",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 35.95,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR81339-1X_black_front.jpg?v=1792883732",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR81339-1X_black_back.jpg?v=1792883732",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR81339-1X_black_front_1.jpg?v=1792883732",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR81339-2X_white_front_1.jpg?v=1792883732",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR81339-2X_white_back.jpg?v=1792883732",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR81339-2X_white_front.jpg?v=1792883732",
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891779043572,
+          "title": "Black / 2X",
+          "price": 35.95,
+          "available": false
+        },
+        {
+          "id": 67891779076340,
+          "title": "White / 2X",
+          "price": 35.95,
+          "available": true
+        },
+        {
+          "id": 67891779109108,
+          "title": "Red / 2X",
+          "price": 35.95,
+          "available": true
+        },
+        {
+          "id": 67891779141876,
+          "title": "Blue / 2X",
+          "price": 35.95,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:23:44Z"
+    },
+    {
+      "handle": "plus-size-eyelash-lace-mesh-babydoll",
+      "title": "Plus Size Eyelash Lace and Mesh Babydoll with Underwire",
+      "brand": "3wishes.com",
+      "productType": "Babydolls",
+      "tags": [
+        "3wishes.com",
+        "babydoll",
+        "lingerie",
+        "plus-size",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 19.95,
+      "available": false,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80636-1P_black_front_1ad006cb-ef33-44bd-af35-774ee4c4646b.jpg?v=1792883740",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80636-1P_black_back_2_289563dc-893d-47a5-ba7d-73d71ab0f01f.jpg?v=1792883740",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80636-1P_black_front_3_fc663848-4728-4193-991e-ee51bcb5bfa2.jpg?v=1792883740",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80636-2P_red_front_2.jpg?v=1792883740",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80636-2P_red_back.jpg?v=1792883740",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80636-2P_red_front.jpg?v=1792883740",
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891780681972,
+          "title": "Black / 1X/2X",
+          "price": 19.95,
+          "available": false
+        },
+        {
+          "id": 67891780714740,
+          "title": "Black / 3X/4X",
+          "price": 19.95,
+          "available": false
+        },
+        {
+          "id": 67891780747508,
+          "title": "Red / 1X/2X",
+          "price": 19.95,
+          "available": false
+        },
+        {
+          "id": 67891780780276,
+          "title": "Red / 3X/4X",
+          "price": 19.95,
+          "available": false
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:20:41Z"
+    },
+    {
+      "handle": "plus-size-eyelash-lace-mini-babydoll",
+      "title": "Plus Size Eyelash Lace Mini Babydoll and Thong",
+      "brand": "3wishes.com",
+      "productType": "Babydolls",
+      "tags": [
+        "3wishes.com",
+        "babydoll",
+        "lingerie",
+        "plus-size",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 19.95,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80637-1P_black_front_a37d47c7-b95f-400e-b61c-6e166980f687.jpg?v=1792883746",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80637-1P_black_front_3_32f88dda-1369-4e05-8f93-85f040172f43.jpg?v=1792883746",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/SIR80637-1P_black_back_2_40fb667f-73cf-4a13-8a38-b43b084f7213.jpg?v=1792883746",
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891782713588,
+          "title": "Black / 1X/2X",
+          "price": 19.95,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:20:41Z"
+    },
+    {
+      "handle": "plus-size-keyhole-lace-mesh-babydoll",
+      "title": "Plus Size Keyhole Eyelash Lace and Mesh Babydoll",
+      "brand": "3wishes.com",
+      "productType": "Babydolls",
+      "tags": [
+        "3wishes.com",
+        "babydoll",
+        "gift",
+        "lingerie",
+        "plus-size",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 42.95,
+      "available": false,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/stm11378x_red_f.jpg?v=1792883756",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/stm11378x_red_b.jpg?v=1792883756",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/stm11378x_fuchsia_f.jpg?v=1792883755",
+          "width": 853,
+          "height": 1280
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/stm11378x_fuchsia_b.jpg?v=1792883756",
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891787301108,
+          "title": "Red / 1X/2X",
+          "price": 42.95,
+          "available": false
+        },
+        {
+          "id": 67891787333876,
+          "title": "Red / 3X/4X",
+          "price": 42.95,
+          "available": false
+        },
+        {
+          "id": 67891787366644,
+          "title": "Fuchsia / 1X/2X",
+          "price": 42.95,
+          "available": false
+        },
+        {
+          "id": 67891787399412,
+          "title": "Fuchsia / 3X/4X",
+          "price": 42.95,
+          "available": false
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:14:39Z"
+    },
+    {
+      "handle": "plus-size-velvet-corset-babydoll",
+      "title": "Plus Size Velvet Corset Babydoll with Gold Chain Straps",
+      "brand": "3wishes.com",
+      "productType": "Babydolls",
+      "tags": [
+        "3wishes.com",
+        "babydoll",
+        "lingerie",
+        "plus-size",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 34.95,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/DG13023_fuchsia_Front.jpg?v=1792883769",
+          "width": 854,
+          "height": 1281
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/DG13023_fuchsia_Back.jpg?v=1792883770",
+          "width": 854,
+          "height": 1281
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/DG13023_fuchsia_Front_Inset.jpg?v=1792883769",
+          "width": 854,
+          "height": 1281
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891791200500,
+          "title": "Peony / 1X",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891791233268,
+          "title": "Peony / 2X",
+          "price": 34.95,
+          "available": true
+        },
+        {
+          "id": 67891791266036,
+          "title": "Peony / 3X",
+          "price": 34.95,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:26:50Z"
+    },
+    {
+      "handle": "green-daisy-lace-babydoll-slip",
+      "title": "Green Daisy Lace Mesh Babydoll Slip with Thong",
+      "brand": "Ladyez",
+      "productType": "Babydolls",
+      "tags": [
+        "babydoll",
+        "chemise",
+        "gift",
+        "Ladyez",
+        "lingerie",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 38.75,
+      "compareAtPrice": 53.75,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S54c357f46a9544058b388b080715ea91s.webp?v=1792883799",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sd454b4324d4c46d787ae614e2323c045P.webp?v=1792883799",
+          "width": 1340,
+          "height": 1785
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S794662fe8db34ebd96c7bdef4bcc8d086_8c97c551-aceb-44f2-a87b-2d8db269b17c.webp?v=1792883799",
+          "width": 1340,
+          "height": 1785
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sd0b901b0221041198677f47784bb0469s_6d1d3402-be66-41c3-a3b7-621929051ceb.jpg?v=1792883801",
+          "width": 1340,
+          "height": 1785
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sd5c35798f52143c58ba59fa5ded1083fm_d8c9492e-afe8-4cfa-8421-1c6341e52390.jpg?v=1792883800",
+          "width": 1340,
+          "height": 1785
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sce3c04959b7f40c1b60f4de54212d912w_10b00850-99c7-4380-8e8c-de5db6391f2d.webp?v=1792883799",
+          "width": 1340,
+          "height": 1785
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891795067124,
+          "title": "Green / L",
+          "price": 38.85,
+          "compareAtPrice": 53.85,
+          "available": true
+        },
+        {
+          "id": 67891795099892,
+          "title": "Green / XL",
+          "price": 38.85,
+          "compareAtPrice": 53.85,
+          "available": true
+        },
+        {
+          "id": 67891795132660,
+          "title": "Green / S",
+          "price": 38.75,
+          "compareAtPrice": 53.75,
+          "available": true
+        },
+        {
+          "id": 67891795165428,
+          "title": "Green / M",
+          "price": 38.75,
+          "compareAtPrice": 53.75,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-24T23:45:24Z"
+    },
+    {
+      "handle": "lace-kimono-robe-babydoll",
+      "title": "Sheer Lace Kimono Robe with Belt and G-String, XS-5XL",
+      "brand": "7DAY'S",
+      "productType": "Robes",
+      "tags": [
+        "7DAY'S",
+        "bridal",
+        "lingerie",
+        "plus-size",
+        "robe",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 9.99,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-womens-lace-kimono-robe-babydoll-lingerie-mesh-nightgown-s-5xl-246597.jpg?v=1792883831",
+          "width": 1500,
+          "height": 1950
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-womens-lace-kimono-robe-babydoll-lingerie-mesh-nightgown-s-5xl-228169.jpg?v=1792883831",
+          "width": 1500,
+          "height": 1950
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-womens-lace-kimono-robe-babydoll-lingerie-mesh-nightgown-s-5xl-969810.jpg?v=1792883831",
+          "width": 1500,
+          "height": 1950
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-womens-lace-kimono-robe-babydoll-lingerie-mesh-nightgown-s-5xl-630119.jpg?v=1792883831",
+          "width": 1500,
+          "height": 1950
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-womens-lace-kimono-robe-babydoll-lingerie-mesh-nightgown-s-5xl-858014.jpg?v=1792883831",
+          "width": 1500,
+          "height": 1950
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-womens-lace-kimono-robe-babydoll-lingerie-mesh-nightgown-s-5xl-793312.jpg?v=1792883831",
+          "width": 1500,
+          "height": 1951
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891803521268,
+          "title": "Large / Blue",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803554036,
+          "title": "4X-Large / Dark Red",
+          "price": 17.99,
+          "available": false
+        },
+        {
+          "id": 67891803586804,
+          "title": "Small / Lavender",
+          "price": 13.99,
+          "available": true
+        },
+        {
+          "id": 67891803619572,
+          "title": "3X-Large / Lemon Yellow",
+          "price": 14.99,
+          "available": false
+        },
+        {
+          "id": 67891803652340,
+          "title": "Large / Navy Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891803685108,
+          "title": "Large / Wine Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803717876,
+          "title": "Small / Khaki",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803750644,
+          "title": "3X-Large / 1black",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891803783412,
+          "title": "Small / Wine Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803816180,
+          "title": "3X-Large / 1white",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803848948,
+          "title": "Small / Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803881716,
+          "title": "4X-Large / Blue",
+          "price": 14.99,
+          "available": false
+        },
+        {
+          "id": 67891803914484,
+          "title": "3X-Large / Pink",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891803947252,
+          "title": "X-Large / Khaki",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891803980020,
+          "title": "Large / Peacock Blue",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804012788,
+          "title": "Large / Lavender",
+          "price": 17.99,
+          "available": false
+        },
+        {
+          "id": 67891804045556,
+          "title": "Small / Peacock Blue",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804078324,
+          "title": "X-Large / Orange",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804111092,
+          "title": "4X-Large / Navy Blue",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804143860,
+          "title": "4X-Large / Pink",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804176628,
+          "title": "X-Small / Purple",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804209396,
+          "title": "Medium / Lemon Yellow",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804242164,
+          "title": "X-Large / Pink",
+          "price": 17.99,
+          "available": false
+        },
+        {
+          "id": 67891804274932,
+          "title": "XX-Large / Dark Green",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804307700,
+          "title": "Medium / Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804340468,
+          "title": "X-Small / Dark Red",
+          "price": 16.99,
+          "available": true
+        },
+        {
+          "id": 67891804373236,
+          "title": "X-Large / Navy Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891804406004,
+          "title": "Medium / Purple",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891804438772,
+          "title": "Medium / Apricot",
+          "price": 21.99,
+          "available": true
+        },
+        {
+          "id": 67891804471540,
+          "title": "X-Large / 1white",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804504308,
+          "title": "Medium / Lavender",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804537076,
+          "title": "Small / Baby Blue",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804569844,
+          "title": "4X-Large / 1white",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891804602612,
+          "title": "3X-Large / Peacock Blue",
+          "price": 21.99,
+          "available": true
+        },
+        {
+          "id": 67891804635380,
+          "title": "Large / Red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891804668148,
+          "title": "X-Large / Lilac",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804700916,
+          "title": "XX-Large / 1white",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804733684,
+          "title": "Large / 1black",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804766452,
+          "title": "X-Large / Peacock Blue",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804799220,
+          "title": "3X-Large / Dark Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804831988,
+          "title": "Small / 1white",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804864756,
+          "title": "Medium / Wine Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804897524,
+          "title": "Small / Navy Blue",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804930292,
+          "title": "XX-Large / 1black",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891804963060,
+          "title": "Small / Lemon Yellow",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891804995828,
+          "title": "5X-Large / Red",
+          "price": 13.99,
+          "available": true
+        },
+        {
+          "id": 67891805028596,
+          "title": "Large / Rose Red",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891805061364,
+          "title": "X-Large / Purple",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891805094132,
+          "title": "5X-Large / 1white",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891805126900,
+          "title": "Medium / 1black",
+          "price": 14.99,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-24T23:45:24Z"
+    },
+    {
+      "handle": "satin-lace-chemise-nightgown",
+      "title": "Satin and Lace Chemise Nightgown, S-4XL",
+      "brand": "7DAY'S",
+      "productType": "Chemises",
+      "tags": [
+        "7DAY'S",
+        "chemise",
+        "comfort",
+        "lingerie",
+        "plus-size",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 12.99,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-women-lingerie-satin-lace-chemise-nightgown-sexy-full-slips-sleepwear-s-4xl-743358.jpg?v=1792883836",
+          "width": 1580,
+          "height": 2048
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-women-lingerie-satin-lace-chemise-nightgown-sexy-full-slips-sleepwear-s-4xl-647647.jpg?v=1792883836",
+          "width": 1580,
+          "height": 2048
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-women-lingerie-satin-lace-chemise-nightgown-sexy-full-slips-sleepwear-s-4xl-780680.jpg?v=1792883836",
+          "width": 1560,
+          "height": 2048
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-women-lingerie-satin-lace-chemise-nightgown-sexy-full-slips-sleepwear-s-4xl-986204.jpg?v=1792883836",
+          "width": 1560,
+          "height": 2048
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-women-lingerie-satin-lace-chemise-nightgown-sexy-full-slips-sleepwear-s-4xl-844584.jpg?v=1792883837",
+          "width": 1580,
+          "height": 2048
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/avidlove-women-lingerie-satin-lace-chemise-nightgown-sexy-full-slips-sleepwear-s-4xl-681908.jpg?v=1792883836",
+          "width": 1500,
+          "height": 1950
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891807518964,
+          "title": "Large / Golden",
+          "price": 24.99,
+          "available": true
+        },
+        {
+          "id": 67891807551732,
+          "title": "Large / 1white",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891807584500,
+          "title": "3X-Large / Light Brown",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891807617268,
+          "title": "XX-Large / Brown",
+          "price": 24.99,
+          "available": true
+        },
+        {
+          "id": 67891807650036,
+          "title": "X-Large / Golden",
+          "price": 24.99,
+          "available": true
+        },
+        {
+          "id": 67891807682804,
+          "title": "XX-Large / 1coffee",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891807715572,
+          "title": "Large / Light Brown",
+          "price": 20.99,
+          "available": true
+        },
+        {
+          "id": 67891807748340,
+          "title": "4X-Large / 1red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891807781108,
+          "title": "Large / 1royal Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891807813876,
+          "title": "Large / Navy Blue",
+          "price": 18.49,
+          "available": true
+        },
+        {
+          "id": 67891807846644,
+          "title": "Medium / Pink",
+          "price": 18.49,
+          "available": true
+        },
+        {
+          "id": 67891807879412,
+          "title": "X-Large / Rose Red",
+          "price": 24.99,
+          "available": true
+        },
+        {
+          "id": 67891807912180,
+          "title": "Small / Golden",
+          "price": 20.99,
+          "available": true
+        },
+        {
+          "id": 67891807944948,
+          "title": "4X-Large / Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891807977716,
+          "title": "3X-Large / 1purple",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891808010484,
+          "title": "Large / 1red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808043252,
+          "title": "Large / Rose Red",
+          "price": 24.99,
+          "available": true
+        },
+        {
+          "id": 67891808076020,
+          "title": "4X-Large / Dark Red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808108788,
+          "title": "Large / Peacock Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808141556,
+          "title": "3X-Large / Floral Snow",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891808174324,
+          "title": "4X-Large / Lilac",
+          "price": 24.99,
+          "available": true
+        },
+        {
+          "id": 67891808207092,
+          "title": "XX-Large / Navy Blue",
+          "price": 18.49,
+          "available": true
+        },
+        {
+          "id": 67891808239860,
+          "title": "Small / Christmas Red",
+          "price": 18.49,
+          "available": true
+        },
+        {
+          "id": 67891808272628,
+          "title": "Medium / Army Green",
+          "price": 24.99,
+          "available": false
+        },
+        {
+          "id": 67891808305396,
+          "title": "Small / Floral Pumpkin",
+          "price": 21.99,
+          "available": true
+        },
+        {
+          "id": 67891808338164,
+          "title": "Large / Dark Red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808370932,
+          "title": "X-Large / Brick Red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808403700,
+          "title": "XX-Large / 1black",
+          "price": 17.99,
+          "available": true
+        },
+        {
+          "id": 67891808436468,
+          "title": "4X-Large / Floral Pumpkin",
+          "price": 21.99,
+          "available": true
+        },
+        {
+          "id": 67891808469236,
+          "title": "3X-Large / Army Green",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808502004,
+          "title": "4X-Large / Navy Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808534772,
+          "title": "Small / Dark Red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808567540,
+          "title": "XX-Large / Golden",
+          "price": 20.99,
+          "available": true
+        },
+        {
+          "id": 67891808600308,
+          "title": "3X-Large / Champagne",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808633076,
+          "title": "Small / Navy Blue Floral",
+          "price": 18.99,
+          "available": true
+        },
+        {
+          "id": 67891808665844,
+          "title": "Medium / 1white",
+          "price": 16.99,
+          "available": true
+        },
+        {
+          "id": 67891808698612,
+          "title": "Large / Pink",
+          "price": 18.49,
+          "available": true
+        },
+        {
+          "id": 67891808731380,
+          "title": "XX-Large / Lilac",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808764148,
+          "title": "Medium / 1purple",
+          "price": 15.99,
+          "available": true
+        },
+        {
+          "id": 67891808796916,
+          "title": "4X-Large / Brick Red",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808829684,
+          "title": "Medium / Drak Green",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808862452,
+          "title": "Large / 1purple",
+          "price": 15.99,
+          "available": true
+        },
+        {
+          "id": 67891808895220,
+          "title": "4X-Large / Navy Blue Floral",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808927988,
+          "title": "3X-Large / Golden",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808960756,
+          "title": "3X-Large / Navy Blue",
+          "price": 19.99,
+          "available": true
+        },
+        {
+          "id": 67891808993524,
+          "title": "X-Large / 1purple",
+          "price": 16.99,
+          "available": true
+        },
+        {
+          "id": 67891809026292,
+          "title": "X-Large / Christmas Red",
+          "price": 18.49,
+          "available": true
+        },
+        {
+          "id": 67891809059060,
+          "title": "Small / Blue",
+          "price": 14.99,
+          "available": true
+        },
+        {
+          "id": 67891809091828,
+          "title": "XX-Large / Floral Snow",
+          "price": 21.99,
+          "available": true
+        },
+        {
+          "id": 67891809124596,
+          "title": "XX-Large / Army Green",
+          "price": 24.99,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-24T23:45:24Z"
+    },
+    {
+      "handle": "5-piece-black-lingerie-set-garters",
+      "title": "5-Piece Black Lingerie Set with Thigh Garters",
+      "brand": "BUNNIES ROOM",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "bridal",
+        "BUNNIES ROOM",
+        "gift",
+        "lingerie",
+        "set",
+        "Shopify Collective"
+      ],
+      "hub": "lingerie",
+      "price": 69.98,
+      "compareAtPrice": 98.98,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/5C0C14D2-448F-4480-A647-CBFCAF526797.png?v=1792883850",
+          "width": 1319,
+          "height": 1648
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/6B595AEF-2652-4734-892C-71290660A813.jpg?v=1792883850",
+          "width": 1452,
+          "height": 1936
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/21D13AE4-28B2-41B4-BF2A-3FCCF07891B1.jpg?v=1792883850",
+          "width": 2432,
+          "height": 3242
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/5BDD457E-65BF-4B56-AD16-379138AF8883.jpg?v=1792883850",
+          "width": 2404,
+          "height": 3205
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/1E975145-1F1D-4656-8B71-898BBB99832B.jpg?v=1792883850",
+          "width": 2769,
+          "height": 3692
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/920550BB-2487-4CAB-AE1F-D6C49D72F0C7.jpg?v=1792883851",
+          "width": 2552,
+          "height": 3402
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891818856692,
+          "title": "XS/S / XS/S",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891818889460,
+          "title": "XS/S / M",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891818922228,
+          "title": "XS/S / L",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891818954996,
+          "title": "M / M",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891818987764,
+          "title": "M / L",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891819020532,
+          "title": "L / M",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891819053300,
+          "title": "L / L",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891819086068,
+          "title": "M / XS/S",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        },
+        {
+          "id": 67891819118836,
+          "title": "L / XS/S",
+          "price": 69.98,
+          "compareAtPrice": 98.98,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T02:27:16Z"
+    },
+    {
+      "handle": "sheer-striped-mesh-bra-panty-set",
+      "title": "Sheer Striped Mesh Bra and Panty Set, One Size",
+      "brand": "CurvyCandy",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "CurvyCandy",
+        "lingerie",
+        "one-size",
+        "set",
+        "Shopify Collective",
+        "under-30"
+      ],
+      "hub": "lingerie",
+      "price": 26.4,
+      "compareAtPrice": 41.25,
+      "available": true,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Sf4b8b629f60343fd8e64db9d106907174.webp?v=1792884009",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S4670f7c844d64d539bcd563b0e1460d62.webp?v=1792884010",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Seb425219e3434ed2bcf93b3a7f334576p.webp?v=1792884009",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S9e766b5d03634ac2aef2f4b295ec80f2g.webp?v=1792884010",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Scc9001206d6b467ebdd55245e8e4787fK.webp?v=1792884009",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/S0975b45166bc458fa3f0719b2ae141f3K.webp?v=1792884010",
+          "width": 800,
+          "height": 800
+        }
+      ],
+      "variants": [
+        {
+          "id": 67891860865268,
+          "title": "246-red / One Size",
+          "price": 26.88,
+          "compareAtPrice": 42.0,
+          "available": true
+        },
+        {
+          "id": 67891860898036,
+          "title": "246-blue / One Size",
+          "price": 27.12,
+          "compareAtPrice": 42.38,
+          "available": true
+        },
+        {
+          "id": 67891860930804,
+          "title": "246-black / One Size",
+          "price": 26.4,
+          "compareAtPrice": 41.25,
+          "available": true
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-24T23:45:25Z"
+    },
+    {
+      "handle": "two-set-lingerie-gift-bundle",
+      "title": "Two-Set Lingerie Gift Bundle: Daisy Lace and French Dot Mesh",
+      "brand": "My Store",
+      "productType": "Lingerie Sets",
+      "tags": [
+        "3wishes.com",
+        "bridal",
+        "bundle",
+        "gift",
+        "lingerie",
+        "set"
+      ],
+      "hub": "lingerie",
+      "price": 61.11,
+      "compareAtPrice": 67.9,
+      "available": false,
+      "images": [
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/Rn5C5LhHI4phtputepcy_2Frenders_2FGgGYrPDyDWyOwKj0LjnjU_0dfd0d65-ad83-4091-b5b1-0aea83542b50.png?v=1792885249",
+          "width": 1680,
+          "height": 2528
+        },
+        {
+          "src": "https://cdn.shopify.com/s/files/1/0861/6479/9732/files/ZgO7K88Ocvc9k2sreyjL_2Frenders_2FWjFkla4EhiZQwaU-AbyLr_85b949b9-c8b5-4c7a-9b8c-25a715a3032e.jpg?v=1792885248",
+          "width": 1680,
+          "height": 2474
+        }
+      ],
+      "variants": [
+        {
+          "id": 67892127826164,
+          "title": "Black/Blue / Small",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892127858932,
+          "title": "Black/Blue / Medium",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892127891700,
+          "title": "Black/Blue / Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892127924468,
+          "title": "Black/Blue / X-Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892127957236,
+          "title": "Black/Red / Small",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892127990004,
+          "title": "Black/Red / Medium",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128022772,
+          "title": "Black/Red / Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128055540,
+          "title": "Black/Red / X-Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128088308,
+          "title": "Black/Green / Small",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128121076,
+          "title": "Black/Green / Medium",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128153844,
+          "title": "Black/Green / Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128186612,
+          "title": "Black/Green / X-Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128219380,
+          "title": "Black/White / Small",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128252148,
+          "title": "Black/White / Medium",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128284916,
+          "title": "Black/White / Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128317684,
+          "title": "Black/White / X-Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128350452,
+          "title": "Black/Gold / Small",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128383220,
+          "title": "Black/Gold / Medium",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128415988,
+          "title": "Black/Gold / Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128448756,
+          "title": "Black/Gold / X-Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128481524,
+          "title": "Black/Fuchsia / Small",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128514292,
+          "title": "Black/Fuchsia / Medium",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128547060,
+          "title": "Black/Fuchsia / Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        },
+        {
+          "id": 67892128579828,
+          "title": "Black/Fuchsia / X-Large",
+          "price": 61.11,
+          "compareAtPrice": 67.9,
+          "available": false
+        }
+      ],
+      "program": "shopify",
+      "updatedAt": "2026-10-25T01:06:24Z"
+    }
+  ]
 }

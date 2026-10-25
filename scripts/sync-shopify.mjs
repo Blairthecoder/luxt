@@ -63,9 +63,19 @@ async function storefront(query, variables) {
     headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': TOKEN },
     body: JSON.stringify({ query, variables }),
   })
+  if (res.status === 401 || res.status === 403) {
+    throw new Error(`Storefront API ${res.status}: the token was rejected. Use the public Storefront API access token, not the Admin API token`)
+  }
+  if (res.status === 404) throw new Error(`Storefront API 404: check SHOPIFY_STORE_DOMAIN (${DOMAIN}) is the .myshopify.com domain`)
   if (!res.ok) throw new Error(`Storefront API ${res.status}`)
   const json = await res.json()
-  if (json.errors?.length) throw new Error(json.errors.map((e) => e.message).join('; '))
+  if (json.errors?.length) {
+    const msg = json.errors.map((e) => e.message).join('; ')
+    const scope = /access|scope|unauthenticated/i.test(msg)
+      ? ' (the token needs the unauthenticated_read_product_listings, _read_product_tags and _read_collection_listings scopes)'
+      : ''
+    throw new Error(`${msg}${scope}`)
+  }
   return json.data
 }
 
@@ -138,7 +148,12 @@ async function main() {
     console.log('[sync-shopify] SHOPIFY_STORE_DOMAIN or SHOPIFY_STOREFRONT_TOKEN not set; keeping existing files.')
     return
   }
+  console.log(`[sync-shopify] Fetching ${COLLECTION} from ${DOMAIN} (token ${TOKEN.length} chars).`)
   const { shop, nodes } = await fetchProducts()
+  if (!nodes.length) {
+    console.warn('[sync-shopify] The store returned no products. Check that the products are Active and published to the sales channel that owns this token (Headless or Online Store); keeping existing files.')
+    return
+  }
   const storeUrl = (shop.primaryDomain?.url || `https://${DOMAIN}`).replace(/\/+$/, '')
   // Lovense handles win on a clash so existing pages, copy and links stay put.
   const taken = new Set(JSON.parse(fs.readFileSync(LOVENSE, 'utf8')).products.map((p) => p.handle))
