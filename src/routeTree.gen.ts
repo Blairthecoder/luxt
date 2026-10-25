@@ -18,8 +18,11 @@ import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ReturnsRouteImport } from './routes/returns'
 import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SizeGuideRouteImport } from './routes/size-guide'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
@@ -76,14 +79,29 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SizeGuideRoute = SizeGuideRouteImport.update({
+  id: '/size-guide',
+  path: '/size-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -147,8 +165,11 @@ export interface FileRoutesByFullPath {
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
+  '/returns': typeof ReturnsRoute
   '/reviews': typeof ReviewsRoute
+  '/shipping': typeof ShippingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/size-guide': typeof SizeGuideRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -170,8 +191,11 @@ export interface FileRoutesByTo {
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
+  '/returns': typeof ReturnsRoute
   '/reviews': typeof ReviewsRoute
+  '/shipping': typeof ShippingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/size-guide': typeof SizeGuideRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -194,8 +218,11 @@ export interface FileRoutesById {
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
+  '/returns': typeof ReturnsRoute
   '/reviews': typeof ReviewsRoute
+  '/shipping': typeof ShippingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/size-guide': typeof SizeGuideRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
@@ -219,8 +246,11 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/partners'
     | '/privacy'
+    | '/returns'
     | '/reviews'
+    | '/shipping'
     | '/sitemap.xml'
+    | '/size-guide'
     | '/terms'
     | '/blog/$slug'
     | '/category/$slug'
@@ -242,8 +272,11 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/partners'
     | '/privacy'
+    | '/returns'
     | '/reviews'
+    | '/shipping'
     | '/sitemap.xml'
+    | '/size-guide'
     | '/terms'
     | '/blog/$slug'
     | '/category/$slug'
@@ -265,8 +298,11 @@ export interface FileRouteTypes {
     | '/gifts'
     | '/partners'
     | '/privacy'
+    | '/returns'
     | '/reviews'
+    | '/shipping'
     | '/sitemap.xml'
+    | '/size-guide'
     | '/terms'
     | '/blog/$slug'
     | '/category/$slug'
@@ -289,8 +325,11 @@ export interface RootRouteChildren {
   GiftsRoute: typeof GiftsRoute
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
+  ReturnsRoute: typeof ReturnsRoute
   ReviewsRoute: typeof ReviewsRoute
+  ShippingRoute: typeof ShippingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SizeGuideRoute: typeof SizeGuideRoute
   TermsRoute: typeof TermsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
@@ -368,6 +407,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/returns': {
+      id: '/returns'
+      path: '/returns'
+      fullPath: '/returns'
+      preLoaderRoute: typeof ReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
@@ -375,11 +421,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/size-guide': {
+      id: '/size-guide'
+      path: '/size-guide'
+      fullPath: '/size-guide'
+      preLoaderRoute: typeof SizeGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -465,8 +525,11 @@ const rootRouteChildren: RootRouteChildren = {
   GiftsRoute: GiftsRoute,
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
+  ReturnsRoute: ReturnsRoute,
   ReviewsRoute: ReviewsRoute,
+  ShippingRoute: ShippingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SizeGuideRoute: SizeGuideRoute,
   TermsRoute: TermsRoute,
   BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,

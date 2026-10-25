@@ -62,8 +62,8 @@ export function Footer() {
 
         <div className="mt-14 pt-6 border-t border-line space-y-4 text-xs text-graphite">
           <p className="max-w-3xl leading-relaxed">
-            We earn a commission when you buy through our links, at no extra cost to you. Orders are placed and
-            shipped by the retailer you buy from.{' '}
+            Lingerie is sold by {SITE.name} through our Shopify checkout. Toys are sold by the retailer you buy from,
+            and we earn a commission when you buy through our links, at no extra cost to you.{' '}
             <Link to="/disclosure" className="text-ink underline underline-offset-2">
               Disclosure
             </Link>
@@ -87,6 +87,15 @@ export function Footer() {
               </Link>
               <Link to="/contact" className={link}>
                 Contact
+              </Link>
+              <Link to="/shipping" className={link}>
+                Shipping
+              </Link>
+              <Link to="/returns" className={link}>
+                Returns
+              </Link>
+              <Link to="/size-guide" className={link}>
+                Size Guide
               </Link>
               <Link to="/privacy" className={link}>
                 Privacy
