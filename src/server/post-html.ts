@@ -11,6 +11,8 @@ import type { CatalogProduct } from '@/types/catalog'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getOptimizedImageUrl } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
+import { GUIDE_PRODUCTS } from '@/content/product-links'
+import { linkProductMentions, pageProductCards, type PageProductCard } from '@/server/product-links'
 
 function escapeHtml(text: string): string {
   return text
@@ -93,7 +95,9 @@ export type TopPick = {
   note: string
 }
 
-export async function renderPostHtml(post: Post): Promise<{ html: string; topPick: TopPick | null }> {
+export async function renderPostHtml(
+  post: Post,
+): Promise<{ html: string; topPick: TopPick | null; products: PageProductCard[] }> {
   const used = new Set<string>()
   let topPick: TopPick | null = null
   let html = await marked.parse(post.body.trim())
@@ -137,6 +141,11 @@ export async function renderPostHtml(post: Post): Promise<{ html: string; topPic
     return price === undefined ? 'See current prices' : formatPrice(price)
   })
 
-  return { html, topPick }
+  // Contextual links to the guide's mapped products, then cards for any not already shown as picks.
+  const mapped = GUIDE_PRODUCTS[post.slug]
+  html = linkProductMentions(html, mapped).html
+  const products = pageProductCards(mapped, used)
+
+  return { html, topPick, products }
 }
 

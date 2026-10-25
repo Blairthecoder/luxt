@@ -2,6 +2,7 @@ import { Link, createFileRoute, notFound } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { EroticaGrid, EroticaMeta } from '@/components/EroticaCard'
 import { NewsletterSignup } from '@/components/NewsletterSignup'
+import { ShopTheGuide } from '@/components/ShopTheGuide'
 import { EROTICA, EROTICA_BY_SLUG } from '@/content/erotica'
 import { POSTS_BY_SLUG } from '@/content/posts'
 import { COLLECTIONS_BY_SLUG } from '@/content/collections'
@@ -16,7 +17,7 @@ export const Route = createFileRoute('/erotica/$slug')({
     if (!entry) throw notFound()
     const rendered = await getEroticaHtml({ data: entry.slug })
     if (!rendered) throw notFound()
-    return { entry: { ...entry, body: '' }, html: rendered.html }
+    return { entry: { ...entry, body: '' }, html: rendered.html, products: rendered.products }
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
@@ -53,7 +54,7 @@ export const Route = createFileRoute('/erotica/$slug')({
 })
 
 function EroticaPage() {
-  const { entry, html } = Route.useLoaderData()
+  const { entry, html, products } = Route.useLoaderData()
   const guides = entry.guides.map((slug) => POSTS_BY_SLUG[slug]).filter((p) => p !== undefined)
   const collections = (entry.collections ?? []).map((slug) => COLLECTIONS_BY_SLUG[slug]).filter((c) => c !== undefined)
   // Same kind first, so a story leads to more stories.
@@ -118,6 +119,12 @@ function EroticaPage() {
               )}
             </section>
           )}
+          <ShopTheGuide
+            products={products}
+            title="Set the Mood"
+            context="erotica_products"
+            className="mt-14 pt-12 border-t border-line"
+          />
           <NewsletterSignup source={`erotica:${entry.slug}`} className="mt-14" />
         </div>
       </div>
