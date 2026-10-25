@@ -8,6 +8,7 @@ import { MobileTabBar } from '@/components/MobileTabBar'
 import { Logo } from '@/components/Logo'
 import { SITE } from '@/config/site'
 import { hasShopifyProducts } from '@/content/retired'
+import { cartCount, useCart } from '@/lib/cart'
 
 /** Editorial sections first: the site reads as a review publication, with the catalog one menu away. */
 const PRIMARY = [
@@ -81,6 +82,7 @@ export function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = useRouterState({ select: (state) => state.location.pathname })
   const close = () => setMobileOpen(false)
+  const cartItems = cartCount(useCart())
 
   useEffect(() => {
     document.documentElement.style.overflow = mobileOpen || searchOpen ? 'hidden' : ''
@@ -285,6 +287,11 @@ export function Navbar() {
               <span>Search</span>
               <kbd className="rounded border border-line px-1.5 py-0.5 text-[0.6875rem] font-sans text-graphite">⌘K</kbd>
             </button>
+            {cartItems > 0 && (
+              <Link to="/cart" className={`${navLink} ml-4 flex items-center`} aria-label={`Cart, ${cartItems} items`}>
+                Cart ({cartItems})
+              </Link>
+            )}
             <button
               type="button"
               onClick={() => {

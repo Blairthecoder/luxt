@@ -23,8 +23,9 @@ function DisclosurePage() {
           commission from the retailer. The price you pay is the same as going to the retailer directly.
         </p>
         <p>
-          We do not sell products ourselves. Orders are placed on our retail partners' websites, and they handle
-          payment, shipping, returns and customer service.
+          Lingerie is sold by us through our own Shopify store, and we earn no affiliate commission on it. All
+          other products are sold by our retail partners, whose websites handle payment, shipping, returns and
+          customer service.
         </p>
         <p>
           Commissions never decide what we recommend. Our guides and buying tips are written to help you choose
