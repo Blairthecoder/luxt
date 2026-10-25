@@ -17,16 +17,16 @@ const DESIGN_BRANDS = [
 
 export const BLACK_FRIDAY_DEALS: Post = {
   slug: 'black-friday-sex-toy-deals',
-  title: 'Black Friday Sex Toy Deals: How to Shop the Sales Well',
-  metaTitle: 'Black Friday Sex Toy Deals: What to Buy on Sale',
+  title: 'Black Friday Sex Toy and Lingerie Deals: How to Shop the Sales Well',
+  metaTitle: 'Black Friday Sex Toy & Lingerie Deals: What to Buy on Sale',
   metaDescription:
-    'How to shop Black Friday sex toy deals with confidence: which toys are worth buying on sale, how to spot a genuine deal and where to see current markdowns.',
+    'How to shop Black Friday sex toy and lingerie deals with confidence: what is worth buying on sale, lingerie gift bundles, how to spot a genuine deal and live markdowns.',
   excerpt:
     'A sale is a good moment to finally get the toy you have been curious about. How to shop calmly, spot a genuine deal and choose what is worth buying.',
   publishedAt: '2026-10-20',
-  updatedAt: '2026-10-24',
-  readMinutes: 8,
-  hubs: ['vibrators', 'strokers', 'couples', 'lubricants'],
+  updatedAt: '2026-10-25',
+  readMinutes: 9,
+  hubs: ['vibrators', 'strokers', 'couples', 'lubricants', 'lingerie'],
   topics: ['gift-guides'],
   body: `
 Maybe there is a toy you have been curious about for months, or one you know would make your partner feel spoiled. Black Friday and the weeks around it are when many toy retailers mark down their ranges, so it is a sensible time to buy something you have been considering for a while. It is also a time when it is easy to buy things you do not need because the price looks good.
@@ -35,7 +35,7 @@ This guide is about shopping sales well. It does not list specific discounts, be
 
 ## How We Show Sale Prices
 
-Every review and product card on this site shows the current price from our retail partner. When the retailer marks a product down, the usual price appears struck through beside the sale price, so you can spot a real markdown at a glance. Browse the full [Lovense range](/shop/lovense) to see what is reduced right now.
+Every review and product card on this site shows the current price from our retail partner. When the retailer marks a product down, the usual price appears struck through beside the sale price, so you can spot a real markdown at a glance. Browse the full [Lovense range](/shop/lovense) to see what is reduced right now, or see everything in one place on our [Black Friday deals page](/deals): lingerie bundles, lingerie markdowns and Lovense prices together.
 
 ## What Is Worth Buying on Sale
 
@@ -58,6 +58,14 @@ Connected toys and automatic strokers are among the most expensive products in t
 Sales overlap with the start of the holiday gift season. A couples vibrator, a vibrating ring or a gift set bought on markdown leaves room in the budget for a good lube or something small to go with it. See [couples sex toys](/shop/couples-sex-toys) and [Lovense bundles](/shop/lovense-bundles).
 
 [[picks:couples]]
+
+### Lingerie Gift Bundles
+
+Lingerie is one of the easiest gifts to get wrong on size, so our bundles stick to wire-free pieces, which are far more forgiving than a structured bra. Each one pairs two pieces from the same maker, so they ship together in one parcel and returns stay simple. You choose the size for each piece separately. See all [lingerie gift bundles](/shop/lingerie-gift-bundles), or [lingerie gifts for her](/shop/lingerie-gifts-for-her) for single pieces.
+
+[[picks:lingerie]]
+
+A lingerie set and a toy also make a good pair for an anniversary or a first holiday together. Our guide to [feeling confident in lingerie](/blog/how-to-feel-confident-in-lingerie) is worth sending along with it.
 
 ### Stocking Up on Basics
 
@@ -153,6 +161,23 @@ Orders ship from our retail partner in plain packaging, which matters more when 
         },
       ],
     },
+    lingerie: {
+      slots: [
+        {
+          label: 'Lingerie Gift Bundle',
+          note: 'Two wire-free pieces from the same maker, shipped together. Shown at the live bundle price.',
+          rules: [{ hubs: ['lingerie'], tags: ['bundle'], title: 'gift box' }, { hubs: ['lingerie'], tags: ['bundle'] }],
+        },
+        {
+          label: 'Bridal Pick',
+          note: 'For a wedding night or a bridal shower gift. Marked-down pieces show first.',
+          rules: [
+            { onSale: true, hubs: ['lingerie'], tags: ['bridal'] },
+            { hubs: ['lingerie'], tags: ['bridal'] },
+          ],
+        },
+      ],
+    },
     couples: {
       slots: [
         {
@@ -174,6 +199,10 @@ Orders ship from our retail partner in plain packaging, which matters more when 
     {
       q: 'How do I know a sale price is genuine?',
       a: 'Our product cards show the retailer’s usual price struck through beside the sale price. Compare the same model and size, and favor well-made toys over large percentages on unknown brands.',
+    },
+    {
+      q: 'Do you have lingerie deals for Black Friday?',
+      a: 'Yes. Our lingerie gift bundles pair two pieces from the same maker so they ship in one parcel, and any lingerie marked down in our shop shows on the deals page at its live price.',
     },
     {
       q: 'Are cheap sex toys safe?',

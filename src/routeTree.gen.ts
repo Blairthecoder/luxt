@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DealsRouteImport } from './routes/deals'
 import { Route as DisclosureRouteImport } from './routes/disclosure'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as GiftsRouteImport } from './routes/gifts'
@@ -49,6 +50,11 @@ const CartRoute = CartRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DealsRoute = DealsRouteImport.update({
+  id: '/deals',
+  path: '/deals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DisclosureRoute = DisclosureRouteImport.update({
@@ -142,6 +148,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
   '/disclosure': typeof DisclosureRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gifts': typeof GiftsRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
   '/disclosure': typeof DisclosureRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gifts': typeof GiftsRoute
@@ -189,6 +197,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
   '/disclosure': typeof DisclosureRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/gifts': typeof GiftsRoute
@@ -214,6 +223,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/contact'
+    | '/deals'
     | '/disclosure'
     | '/editorial-policy'
     | '/gifts'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/contact'
+    | '/deals'
     | '/disclosure'
     | '/editorial-policy'
     | '/gifts'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/contact'
+    | '/deals'
     | '/disclosure'
     | '/editorial-policy'
     | '/gifts'
@@ -284,6 +296,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
+  DealsRoute: typeof DealsRoute
   DisclosureRoute: typeof DisclosureRoute
   EditorialPolicyRoute: typeof EditorialPolicyRoute
   GiftsRoute: typeof GiftsRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deals': {
+      id: '/deals'
+      path: '/deals'
+      fullPath: '/deals'
+      preLoaderRoute: typeof DealsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disclosure': {
@@ -460,6 +480,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CartRoute: CartRoute,
   ContactRoute: ContactRoute,
+  DealsRoute: DealsRoute,
   DisclosureRoute: DisclosureRoute,
   EditorialPolicyRoute: EditorialPolicyRoute,
   GiftsRoute: GiftsRoute,

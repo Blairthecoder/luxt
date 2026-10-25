@@ -55,6 +55,14 @@ function GiftsPage() {
             A thoughtful toy says you care about how someone feels. Start with who it is for or what you want to
             spend, and every guide gives you a gentle first pick and a bolder one.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3 rise-delay">
+            <Link to="/deals" className="btn">
+              Black Friday Deals
+            </Link>
+            <Link to="/shop/$slug" params={{ slug: 'lingerie-gift-bundles' }} className="btn-ghost">
+              Lingerie Gift Bundles
+            </Link>
+          </div>
         </div>
       </header>
 

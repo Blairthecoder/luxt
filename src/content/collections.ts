@@ -299,7 +299,7 @@ const ALL_COLLECTIONS: Collection[] = [
       'Lovense bundles that pair two app-controlled toys, from Lush 4 and Ferri to Nora and Max 2. Matched sets for couples, long-distance play and gifts.',
     intro:
       'Some Lovense toys are made to work together. These sets pair two toys that connect in the same app, so partners can feel each other’s movements across the room or across the world. They are also an easy gift: one box, two toys, nothing to match up.',
-    rule: { tags: ['bundle'] },
+    rule: { tags: ['bundle'], brands: ['lovense'] },
     guide: 'long-distance-sex-toys',
   },
   {
@@ -618,6 +618,19 @@ const ALL_COLLECTIONS: Collection[] = [
       'Choose stretchy, forgiving styles if you are unsure of their size. Babydolls, robes and bralette sets fit a wider range of bodies than structured bras.',
     rule: { hubs: ['lingerie'], tags: ['gift'] },
     guide: 'sex-toy-gifts-for-her',
+  },
+  {
+    slug: 'lingerie-gift-bundles',
+    name: 'Lingerie Gift Bundles',
+    group: 'Lingerie',
+    metaTitle: 'Lingerie Gift Bundles: Two Sets, One Parcel',
+    metaDescription:
+      'Lingerie gift bundles that pair two wire-free pieces from the same maker, so they ship together. Bridal, comfort and gift-for-her sets with plain fit notes.',
+    intro:
+      'Each bundle pairs two pieces from the same maker, so they arrive in one parcel and returns stay simple. Every piece is wire-free, which makes sizing far more forgiving when you are buying for someone else. You choose the size for each piece separately.',
+    rule: { hubs: ['lingerie'], tags: ['bundle'] },
+    guide: 'how-to-feel-confident-in-lingerie',
+    guides: ['black-friday-sex-toy-deals'],
   },
   {
     slug: 'lingerie-under-30',
