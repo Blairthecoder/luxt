@@ -28,7 +28,7 @@ export const PRIVACY: LegalDoc = {
     'How Nightstand Supply Co. handles your information: no accounts, no orders, privacy-minded analytics, and what is stored on your device.',
   updated: 'October 20, 2026',
   intro:
-    'Privacy matters on a site like this, so here is the short version: you do not need an account, we do not take orders or payments, and we do not sell your personal information. The details are below.',
+    'Privacy matters on a site like this, so here is the short version: you do not need an account, lingerie orders are paid for at Shopify checkout (which has its own privacy policy), and we do not sell your personal information. The details are below.',
   sections: [
     {
       heading: 'What We Do and Do Not Collect',

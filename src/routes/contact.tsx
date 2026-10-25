@@ -28,7 +28,7 @@ export const Route = createFileRoute('/contact')({
         {
           heading: 'Orders and Shipping',
           body: [
-            'We do not take orders. Payment, shipping, returns and customer service are handled by the retailer you buy from, so please contact them directly about an existing order.',
+            'Lingerie is sold and shipped by Nightstand Supply Shop through Shopify checkout, so write to us about those orders. For everything else, payment, shipping, returns and customer service are handled by the retailer you buy from, so please contact them directly.',
           ],
         },
       ]}

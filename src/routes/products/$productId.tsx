@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BuyButton } from '@/components/BuyButton'
+import { ShopifyBuy } from '@/components/ShopifyBuy'
 import { ProductGrid } from '@/components/ProductCard'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { FaqAccordion } from '@/components/FaqAccordion'
@@ -113,6 +114,7 @@ function ProductPage() {
   const [imageIndex, setImageIndex] = useState(0)
   const touchStartX = useRef<number | null>(null)
   const merchant = getProgram(product.program).merchantName
+  const ownStore = product.program === 'shopify'
   const options = product.variants.filter((v) => v.title !== 'Default Title')
   const guides = postsForHub(hub.slug)
   const highlights = copy ? [] : productHighlights(product)
@@ -267,14 +269,18 @@ function ProductPage() {
             </ul>
           )}
 
-          <div className="mt-10 space-y-3">
-            <BuyButton
-              handle={product.handle}
-              program={product.program}
-              available={product.available}
-              price={product.price}
-              className="w-full"
-            />
+          <div id="buy" className="mt-10 space-y-3 scroll-mt-28">
+            {ownStore ? (
+              <ShopifyBuy product={product} />
+            ) : (
+              <BuyButton
+                handle={product.handle}
+                program={product.program}
+                available={product.available}
+                price={product.price}
+                className="w-full"
+              />
+            )}
             {product.program === 'luxurytoyx' && (
               <ul aria-label={`Shipping and billing from ${merchant}`} className="grid grid-cols-3 gap-2 text-center text-xs leading-snug text-graphite">
                 {['Plain packaging and labeling', 'Discreet billing', 'Most orders arrive in 3 to 4 days'].map((item) => (
@@ -284,12 +290,18 @@ function ProductPage() {
                 ))}
               </ul>
             )}
-            <p className="text-xs text-graphite text-center">
-              Secure checkout from {merchant}.{' '}
-              <Link to="/blog/$slug" params={{ slug: 'buying-sex-toys-discreetly' }} className="underline underline-offset-2 hover:text-ink">
-                How we keep it private
-              </Link>
-            </p>
+            {ownStore ? (
+              <p className="text-xs text-graphite text-center">
+                Sold and shipped by {merchant}. You pay at Shopify checkout, and shipping and taxes show before you confirm.
+              </p>
+            ) : (
+              <p className="text-xs text-graphite text-center">
+                Secure checkout from {merchant}.{' '}
+                <Link to="/blog/$slug" params={{ slug: 'buying-sex-toys-discreetly' }} className="underline underline-offset-2 hover:text-ink">
+                  How we keep it private
+                </Link>
+              </p>
+            )}
           </div>
 
           <dl className="mt-12 border-t border-ink">
@@ -301,7 +313,7 @@ function ProductPage() {
             ))}
           </dl>
 
-          <AffiliateNotice className="mt-6" />
+          {!ownStore && <AffiliateNotice className="mt-6" />}
         </div>
       </div>
 
@@ -313,15 +325,21 @@ function ProductPage() {
               <p className="mt-1 text-xs text-silver line-through">{formatPrice(product.compareAtPrice)}</p>
             )}
           </div>
-          <a
-            href={goPath(product.handle)}
-            target="_blank"
-            rel="sponsored nofollow noopener"
-            data-link-context="mobile_buy_bar"
-            className="btn btn-lg flex-1 !min-h-[3.25rem] press"
-          >
-            {product.available ? `Check Price at ${merchant}` : `Check Stock at ${merchant}`}
-          </a>
+          {ownStore ? (
+            <a href="#buy" data-link-context="mobile_buy_bar" className="btn btn-lg flex-1 !min-h-[3.25rem] press">
+              {product.available ? 'Choose Options' : 'Sold Out'}
+            </a>
+          ) : (
+            <a
+              href={goPath(product.handle)}
+              target="_blank"
+              rel="sponsored nofollow noopener"
+              data-link-context="mobile_buy_bar"
+              className="btn btn-lg flex-1 !min-h-[3.25rem] press"
+            >
+              {product.available ? `Check Price at ${merchant}` : `Check Stock at ${merchant}`}
+            </a>
+          )}
         </div>
       </div>
 
