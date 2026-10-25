@@ -9,7 +9,7 @@ import { RETIRED_COLLECTIONS, RETIRED_HUBS } from '@/content/retired'
 import type { PickBlock, PickSlot, Post } from '@/content/posts'
 import type { CatalogProduct } from '@/types/catalog'
 import { getProgram, goPath } from '@/lib/affiliate'
-import { getOptimizedImageUrl } from '@/lib/image'
+import { getOptimizedImageUrl, isModelPhoto } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
 import { GUIDE_PRODUCTS } from '@/content/product-links'
 import { linkProductMentions, pageProductCards, type PageProductCard } from '@/server/product-links'
@@ -64,7 +64,7 @@ function pickCard(slot: PickSlot, p: CatalogProduct): string {
     ? `${formatPrice(p.price)} <s>${formatPrice(p.compareAtPrice)}</s>`
     : formatPrice(p.price)
   return `<li class="pick">
-  <a class="pick-image" href="/products/${p.handle}"><img src="${getOptimizedImageUrl(p.images[0]?.src, 400)}" alt="${title} by ${escapeHtml(p.brand)}" width="400" height="500" loading="lazy" /></a>
+  <a class="pick-image${isModelPhoto(p.images[0]?.src) ? ' is-photo' : ''}" href="/products/${p.handle}"><img src="${getOptimizedImageUrl(p.images[0]?.src, 400)}" alt="${escapeHtml(p.images[0]?.alt ?? `${p.title} by ${p.brand}`)}" width="400" height="500" loading="lazy" /></a>
   <div class="pick-body">
     <p class="pick-label">${escapeHtml(slot.label)}</p>
     <h3 class="pick-title"><a href="/products/${p.handle}">${title}</a></h3>

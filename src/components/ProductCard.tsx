@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import type { ProductSummary } from '@/lib/listing'
 import { goPath } from '@/lib/affiliate'
-import { getImageSrcSet, getOptimizedImageUrl } from '@/lib/image'
+import { getImageSrcSet, getOptimizedImageUrl, isModelPhoto } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
 
 export function ProductCard({
@@ -16,6 +16,7 @@ export function ProductCard({
 }) {
   const flag = !product.available ? 'Sold Out' : product.compareAtPrice ? 'Sale' : null
   const savings = product.compareAtPrice ? product.compareAtPrice - product.price : 0
+  const photo = isModelPhoto(product.image)
   return (
     <div className="group flex flex-col">
       <Link to="/products/$productId" params={{ productId: product.handle }} className="flex flex-col">
@@ -24,11 +25,12 @@ export function ProductCard({
             src={getOptimizedImageUrl(product.image, 600)}
             srcSet={getImageSrcSet(product.image, [240, 360, 480, 600])}
             sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
-            alt={`${product.title} by ${product.brand}`}
+            alt={product.imageAlt ?? `${product.title} by ${product.brand}`}
             loading="lazy"
+            decoding="async"
             width={600}
             height={750}
-            className={`absolute inset-0 w-full h-full object-contain mix-blend-multiply ${size === 'small' ? 'p-[18%] saturate-[0.85]' : 'p-[9%]'} transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
+            className={`absolute inset-0 w-full h-full ${photo ? 'object-cover object-[50%_25%]' : `object-contain mix-blend-multiply ${size === 'small' ? 'p-[18%] saturate-[0.85]' : 'p-[9%]'}`} transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]`}
           />
           {flag === 'Sale' && (
             <span className="absolute top-2.5 left-2.5 rounded-full bg-signal px-2.5 py-1 text-xs font-semibold leading-none text-canvas">

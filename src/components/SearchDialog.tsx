@@ -3,7 +3,7 @@ import { useNavigate } from '@tanstack/react-router'
 import { searchCatalog } from '@/lib/catalog'
 import { COLLECTIONS } from '@/content/collections'
 import { formatPrice } from '@/lib/format'
-import { getOptimizedImageUrl } from '@/lib/image'
+import { getOptimizedImageUrl, productImageClass } from '@/lib/image'
 import type { SearchResults } from '@/server/search'
 
 type Row =
@@ -197,7 +197,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
                                 width={96}
                                 height={96}
                                 loading="lazy"
-                                className="absolute inset-0 h-full w-full object-contain p-1 mix-blend-multiply"
+                                className={`absolute inset-0 h-full w-full ${productImageClass(row.image, 'object-contain p-1 mix-blend-multiply')}`}
                               />
                             )}
                           </span>

@@ -14,7 +14,7 @@ import { SITE, absoluteUrl } from '@/config/site'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
-import { getImageSrcSet, getOptimizedImageUrl } from '@/lib/image'
+import { getImageSrcSet, getOptimizedImageUrl, isModelPhoto } from '@/lib/image'
 import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 import { productHighlights } from '@/lib/product-highlights'
 
@@ -118,6 +118,7 @@ export const Route = createFileRoute('/products/$productId')({
 function ProductPage() {
   const { product, copy, howTo, related, hub } = Route.useLoaderData()
   const [imageIndex, setImageIndex] = useState(0)
+  const photo = isModelPhoto(product.images[0]?.src)
   const touchStartX = useRef<number | null>(null)
   const merchant = getProgram(product.program).merchantName
   const ownStore = product.program === 'shopify'
@@ -164,7 +165,7 @@ function ProductPage() {
                   onMouseEnter={() => setImageIndex(i)}
                   aria-label={`Show image ${i + 1}`}
                   aria-pressed={i === imageIndex}
-                  className={`relative aspect-square w-16 lg:w-20 shrink-0 bg-mist transition-opacity ${
+                  className={`relative ${photo ? 'aspect-[4/5]' : 'aspect-square'} w-16 lg:w-20 shrink-0 bg-mist transition-opacity ${
                     i === imageIndex ? 'opacity-100 ring-1 ring-inset ring-ink' : 'opacity-60 hover:opacity-100'
                   }`}
                 >
@@ -172,7 +173,8 @@ function ProductPage() {
                     src={getOptimizedImageUrl(img.src, 200)}
                     alt=""
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-contain p-2 mix-blend-multiply"
+                    decoding="async"
+                    className={`absolute inset-0 w-full h-full ${photo ? 'object-cover object-top' : 'object-contain p-2 mix-blend-multiply'}`}
                   />
                 </button>
               ))}
@@ -196,7 +198,7 @@ function ProductPage() {
             </div>
           )}
           <div
-            className="relative aspect-square flex-1 bg-mist overflow-hidden max-lg:-mx-[clamp(1.25rem,4vw,3rem)] max-lg:flex-none"
+            className={`relative ${photo ? 'aspect-[4/5]' : 'aspect-square'} flex-1 bg-mist overflow-hidden max-lg:-mx-[clamp(1.25rem,4vw,3rem)] max-lg:flex-none`}
             onTouchStart={(e) => {
               touchStartX.current = e.touches[0]?.clientX ?? null
             }}
@@ -214,11 +216,11 @@ function ProductPage() {
               src={getOptimizedImageUrl(product.images[imageIndex]?.src, 1400)}
               srcSet={getImageSrcSet(product.images[imageIndex]?.src, [480, 720, 1080, 1400])}
               sizes="(min-width: 1024px) 50vw, 100vw"
-              alt={`${product.title} by ${product.brand}`}
+              alt={product.images[imageIndex]?.alt ?? `${product.title} by ${product.brand}`}
               width={1400}
-              height={1400}
+              height={photo ? 1750 : 1400}
               fetchPriority="high"
-              className="absolute inset-0 w-full h-full object-contain p-[8%] mix-blend-multiply rise"
+              className={`absolute inset-0 w-full h-full ${photo ? 'object-cover object-top' : 'object-contain p-[8%] mix-blend-multiply'} rise`}
             />
           </div>
         </div>

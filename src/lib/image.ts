@@ -29,3 +29,18 @@ export function getImageSrcSet(src: string | undefined, widths: number[], qualit
   if (!src) return undefined
   return widths.map((w) => `${getOptimizedImageUrl(src, w, quality)} ${w}w`).join(', ')
 }
+
+/**
+ * True for on-model photography from our Shopify lingerie store. Those photos
+ * fill their frame at natural color; the multiply blend, inset padding and
+ * desaturation used for cut-out toy shots flatten skin tones and make real
+ * models look like renders.
+ */
+export function isModelPhoto(src: string | undefined): boolean {
+  return Boolean(src?.startsWith('https://cdn.shopify.com/'))
+}
+
+/** Image classes for a product shot: full-bleed for model photos, `cutout` for packshots. */
+export function productImageClass(src: string | undefined, cutout: string): string {
+  return isModelPhoto(src) ? 'object-cover object-[50%_25%]' : cutout
+}
