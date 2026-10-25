@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BuyButton } from '@/components/BuyButton'
@@ -12,6 +12,7 @@ import { POSTS_BY_SLUG, postsForHub } from '@/content/posts'
 import { guidesForProduct } from '@/content/product-links'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getProgram, goPath } from '@/lib/affiliate'
+import { trackViewItem } from '@/lib/analytics'
 import { getProductData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
 import { getImageSrcSet, getOptimizedImageUrl } from '@/lib/image'
@@ -130,6 +131,20 @@ function ProductPage() {
     .slice(0, 6)
   const highlights = copy ? [] : productHighlights(product)
   const savings = product.compareAtPrice ? product.compareAtPrice - product.price : 0
+
+  useEffect(() => {
+    trackViewItem(
+      {
+        item_id: product.handle,
+        item_name: product.title,
+        item_brand: product.brand,
+        item_category: ownStore ? 'Lingerie' : hub.name,
+        price: product.price,
+        quantity: 1,
+      },
+      { pillar: ownStore ? 'lingerie' : 'toys', merchant },
+    )
+  }, [product.handle])
 
   const facts: [string, string][] = [
     ['Brand', product.brand],

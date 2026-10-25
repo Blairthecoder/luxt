@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { SITE } from '@/config/site'
 import { pageHead } from '@/lib/seo'
-import { cartTotal, checkoutUrl, setQty, useCart } from '@/lib/cart'
+import { useEffect, useRef } from 'react'
+import { cartTotal, ga4Items, setQty, useCart, useCheckoutUrl } from '@/lib/cart'
+import { trackBeginCheckout, trackViewCart } from '@/lib/analytics'
 import { formatPrice } from '@/lib/format'
 
 export const Route = createFileRoute('/cart')({
@@ -17,6 +19,13 @@ export const Route = createFileRoute('/cart')({
 
 function CartPage() {
   const items = useCart()
+  const checkout = useCheckoutUrl(items, 'cart_checkout')
+  const viewed = useRef(false)
+  useEffect(() => {
+    if (viewed.current || !items.length) return
+    viewed.current = true
+    trackViewCart(ga4Items(items))
+  }, [items])
   return (
     <div className="wrap py-10 sm:py-16 max-w-3xl">
       <h1 className="display-m">Your Cart</h1>
@@ -61,7 +70,12 @@ function CartPage() {
             <span className="text-lg font-semibold">{formatPrice(cartTotal(items))}</span>
           </div>
           <p className="mt-2 text-xs text-graphite">Shipping and taxes are calculated at checkout.</p>
-          <a href={checkoutUrl(items)} data-link-context="cart_checkout" className="btn btn-lg w-full mt-6">
+          <a
+            href={checkout}
+            onClick={() => trackBeginCheckout(ga4Items(items), 'cart_checkout')}
+            data-link-context="cart_checkout"
+            className="btn btn-lg w-full mt-6"
+          >
             Checkout
           </a>
         </>

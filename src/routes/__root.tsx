@@ -3,6 +3,8 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { AgeGate } from '@/components/AgeGate'
 import { SITE, absoluteUrl } from '@/config/site'
+import { ATTRIBUTION_KEY, GA_MEASUREMENT_ID } from '@/lib/analytics'
+import shopifyMeta from '@/data/shopify-meta.json'
 import '../styles.css'
 // Self-hosted variable fonts (latin subset): no render-blocking third-party stylesheet.
 import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
@@ -11,7 +13,8 @@ import interTightFont from '@fontsource-variable/inter-tight/files/inter-tight-l
 const FONT_FACES = `@font-face{font-family:'Inter';font-style:normal;font-display:swap;font-weight:100 900;src:url(${interFont}) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter Tight';font-style:normal;font-display:swap;font-weight:100 900;src:url(${interTightFont}) format('woff2-variations');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}`
 
-const GA_MEASUREMENT_ID = 'G-QQ0NJL2W40'
+// Cross-domain measurement with the Shopify checkout, so a lingerie order stays in the session that found it.
+const LINKER_DOMAINS = [new URL(shopifyMeta.storeUrl).hostname, 'shop.nightstandsupply.com']
 
 export const Route = createRootRoute({
   head: () => ({
@@ -76,12 +79,30 @@ new MutationObserver(scan).observe(document.documentElement,{childList:true,subt
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');
+gtag('config', '${GA_MEASUREMENT_ID}', { linker: { domains: ${JSON.stringify(LINKER_DOMAINS)} } });
+(function(){
+  try {
+    var q = new URLSearchParams(location.search), a = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid'].forEach(function(k){ var v = q.get(k); if (v) a[k] = v.slice(0, 100); });
+    if (!a.utm_source && a.gclid) { a.utm_source = 'google'; a.utm_medium = 'cpc'; }
+    if (a.utm_source) {
+      a.landing_page = location.pathname;
+      a.referrer = document.referrer.slice(0, 200);
+      a.ts = Date.now();
+      localStorage.setItem('${ATTRIBUTION_KEY}', JSON.stringify(a));
+    }
+  } catch (e) {}
+})();
 document.addEventListener('click', function(e){
   var a = e.target instanceof Element ? e.target.closest('a[href^="/go/"]') : null;
   if (!a) return;
+  var handle = a.getAttribute('href').slice(4).split('?')[0];
+  var page = location.pathname.match(/^\\/(blog|erotica)\\/([^/]+)/);
   gtag('event', 'affiliate_click', {
-    product_handle: a.getAttribute('href').slice(4).split('?')[0],
+    product_handle: handle,
+    item_id: handle,
+    merchant: a.getAttribute('data-merchant') || undefined,
+    source_guide: page && page[2] !== 'topic' ? (page[1] === 'blog' ? 'guide' : 'erotica') + ':' + page[2] : '(none)',
     page_path: location.pathname,
     link_context: a.getAttribute('data-link-context') || (a.classList.contains('pick-buy') ? 'guide_pick' : 'product_page')
   });

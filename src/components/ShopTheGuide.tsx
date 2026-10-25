@@ -73,6 +73,7 @@ export function ShopTheGuide({
                     target="_blank"
                     rel="sponsored nofollow noopener"
                     data-link-context={context}
+                    data-merchant={getProgram(p.program).merchantName}
                     className="btn !min-h-[2.5rem] !px-4 !text-[0.8125rem]"
                   >
                     Check Price
@@ -131,14 +132,19 @@ function QuickAdd({ product, context }: { product: PageProductCard; context: str
         type="button"
         data-link-context={`${context}_add_to_cart`}
         onClick={() => {
-          addToCart({
-            variantId: variant.id,
-            handle: product.handle,
-            title: product.title,
-            variantTitle: hasOptions ? variant.title : '',
-            price: variant.price,
-            image: product.image,
-          })
+          addToCart(
+            {
+              variantId: variant.id,
+              handle: product.handle,
+              title: product.title,
+              variantTitle: hasOptions ? variant.title : '',
+              price: variant.price,
+              image: product.image,
+              brand: product.brand,
+            },
+            1,
+            context,
+          )
           setAdded(true)
         }}
         className="btn !min-h-[2.5rem] !px-4 !text-[0.8125rem]"

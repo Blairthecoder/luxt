@@ -70,7 +70,7 @@ function pickCard(slot: PickSlot, p: CatalogProduct): string {
     <h3 class="pick-title"><a href="/products/${p.handle}">${title}</a></h3>
     <p class="pick-meta">${escapeHtml(p.brand)} · <span class="pick-price">${price}</span></p>
     <p class="pick-note">${escapeHtml(slot.note)}</p>
-    <a class="pick-buy" data-link-context="guide_pick" href="${goPath(p.handle)}" target="_blank" rel="sponsored nofollow noopener">Check Price<span class="pick-buy-merchant"> at ${escapeHtml(merchant)}</span></a>
+    <a class="pick-buy" data-link-context="guide_pick" data-merchant="${escapeHtml(merchant)}" href="${goPath(p.handle)}" target="_blank" rel="sponsored nofollow noopener">Check Price<span class="pick-buy-merchant"> at ${escapeHtml(merchant)}</span></a>
   </div>
 </li>`
 }
