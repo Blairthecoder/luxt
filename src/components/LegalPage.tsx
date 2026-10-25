@@ -8,7 +8,7 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
   return (
     <article className="wrap py-20 sm:py-32">
       <div className="max-w-3xl space-y-6 text-[1.0625rem] text-[#3a3a3c] leading-relaxed">
-        <p className="eyebrow text-graphite">Legal</p>
+        <p className="eyebrow text-graphite">{doc.eyebrow ?? 'Legal'}</p>
         <h1 className="display-l text-ink !mt-3">{doc.title}</h1>
         <p className="text-sm text-graphite">Last updated {doc.updated}</p>
         <p>{doc.intro}</p>
@@ -31,7 +31,7 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
           <section className="space-y-3 pt-4">
             <h2 className="font-display text-2xl font-semibold tracking-[-0.02em] text-ink">Contact</h2>
             <p>
-              Questions about this page? Email us at{' '}
+              Questions about this page or an order? Email us at{' '}
               <a href={`mailto:${SITE.contactEmail}`} className="text-ink underline underline-offset-2">
                 {SITE.contactEmail}
               </a>
@@ -47,6 +47,18 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
           {' · '}
           <Link to="/terms" className={related}>
             Terms of Use
+          </Link>
+          {' · '}
+          <Link to="/shipping" className={related}>
+            Shipping
+          </Link>
+          {' · '}
+          <Link to="/returns" className={related}>
+            Returns
+          </Link>
+          {' · '}
+          <Link to="/size-guide" className={related}>
+            Size Guide
           </Link>
           {' · '}
           <Link to="/disclosure" className={related}>

@@ -11,6 +11,7 @@ import { HUBS_BY_SLUG } from '@/content/hubs'
 import { POSTS_BY_SLUG, postsForHub } from '@/content/posts'
 import { guidesForProduct } from '@/content/product-links'
 import { SITE, absoluteUrl } from '@/config/site'
+import { STORE_POLICY, isFinalSale, returnPolicyJsonLd, shippingDetailsJsonLd } from '@/content/store-policies'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
@@ -79,7 +80,16 @@ export const Route = createFileRoute('/products/$productId')({
             availability: product.available
               ? 'https://schema.org/InStock'
               : 'https://schema.org/OutOfStock',
-            seller: { '@type': 'Organization', name: getProgram(product.program).merchantName },
+            seller: ownStore
+              ? { '@type': 'Organization', name: SITE.name, url: SITE.url }
+              : { '@type': 'Organization', name: getProgram(product.program).merchantName },
+            // Our own store ships and takes returns, so the offer carries both policies.
+            ...(ownStore
+              ? {
+                  shippingDetails: shippingDetailsJsonLd(product.price),
+                  hasMerchantReturnPolicy: returnPolicyJsonLd(product.tags, absoluteUrl('/returns')),
+                }
+              : {}),
           },
           // Editorial review with pros and cons. No star rating: we do not score products.
           ...(copy && !ownStore
@@ -121,6 +131,7 @@ function ProductPage() {
   const touchStartX = useRef<number | null>(null)
   const merchant = getProgram(product.program).merchantName
   const ownStore = product.program === 'shopify'
+  const finalSale = ownStore && isFinalSale(product.tags)
   const options = product.variants.filter((v) => v.title !== 'Default Title')
   // Guides that feature this product come first, then guides for its category.
   const guides = [
@@ -138,6 +149,12 @@ function ProductPage() {
     ...(options.length ? ([['Options', options.map((v) => v.title).join(', ')]] as [string, string][]) : []),
     ['Availability', product.available ? 'In Stock' : 'Sold Out'],
     ['Sold and Shipped By', merchant],
+    ...(ownStore
+      ? ([
+          ['Shipping', `Free US standard over $${STORE_POLICY.freeShippingThreshold}, ships in ${STORE_POLICY.handlingDays.min} to ${STORE_POLICY.handlingDays.max} business days`],
+          ['Returns', finalSale ? 'Final sale, except if damaged or wrong' : `${STORE_POLICY.returnDays} days from delivery, unworn with tags`],
+        ] as [string, string][])
+      : []),
   ]
 
   return (
@@ -302,9 +319,29 @@ function ProductPage() {
               </ul>
             )}
             {ownStore ? (
-              <p className="text-xs text-graphite text-center">
-                Sold and shipped by {merchant}. You pay at Shopify checkout, and shipping and taxes show before you confirm.
-              </p>
+              <>
+                <ul aria-label="Shipping and returns" className="grid grid-cols-3 gap-2 text-center text-xs leading-snug text-graphite">
+                  {[
+                    `Free US shipping over $${STORE_POLICY.freeShippingThreshold}`,
+                    finalSale ? 'Final sale for hygiene' : `${STORE_POLICY.returnDays}-day returns on unworn pieces`,
+                    'Secure Shopify checkout',
+                  ].map((item) => (
+                    <li key={item} className="rounded-xl bg-mist px-2 py-3">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-xs text-graphite text-center">
+                  Ships in {STORE_POLICY.handlingDays.min} to {STORE_POLICY.handlingDays.max} business days.{' '}
+                  <Link to="/shipping" className="underline underline-offset-2 hover:text-ink">
+                    Shipping
+                  </Link>
+                  {' · '}
+                  <Link to="/returns" className="underline underline-offset-2 hover:text-ink">
+                    Returns
+                  </Link>
+                </p>
+              </>
             ) : (
               <p className="text-xs text-graphite text-center">
                 Secure checkout from {merchant}.{' '}

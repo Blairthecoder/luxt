@@ -33,9 +33,14 @@ export function ShopifyBuy({ product }: { product: CatalogProduct }) {
     <div className="space-y-4">
       {hasOptions && (
         <div>
-          <label htmlFor="variant" className="block text-sm font-medium mb-2">
-            Option
-          </label>
+          <div className="flex items-baseline justify-between mb-2">
+            <label htmlFor="variant" className="block text-sm font-medium">
+              Option
+            </label>
+            <Link to="/size-guide" className="text-sm text-graphite underline underline-offset-2 hover:text-ink">
+              Size Guide
+            </Link>
+          </div>
           <select
             id="variant"
             value={variantId}

@@ -3,6 +3,7 @@ import { SITE } from '@/config/site'
 import { pageHead } from '@/lib/seo'
 import { cartTotal, checkoutUrl, setQty, useCart } from '@/lib/cart'
 import { formatPrice } from '@/lib/format'
+import { SHIPPING_SUMMARY, STORE_POLICY } from '@/content/store-policies'
 
 export const Route = createFileRoute('/cart')({
   head: () =>
@@ -60,10 +61,26 @@ function CartPage() {
             <span className="text-graphite">Subtotal</span>
             <span className="text-lg font-semibold">{formatPrice(cartTotal(items))}</span>
           </div>
-          <p className="mt-2 text-xs text-graphite">Shipping and taxes are calculated at checkout.</p>
+          <p className="mt-2 text-xs text-graphite">
+            Shipping and taxes are calculated at checkout. {SHIPPING_SUMMARY}
+          </p>
           <a href={checkoutUrl(items)} data-link-context="cart_checkout" className="btn btn-lg w-full mt-6">
             Checkout
           </a>
+          <p className="mt-4 text-center text-xs text-graphite">
+            Secure Shopify checkout ·{' '}
+            <Link to="/shipping" className="underline underline-offset-2 hover:text-ink">
+              Shipping
+            </Link>
+            {' · '}
+            <Link to="/returns" className="underline underline-offset-2 hover:text-ink">
+              {STORE_POLICY.returnDays}-Day Returns
+            </Link>
+            {' · '}
+            <Link to="/size-guide" className="underline underline-offset-2 hover:text-ink">
+              Size Guide
+            </Link>
+          </p>
         </>
       )}
     </div>

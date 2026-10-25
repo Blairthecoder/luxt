@@ -8,8 +8,13 @@ export const SITE = {
   guidesName: 'Nightstand Notes',
   /** Byline for guides with no named author. */
   editorialTeam: 'The Nightstand Notes Editors',
-  /** Shown on the privacy and terms pages. Leave empty to hide the contact section. */
-  contactEmail: 'nightstandsupplynsfw@gmail.com' as string,
+  /**
+   * Customer and reader contact address, shown on Contact, legal, policy and
+   * size guide pages and in Organization schema. Set VITE_CONTACT_EMAIL in
+   * Netlify to the domain mailbox (e.g. hello@nightstandsupply.com) to switch.
+   * PLACEHOLDER: the Gmail fallback stays until the domain mailbox exists.
+   */
+  contactEmail: (import.meta.env.VITE_CONTACT_EMAIL || 'nightstandsupplynsfw@gmail.com') as string,
 } as const
 
 export function absoluteUrl(path: string): string {
