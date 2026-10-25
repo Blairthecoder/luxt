@@ -43,6 +43,7 @@ A new toy can mark a fresh start: something chosen entirely for you.
 - **Notice the stories you carry.** "I was not enough" is often the voice of a painful relationship, not the truth.
 - **Learn what you like.** Read [how to orgasm](/blog/how-to-orgasm-for-women) and [how to feel confident in bed](/blog/how-to-feel-confident-in-bed).
 - **Know your boundaries before you date.** See [how to set sexual boundaries](/blog/how-to-set-sexual-boundaries).
+- **Do something just for you.** Some women book a [boudoir photoshoot](/blog/boudoir-photoshoot-tips) or buy [lingerie for no one but themselves](/blog/how-to-feel-confident-in-lingerie). Our short story [The Second First Date](/erotica/the-second-first-date) is about this exact chapter.
 
 ## Dating Again
 

@@ -44,6 +44,7 @@ export const Route = createFileRoute('/blog/$slug')({
       title: `${post.metaTitle} | ${SITE.shortName}`,
       description: post.metaDescription,
       path,
+      type: 'article',
       jsonLd: [
         breadcrumbJsonLd(crumbs(post)),
         {

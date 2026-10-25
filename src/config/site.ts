@@ -2,9 +2,9 @@ export const SITE = {
   name: 'Nightstand Supply Co.',
   shortName: 'Nightstand Supply',
   url: 'https://nightstandsupply.com',
-  tagline: 'Sex education, intimacy and confidence for adults, solo or together.',
+  tagline: 'Lingerie, toys, confidence and erotica for feeling sexy on your own terms.',
   description:
-    "Sex education, intimacy and confidence guides for adults, with a focus on women's empowerment, plus independent toy reviews. Plain answers, no judgment.",
+    'A judgment-free hub for women who want to feel sexier and more confident: size-inclusive lingerie, honest toy reviews, confidence and sex ed guides, and tasteful erotica.',
   guidesName: 'Nightstand Notes',
   /** Byline for guides with no named author. */
   editorialTeam: 'The Nightstand Notes Editors',

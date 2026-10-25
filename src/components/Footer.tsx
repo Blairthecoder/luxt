@@ -1,12 +1,19 @@
 import { Link } from '@tanstack/react-router'
 import { SITE } from '@/config/site'
-import { HUBS } from '@/content/hubs'
-import { COLLECTIONS } from '@/content/collections'
-import { TOPICS } from '@/content/topics'
+import { PILLARS, type PillarLink } from '@/content/pillars'
 import { NewsletterSignup } from '@/components/NewsletterSignup'
 import { Logo } from '@/components/Logo'
 
-const SHOP = COLLECTIONS.filter((c) => ['For Him', 'For Her', 'Gift Ideas', 'By Budget'].includes(c.group))
+/** Each pillar's landing link, then its dropdown links, without repeats. */
+function pillarLinks(href: PillarLink, columns: { links: PillarLink[] }[]) {
+  const seen = new Set<string>()
+  return [href, ...columns.flatMap((c) => c.links)].filter((l) => {
+    const key = `${l.to}${JSON.stringify(l.params ?? {})}`
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
+}
 
 const heading = 'text-xs font-semibold text-ink mb-4'
 const list = 'space-y-2.5 max-lg:space-y-0 max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-4 text-xs text-graphite'
@@ -16,67 +23,42 @@ export function Footer() {
   return (
     <footer className="bg-mist mt-28 sm:mt-36">
       <div className="wrap pt-16 pb-10">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.6fr_repeat(5,1fr)] lg:gap-8">
           <div className="space-y-5 max-w-sm">
             <Logo className="h-12 w-auto" />
             <p className="text-sm text-graphite leading-relaxed">{SITE.description}</p>
             <NewsletterSignup source="footer" variant="footer" />
           </div>
 
-          <div>
-            <p className={heading}>Browse Toys</p>
-            <ul className={list}>
-              {SHOP.map((c) => (
-                <li key={c.slug}>
-                  <Link to="/shop/$slug" params={{ slug: c.slug }} className={link}>
-                    {c.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className={heading}>Categories</p>
-            <ul className={list}>
-              {HUBS.map((hub) => (
-                <li key={hub.slug}>
-                  <Link to="/category/$slug" params={{ slug: hub.slug }} className={link}>
-                    {hub.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className={heading}>{SITE.guidesName}</p>
-            <ul className={list}>
-              <li>
-                <Link to="/reviews" className={link}>
-                  Reviews
-                </Link>
-              </li>
-              {TOPICS.map((topic) => (
-                <li key={topic.slug}>
-                  <Link to="/blog/topic/$topic" params={{ topic: topic.slug }} className={link}>
-                    {topic.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link to="/gifts" className={link}>
-                  The Gift Shop
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-ink font-medium hover:underline underline-offset-2">
-                  All Guides
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {PILLARS.map((pillar) => (
+            <div key={pillar.slug}>
+              <p className={heading}>{pillar.name}</p>
+              <ul className={list}>
+                {pillarLinks(pillar.href, pillar.columns)
+                  .slice(0, 8)
+                  .map((l) => (
+                    <li key={l.label}>
+                      <Link to={l.to as '/'} {...(l.params ? { params: l.params as never } : {})} className={link}>
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                {pillar.slug === 'toys' && (
+                  <li>
+                    <Link to="/gifts" className={link}>
+                      The Gift Shop
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </div>
+          ))}
         </div>
+        <p className="mt-10 text-xs text-graphite">
+          <Link to="/blog" className="text-ink font-medium hover:underline underline-offset-2">
+            All {SITE.guidesName} Guides
+          </Link>
+        </p>
 
         <div className="mt-14 pt-6 border-t border-line space-y-4 text-xs text-graphite">
           <p className="max-w-3xl leading-relaxed">

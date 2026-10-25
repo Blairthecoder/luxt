@@ -40,15 +40,20 @@ export const Route = createFileRoute('/products/$productId')({
       copy?.summary ??
       `${product.title} by ${product.brand}, ${priceText}. Compare options and specs, read our ${hub.singular.toLowerCase()} buying tips, then buy discreetly.`
     const image = product.images[0]?.src
+    // Lingerie is sold by our own Shopify store: no "Review" framing or Review schema on our own products.
+    const ownStore = product.program === 'shopify'
 
     return pageHead({
       // Long product names drop the pros-and-cons tail so the title stays near 60 characters.
-      title: copy
-        ? `${product.title} Review${product.title.length <= 36 ? ': Pros, Cons & Price' : ''} | ${SITE.shortName}`
-        : `${product.title}: Price & Details | ${SITE.shortName}`,
+      title: ownStore
+        ? `${product.title}${product.title.length <= 40 ? ': Fit & Sizing' : ''} | ${SITE.shortName}`
+        : copy
+          ? `${product.title} Review${product.title.length <= 36 ? ': Pros, Cons & Price' : ''} | ${SITE.shortName}`
+          : `${product.title}: Price & Details | ${SITE.shortName}`,
       description,
       path,
       image,
+      type: 'product',
       // Pages stay out of the index until they carry original copy.
       noindex: !copy,
       jsonLd: [
@@ -76,7 +81,7 @@ export const Route = createFileRoute('/products/$productId')({
             seller: { '@type': 'Organization', name: getProgram(product.program).merchantName },
           },
           // Editorial review with pros and cons. No star rating: we do not score products.
-          ...(copy
+          ...(copy && !ownStore
             ? {
                 review: {
                   '@type': 'Review',

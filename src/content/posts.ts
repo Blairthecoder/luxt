@@ -71,6 +71,8 @@ import { SEXUAL_BOUNDARIES } from '@/content/guides/how-to-set-sexual-boundaries
 import { CONFIDENCE_AFTER_DIVORCE } from '@/content/guides/sexual-confidence-after-divorce'
 import { KEGELS_FOR_PLEASURE } from '@/content/guides/kegel-exercises-for-pleasure'
 import { SEX_AFTER_BABY } from '@/content/guides/sex-after-having-a-baby'
+import { CONFIDENT_IN_LINGERIE } from '@/content/guides/how-to-feel-confident-in-lingerie'
+import { BOUDOIR_PHOTOSHOOT } from '@/content/guides/boudoir-photoshoot-tips'
 
 export interface PickSlot {
   /** Short badge, e.g. "Best Overall" or "Under $50". */
@@ -111,6 +113,8 @@ export interface Post {
 }
 
 export const POSTS: Post[] = [
+  CONFIDENT_IN_LINGERIE,
+  BOUDOIR_PHOTOSHOOT,
   GIFTS_FOR_HER,
   GIFTS_FOR_HIM,
   COUPLES_TOYS,

@@ -25,6 +25,8 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
   const popular = pickSection(products, { where: (p) => p.tags.some((t) => POPULAR_TAG.test(t)) }, used, 4)
   const popularLabelled = popular.length >= 4
   // Without merchant best-seller tags, lead with full-size toys rather than accessories or attachments.
+  // Our own lingerie leads the shop window: four pieces with original copy.
+  const lingerie = pickSection(products, { hubs: ['lingerie'] }, used, 4)
   const topPicks = popularLabelled
     ? popular
     : [...popular, ...pickSection(products, { minPrice: 59, hubs: ['vibrators', 'strokers', 'prostate-massagers', 'dildos'], exclude: /attachment|harness|cleaner/i }, used, 4 - popular.length)]
@@ -33,6 +35,7 @@ export const getHomeData = createServerFn({ method: 'GET' }).handler(async () =>
     topPicks: topPicks.map(toSummary),
     topPicksLabel: popularLabelled ? 'Best Sellers' : 'Our Top Picks',
     firstPicks: firstPicks.map(toSummary),
+    lingerie: lingerie.map(toSummary),
     // A one-line reason each splurge earns its price.
     splurge: splurge.map((p) => ({
       ...toSummary(p),

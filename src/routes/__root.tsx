@@ -18,7 +18,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-      { title: `Adult Toys for Confidence & Pleasure | ${SITE.shortName}` },
+      { title: `Lingerie, Toys & Confidence for Women | ${SITE.shortName}` },
       { name: 'description', content: SITE.description },
       { name: 'rating', content: 'adult' },
       { name: 'fo-verify', content: 'eb0e8fdc-12dd-4d63-8b08-0deb664480ec' },
@@ -26,7 +26,8 @@ export const Route = createRootRoute({
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { property: 'og:image', content: absoluteUrl('/og-image.jpg') },
-      { property: 'og:image:alt', content: 'Nightstand Supply: discreet intimacy essentials' },
+      { property: 'og:image:alt', content: 'Nightstand Supply: lingerie, toys and confidence for women' },
+      { property: 'og:locale', content: 'en_US' },
       { name: 'twitter:image', content: absoluteUrl('/og-image.jpg') },
       { name: 'theme-color', content: '#ffffff' },
       { name: 'mobile-web-app-capable', content: 'yes' },

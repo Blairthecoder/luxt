@@ -6,8 +6,8 @@ import { breadcrumbJsonLd, organizationJsonLd, pageHead } from '@/lib/seo'
 export const Route = createFileRoute('/about')({
   head: () =>
     pageHead({
-      title: `About ${SITE.shortName} | Independent Sex Toy Reviews`,
-      description: `${SITE.name} is an independent sex toy review site: original reviews, buying guides and comparisons, with clearly disclosed affiliate links.`,
+      title: `About ${SITE.shortName}: Lingerie, Toys & Confidence Guides`,
+      description: `${SITE.name} is an independent, judgment-free hub for women: lingerie, honest toy reviews, confidence and sex ed guides and tasteful erotica, with disclosed affiliate links.`,
       path: '/about',
       jsonLd: [
         organizationJsonLd(),

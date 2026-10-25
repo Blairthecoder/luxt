@@ -24,6 +24,8 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as CategorySlugRouteImport } from './routes/category/$slug'
+import { Route as EroticaIndexRouteImport } from './routes/erotica/index'
+import { Route as EroticaSlugRouteImport } from './routes/erotica/$slug'
 import { Route as GoHandleRouteImport } from './routes/go/$handle'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 import { Route as ShopSlugRouteImport } from './routes/shop/$slug'
@@ -104,6 +106,16 @@ const CategorySlugRoute = CategorySlugRouteImport.update({
   path: '/category/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EroticaIndexRoute = EroticaIndexRouteImport.update({
+  id: '/erotica/',
+  path: '/erotica/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EroticaSlugRoute = EroticaSlugRouteImport.update({
+  id: '/erotica/$slug',
+  path: '/erotica/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GoHandleRoute = GoHandleRouteImport.update({
   id: '/go/$handle',
   path: '/go/$handle',
@@ -140,10 +152,12 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/erotica/': typeof EroticaIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesByTo {
@@ -161,10 +175,12 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/erotica': typeof EroticaIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesById {
@@ -183,10 +199,12 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/category/$slug': typeof CategorySlugRoute
+  '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/erotica/': typeof EroticaIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRouteTypes {
@@ -206,10 +224,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/blog/$slug'
     | '/category/$slug'
+    | '/erotica/$slug'
     | '/go/$handle'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
+    | '/erotica/'
     | '/blog/topic/$topic'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -227,10 +247,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/blog/$slug'
     | '/category/$slug'
+    | '/erotica/$slug'
     | '/go/$handle'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog'
+    | '/erotica'
     | '/blog/topic/$topic'
   id:
     | '__root__'
@@ -248,10 +270,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/blog/$slug'
     | '/category/$slug'
+    | '/erotica/$slug'
     | '/go/$handle'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
+    | '/erotica/'
     | '/blog/topic/$topic'
   fileRoutesById: FileRoutesById
 }
@@ -270,10 +294,12 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CategorySlugRoute: typeof CategorySlugRoute
+  EroticaSlugRoute: typeof EroticaSlugRoute
   GoHandleRoute: typeof GoHandleRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
   ShopSlugRoute: typeof ShopSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  EroticaIndexRoute: typeof EroticaIndexRoute
   BlogTopicTopicRoute: typeof BlogTopicTopicRoute
 }
 
@@ -384,6 +410,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/erotica/': {
+      id: '/erotica/'
+      path: '/erotica'
+      fullPath: '/erotica/'
+      preLoaderRoute: typeof EroticaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/erotica/$slug': {
+      id: '/erotica/$slug'
+      path: '/erotica/$slug'
+      fullPath: '/erotica/$slug'
+      preLoaderRoute: typeof EroticaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/go/$handle': {
       id: '/go/$handle'
       path: '/go/$handle'
@@ -430,10 +470,12 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   BlogSlugRoute: BlogSlugRoute,
   CategorySlugRoute: CategorySlugRoute,
+  EroticaSlugRoute: EroticaSlugRoute,
   GoHandleRoute: GoHandleRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
   ShopSlugRoute: ShopSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
+  EroticaIndexRoute: EroticaIndexRoute,
   BlogTopicTopicRoute: BlogTopicTopicRoute,
 }
 export const routeTree = rootRouteImport

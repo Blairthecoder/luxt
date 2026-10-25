@@ -8,9 +8,9 @@ import { breadcrumbJsonLd, pageHead } from '@/lib/seo'
 export const Route = createFileRoute('/blog/')({
   head: () =>
     pageHead({
-      title: `Sex Toy Reviews, Guides & Honest Advice | ${SITE.guidesName}`,
+      title: `Confidence, Sex Ed & Toy Guides for Women | ${SITE.guidesName}`,
       description:
-        'Independent sex toy reviews, buying guides, head-to-head comparisons and how-tos. Friendly, judgment-free advice for solo play and couples.',
+        'Judgment-free guides to body confidence, sex education, intimacy, lingerie and toys. Practical, kind advice for women, solo or with a partner.',
       path: '/blog',
       jsonLd: [
         breadcrumbJsonLd([
@@ -28,11 +28,11 @@ function BlogIndex() {
   return (
     <div>
       <header className="wrap pt-16 sm:pt-28 pb-12 sm:pb-16">
-        <p className="eyebrow text-graphite rise">Reviews, Guides & Comparisons</p>
+        <p className="eyebrow text-graphite rise">Confidence, Sex Ed, Lingerie & Toy Guides</p>
         <h1 className="mt-3 display-xl rise">{SITE.guidesName}</h1>
         <p className="mt-8 lede text-graphite max-w-xl rise-delay">
-          Independent reviews and friendly, judgment-free advice to help you choose with confidence, solo or with a
-          partner.
+          Kind, judgment-free guides to feeling confident in your body, understanding your pleasure and choosing lingerie
+          and toys you will love, solo or with a partner.
         </p>
         <nav aria-label="Guide topics" className="mt-10 rise-delay">
           <ul className="flex flex-wrap gap-2">
