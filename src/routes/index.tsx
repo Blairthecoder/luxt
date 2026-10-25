@@ -6,7 +6,10 @@ import { PostGrid, PostMeta } from '@/components/PostGrid'
 import { HUBS } from '@/content/hubs'
 import { POSTS, POSTS_BY_SLUG, latestPosts, postsForTopic } from '@/content/posts'
 import type { Post } from '@/content/posts'
-import { TOPICS, TOPICS_BY_SLUG } from '@/content/topics'
+import { TOPICS_BY_SLUG } from '@/content/topics'
+import { PILLARS } from '@/content/pillars'
+import { STORIES } from '@/content/erotica'
+import { EroticaGrid } from '@/components/EroticaCard'
 import { SITE } from '@/config/site'
 import { getHomeData } from '@/lib/catalog'
 import { formatPrice } from '@/lib/format'
@@ -33,9 +36,9 @@ export const Route = createFileRoute('/')({
   loader: () => getHomeData(),
   head: ({ loaderData }) =>
     pageHead({
-      title: `Adult Sex Education, Intimacy & Confidence | ${SITE.shortName}`,
+      title: `Lingerie, Toys & Confidence for Women | ${SITE.shortName}`,
       description:
-        "Plain-English sex education for adults: guides to pleasure, intimacy and confidence, with a focus on women's empowerment, plus honest Lovense reviews.",
+        'Feel sexy on your own terms: size-inclusive lingerie, honest toy reviews, body confidence and sex ed guides, plus tasteful erotica. Judgment-free, for women.',
       path: '/',
       jsonLd: [
         organizationJsonLd(),
@@ -45,7 +48,8 @@ export const Route = createFileRoute('/')({
           name: SITE.name,
           url: SITE.url,
           description: SITE.description,
-          about: WELLNESS_TOPICS.map((slug) => TOPICS_BY_SLUG[slug]?.name).filter(Boolean),
+          about: PILLARS.map((p) => p.name),
+          audience: { '@type': 'PeopleAudience', suggestedMinAge: 18 },
         },
         {
           '@context': 'https://schema.org',
@@ -59,7 +63,11 @@ export const Route = createFileRoute('/')({
           })),
         },
         ...(loaderData
-          ? [itemList(loaderData.topPicksLabel, loaderData.topPicks), itemList('Best First Toys', loaderData.firstPicks)].filter(
+          ? [
+              itemList('Lingerie We Love', loaderData.lingerie),
+              itemList(loaderData.topPicksLabel, loaderData.topPicks),
+              itemList('Best First Toys', loaderData.firstPicks),
+            ].filter(
               (l) => l.itemListElement.length > 0
             )
           : []),
@@ -70,9 +78,9 @@ export const Route = createFileRoute('/')({
 
 /** Sex education, intimacy and confidence pillars. They lead the homepage; reviews support them. */
 const WELLNESS_TOPICS = ['sex-education', 'intimacy', 'body-confidence', 'womens-empowerment']
-/** The lead story: the women's empowerment pillar guide, falling back to the first pillar guide. */
-const LEAD = POSTS_BY_SLUG['sexual-empowerment-for-women'] ?? POSTS.find((p) => p.topics.some((t) => WELLNESS_TOPICS.includes(t))) ?? POSTS[0]
-const WELLNESS_LEADS = ['clitoris-anatomy-guide', 'how-to-orgasm-for-women', 'how-to-feel-confident-in-bed']
+/** The lead story: lingerie confidence, which bridges the shop and the guides, then the empowerment pillar guide. */
+const LEAD = POSTS_BY_SLUG['how-to-feel-confident-in-lingerie'] ?? POSTS_BY_SLUG['sexual-empowerment-for-women'] ?? POSTS.find((p) => p.topics.some((t) => WELLNESS_TOPICS.includes(t))) ?? POSTS[0]
+const WELLNESS_LEADS = ['boudoir-photoshoot-tips', 'clitoris-anatomy-guide', 'how-to-orgasm-for-women', 'how-to-feel-confident-in-bed']
 /** First four not already on the page. */
 const START_HERE = [
   'how-to-feel-confident-in-bed',
@@ -84,11 +92,8 @@ const START_HERE = [
   'how-to-use-sex-toys-with-a-partner',
   'how-to-clean-sex-toys',
 ]
-/** Topic chips: the pillars first, then the rest. */
-const CHIP_TOPICS = [
-  ...WELLNESS_TOPICS.map((slug) => TOPICS_BY_SLUG[slug]).filter((t) => t !== undefined),
-  ...TOPICS.filter((t) => !WELLNESS_TOPICS.includes(t.slug)),
-]
+/** Tile tones for the pillar band, in pillar order. */
+const PILLAR_TONES = ['bg-blush', 'bg-mist', 'bg-petal', 'bg-stone', 'bg-blush']
 
 const STANDARDS = [
   ['Judgment-Free', 'We write about bodies, desire and relationships plainly and kindly, for every body and experience level.'],
@@ -127,7 +132,7 @@ function topicPosts(slug: string, limit: number, skip: Post[] = []) {
 }
 
 function HomePage() {
-  const { hubCounts, firstPicks, splurge, topPicks, topPicksLabel } = Route.useLoaderData()
+  const { hubCounts, firstPicks, splurge, topPicks, topPicksLabel, lingerie } = Route.useLoaderData()
   const hubs = HUBS.filter((hub) => (hubCounts[hub.slug] ?? 0) > 0)
   // The hero list sticks to the pillars so the top of the page matches the H1.
   const latest = latestPosts()
@@ -157,11 +162,11 @@ function HomePage() {
       <section className="wrap pt-3 sm:pt-10">
         <MobileSearchField className="mb-5" />
         <header className="max-w-4xl rise">
-          <p className="eyebrow text-graphite">{SITE.guidesName} · Sex Ed, Intimacy & Confidence</p>
-          <h1 className="mt-3 display-l max-sm:!text-[2.125rem]">Sex Education, Intimacy and Confidence for Adults</h1>
+          <p className="eyebrow text-graphite">Feel Sexy on Your Own Terms</p>
+          <h1 className="mt-3 display-l max-sm:!text-[2.125rem]">Lingerie, Toys and Confidence for Women</h1>
           <p className="mt-4 lede text-graphite max-w-2xl">
-            Judgment-free guides to how pleasure works, how to talk about it and how to feel at home in your body, with a
-            focus on women's confidence and choice. When a toy can help, our honest reviews are a click away.
+            A judgment-free place to feel more at home in your body and your pleasure. Lingerie in sizes for every body,
+            honest toy reviews, kind guides to confidence and sex, and sensual stories to set the mood.
           </p>
         </header>
 
@@ -204,36 +209,90 @@ function HomePage() {
           </div>
         </div>
 
-        <nav aria-label="Guide topics" className="mt-8 sm:mt-10">
+        <nav aria-label="Explore the site" className="mt-8 sm:mt-10">
           <ul className="flex gap-2 overflow-x-auto max-sm:-mx-5 max-sm:px-5 [scrollbar-width:none] sm:flex-wrap">
-            {CHIP_TOPICS.map((t, i) => (
-              <li key={t.slug} className="shrink-0">
-                <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className={i === 0 ? 'chip !bg-ink !border-ink text-canvas' : 'chip'}>
-                  {t.name}
+            {PILLARS.map((p, i) => (
+              <li key={p.slug} className="shrink-0">
+                <Link to={p.href.to as '/'} {...(p.href.params ? { params: p.href.params as never } : {})} className={i === 0 ? 'chip !bg-ink !border-ink text-canvas' : 'chip'}>
+                  {p.name}
                 </Link>
               </li>
             ))}
             <li className="shrink-0">
-              <Link to="/reviews" className="chip">
-                Reviews
+              <Link to="/gifts" className="chip">
+                Gifts
               </Link>
             </li>
           </ul>
         </nav>
       </section>
 
+      <section aria-labelledby="pillars-heading" className="wrap pt-14 sm:pt-24 reveal">
+        <div className="section-head">
+          <div>
+            <h2 id="pillars-heading" className="display-m">
+              Everything Sexy, in One Place
+            </h2>
+            <p className="mt-2 text-graphite">Start wherever feels right. Every section links to the others.</p>
+          </div>
+        </div>
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {PILLARS.map((p, i) => (
+            <li key={p.slug}>
+              <Link
+                to={p.href.to as '/'}
+                {...(p.href.params ? { params: p.href.params as never } : {})}
+                className={`group flex h-full min-h-[15rem] flex-col justify-between rounded-3xl p-7 ${PILLAR_TONES[i % PILLAR_TONES.length]}`}
+              >
+                <span className="block">
+                  <span className="block font-display text-2xl font-bold tracking-[-0.03em] leading-tight group-hover:underline underline-offset-4 decoration-2">
+                    {p.name}
+                  </span>
+                  <span className="mt-3 block text-[0.9375rem] text-graphite leading-relaxed">{p.blurb}</span>
+                </span>
+                <span className="mt-6 more text-sm">{p.href.label}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {lingerie.length > 0 && (
+        <section className="wrap pt-14 sm:pt-24 reveal">
+          <SectionHead
+            title="Lingerie We Love"
+            sub="Forgiving fits, sizes up to 5XL and honest fit notes on every piece. Shipped from our own shop."
+            to="/category/$slug"
+            params={{ slug: 'lingerie' }}
+            cta="Shop All Lingerie"
+          />
+          <ProductRow products={lingerie} />
+          <p className="mt-6 text-sm text-graphite">
+            New to lingerie?{' '}
+            <Link to="/blog/$slug" params={{ slug: 'how-to-feel-confident-in-lingerie' }} className="text-ink underline underline-offset-4">
+              How to feel confident in lingerie
+            </Link>{' '}
+            or{' '}
+            <Link to="/blog/$slug" params={{ slug: 'boudoir-photoshoot-tips' }} className="text-ink underline underline-offset-4">
+              plan a boudoir shoot
+            </Link>
+            .
+          </p>
+        </section>
+      )}
+
       {wellness.length > 0 && (
         <section aria-labelledby="wellness-heading" className="wrap pt-14 sm:pt-24 reveal">
           <div className="rounded-3xl bg-blush p-7 sm:p-12">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
               <div className="lg:col-span-5">
-                <p className="eyebrow text-graphite">Start With the Basics</p>
+                <p className="eyebrow text-graphite">Confidence & Sex Ed</p>
                 <h2 id="wellness-heading" className="mt-3 display-m">
-                  The Sex Education Most of Us Never Got
+                  Confidence and Pleasure, Without the Shame
                 </h2>
                 <p className="mt-4 text-graphite leading-relaxed max-w-md">
-                  Plain, kind guides to how pleasure works, how to talk about it and how to feel at home in your body, with
-                  a focus on women's confidence and choice.
+                  The sex education most of us never got: plain, kind guides to how pleasure works, how to ask for what you
+                  want and how to feel at home in your body, through every chapter of life.
                 </p>
                 {wellnessLead && (
                   <Link to="/blog/$slug" params={{ slug: wellnessLead.slug }} className="group mt-8 block border-t border-ink pt-5">
@@ -276,6 +335,24 @@ function HomePage() {
               </div>
             </div>
           </div>
+        </section>
+      )}
+
+      {STORIES.length > 0 && (
+        <section aria-labelledby="erotica-heading" className="wrap pt-14 sm:pt-24 reveal">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow text-graphite">Erotica · 18+</p>
+              <h2 id="erotica-heading" className="mt-2 display-m">
+                Sensual Stories to Set the Mood
+              </h2>
+              <p className="mt-2 text-graphite">Original short fiction about confidence, desire and connection. Romantic, never graphic.</p>
+            </div>
+            <Link to="/erotica" className="more hidden sm:inline-flex">
+              All Erotica
+            </Link>
+          </div>
+          <EroticaGrid entries={STORIES.slice(0, 3)} />
         </section>
       )}
 
@@ -453,10 +530,22 @@ function HomePage() {
       )}
 
       <section className="wrap pt-14 sm:pt-24 grid lg:grid-cols-12 gap-10 reveal">
-        <h2 className="lg:col-span-4 display-m">Sex Education and Honest Advice for Every Body</h2>
+        <h2 className="lg:col-span-4 display-m">Lingerie, Toys, Confidence and Erotica for Every Body</h2>
         <div className="lg:col-span-8 grid md:grid-cols-2 gap-x-10 gap-y-5 text-[0.9375rem] leading-relaxed text-[#3a3a3c]">
           <p>
-            {SITE.name} is an independent guide to sex, intimacy and confidence for adults. Learn the basics in{' '}
+            {SITE.name} is a judgment-free hub for women who want to feel sexier and more confident. Find{' '}
+            <Link to="/category/$slug" params={{ slug: 'lingerie' }} className="underline underline-offset-4">
+              lingerie for every body
+            </Link>
+            , build{' '}
+            <Link to="/blog/topic/$topic" params={{ topic: 'body-confidence' }} className="underline underline-offset-4">
+              body confidence
+            </Link>
+            , unwind with{' '}
+            <Link to="/erotica" className="underline underline-offset-4">
+              sensual short stories
+            </Link>
+            , learn the basics in{' '}
             <Link to="/blog/topic/$topic" params={{ topic: 'sex-education' }} className="underline underline-offset-4">
               sex education for adults
             </Link>

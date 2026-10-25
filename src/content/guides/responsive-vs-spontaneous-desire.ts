@@ -62,6 +62,8 @@ For more ideas, see [how to use sex toys with a partner](/blog/how-to-use-sex-to
 
 ## When Desire Differences Hurt
 
+Many people with responsive desire find that anticipation helps: a flirty message, a slow evening or a [sensual story](/erotica) read earlier in the day.
+
 If one partner feels rejected and the other feels pressured, read our guide to [mismatched libido](/blog/mismatched-libido-in-relationships). A sex therapist or couples counselor can help if the pattern keeps causing pain. Persistent, distressing loss of desire is also worth raising with a doctor, as hormones, medications and health conditions can play a part.
 `,
   picks: {

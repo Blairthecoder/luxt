@@ -56,9 +56,9 @@ export const TOPICS: Topic[] = [
   {
     slug: 'for-her',
     name: 'For Her',
-    metaTitle: 'Sex Toy Guides for Women: Vibrators & More',
+    metaTitle: 'Guides for Women: Toys, Lingerie & Pleasure',
     metaDescription:
-      'Guides for women on choosing vibrators, clitoral and G-spot toys, and feeling more comfortable and confident in solo and partnered pleasure.',
+      'Guides for women on choosing vibrators and lingerie, understanding your pleasure and feeling more confident in solo and partnered sex. Warm, plain advice.',
     intro:
       'Warm, straight answers on vibrators, suction toys and everything in between, written for you, so you can find what feels good with confidence.',
     collections: ['sex-toys-for-women', 'clitoral-vibrators', 'rabbit-vibrators', 'wand-vibrators', 'g-spot-vibrators', 'bullet-vibrators', 'quiet-vibrators'],
@@ -106,9 +106,9 @@ export const TOPICS: Topic[] = [
   {
     slug: 'body-confidence',
     name: 'Body Confidence & Self-Pleasure',
-    metaTitle: 'Body Confidence & Self-Pleasure Guides',
+    metaTitle: 'Body Confidence Guides: Feel Sexy in Your Skin',
     metaDescription:
-      'Guides to body confidence and self-pleasure: how to feel confident in bed, get to know your own body and make solo time feel relaxed, kind and enjoyable.',
+      'Body confidence guides for women: how to feel confident in bed and in lingerie, plan a boudoir shoot, quiet the inner critic and enjoy self-pleasure.',
     intro:
       'Feeling at home in your body changes everything, alone or with a partner. Practical, kind guides to confidence, self-pleasure and enjoying the moment instead of overthinking it.',
     collections: ['sex-toys-for-women', 'quiet-vibrators', 'bullet-vibrators', 'clitoral-vibrators', 'discreet-sex-toys'],
@@ -116,9 +116,9 @@ export const TOPICS: Topic[] = [
   {
     slug: 'womens-empowerment',
     name: "Women's Empowerment",
-    metaTitle: "Women's Sexual Empowerment & Confidence Guides",
+    metaTitle: "Women's Sexual Empowerment: Own Your Pleasure",
     metaDescription:
-      "Women's sexual empowerment guides: owning your pleasure, rebuilding confidence after a breakup, pelvic floor health and intimacy after a baby, without shame.",
+      "Women's sexual empowerment guides: owning your desire, setting boundaries, rebuilding confidence after divorce or a baby, and asking for what you deserve.",
     intro:
       'Your pleasure belongs to you. Guides for women on owning desire, setting boundaries, rebuilding confidence through life changes and asking for what you deserve.',
     collections: ['sex-toys-for-women', 'clitoral-vibrators', 'wand-vibrators', 'rabbit-vibrators', 'quiet-vibrators'],

@@ -14,6 +14,7 @@ import { formatPostDate, formatPrice } from '@/lib/format'
 import { getOptimizedImageUrl } from '@/lib/image'
 import type { Post } from '@/content/posts'
 import { PostMeta } from '@/components/PostGrid'
+import { ShopTheGuide } from '@/components/ShopTheGuide'
 
 /** Home > Nightstand Notes > first topic > guide. */
 function crumbs(post: Pick<Post, 'slug' | 'title' | 'topics'>) {
@@ -34,7 +35,13 @@ export const Route = createFileRoute('/blog/$slug')({
     if (!rendered) throw notFound()
     // The body is already rendered to html; keep the Markdown out of the page payload.
     const { body: _body, picks: _picks, ...meta } = post
-    return { post: { ...meta, body: '' }, html: rendered.html, topPick: rendered.topPick, hasPicks: Boolean(_picks) }
+    return {
+      post: { ...meta, body: '' },
+      html: rendered.html,
+      topPick: rendered.topPick,
+      products: rendered.products,
+      hasPicks: Boolean(_picks) || rendered.products.length > 0,
+    }
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
@@ -44,6 +51,7 @@ export const Route = createFileRoute('/blog/$slug')({
       title: `${post.metaTitle} | ${SITE.shortName}`,
       description: post.metaDescription,
       path,
+      type: 'article',
       jsonLd: [
         breadcrumbJsonLd(crumbs(post)),
         {
@@ -88,7 +96,7 @@ export const Route = createFileRoute('/blog/$slug')({
 })
 
 function PostPage() {
-  const { post, html, topPick, hasPicks } = Route.useLoaderData()
+  const { post, html, topPick, products, hasPicks } = Route.useLoaderData()
   const more = relatedPosts(post, 2)
   const hubs = post.hubs.filter((h) => !(h in RETIRED_HUBS)).map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
@@ -181,6 +189,7 @@ function PostPage() {
             </aside>
           )}
           <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
+          <ShopTheGuide products={products} className="mt-16 pt-12 border-t border-ink" />
           {post.healthNote && (
             <aside aria-label="Health note" className="mt-12 p-5 sm:p-6 bg-mist rounded-2xl text-[0.9375rem] text-graphite leading-relaxed">
               <span className="font-semibold text-ink">Not medical advice.</span> This guide is general sex education. If

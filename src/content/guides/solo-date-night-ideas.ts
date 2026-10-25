@@ -34,10 +34,10 @@ A solo date night is exactly what it sounds like: an evening planned with the sa
 
 1. **Wind down (20 minutes).** Put on music you love, light a candle, pour a drink or a tea.
 2. **Bath or shower (20 to 30 minutes).** Take your time. Use a body oil afterwards if you like, but keep oils away from the vulva and from silicone toys.
-3. **Dress for yourself.** Soft pajamas, a robe, lingerie or nothing. Whatever makes you feel good.
+3. **Dress for yourself.** Soft pajamas, a robe, [lingerie you feel great in](/blog/how-to-feel-confident-in-lingerie) or nothing. Whatever makes you feel good.
 4. **Reconnect with your body (as long as you like).** Slow touch on your arms, legs and stomach. Notice what feels good.
 5. **Self-pleasure, if you want it.** No goals, no rushing. Our [self-pleasure guide for women](/blog/self-pleasure-guide-for-women) has techniques to try.
-6. **Rest.** A favorite film, a book or an early night.
+6. **Rest.** A favorite film, a book or an early night. Our [sensual short stories](/erotica) and [steamy reading list](/erotica/erotica-books-for-women) are made for evenings like this.
 
 ## Ideas to Make It Special
 

@@ -36,7 +36,7 @@ Many women grew up learning that sex was something to be careful about, somethin
 
 ## Step 1: Learn Your Body
 
-The sex education most women received skipped the clitoris entirely. Start with the basics in our [clitoris anatomy guide](/blog/clitoris-anatomy-guide), then read about [how orgasm works](/blog/how-to-orgasm-for-women). Knowledge is quietly powerful: it replaces "Is something wrong with me?" with "This is how my body works."
+The sex education most women received skipped the clitoris entirely. Start with the basics in our [clitoris anatomy guide](/blog/clitoris-anatomy-guide), then read about [how orgasm works](/blog/how-to-orgasm-for-women). Knowledge is quietly powerful: it replaces "Is something wrong with me?" with "This is how my body works." Our list of [books on sexual confidence for women](/erotica/books-on-sexual-confidence-for-women) is a good next step.
 
 ## Step 2: Explore on Your Own Terms
 

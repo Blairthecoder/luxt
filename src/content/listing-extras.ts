@@ -309,10 +309,10 @@ export const LISTING_EXTRAS: Record<string, ListingExtra> = {
   },
 
   'hub:lingerie': {
-    h1: 'Sexy Lingerie: Bodysuits & Sets That Feel Good to Wear',
+    h1: 'Sexy Lingerie for Every Body: Bodysuits, Sets & Babydolls',
     body: [
-      "The best lingerie is the piece that makes you feel good in the body you have today. Bodystockings and stretch mesh adapt to many shapes, bodysuits give a smooth line in one garment, and two-piece sets let you choose different sizes for top and bottom. Babydolls and chemises are relaxed and forgiving, while corsets and bustiers shape the waist but need careful sizing.",
-      "Comfort decides whether a piece actually gets worn, and feeling at ease is what lets confidence show. Look at underwire, strap adjustability and whether the gusset is lined. Open-crotch and cupless styles are designed for play, and garters are easier to manage when they detach. If you are buying as a gift, a stretchy bodystocking, a robe or a babydoll is safer than structured pieces that rely on exact measurements.",
+      "The best lingerie is the piece that makes you feel good in the body you have today. Stretch lace and mesh bodysuits give a smooth line in one garment, two-piece sets let you choose different sizes for top and bottom, and babydolls and chemises fit at the bust and float from there, which makes them relaxed and forgiving. Plus size styles run up to 5XL, with underwire options when you want lift.",
+      "Comfort decides whether a piece actually gets worn, and feeling at ease is what lets confidence show. Look at underwire, strap adjustability and whether the gusset is lined, and start with wire-free sets if lingerie usually pinches. Wear a new piece around the house on your own first; when it feels good alone, it feels good with a partner. If you are buying as a gift, a robe, a babydoll or a stretchy bodysuit is safer than structured pieces that rely on exact measurements.",
       "Hand wash lace and mesh in cool water with a gentle detergent, skip the dryer and lay pieces flat to dry. Avoid fabric softener on elastic, and store delicate items away from Velcro and hooks that can snag them.",
     ],
     faqs: [

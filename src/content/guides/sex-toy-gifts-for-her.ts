@@ -67,7 +67,7 @@ Higher-end brands earn their prices with whisper-quiet motors, flawless silicone
 A toy on its own can feel clinical. Small additions change how it lands:
 
 - **A good lube.** Water-based lube is the right match for silicone toys. See our [lube guide](/blog/best-lube-for-sex-toys) or the full [lubricant range](/category/lubricants).
-- **Lingerie in her size.** Only if you know it. Bodystockings and stretch lace are forgiving.
+- **Lingerie in her size.** Only if you know it. Robes, babydolls and stretch lace are forgiving; see our [lingerie gifts for her](/shop/lingerie-gifts-for-her).
 - **A handwritten note.** Say it is for her, on her terms. That sentence matters more than the box.
 
 ## How to Give It Without Awkwardness

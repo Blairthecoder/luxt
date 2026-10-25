@@ -186,11 +186,11 @@ const ALL_HUBS: Hub[] = [
     slug: 'lingerie',
     name: 'Lingerie',
     singular: 'Lingerie Piece',
-    metaTitle: 'Sexy Lingerie: Bodysuits, Sets & Bodystockings',
+    metaTitle: 'Sexy Lingerie for Every Body, S to 5XL',
     metaDescription:
-      'Lingerie that helps you feel confident in your own skin, in sizes for every body. Bodysuits, sets and bodystockings with honest help on finding your fit.',
+      'Sexy lingerie that helps you feel confident in your own skin: lace bodysuits, bra sets, babydolls and plus size styles up to 5XL, with honest fit notes on each.',
     intro:
-      'Lingerie is about how you feel when you put it on, for yourself or for someone else. Bodystockings and bodysuits are forgiving on fit, while sets give you more sizing control top and bottom. Choose what makes you feel most like yourself.',
+      'Lingerie is about how you feel when you put it on, for yourself or for someone else. Bodysuits and babydolls are forgiving on fit, while sets give you more sizing control top and bottom. Choose what makes you feel most like yourself.',
     buyingTips: [
       'Check the size chart; lingerie often runs small, and the right fit feels best.',
       'Stretch mesh and lace flatter a wide range of bodies.',

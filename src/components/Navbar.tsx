@@ -2,25 +2,21 @@ import { useEffect, useState } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
-import { TOPICS } from '@/content/topics'
+import { PILLARS, type Pillar, type PillarLink } from '@/content/pillars'
 import { SearchDialog } from '@/components/SearchDialog'
 import { MobileTabBar } from '@/components/MobileTabBar'
 import { Logo } from '@/components/Logo'
 import { SITE } from '@/config/site'
-import { hasShopifyProducts } from '@/content/retired'
 import { cartCount, useCart } from '@/lib/cart'
 
-/** Editorial sections first: the site reads as a review publication, with the catalog one menu away. */
-const PRIMARY = [
-  { label: 'Reviews', to: '/reviews' },
-  { label: 'Buying Guides', to: '/blog/topic/$topic', params: { topic: 'buying-guides' } },
-  { label: 'Comparisons', to: '/blog/topic/$topic', params: { topic: 'comparisons' } },
-  { label: 'Gift Guides', to: '/blog/topic/$topic', params: { topic: 'gift-guides' } },
-  { label: 'Sex Ed', to: '/blog/topic/$topic', params: { topic: 'sex-education' } },
-  { label: 'Learn', to: '/blog/topic/$topic', params: { topic: 'how-to' } },
-  // Shown once the Shopify store has lingerie in stock on the site.
-  ...(hasShopifyProducts('lingerie') ? [{ label: 'Lingerie', to: '/category/$slug', params: { slug: 'lingerie' } }] : []),
-] as const
+/** Renders a pillar link; templates like '/blog/topic/$topic' carry their params. */
+function PLink({ link, className, onClick }: { link: PillarLink; className?: string; onClick?: () => void }) {
+  return (
+    <Link to={link.to as '/'} {...(link.params ? { params: link.params as never } : {})} className={className} onClick={onClick}>
+      {link.label}
+    </Link>
+  )
+}
 
 const AUDIENCES = [
   { label: 'For Her', slug: 'sex-toys-for-women' },
@@ -36,7 +32,6 @@ const GIFTS_AND_COUPLES = [
   ...COLLECTIONS.filter((c) => c.group === 'For Couples'),
 ]
 
-const SHEET_LINKS = [...PRIMARY, { label: `All ${SITE.guidesName}`, to: '/blog' }] as const
 
 const SearchIcon = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24" className="h-[1.15rem] w-[1.15rem]" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
@@ -76,9 +71,107 @@ function Wordmark() {
   return <Logo alt="" className="h-10 w-auto lg:h-11" />
 }
 
+/** Catalog mega menu for the Toys pillar: categories, styles, gifts, brands, budget, then reviews and guides. */
+function ToysMenu({ pillar }: { pillar: Pillar }) {
+  return (
+    <div className="wrap pt-10 pb-14 grid grid-cols-[1.35fr_1fr_1fr_1fr_1fr] gap-10">
+      <MenuColumn title="Categories" size="lg">
+        {HUBS.map((hub) => (
+          <li key={hub.slug}>
+            <Link to="/category/$slug" params={{ slug: hub.slug }} className="hover:text-graphite transition-colors">
+              {hub.name}
+            </Link>
+          </li>
+        ))}
+      </MenuColumn>
+      <MenuColumn title="By Style">
+        {STYLES.map((c) => (
+          <li key={c.slug}>
+            <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
+              {c.name}
+            </Link>
+          </li>
+        ))}
+      </MenuColumn>
+      <MenuColumn title="Gifts & Couples">
+        {AUDIENCES.map((a) => (
+          <li key={a.slug}>
+            <Link to="/shop/$slug" params={{ slug: a.slug }} className="hover:text-ink">
+              {a.label}
+            </Link>
+          </li>
+        ))}
+        <li>
+          <Link to="/gifts" className="text-ink font-semibold hover:underline underline-offset-4">
+            The Gift Shop
+          </Link>
+        </li>
+        {GIFTS_AND_COUPLES.map((c) => (
+          <li key={c.slug}>
+            <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
+              {c.name}
+            </Link>
+          </li>
+        ))}
+      </MenuColumn>
+      <MenuColumn title="Featured Brands">
+        {BRANDS.map((c) => (
+          <li key={c.slug}>
+            <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
+              {c.name}
+            </Link>
+          </li>
+        ))}
+      </MenuColumn>
+      <div className="space-y-10">
+        <MenuColumn title="By Budget">
+          {BUDGET.map((c) => (
+            <li key={c.slug}>
+              <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
+                {c.name}
+              </Link>
+            </li>
+          ))}
+        </MenuColumn>
+        {pillar.columns.map((col) => (
+          <MenuColumn key={col.title} title={col.title}>
+            {col.links.map((l) => (
+              <li key={l.label}>
+                <PLink link={l} className="hover:text-ink" />
+              </li>
+            ))}
+          </MenuColumn>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/** Dropdown for an editorial pillar: what it is, then its hubs and best guides. */
+function PillarMenu({ pillar }: { pillar: Pillar }) {
+  return (
+    <div className="wrap pt-10 pb-14 grid grid-cols-[1.35fr_1fr_1fr] gap-10">
+      <div className="rounded-3xl bg-blush p-8">
+        <p className="eyebrow text-graphite">{pillar.name}</p>
+        <p className="mt-3 font-display text-xl font-semibold tracking-[-0.02em] leading-snug">{pillar.blurb}</p>
+        <PLink link={pillar.href} className="mt-6 more" />
+      </div>
+      {pillar.columns.map((col, i) => (
+        <MenuColumn key={col.title} title={col.title} size={i === 0 && pillar.slug !== 'erotica' ? 'lg' : 'sm'}>
+          {col.links.map((l) => (
+            <li key={l.label}>
+              <PLink link={l} className="hover:text-graphite transition-colors" />
+            </li>
+          ))}
+        </MenuColumn>
+      ))}
+    </div>
+  )
+}
+
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [shopOpen, setShopOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState<Pillar['slug'] | null>(null)
   const [searchOpen, setSearchOpen] = useState(false)
   const pathname = useRouterState({ select: (state) => state.location.pathname })
   const close = () => setMobileOpen(false)
@@ -113,7 +206,7 @@ export function Navbar() {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
         setMobileOpen(false)
-        setShopOpen(false)
+        setOpenMenu(null)
         setSearchOpen((open) => !open)
       }
     }
@@ -123,14 +216,14 @@ export function Navbar() {
 
   // The pointer stays over the menu after a click, so hover alone would keep it open over the new page.
   useEffect(() => {
-    setShopOpen(false)
+    setOpenMenu(null)
     setSearchOpen(false)
     setMobileOpen(false)
   }, [pathname])
 
   useEffect(() => {
-    if (!shopOpen) return
-    const dismiss = () => setShopOpen(false)
+    if (!openMenu) return
+    const dismiss = () => setOpenMenu(null)
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') dismiss()
     }
@@ -140,13 +233,13 @@ export function Navbar() {
       window.removeEventListener('scroll', dismiss)
       window.removeEventListener('keydown', onKey)
     }
-  }, [shopOpen])
+  }, [openMenu])
 
   return (
     <header className="sticky top-0 z-40">
       <div className="bg-plum text-canvas">
         <div className="wrap flex items-center justify-center sm:justify-between gap-6 h-9 text-xs">
-          <p className="hidden sm:block text-canvas/70">Independent reviews and guides</p>
+          <p className="hidden sm:block text-canvas/70">Lingerie, toys and confidence, for every body</p>
           <p className="font-medium">
             Reader-supported. We may earn a commission.{' '}
             <Link to="/disclosure" className="underline underline-offset-2">
@@ -163,110 +256,37 @@ export function Navbar() {
             <Wordmark />
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:flex items-center gap-7 xl:gap-9 h-full">
-            {PRIMARY.map((item) => (
-              <Link key={item.label} to={item.to} {...('params' in item ? { params: item.params } : {})} className={navLink}>
-                {item.label}
-              </Link>
-            ))}
-            <div
-              className="h-full flex items-center"
-              onMouseEnter={() => setShopOpen(true)}
-              onMouseLeave={() => setShopOpen(false)}
-              onFocus={() => setShopOpen(true)}
-              onBlur={(e) => {
-                if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setShopOpen(false)
-              }}
-            >
-              <button
-                type="button"
-                className={`${navLink} h-full`}
-                aria-haspopup="true"
-                aria-expanded={shopOpen}
-                onClick={() => setShopOpen(true)}
-              >
-                Browse Toys
-              </button>
+          <nav aria-label="Main" className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
+            {PILLARS.map((pillar) => (
               <div
-                onClick={(e) => {
-                  if ((e.target as HTMLElement).closest('a')) setShopOpen(false)
+                key={pillar.slug}
+                className="h-full flex items-center"
+                onMouseEnter={() => setOpenMenu(pillar.slug)}
+                onMouseLeave={() => setOpenMenu(null)}
+                onFocus={() => setOpenMenu(pillar.slug)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpenMenu(null)
                 }}
-                className={`absolute left-0 right-0 top-full bg-canvas border-b border-line transition-[opacity,transform,visibility] duration-300 ease-out ${
-                  shopOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 -translate-y-1 pointer-events-none'
-                }`}
               >
-                <div className="wrap pt-10 pb-14 grid grid-cols-[1.35fr_1fr_1fr_1fr_1fr] gap-10">
-                  <MenuColumn title="Categories" size="lg">
-                    {HUBS.map((hub) => (
-                      <li key={hub.slug}>
-                        <Link to="/category/$slug" params={{ slug: hub.slug }} className="hover:text-graphite transition-colors">
-                          {hub.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </MenuColumn>
-                  <MenuColumn title="By Style">
-                    {STYLES.map((c) => (
-                      <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
-                          {c.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </MenuColumn>
-                  <MenuColumn title="Gifts & Couples">
-                    {AUDIENCES.map((a) => (
-                      <li key={a.slug}>
-                        <Link to="/shop/$slug" params={{ slug: a.slug }} className="hover:text-ink">
-                          {a.label}
-                        </Link>
-                      </li>
-                    ))}
-                    <li>
-                      <Link to="/gifts" className="text-ink font-semibold hover:underline underline-offset-4">
-                        The Gift Shop
-                      </Link>
-                    </li>
-                    {GIFTS_AND_COUPLES.map((c) => (
-                      <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
-                          {c.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </MenuColumn>
-                  <MenuColumn title="Featured Brands">
-                    {BRANDS.map((c) => (
-                      <li key={c.slug}>
-                        <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
-                          {c.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </MenuColumn>
-                  <div className="space-y-10">
-                    <MenuColumn title="By Budget">
-                      {BUDGET.map((c) => (
-                        <li key={c.slug}>
-                          <Link to="/shop/$slug" params={{ slug: c.slug }} className="hover:text-ink">
-                            {c.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </MenuColumn>
-                    <MenuColumn title="Guides by Topic">
-                      {TOPICS.map((t) => (
-                        <li key={t.slug}>
-                          <Link to="/blog/topic/$topic" params={{ topic: t.slug }} className="hover:text-ink">
-                            {t.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </MenuColumn>
-                  </div>
+                <PLink
+                  link={{ ...pillar.href, label: pillar.label }}
+                  className={`${navLink} h-full flex items-center ${openMenu === pillar.slug ? '!text-ink' : ''}`}
+                />
+                <div
+                  onClick={(e) => {
+                    if ((e.target as HTMLElement).closest('a')) setOpenMenu(null)
+                  }}
+                  className={`absolute left-0 right-0 top-full bg-canvas border-b border-line transition-[opacity,transform,visibility] duration-300 ease-out ${
+                    openMenu === pillar.slug ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 -translate-y-1 pointer-events-none'
+                  }`}
+                >
+                  {pillar.slug === 'toys' ? <ToysMenu pillar={pillar} /> : <PillarMenu pillar={pillar} />}
                 </div>
               </div>
-            </div>
+            ))}
+            <Link to="/gifts" className={navLink}>
+              Gifts
+            </Link>
           </nav>
 
           <div className="justify-self-end flex items-center gap-6">
@@ -326,19 +346,41 @@ export function Navbar() {
             </div>
           <div className="px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-1">
             <ul className="space-y-2">
-              {SHEET_LINKS.map((item) => (
+              {PILLARS.map((pillar) => (
+                <li key={pillar.slug}>
+                  <details className="group rounded-2xl bg-mist">
+                    <summary className="press flex h-[3.75rem] cursor-pointer list-none items-center justify-between px-5 text-[1.0625rem] font-semibold tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
+                      {pillar.name}
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-graphite transition-transform group-open:rotate-90" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="m9 6 6 6-6 6" />
+                      </svg>
+                    </summary>
+                    <ul className="flex flex-wrap gap-2 px-4 pb-4">
+                      <li>
+                        <PLink link={pillar.href} onClick={close} className="chip !min-h-[2.5rem] !bg-ink !border-ink text-canvas" />
+                      </li>
+                      {pillar.columns
+                        .flatMap((col) => col.links)
+                        .filter((l, i, all) => l.label !== pillar.href.label && all.findIndex((x) => x.label === l.label) === i)
+                        .map((l) => (
+                          <li key={l.label}>
+                            <PLink link={l} onClick={close} className="chip !min-h-[2.5rem] !bg-canvas" />
+                          </li>
+                        ))}
+                    </ul>
+                  </details>
+                </li>
+              ))}
+              {[
+                { label: 'Gifts', to: '/gifts' },
+                { label: `All ${SITE.guidesName}`, to: '/blog' },
+              ].map((item) => (
                 <li key={item.label}>
-                  <Link
-                    to={item.to}
-                    {...('params' in item ? { params: item.params } : {})}
+                  <PLink
+                    link={item}
                     onClick={close}
                     className="press flex h-[3.75rem] items-center justify-between rounded-2xl bg-mist px-5 text-[1.0625rem] font-semibold tracking-[-0.01em]"
-                  >
-                    {item.label}
-                    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 text-graphite" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m9 6 6 6-6 6" />
-                    </svg>
-                  </Link>
+                  />
                 </li>
               ))}
             </ul>

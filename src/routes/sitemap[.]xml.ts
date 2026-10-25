@@ -4,9 +4,10 @@ import { HUBS } from '@/content/hubs'
 import { COLLECTIONS } from '@/content/collections'
 import { POSTS, postsForTopic } from '@/content/posts'
 import { TOPICS } from '@/content/topics'
+import { EROTICA } from '@/content/erotica'
 
 // Lists only indexable URLs: home, category hubs and collections with products,
-// guides, and product
+// guides, the Erotica section, and product
 // pages that have original copy. /go/ redirects are never included.
 export const Route = createFileRoute('/sitemap.xml')({
   server: {
@@ -36,6 +37,10 @@ export const Route = createFileRoute('/sitemap.xml')({
         }
         for (const post of POSTS) {
           urls.push({ loc: absoluteUrl(`/blog/${post.slug}`), lastmod: post.updatedAt ?? post.publishedAt })
+        }
+        urls.push({ loc: absoluteUrl('/erotica'), lastmod: EROTICA.map((e) => e.updatedAt ?? e.publishedAt).sort().at(-1) })
+        for (const entry of EROTICA) {
+          urls.push({ loc: absoluteUrl(`/erotica/${entry.slug}`), lastmod: entry.updatedAt ?? entry.publishedAt })
         }
         for (const p of store.allProducts()) {
           if (store.hasCopy(p.handle)) {

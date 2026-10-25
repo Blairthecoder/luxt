@@ -8,7 +8,8 @@ import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { FaqAccordion } from '@/components/FaqAccordion'
 import { HowToUse } from '@/components/HowToUse'
 import { HUBS_BY_SLUG } from '@/content/hubs'
-import { postsForHub } from '@/content/posts'
+import { POSTS_BY_SLUG, postsForHub } from '@/content/posts'
+import { guidesForProduct } from '@/content/product-links'
 import { SITE, absoluteUrl } from '@/config/site'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getProductData } from '@/lib/catalog'
@@ -40,15 +41,20 @@ export const Route = createFileRoute('/products/$productId')({
       copy?.summary ??
       `${product.title} by ${product.brand}, ${priceText}. Compare options and specs, read our ${hub.singular.toLowerCase()} buying tips, then buy discreetly.`
     const image = product.images[0]?.src
+    // Lingerie is sold by our own Shopify store: no "Review" framing or Review schema on our own products.
+    const ownStore = product.program === 'shopify'
 
     return pageHead({
       // Long product names drop the pros-and-cons tail so the title stays near 60 characters.
-      title: copy
-        ? `${product.title} Review${product.title.length <= 36 ? ': Pros, Cons & Price' : ''} | ${SITE.shortName}`
-        : `${product.title}: Price & Details | ${SITE.shortName}`,
+      title: ownStore
+        ? `${product.title}${product.title.length <= 40 ? ': Fit & Sizing' : ''} | ${SITE.shortName}`
+        : copy
+          ? `${product.title} Review${product.title.length <= 36 ? ': Pros, Cons & Price' : ''} | ${SITE.shortName}`
+          : `${product.title}: Price & Details | ${SITE.shortName}`,
       description,
       path,
       image,
+      type: 'product',
       // Pages stay out of the index until they carry original copy.
       noindex: !copy,
       jsonLd: [
@@ -76,7 +82,7 @@ export const Route = createFileRoute('/products/$productId')({
             seller: { '@type': 'Organization', name: getProgram(product.program).merchantName },
           },
           // Editorial review with pros and cons. No star rating: we do not score products.
-          ...(copy
+          ...(copy && !ownStore
             ? {
                 review: {
                   '@type': 'Review',
@@ -116,7 +122,12 @@ function ProductPage() {
   const merchant = getProgram(product.program).merchantName
   const ownStore = product.program === 'shopify'
   const options = product.variants.filter((v) => v.title !== 'Default Title')
-  const guides = postsForHub(hub.slug)
+  // Guides that feature this product come first, then guides for its category.
+  const guides = [
+    ...new Set([...guidesForProduct(product.handle).map((slug) => POSTS_BY_SLUG[slug]), ...postsForHub(hub.slug)]),
+  ]
+    .filter((post) => post !== undefined)
+    .slice(0, 6)
   const highlights = copy ? [] : productHighlights(product)
   const savings = product.compareAtPrice ? product.compareAtPrice - product.price : 0
 
@@ -405,7 +416,7 @@ function ProductPage() {
         {guides.length > 0 && (
           <div>
             <h2 className="display-m">
-              Read the Guide. <span className="text-graphite">Nightstand Notes.</span>
+              Read Next. <span className="text-graphite">Nightstand Notes.</span>
             </h2>
             <ul className="mt-10 border-t border-line">
               {guides.map((post) => (

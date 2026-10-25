@@ -12,6 +12,7 @@ export function pageHead({
   path,
   image,
   noindex = false,
+  type = 'website',
   jsonLd = [],
 }: {
   title: string
@@ -19,6 +20,8 @@ export function pageHead({
   path: string
   image?: string
   noindex?: boolean
+  /** og:type; guides and stories pass 'article'. */
+  type?: 'website' | 'article' | 'product'
   jsonLd?: object[]
 }) {
   const url = absoluteUrl(path)
@@ -28,9 +31,12 @@ export function pageHead({
       { title },
       { name: 'description', content: desc },
       { name: 'robots', content: noindex || FORCE_NOINDEX ? 'noindex, follow' : 'index, follow, max-image-preview:large' },
+      { property: 'og:type', content: type },
       { property: 'og:title', content: title },
       { property: 'og:description', content: desc },
       { property: 'og:url', content: url },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: desc },
       ...(image
         ? [
             { property: 'og:image', content: image },
@@ -64,8 +70,11 @@ export function organizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE.name,
+    alternateName: SITE.shortName,
     url: SITE.url,
-    logo: absoluteUrl('/icon-512.png'),
+    description: SITE.description,
+    logo: { '@type': 'ImageObject', url: absoluteUrl('/icon-512.png'), width: 512, height: 512 },
+    email: SITE.contactEmail || undefined,
   }
 }
 

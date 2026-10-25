@@ -33,7 +33,7 @@ Sex therapists call it spectatoring: watching yourself from the outside instead 
 2. **Breathe slowly into your belly.** Shallow breathing feeds anxiety.
 3. **Change the lighting.** Candles or a dim lamp help many people relax.
 4. **Choose positions you feel good in.** It is fine to have favorites.
-5. **Keep something on if you want to.** A slip, a shirt or lingerie you feel great in.
+5. **Keep something on if you want to.** A slip, a shirt or lingerie you feel great in. See [how to feel confident in lingerie](/blog/how-to-feel-confident-in-lingerie).
 6. **Make noise if it helps.** Sound often deepens pleasure and lets your partner know what works.
 7. **Laugh when things get awkward.** Sex is not a performance, and humor is connecting.
 

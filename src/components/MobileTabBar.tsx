@@ -1,4 +1,7 @@
 import { Link, useRouterState } from '@tanstack/react-router'
+import { hasShopifyProducts } from '@/content/retired'
+
+const LINGERIE_LIVE = hasShopifyProducts('lingerie')
 
 type Props = {
   shopOpen: boolean
@@ -27,6 +30,7 @@ export function MobileTabBar({ shopOpen, onShop, onSearch }: Props) {
   const onHome = pathname === '/'
   const onMenu = shopOpen
   const onReviews = pathname.startsWith('/reviews')
+  const onLingerie = pathname === '/category/lingerie'
   const onGuides = pathname.startsWith('/blog')
   const tone = (active: boolean) => (active ? 'text-ink' : 'text-graphite')
 
@@ -67,12 +71,21 @@ export function MobileTabBar({ shopOpen, onShop, onSearch }: Props) {
           </button>
         </div>
 
-        <Link to="/reviews" aria-current={onReviews ? 'page' : undefined} className={`${base} ${tone(onReviews)}`}>
-          <Icon>
-            <path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 4Z" />
-          </Icon>
-          Reviews
-        </Link>
+        {LINGERIE_LIVE ? (
+          <Link to="/category/$slug" params={{ slug: 'lingerie' }} aria-current={onLingerie ? 'page' : undefined} className={`${base} ${tone(onLingerie)}`}>
+            <Icon>
+              <path d="M12 6.5a1.75 1.75 0 1 1 1.75-1.75M12 6.5v1.5L3.5 15a1.2 1.2 0 0 0 .75 2.1h15.5a1.2 1.2 0 0 0 .75-2.1L12 8" />
+            </Icon>
+            Lingerie
+          </Link>
+        ) : (
+          <Link to="/reviews" aria-current={onReviews ? 'page' : undefined} className={`${base} ${tone(onReviews)}`}>
+            <Icon>
+              <path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 4Z" />
+            </Icon>
+            Reviews
+          </Link>
+        )}
 
         <Link to="/blog" aria-current={onGuides ? 'page' : undefined} className={`${base} ${tone(onGuides)}`}>
           <Icon>
