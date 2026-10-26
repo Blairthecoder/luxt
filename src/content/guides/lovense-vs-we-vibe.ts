@@ -10,14 +10,19 @@ export const LOVENSE_VS_WE_VIBE: Post = {
     'Two ways to share pleasure across the room or across the world. Lovense is app-first with a huge range; We-Vibe is built around couples and simple remotes.',
   publishedAt: '2026-10-20',
   readMinutes: 9,
+  updatedAt: '2026-10-26',
   hubs: ['couples', 'vibrators'],
   topics: ['couples', 'comparisons'],
+  howPrepared:
+    'A research-based comparison, not a hands-on review. We compared manufacturer specifications, manuals and published feature lists, and we have not tested either brand. We link to Lovense products through an affiliate program, which pays us a commission on purchases; we do not link to We-Vibe products. Features and prices change, so check the maker before you buy.',
   body: `
 There is something quietly thrilling about handing a partner the controls, or being trusted with theirs, and feeling connected even when you are apart. If you want a toy a partner can control, from across the room or from another country, two brands come up first: **Lovense** and **We-Vibe**. Both make rechargeable, body-safe toys that pair with a phone app. Both are established and widely used.
 
 They are not interchangeable, though. Lovense is app-first and makes a connected version of almost every kind of toy. We-Vibe focuses on couples, and many of its toys come with a physical remote in the box. The right choice depends on how you plan to play.
 
 ## The Short Answer
+
+The table of differences comes from each maker's published information. Where one brand is stronger, the reason is listed, and the choice below depends on how you plan to play.
 
 - **Choose Lovense** if long-distance play is the main goal, you want the widest range of connected toys, or you want toys for both partners that work in the same app.
 - **Choose We-Vibe** if you mainly play together in the same room, you like the idea of a physical remote, or you want a couples vibrator worn during sex.

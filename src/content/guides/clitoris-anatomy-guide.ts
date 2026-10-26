@@ -12,16 +12,25 @@ export const CLITORIS_ANATOMY: Post = {
   readMinutes: 8,
   hubs: ['vibrators'],
   topics: ['sex-education', 'for-her'],
+  updatedAt: '2026-10-26',
   healthNote: true,
+  howPrepared:
+    'Written by our editorial team. The survey figures come from one published study, linked below. Anatomy descriptions are general and simplified, we give no measurements because they vary between people, and the guide has not had clinical review.',
   body: `
-If you were taught that the clitoris is a small button at the top of the vulva, you were only taught a fraction of the story. The clitoris is a large, mostly internal structure, and it is the main source of sexual pleasure for most people who have one. Knowing how it is built makes it easier to understand your own body, explain what you like to a partner and stop wondering why penetration alone does not always do it.
+The clitoris is larger than the small visible tip most people were taught about. Most of it sits under the skin around the vaginal opening, and the structure extends internally. For many people who have one, clitoral stimulation is central to sexual pleasure and orgasm, which is why understanding its shape helps you understand your own body, explain what you like to a partner and make sense of why penetration alone does not always do it.
+
+## What Surveys Say About Orgasm and Clitoral Touch
+
+In a 2015 survey of 1,055 US women aged 18 to 94, 18.4% said intercourse alone was enough for orgasm. Another 36.6% said clitoral stimulation was necessary for orgasm during intercourse, and 36% said it was not necessary but made orgasm feel better.[[cite:clitoral-stimulation-survey]] The women also described a wide range of preferences for where, how firmly and in what pattern they liked to be touched.
+
+This is a self-reported survey of one national sample, so it is a good picture of what many women report, not a rule for any one person. It also supports a plain point: needing clitoral touch is common and is not a sign that something is wrong.
 
 ## The Short Answer
 
-- **The visible part is only the tip.** The full clitoris is about 9 to 11 cm long, and most of it lies under the skin around the vaginal opening.
-- **It exists for pleasure.** The glans alone is packed with thousands of nerve endings, and the clitoris has no other known job.
-- **Most women need clitoral stimulation to orgasm.** Surveys consistently find that only a minority reach orgasm from penetration alone.
-- **Indirect touch often feels best.** The glans can be very sensitive, so many people prefer touch through the hood or around the sides.
+- **The visible part is only the tip.** The glans is the external part. The rest of the structure lies under the skin and around the vaginal opening.
+- **Clitoral touch matters for many people.** In the survey above, about three quarters of women said clitoral stimulation was needed or made orgasm during intercourse feel better.
+- **The glans can be very sensitive.** Many people prefer touch through the hood or around the sides rather than directly on the glans.
+- **There is no single typical pattern.** Preferences for pressure, speed and location varied widely among the women surveyed.
 
 ## The Parts of the Clitoris
 
@@ -37,7 +46,7 @@ During arousal, the whole structure fills with blood, much like an erection. Tha
 
 ## Why Penetration Alone Often Is Not Enough
 
-The vaginal canal has far fewer nerve endings than the clitoral glans. Penetration can feel wonderful, and it can stimulate the internal parts of the clitoris indirectly, but for most women it does not provide the focused touch that leads to orgasm. This is normal anatomy, not a problem to fix.
+Penetration can feel wonderful, and it can stimulate the internal parts of the clitoris indirectly. But as the survey above shows, many women find it does not provide the focused touch that leads to orgasm on its own. That is a common pattern, not a problem to fix.
 
 What helps:
 
@@ -47,7 +56,7 @@ What helps:
 
 ## The G-Spot and the Clitoris
 
-Many researchers now think the area people call the G-spot is where the internal clitoris, the urethral sponge and the front wall of the vagina meet. That is why pressure there can feel good for some people and like nothing special for others. Read more in our guide to [finding the G-spot](/blog/how-to-find-the-g-spot), and our comparison of [clitoral vs. G-spot vibrators](/blog/clitoral-vs-g-spot-vibrators).
+Some researchers propose that the area people call the G-spot is where the internal clitoris, the urethral sponge and the front wall of the vagina meet, though this is still debated. That is why pressure there can feel good for some people and like nothing special for others. Read more in our guide to [finding the G-spot](/blog/how-to-find-the-g-spot), and our comparison of [clitoral vs. G-spot vibrators](/blog/clitoral-vs-g-spot-vibrators).
 
 ## How to Explore
 
@@ -95,11 +104,11 @@ Clitoral pain, itching that does not go away, or the hood sticking to the glans 
   faqs: [
     {
       q: 'How big is the clitoris?',
-      a: 'The full clitoris is usually around 9 to 11 cm long, but most of it is internal. The visible glans is often about the size of a pea, though size varies widely and has no link to how much pleasure someone can feel.',
+      a: 'Most of the clitoris is internal, and sizes vary from person to person, so we do not give a single measurement. We have not found evidence that size predicts how much pleasure someone feels.',
     },
     {
       q: 'Why can I not orgasm from penetration alone?',
-      a: 'Because most of the nerve endings involved in orgasm are in the clitoris, not the vaginal canal. Most women need direct or indirect clitoral stimulation to orgasm, which is normal anatomy rather than a problem.',
+      a: 'In one US survey, 18.4% of women said intercourse alone was enough for orgasm, while most said clitoral stimulation was needed or made it feel better. Needing clitoral touch is common and is not a problem to fix.',
     },
     {
       q: 'Is it normal for the clitoris to be too sensitive to touch?',

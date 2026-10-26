@@ -10,12 +10,21 @@ export const ASK_IN_BED: Post = {
     'You deserve sex that feels good to you. Simple phrases for before, during and after sex, plus how to share a fantasy or suggest a toy without hurting feelings.',
   publishedAt: '2026-10-24',
   readMinutes: 8,
+  updatedAt: '2026-10-26',
   hubs: ['couples', 'vibrators'],
   topics: ['intimacy', 'womens-empowerment', 'couples'],
+  howPrepared:
+    'Written by our editorial team. The research section summarizes one published meta-analysis, and the scripts are general communication suggestions rather than clinical advice. It has not had clinical review.',
   body: `
-Many people stay quiet in bed because they do not want to hurt a partner's feelings, seem demanding or feel embarrassed. The result is sex that is fine but not as good as it could be. Asking for what you want is one of the kindest things you can do for a relationship, because it gives your partner a clear way to please you.
+The most reliable way to ask for what you want in bed is to say it plainly, outside the moment if it is a big request and inside it if it is a small adjustment, and to start with what you already enjoy. Many people stay quiet because they do not want to hurt a partner's feelings or feel embarrassed, so a few ready phrases help.
 
-## The Short Answer
+## What the Research Says About Talking
+
+A 2022 meta-analysis pooled 93 studies covering 38,499 people in relationships. It found that sexual communication was positively associated with both relationship satisfaction (r = .37) and sexual satisfaction (r = .43).[[cite:sexual-communication-meta]] The quality of the communication showed a stronger link than how often couples talked about sex.
+
+Two cautions. These are associations measured in surveys, so the data cannot show that talking more causes better sex; people who are already satisfied may simply find it easier to talk. And the strength of the link varied with factors such as relationship status and culture. The practical reading is narrower than a headline: how well you communicate seems to matter more than how much, which is why the scripts below are short and specific.
+
+## Quick Reference
 
 - **Start outside the bedroom** for anything big. Save in-the-moment requests for small adjustments.
 - **Lead with what you love.** "I love it when you..." opens the door for "and I would love more of..."

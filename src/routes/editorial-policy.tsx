@@ -66,15 +66,31 @@ export const Route = createFileRoute('/editorial-policy')({
           ],
         },
         {
-          heading: 'Health and Safety Content',
+          heading: 'How We Research',
           body: [
-            'Guides about bodies, comfort and safety are general information, not medical advice. Where a topic involves health risk, we say so and point readers to a qualified professional.',
+            'Health and safety statements in educational guides are checked against published sources: clinical organizations, government health agencies and peer-reviewed studies, linked directly from the guide under References. We read the study record, including its abstract, before citing anything, and we note who was studied and what the study design can and cannot show.',
+            'We treat an association as an association. A study that finds two things go together does not show that one causes the other, and we say so. If we cannot verify a claim, we revise or remove it rather than cite around it.',
           ],
         },
         {
+          heading: 'Health and Safety Content',
+          body: [
+            'Guides about bodies, comfort and safety are general information, not medical advice. Where a topic involves health risk, we say so and point readers to a qualified professional.',
+            'Editorial review is not medical review. We do not display a clinical reviewer or credentials on any guide unless a qualified professional has actually reviewed that guide and agreed to be named. Guides without a named reviewer are written and checked by our editorial team.',
+          ],
+        },
+        {
+          heading: 'Who We Are and What We Sell',
+          body: [
+            'Nightstand Supply Co. is an independent publication. Toy recommendations link to the merchant, which handles the sale, shipping and returns, and we may earn a commission when you buy through those links. Lingerie links go to our connected Shopify store, where checkout happens. Each guide says which products link where, and the Affiliate Disclosure explains how we earn money.',
+          ],
+        },
+        {
+          id: 'corrections',
           heading: 'Corrections and Updates',
           body: [
-            'Guides carry published and updated dates and are revised as products and prices change. If you spot an error, email us and we will review it and correct it.',
+            'Guides carry published and updated dates and are revised as products, prices and evidence change. We update the date only when the content changes in a way that matters to the reader.',
+            'To report a factual error, an outdated source or a broken link, email us with the guide address and what you think is wrong, and a source if you have one. We review every report. When we confirm a mistake we fix it in the guide and update its date; for a significant correction we add a short note saying what changed.',
           ],
         },
       ]}
