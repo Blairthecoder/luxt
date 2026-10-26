@@ -104,6 +104,25 @@ export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
+/**
+ * Hero calls to action. `primary` picks which button gets the filled treatment,
+ * so CTA prominence can be tested by changing one prop.
+ */
+function HeroCtas({ primary }: { primary: 'guides' | 'picks' }) {
+  const filled = 'btn btn-light btn-lg !min-h-[3.25rem] flex-1 sm:flex-none'
+  const outline = 'btn-ghost !min-h-[3.25rem] flex-1 border-canvas/60 text-canvas hover:border-canvas sm:flex-none'
+  return (
+    <div className="mt-7 flex flex-wrap gap-3">
+      <Link to="/explore" className={primary === 'guides' ? filled : outline}>
+        Explore the Guides
+      </Link>
+      <Link to="/shop" className={primary === 'picks' ? filled : outline}>
+        Shop Our Picks
+      </Link>
+    </div>
+  )
+}
+
 function HomePage() {
   const { lingerie, picks } = Route.useLoaderData()
   const featured = POSTS_BY_SLUG[FEATURED_SLUG]
@@ -114,26 +133,38 @@ function HomePage() {
       {/* 1. Hero */}
       <section className="wrap pt-3 sm:pt-10">
         <MobileSearchField className="mb-5" />
-        <div className="rounded-[2rem] bg-plum text-canvas px-6 py-14 sm:px-14 sm:py-24 rise">
-          <p className="eyebrow text-petal">{SITE.tagline}</p>
-          <h1 className="mt-4 display-l max-w-3xl max-sm:!text-[2.375rem]">Confidence Starts With Curiosity.</h1>
-          <p className="mt-6 lede text-canvas/80 max-w-2xl">
-            Explore intimacy, connection, and personal wellness with practical guidance, thoughtful recommendations, and a
-            little more confidence along the way.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link to="/explore" className="btn btn-light btn-lg">
-              Explore the Guides
-            </Link>
-            <Link to="/shop" className="btn-ghost !min-h-[3.75rem] border-canvas/40 text-canvas hover:border-canvas">
-              Shop Our Picks
-            </Link>
+        <div className="grid overflow-hidden rounded-[2rem] bg-plum text-canvas lg:grid-cols-[55fr_45fr] rise">
+          <div className="flex flex-col justify-center px-6 py-9 sm:px-12 sm:py-12 lg:py-14">
+            <p className="eyebrow text-petal">{SITE.tagline}</p>
+            <h1 className="mt-3 max-w-xl font-display text-[2.25rem] font-bold leading-[1.02] tracking-[-0.04em] sm:text-[3rem] lg:text-[3.5rem]">
+              Confidence Starts With Curiosity.
+            </h1>
+            <p className="mt-5 max-w-xl text-[1.0625rem] leading-relaxed text-canvas/80 sm:text-lg">
+              Explore intimacy, connection, and personal wellness with practical guidance, thoughtful recommendations, and a
+              little more confidence along the way.
+            </p>
+            <HeroCtas primary="guides" />
+          </div>
+          <div className="relative aspect-[16/10] sm:aspect-[2/1] lg:aspect-auto lg:min-h-full">
+            <img
+              src="/hero-bedside.webp"
+              width={576}
+              height={1260}
+              alt="Warm lamplight on a bedside table with a plant and a brass tray"
+              fetchPriority="high"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover object-[50%_55%]"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-plum/70 via-plum/10 to-transparent max-lg:bg-gradient-to-t" />
+            <p className="absolute bottom-4 left-4 right-4 rounded-2xl bg-canvas/90 px-4 py-3 text-sm font-medium text-ink backdrop-blur sm:left-auto sm:max-w-[16rem] lg:bottom-6 lg:right-6">
+              Discreet, judgment-free guidance for you and your partner.
+            </p>
           </div>
         </div>
       </section>
 
       {/* 2. Find your starting point */}
-      <section aria-labelledby="start-heading" className="wrap pt-14 sm:pt-24 reveal">
+      <section aria-labelledby="start-heading" className="wrap pt-10 sm:pt-14 reveal">
         <div className="section-head">
           <h2 id="start-heading" className="display-m">
             Find Your Starting Point
