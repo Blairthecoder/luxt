@@ -77,6 +77,23 @@ new MutationObserver(scan).observe(document.documentElement,{childList:true,subt
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');
+(function(){
+  try {
+    var q = new URLSearchParams(location.search);
+    if ((q.get('utm_source') || '').toLowerCase() === 'cannawize') {
+      sessionStorage.setItem('ns_ref', 'cannawize');
+      if (!sessionStorage.getItem('ns_ref_sent')) {
+        sessionStorage.setItem('ns_ref_sent', '1');
+        gtag('event', 'cannawize_referral_landing', {
+          page_path: location.pathname,
+          utm_medium: (q.get('utm_medium') || '').slice(0, 40),
+          utm_campaign: (q.get('utm_campaign') || '').slice(0, 60)
+        });
+      }
+    }
+  } catch (e) {}
+})();
+function nsRef(){ try { return sessionStorage.getItem('ns_ref') || undefined; } catch (e) { return undefined; } }
 document.addEventListener('click', function(e){
   var t = e.target instanceof Element ? e.target : null;
   if (!t) return;
@@ -84,8 +101,10 @@ document.addEventListener('click', function(e){
   if (a) {
     var ctx = a.getAttribute('data-link-context') || (a.classList.contains('pick-buy') ? 'guide_pick' : 'product_page');
     var handle = a.getAttribute('href').slice(4).split('?')[0];
-    var p = { product_handle: handle, page_path: location.pathname, link_context: ctx, content_cluster: a.getAttribute('data-cluster') || undefined };
+    var merchant = a.getAttribute('data-merchant') || undefined;
+    var p = { product_handle: handle, page_path: location.pathname, link_context: ctx, content_cluster: a.getAttribute('data-cluster') || undefined, merchant: merchant, referral_source: nsRef() };
     gtag('event', 'affiliate_click', p);
+    if (merchant) gtag('event', 'merchant_product_click', p);
     if (/^comparison/.test(ctx) || a.closest('table')) gtag('event', 'comparison_click', p);
     return;
   }

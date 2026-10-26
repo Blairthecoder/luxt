@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
 import { AffiliateNotice } from '@/components/AffiliateNotice'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -41,7 +42,16 @@ export function hubJsonLd(hub: SiteHub) {
 }
 
 /** Shared layout for the Explore, For Couples and Shop Our Picks hubs. */
-export function SiteHubPage({ hub, monetized = false }: { hub: SiteHub; monetized?: boolean }) {
+export function SiteHubPage({
+  hub,
+  monetized = false,
+  extra,
+}: {
+  hub: SiteHub
+  monetized?: boolean
+  /** Extra content between the hub sections and the newsletter, e.g. product picks. */
+  extra?: ReactNode
+}) {
   const sections = resolveHubSections(hub)
   return (
     <div>
@@ -98,6 +108,8 @@ export function SiteHubPage({ hub, monetized = false }: { hub: SiteHub; monetize
           </section>
         ))}
       </div>
+
+      {extra}
 
       <div className="wrap mt-16 sm:mt-24 max-w-3xl">
         <NewsletterSignup source={`hub:${hub.path.slice(1)}`} />

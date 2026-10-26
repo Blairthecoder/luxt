@@ -25,6 +25,7 @@ export function BuyButton({
       target="_blank"
       rel="sponsored nofollow noopener"
       data-link-context={context}
+      data-merchant={getProgram(program).id}
       className={`btn btn-lg ${className}`}
     >
       {available

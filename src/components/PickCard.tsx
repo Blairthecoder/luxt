@@ -72,6 +72,7 @@ export function PickCard({ pick, context = 'home_pick', cluster }: { pick: Curat
           target="_blank"
           rel="sponsored nofollow noopener"
           data-link-context={context}
+          data-merchant={pick.program ?? 'lovense'}
           data-cluster={cluster}
           className="btn !min-h-[2.75rem] !text-sm w-full"
         >

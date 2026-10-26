@@ -15,6 +15,8 @@ import { getOptimizedImageUrl, productImageClass } from '@/lib/image'
 import type { Post } from '@/content/posts'
 import { PostMeta } from '@/components/PostGrid'
 import { ShopTheGuide } from '@/components/ShopTheGuide'
+import { GuidePicksStrip } from '@/components/MerchantPicks'
+import { GUIDE_PICKS, NEXT_STEPS } from '@/content/funnel'
 
 /** What kind of piece this is, so readers know whether it is education, research or a comparison. */
 function guideKind(post: Pick<Post, 'topics'>): { label: string; note?: string } {
@@ -124,6 +126,9 @@ function PostPage() {
   const hubs = post.hubs.filter((h) => !(h in RETIRED_HUBS)).map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
   const kind = guideKind(post)
+  const funnelPicks = GUIDE_PICKS[post.slug]
+  const nextStep = NEXT_STEPS[post.slug]
+  const nextPost = nextStep ? POSTS_BY_SLUG[nextStep.next] : undefined
   const toc = post.readMinutes >= 6 ? headings(html) : []
 
   return (
@@ -232,6 +237,16 @@ function PostPage() {
           )}
           <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
           <ShopTheGuide products={products} className="mt-16 pt-12 border-t border-ink" />
+          {funnelPicks && <GuidePicksStrip intent={funnelPicks.intent} heading={funnelPicks.heading} slug={post.slug} />}
+          {nextPost && nextStep && (
+            <aside aria-label="Next step" className="mt-14 rounded-2xl bg-blush p-6 sm:p-8">
+              <p className="text-sm font-semibold text-plum">Next step</p>
+              <Link to="/blog/$slug" params={{ slug: nextPost.slug }} className="mt-1 block font-display text-xl font-semibold leading-snug tracking-[-0.02em] hover:underline underline-offset-4">
+                {nextPost.title}
+              </Link>
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-graphite">{nextStep.reason}</p>
+            </aside>
+          )}
           {post.healthNote && (
             <aside aria-label="Health note" className="mt-12 p-5 sm:p-6 bg-mist rounded-2xl text-[0.9375rem] text-graphite leading-relaxed">
               <span className="font-semibold text-ink">Not medical advice.</span> This guide is general sex education. If
