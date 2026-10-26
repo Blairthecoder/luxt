@@ -10,22 +10,24 @@ export const CONFIDENT_IN_BED: Post = {
     'Confidence in bed is less about how you look and more about where your attention goes. Practical ways to quiet body worries and enjoy the moment.',
   publishedAt: '2026-10-24',
   readMinutes: 8,
+  updatedAt: '2026-10-26',
   hubs: ['vibrators', 'lingerie'],
   topics: ['body-confidence', 'womens-empowerment', 'for-her'],
+  healthNote: true,
+  howPrepared:
+    'Written by our editorial team from the cited systematic review and general sex-education practice. It has not had clinical review. The product picks come from manufacturer specifications, not hands-on testing.',
   body: `
-Almost everyone feels self-conscious in bed at some point. You might worry about your stomach, your sounds, how long you take or whether you are doing it right. Those thoughts pull your attention out of your body and into your head, and that makes it harder to feel aroused. The good news is that confidence in bed is a skill, and it starts with where you put your attention.
+Feeling self-conscious in bed is common, and it usually comes down to attention: during sex, some people spend more time watching themselves than feeling anything. Confidence in bed is less about changing how you look and more about moving your attention back to sensation, learning what you like and being able to say so. The sections below cover each of those.
 
-## The Short Answer
+## What the Research Says About Body Image and Sex
 
-- **Your partner is almost certainly not judging you.** Most people are focused on their own experience and on feeling close to you.
-- **Shift attention from how you look to how it feels.** Sensation is the antidote to overthinking.
-- **Know your own body first.** Solo exploration builds confidence fast.
-- **Ask for what you want.** Confidence grows when sex works for you.
-- **Small comforts count:** lighting, what you wear, a position you like.
+A 2024 systematic review pooled ten studies of young adult women and found an association between how women see their bodies, including their genitals, and how they function sexually.[[cite:body-image-review]] The authors also found that these perceptions carry different weight depending on the group studied and the circumstances.
+
+That is useful context, and it has limits. The review shows that body image and sexual function go together. It does not show that improving body image will improve sex, and it covers young adult women, so it should not be stretched to everyone. What it supports is a modest point: body worries are a recognized part of sexual experience, not a personal failing, and they are worth working on directly.
 
 ## Why We Overthink
 
-Sex therapists call it spectatoring: watching yourself from the outside instead of feeling from the inside. It is common in people who have absorbed messages about how bodies should look or how sex should go. It is also a major brake on arousal. Read more in our guide to [spontaneous vs. responsive desire](/blog/responsive-vs-spontaneous-desire).
+Sex therapists use the word spectatoring for watching yourself from the outside instead of feeling from the inside. It tends to show up in people who have absorbed strong messages about how bodies should look or how sex should go. Our guide to [spontaneous vs. responsive desire](/blog/responsive-vs-spontaneous-desire) explains why attention and context matter so much for arousal.
 
 ## Practical Ways to Get Out of Your Head
 
@@ -44,7 +46,7 @@ Sex therapists call it spectatoring: watching yourself from the outside instead 
 - **Curate your feed.** Follow people with bodies like yours.
 - **Talk back to the critic.** "My partner wants me, as I am, tonight."
 
-If body image affects your daily life or mood a lot, a therapist can help, and that is a strong thing to do.
+If body image affects your daily life or mood a lot, a therapist can help.
 
 ## Build Confidence Solo First
 
@@ -58,7 +60,7 @@ Nothing builds confidence like sex that actually feels good to you. Our guide to
 
 ## Confidence After Life Changes
 
-Pregnancy, weight changes, illness, aging and menopause can all shake confidence. Be gentle with yourself and take your time. See our guides to [sex after having a baby](/blog/sex-after-having-a-baby), [sex toys for menopause](/blog/sex-toys-for-menopause) and [sexual confidence after a breakup or divorce](/blog/sexual-confidence-after-divorce).
+Pregnancy, weight changes, illness, aging and menopause can all change how your body feels and how you feel about it. Give yourself time, and tell your partner what has changed. See our guides to [sex after having a baby](/blog/sex-after-having-a-baby), [sex toys for menopause](/blog/sex-toys-for-menopause) and [sexual confidence after a breakup or divorce](/blog/sexual-confidence-after-divorce).
 `,
   picks: {
     confidence: {
@@ -79,11 +81,11 @@ Pregnancy, weight changes, illness, aging and menopause can all shake confidence
   faqs: [
     {
       q: 'How can I stop being self-conscious during sex?',
-      a: 'Shift your attention from how you look to how things feel, breathe slowly, adjust the lighting and choose positions you feel good in. Remember your partner is focused on being close to you.',
+      a: 'Shift your attention from how you look to how things feel, breathe slowly, adjust the lighting and choose positions you feel good in. If worry stays strong, a sex therapist or counselor can help.',
     },
     {
       q: 'Does my partner notice my body flaws?',
-      a: 'Most partners are focused on their own pleasure and on feeling close, not on looking for flaws. Many people say confidence and enjoyment matter far more to them than appearance.',
+      a: 'We cannot speak for any one partner, and the research we cite does not measure it. What the evidence does show is that how people see their own bodies is associated with sexual function, so the worry is worth taking seriously. Asking your partner directly is more reliable than guessing.',
     },
     {
       q: 'How can I feel more confident in bed as a woman?',

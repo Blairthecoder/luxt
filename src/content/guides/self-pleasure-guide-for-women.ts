@@ -10,15 +10,25 @@ export const SELF_PLEASURE_WOMEN: Post = {
     'Solo time is how many women learn what they love. How to set the scene, techniques to try, choosing a first toy and letting go of any lingering guilt.',
   publishedAt: '2026-10-24',
   readMinutes: 9,
+  updatedAt: '2026-10-26',
   hubs: ['vibrators', 'lubricants'],
   topics: ['body-confidence', 'sex-education', 'for-her'],
+  healthNote: true,
+  howPrepared:
+    'Written by our editorial team. The survey figures come from one published study, linked below. Techniques are general sex-education suggestions and the guide has not had clinical review.',
   body: `
-Self-pleasure is one of the best ways to learn about your body, relax and feel more confident in partnered sex. Yet many women grew up with the message that masturbation is something men do, or something to feel embarrassed about. It is normal, healthy and entirely yours. This guide is a gentle place to start or to try something new.
+Self-pleasure is a common way to learn what feels good, and there is no required method: whatever is comfortable and enjoyable for you is right. Many women grew up hearing that masturbation was something men do or something to be embarrassed about, which can make starting feel loaded. This guide covers setting the scene, techniques, toys and the guilt that sometimes comes along.
+
+## What We Know About Women and Vibrators
+
+In a nationally representative US survey published in 2009, 52.5% of 2,056 women aged 18 to 60 reported having used a vibrator, and recent users scored higher on several sexual function measures such as desire, arousal and lubrication.[[cite:vibrator-use-us]] Most women had never had genital symptoms they linked to use.
+
+It is a self-reported survey, so it describes who uses vibrators rather than what vibrators do, and it is more than a decade old. We include it because it shows solo and toy use are common, not because it promises a result.
 
 ## The Short Answer
 
 - **There is no right way.** Whatever feels good and comfortable is right for you.
-- **Set aside real time.** Arousal builds slowly, so give yourself at least 20 to 30 minutes.
+- **Give it unhurried time.** Arousal builds at different speeds for different people, so skip the clock.
 - **Start with the whole body,** then move to the vulva and clitoris.
 - **Lube makes everything easier.**
 - **A vibrator is a great first toy,** but hands are a great start too.

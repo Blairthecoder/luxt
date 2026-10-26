@@ -26,6 +26,7 @@ import { BEST_WANDS } from '@/content/guides/best-wand-vibrators'
 import { LONG_DISTANCE } from '@/content/guides/long-distance-sex-toys'
 import { PEGGING_BEGINNERS } from '@/content/guides/pegging-for-beginners'
 import { BONDAGE_BEGINNERS } from '@/content/guides/bondage-for-beginners'
+import { TOY_MATERIALS } from '@/content/guides/sex-toy-materials-guide'
 import { CLEAN_TOYS } from '@/content/guides/how-to-clean-sex-toys'
 import { AUTOMATIC_STROKERS } from '@/content/guides/best-automatic-strokers'
 import { MENOPAUSE_TOYS } from '@/content/guides/sex-toys-for-menopause'
@@ -110,6 +111,8 @@ export interface Post {
   reviewedBy?: { name: string; credentials?: string; url?: string }
   /** Shows the general-education, not-medical-advice note under the body. */
   healthNote?: boolean
+  /** Short "How this guide was prepared" disclosure shown above the references. */
+  howPrepared?: string
 }
 
 export const POSTS: Post[] = [
@@ -130,6 +133,7 @@ export const POSTS: Post[] = [
   LONG_DISTANCE,
   PEGGING_BEGINNERS,
   BONDAGE_BEGINNERS,
+  TOY_MATERIALS,
   CLEAN_TOYS,
   AUTOMATIC_STROKERS,
   MENOPAUSE_TOYS,
@@ -295,55 +299,75 @@ Start external, start body-safe, and do not overspend on your first toy. Once yo
   },
   {
     slug: 'best-lube-for-sex-toys',
-    title: 'Which Lube Should You Use With Your Toys?',
-    metaTitle: 'Best Lube for Sex Toys: Water, Silicone or Hybrid?',
+    title: 'Water-Based vs. Silicone Lube: Which One Should You Use?',
+    metaTitle: 'Water-Based vs. Silicone Lube: How to Choose',
     metaDescription:
-      'Best lube for sex toys: water-based, silicone, hybrid or oil? How to keep silicone toys, condoms and anal play comfortable, all in plain, simple English.',
+      'Water-based, silicone, hybrid or oil-based lube: how each behaves with condoms and toy materials, cleanup, irritation and when to switch.',
     excerpt:
-      'Comfort changes everything. The right lube makes play smoother and easier and protects your toys. Here is how to match lube to the toy you own.',
+      'Water-based lube is the safe default with most condoms and toys. Silicone lasts longer but not with every toy. How the four types compare, and what the evidence does and does not show.',
     publishedAt: '2026-10-19',
-    readMinutes: 5,
+    updatedAt: '2026-10-26',
+    readMinutes: 7,
     hubs: ['lubricants', 'anal-toys', 'strokers', 'dildos'],
     topics: ['how-to', 'buying-guides'],
+    healthNote: true,
+    howPrepared:
+      'Written by our editorial team. The condom finding is from one cited laboratory study. Toy compatibility notes are general manufacturer guidance, and we have not tested any lubricant. We do not recommend a specific product here, and the guide has not had clinical review.',
     body: `
-Feeling comfortable is the foundation of feeling good, and lube is the simplest way to get there. It is the cheapest upgrade you can make to any toy: it reduces friction, makes play smoother and helps toys last. But not every lube works with every toy, and picking the wrong one can quietly damage a toy you love.
+For most people, most of the time, a water-based lube is the safest default: it is generally fine with latex condoms and with silicone, glass and metal toys, and it rinses off. Silicone lube lasts longer and suits shower or water play, but manufacturers commonly warn against using it on silicone toys. Oil-based products are the ones to be careful with if you use latex condoms.
 
-## The Quick Rule
+## The Four Types Compared
 
-**When in doubt, use water-based lube.** It works with every toy material and every condom.
+The toy column reflects common manufacturer guidance, not published research. Check the lube's label and your toy's instructions, which take priority over this table.
 
-## The Four Types
-
-| Type | Lasts | Safe With Silicone Toys | Safe With Latex Condoms | Cleanup |
+| Type | How long it lasts | Latex condoms | Silicone toys | Cleanup |
 |---|---|---|---|---|
-| Water-based | Short, reapply | Yes | Yes | Easy, rinses off |
-| Silicone-based | Long | Not recommended | Yes | Needs soap |
-| Hybrid | Medium | Patch test first | Usually yes | Easy |
-| Oil-based | Long | Varies | No | Needs soap |
+| Water-based | Shorter; may need reapplying | Generally fine | Generally fine | Rinses off |
+| Silicone-based | Longer | Generally fine | Manufacturers commonly advise against it | Needs soap and warm water |
+| Hybrid (water and silicone) | In between | Check the label | Test a hidden spot first | Easier than pure silicone |
+| Oil-based | Long | Not recommended | Check the toy maker's advice | Can stain fabric; needs soap |
+
+## What the Evidence Says About Oils and Condoms
+
+The clearest finding concerns latex condoms. In laboratory tests, as little as 60 seconds of exposure to mineral oil cut the burst strength of latex condoms by about 90%.[[cite:mineral-oil-condoms]] Baby oil and a lotion containing mineral oil had the same effect, while water and glycerol did not meaningfully weaken the condoms in the study's five-minute test.
+
+Keep the limits in mind. This was bench testing of condoms, not people, it is decades old, and it tested mineral oil rather than every oil sold today. It does not tell you how silicone or hybrid products behave. The condom packaging is the best guide: it will say which lubricants are suitable. If you rely on a condom for pregnancy or infection prevention, avoid oils unless the packaging says otherwise.
+
+## Which Type for Which Situation
 
 ### Water-Based
-The all-rounder. It feels natural, rinses away easily and works with silicone toys, strokers and condoms. The only downside is that it can dry out, so keep the bottle nearby. [Shop water-based and other lubes](/category/lubricants).
+
+The usual starting point. It feels closest to natural lubrication, works with most toys and condoms and cleans up with water. The trade-off is that it can dry out, so keep the bottle within reach. Some formulas contain glycerin or other ingredients that irritate some people, so if you notice stinging or itching, try a different formula and stop if it continues.
 
 ### Silicone-Based
-Silky and very long-lasting, and it does not wash away in the shower. That makes it great for sex without toys. Avoid it with silicone toys, because it can bond with the surface and leave it tacky over time.
+
+Slick and long-lasting, and it does not wash off in water, which suits shower sex. It is generally fine with latex condoms. The commonly given warning is against pairing it with silicone toys, because it may leave the surface tacky or damaged over time. That is manufacturer advice rather than something we can point to a study for, so test a hidden spot of a toy if you want to try it.
 
 ### Hybrid
-A blend of water and silicone that lasts longer than water-based with a creamier feel. Test it on a small, hidden spot of a silicone toy before using it all over.
+
+A blend that usually lasts longer than water-based and feels creamier. Because formulas differ, read the label for condom and toy compatibility rather than assuming.
 
 ### Oil-Based
-Long-lasting and good for massage, but it breaks down latex condoms and can stain sheets. Keep it away from condoms entirely.
+
+Good for massage and for some people during solo play, but it is the type that is a problem with latex condoms, and it can stain sheets. Use it only when no latex is involved and the toy maker allows it.
 
 ## Special Cases
 
-**Anal play.** The body does not self-lubricate there, so choose a thicker water-based or hybrid formula and reapply often. Pair it with a toy that has a flared base, like a [butt plug](/shop/butt-plugs).
+**Anal play.** The body does not produce its own lubrication there, so most people choose a thicker formula and reapply often. Pair it with a toy that has a flared base.
 
-**Strokers.** Use water-based only. Silicone lube can damage most sleeve materials. See our [Fleshlight vs. Tenga guide](/blog/fleshlight-vs-tenga).
+**Strokers.** Many stroker sleeves are soft materials that the maker says to use with water-based lube only. Follow the sleeve's instructions. See our [Fleshlight vs. Tenga guide](/blog/fleshlight-vs-tenga).
 
-**Sensitive skin.** If you are prone to irritation, look for lubes without glycerin, parabens or fragrance, and skip warming or tingling formulas.
+**Sensitive skin or recurring irritation.** If you often react to lubricants, products with fewer ingredients and without fragrance or warming and tingling agents are a reasonable place to start, but individual reactions vary. Burning, swelling or pain that keeps happening is a reason to see a doctor or nurse, since it may not be the lube.
 
-## Bottom Line
+## Quick Decision Guide
 
-Keep a good water-based lube in your nightstand as the default, and add a silicone lube for toy-free sex if you like it. Browse every [lubricant](/category/lubricants) we carry.
+- **Using latex condoms and no toys:** water-based or silicone-based.
+- **Using a silicone toy:** water-based.
+- **Water play or shower:** silicone-based, if you are not using a silicone toy.
+- **Not sure what a toy is made of:** read our [guide to toy materials](/blog/sex-toy-materials-guide) and default to water-based.
+- **Condom plus any oil:** do not combine unless the condom packaging says it is suitable.
+
+Browse every [lubricant](/category/lubricants) we list, and read our [guide to cleaning toys](/blog/how-to-clean-sex-toys) for aftercare.
 `,
   },
 ]

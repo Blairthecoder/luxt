@@ -3,6 +3,8 @@ import { Link } from '@tanstack/react-router'
 import { SITE } from '@/config/site'
 
 export interface InfoSection {
+  /** Anchor id, for deep links such as /editorial-policy#corrections. */
+  id?: string
   heading: string
   body?: string[]
   bullets?: string[]
@@ -35,7 +37,7 @@ export function InfoPage({
         <p className="lede text-graphite">{intro}</p>
         {top}
         {sections.map((section) => (
-          <section key={section.heading} className="space-y-3 pt-4">
+          <section key={section.heading} id={section.id} className="space-y-3 pt-4 scroll-mt-24">
             <h2 className="font-display text-2xl font-semibold tracking-[-0.02em] text-ink">{section.heading}</h2>
             {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             {section.bullets && (

@@ -10,18 +10,26 @@ export const BEGINNERS_GUIDE: Post = {
     'Your first toy should leave you curious and comfortable, not overwhelmed. Start with where you like to be touched, choose body-safe silicone and add lube.',
   publishedAt: '2026-10-20',
   readMinutes: 10,
+  updatedAt: '2026-10-26',
   hubs: ['vibrators', 'strokers', 'lubricants', 'couples'],
+  healthNote: true,
+  howPrepared:
+    'Written by our editorial team. The survey figures come from one published study, linked below. Product advice reflects manufacturer specifications and general care guidance, not hands-on testing, and the guide has not had clinical review.',
   topics: ['how-to', 'for-her', 'for-him'],
   body: `
-Your first toy is really about getting to know yourself, or each other, and feeling comfortable with what you enjoy. Buying one can feel like a bigger decision than it is. There are thousands of products, unfamiliar words and a wide range of prices. The good news is that a great first toy is usually simple, small and inexpensive, and you can learn everything you need in a few minutes.
+Start with a small external toy made of body-safe silicone, use a water-based lubricant, and wash it before and after each use. That covers most first purchases. The rest of this guide explains the choices behind that advice: which kind of toy, what it should be made of, what to use with it and how to look after it.
 
-This guide walks through the choices in order: what kind of toy, what it should be made of, what to use with it, and how to look after it.
+## How Common Are Toys, and What Do We Know?
+
+If you are wondering whether this is a normal thing to buy, a nationally representative US survey of 2,056 women aged 18 to 60, published in 2009, found that 52.5% had used a vibrator.[[cite:vibrator-use-us]] Recent users reported higher scores on several measures of sexual function, and most women (71.5%) had never had genital symptoms they linked to vibrator use.
+
+This is a survey from more than a decade ago, so treat the numbers as a rough picture. It also cannot show that vibrators improve sexual function; people who use them may differ in other ways. It is a reasonable basis for saying that vibrator use is common and usually uneventful, not for promising any particular result.
 
 ## Start With What You Already Enjoy
 
 The best first toy builds on what already feels good, rather than trying something completely new.
 
-- **If you have a vulva,** most people reach orgasm through clitoral stimulation, so an external toy is the easiest place to start. A small vibrator or an air-pulse toy works for most people.
+- **If you have a vulva,** many people find clitoral stimulation the most reliable route to orgasm, so an external toy is an easy place to start. A small vibrator or an air-pulse toy works for most people.
 - **If you have a penis,** a simple manual stroker is the most familiar step up from your hand.
 - **If you have a prostate and are curious,** start with a slim, beginner-sized toy and read our [prostate massage for beginners](/blog/prostate-massage-for-beginners) guide first.
 - **If you are shopping as a couple,** a small bullet or a vibrating ring is easy to bring into sex without changing much.
@@ -40,7 +48,7 @@ You do not need to know what you will love yet. A first toy is how you find out.
 
 ### For Vulva Owners
 
-A **bullet** is the simplest vibrator there is. It is small, quiet enough for most homes and easy to hold during solo play or sex. An **air-pulse toy** sits over the clitoris and uses pressure waves rather than direct vibration, which many people find intense without being harsh. A **mini wand** gives broader, rumblier vibration than a bullet.
+A **bullet** is the simplest vibrator there is. It is small and easy to hold during solo play or sex. An **air-pulse toy** sits over the clitoris and uses pressure waves rather than direct vibration, which many people find intense without being harsh. A **mini wand** gives broader, rumblier vibration than a bullet.
 
 All three are external, which is where most people start. Internal toys such as G-spot vibrators and rabbits are good second toys once you know you enjoy penetration. Our guide on [how to choose your first vibrator](/blog/how-to-choose-your-first-vibrator) goes deeper.
 

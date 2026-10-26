@@ -14,6 +14,8 @@ import { formatPostDate, formatPrice } from '@/lib/format'
 import { getOptimizedImageUrl, productImageClass } from '@/lib/image'
 import type { Post } from '@/content/posts'
 import { PostMeta } from '@/components/PostGrid'
+import { ArticleSources } from '@/components/ArticleSources'
+import { SOURCES_BY_ID } from '@/content/sources'
 import { ShopTheGuide } from '@/components/ShopTheGuide'
 import { GuidePicksStrip } from '@/components/MerchantPicks'
 import { GUIDE_PICKS, NEXT_STEPS } from '@/content/funnel'
@@ -57,6 +59,7 @@ export const Route = createFileRoute('/blog/$slug')({
       html: rendered.html,
       topPick: rendered.topPick,
       products: rendered.products,
+      citations: rendered.citations,
       hasPicks: Boolean(_picks) || rendered.products.length > 0,
     }
   },
@@ -93,6 +96,14 @@ export const Route = createFileRoute('/blog/$slug')({
               }
             : {}),
           image: absoluteUrl('/og-image.jpg'),
+          ...(loaderData.citations.length
+            ? {
+                citation: loaderData.citations.map((id) => {
+                  const src = SOURCES_BY_ID[id]
+                  return { '@type': 'CreativeWork', name: src.title, url: src.url, datePublished: String(src.year) }
+                }),
+              }
+            : {}),
           isAccessibleForFree: true,
           publisher: {
             '@type': 'Organization',
@@ -121,7 +132,7 @@ export const Route = createFileRoute('/blog/$slug')({
 })
 
 function PostPage() {
-  const { post, html, topPick, products, hasPicks } = Route.useLoaderData()
+  const { post, html, topPick, products, citations, hasPicks } = Route.useLoaderData()
   const more = relatedPosts(post, 2)
   const hubs = post.hubs.filter((h) => !(h in RETIRED_HUBS)).map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
@@ -247,6 +258,7 @@ function PostPage() {
               <p className="mt-2 text-[0.9375rem] leading-relaxed text-graphite">{nextStep.reason}</p>
             </aside>
           )}
+          <ArticleSources ids={citations} howPrepared={post.howPrepared} className="mt-14 pt-10 border-t border-line" />
           {post.healthNote && (
             <aside aria-label="Health note" className="mt-12 p-5 sm:p-6 bg-mist rounded-2xl text-[0.9375rem] text-graphite leading-relaxed">
               <span className="font-semibold text-ink">Not medical advice.</span> This guide is general sex education. If

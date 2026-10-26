@@ -11,6 +11,7 @@ import type { CatalogProduct } from '@/types/catalog'
 import { getProgram, goPath } from '@/lib/affiliate'
 import { getOptimizedImageUrl, isModelPhoto } from '@/lib/image'
 import { formatPrice } from '@/lib/format'
+import { SOURCES_BY_ID } from '@/content/sources'
 import { GUIDE_PRODUCTS } from '@/content/product-links'
 import { linkProductMentions, pageProductCards, type PageProductCard } from '@/server/product-links'
 
@@ -97,7 +98,7 @@ export type TopPick = {
 
 export async function renderPostHtml(
   post: Post,
-): Promise<{ html: string; topPick: TopPick | null; products: PageProductCard[] }> {
+): Promise<{ html: string; topPick: TopPick | null; products: PageProductCard[]; citations: string[] }> {
   const used = new Set<string>()
   let topPick: TopPick | null = null
   let html = await marked.parse(post.body.trim())
@@ -150,11 +151,20 @@ export async function renderPostHtml(
     return price === undefined ? 'See current prices' : formatPrice(price)
   })
 
+  // [[cite:<source id>]] becomes a numbered marker; numbers follow first appearance.
+  const citations: string[] = []
+  html = html.replace(/\[\[cite:([a-z0-9-]+)\]\]/g, (_, id: string) => {
+    if (!SOURCES_BY_ID[id]) return ''
+    let n = citations.indexOf(id) + 1
+    if (!n) n = citations.push(id)
+    return `<sup class="cite"><a href="#ref-${id}" aria-label="Reference ${n}">[${n}]</a></sup>`
+  })
+
   // Contextual links to the guide's mapped products, then cards for any not already shown as picks.
   const mapped = GUIDE_PRODUCTS[post.slug]
   html = linkProductMentions(html, mapped).html
   const products = pageProductCards(mapped, used)
 
-  return { html, topPick, products }
+  return { html, topPick, products, citations }
 }
 

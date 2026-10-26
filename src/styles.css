@@ -666,3 +666,21 @@ html {
 .prose-notes h2[id] {
   scroll-margin-top: 7rem;
 }
+
+/* Inline citation markers: small, quiet, and clearly not a product link. */
+.prose-notes sup.cite {
+  font-size: 0.7em;
+  line-height: 0;
+  margin-left: 0.15em;
+}
+
+.prose-notes sup.cite a {
+  text-decoration: none;
+  color: var(--color-graphite);
+  font-weight: 600;
+}
+
+.prose-notes sup.cite a:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+}

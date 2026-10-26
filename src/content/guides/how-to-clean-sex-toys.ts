@@ -11,9 +11,17 @@ export const CLEAN_TOYS: Post = {
   publishedAt: '2026-10-20',
   readMinutes: 8,
   hubs: ['more-toys', 'lubricants', 'strokers'],
+  updatedAt: '2026-10-26',
   topics: ['how-to'],
+  healthNote: true,
+  howPrepared:
+    'Written by our editorial team. The material table is general manufacturer-style guidance, not research, and the only study cited is small. We have not lab-tested any toy or cleaner, and the guide has not had clinical review.',
   body: `
-Part of feeling relaxed in the moment is knowing your toys are clean, safe and ready when you are. Clean toys are kinder to your body and last longer. The method depends on the material, and the wrong cleaner can damage a toy. This guide covers the common materials and the electronics inside many toys, so care becomes a quick, easy habit.
+Wash a toy with warm water and mild unscented soap before and after each use, dry it fully and check the maker's instructions for anything more. The right method depends on the material, and the wrong cleaner can damage a toy. This guide covers the common materials and the electronics inside many toys. For what each material is and why it matters, see our [guide to toy materials](/blog/sex-toy-materials-guide).
+
+## What the Research Says
+
+Published research on cleaning toys is sparse. In one small study of twelve women and two vibrators (one silicone, one thermoplastic elastomer), HPV DNA was still found on some toys after cleaning with a commercial cleaner.[[cite:hpv-sex-toys]] The study could not show that infection passes between partners, and it was too small to rank materials or cleaners. The practical takeaway is modest: clean thoroughly, and use a fresh condom over a toy you share.
 
 ## The Basic Rule
 
@@ -65,7 +73,7 @@ A dedicated toy cleaner is gentle and convenient. A spray works for quick cleanu
 - **Harsh soaps** with fragrance or antibacterial additives.
 - **Bleach** in anything except a rare, diluted sanitizing soak of non-porous toys.
 - **Dishwasher or boiling** for toys with electronics.
-- **Sharing toys** between partners without a condom or cleaning in between.
+- **Sharing toys** between partners without a condom or cleaning in between. The small study above found viral DNA could remain after cleaning.
 
 ## Storing Your Toys
 
