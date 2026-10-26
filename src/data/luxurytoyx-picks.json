@@ -1,0 +1,308 @@
+{
+  "checkedAt": "2026-10-26",
+  "source": "https://www.luxurytoyx.com/products.json",
+  "picks": [
+    {
+      "handle": "first-time-rechargeable-silicone-hummer-stimulator-purple",
+      "intents": [
+        "beginners",
+        "under-50"
+      ],
+      "audience": "First-time buyers who want a simple external stimulator",
+      "features": [
+        "Clitoral (external) stimulator",
+        "Rechargeable",
+        "Silicone body"
+      ],
+      "why": "A single-purpose external stimulator with no insertable shape, sold in a line the maker calls \"First Time\". A low-pressure place to start.",
+      "feed": {
+        "title": "First Time Rechargeable Silicone Hummer Stimulator - Purple",
+        "vendor": "CalExotics",
+        "productType": "Vibrator",
+        "price": 39,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/81825_4.jpg?v=1783291655",
+        "imageWidth": 800,
+        "imageHeight": 1132
+      }
+    },
+    {
+      "handle": "kroma-turbo-exciter-rechargeable-silicone-mini-massager",
+      "intents": [
+        "beginners",
+        "under-50"
+      ],
+      "audience": "Beginners who want something small",
+      "features": [
+        "Mini massager",
+        "Rechargeable",
+        "Silicone body"
+      ],
+      "why": "A mini, rechargeable silicone massager. Small size makes it easy to try and easy to store. Noise level is not stated by the retailer.",
+      "feed": {
+        "title": "Kroma Turbo Exciter Rechargeable Silicone Mini Massager",
+        "vendor": "CalExotics",
+        "productType": "Vibrator",
+        "price": 48,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/85217_2.jpg?v=1778622735",
+        "imageWidth": 800,
+        "imageHeight": 1132
+      }
+    },
+    {
+      "handle": "raven-flutter-mini-vibrator-rechargeable-silicone-flicker-stimulator",
+      "intents": [
+        "beginners",
+        "under-50",
+        "compact"
+      ],
+      "audience": "Beginners who want a compact option",
+      "features": [
+        "Mini size",
+        "Flicker-style stimulation",
+        "Rechargeable silicone"
+      ],
+      "why": "A mini, rechargeable flicker stimulator. Compact by design; the retailer does not state how quiet it is.",
+      "feed": {
+        "title": "Raven Flutter Mini Vibrator – Rechargeable Silicone Flicker Stimulator",
+        "vendor": "CalExotics",
+        "productType": "Bullet Vibrator",
+        "price": 39,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/83635_2.jpg?v=1775980386",
+        "imageWidth": 800,
+        "imageHeight": 1132
+      }
+    },
+    {
+      "handle": "mood-play-vibrating-egg-with-remote",
+      "intents": [
+        "couples",
+        "under-50"
+      ],
+      "audience": "Couples who want a first remote-controlled product",
+      "features": [
+        "Vibrating egg",
+        "Remote included",
+        "Clitoral stimulation"
+      ],
+      "why": "A lower-priced remote-controlled option, which lets a partner hold the controls. Check the product page for range and battery details.",
+      "feed": {
+        "title": "Mood Play Vibrating Egg with Remote",
+        "vendor": "Mood",
+        "productType": "Vibrator",
+        "price": 49,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/100694B_791x791_3fc04329-08ad-4747-9f96-8455b85a1f8a.webp?v=1788605022",
+        "imageWidth": 791,
+        "imageHeight": 791
+      }
+    },
+    {
+      "handle": "bedroom-bliss-couples-panty-vibe-with-remote",
+      "intents": [
+        "couples"
+      ],
+      "audience": "Couples who want a wearable they can control together",
+      "features": [
+        "Panty-style wearable",
+        "Remote control",
+        "Designed for couples"
+      ],
+      "why": "A wearable with a remote, so one partner can control it while the other wears it, at a mid-range price.",
+      "feed": {
+        "title": "Bedroom Bliss Couples Panty Vibe with Remote",
+        "vendor": "Bedroom Bliss",
+        "productType": "Vibrator",
+        "price": 69,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/s-l1600_3_8428c5a5-fad4-448f-869a-5b665ede0fcb.webp?v=1791988148",
+        "imageWidth": 540,
+        "imageHeight": 540
+      }
+    },
+    {
+      "handle": "together-echo-couples-vibrator-with-remote",
+      "intents": [
+        "couples"
+      ],
+      "audience": "Couples looking for a shared product with a remote",
+      "features": [
+        "Couples vibrator",
+        "Remote included"
+      ],
+      "why": "Sold as a couples product with a remote. It sits between the budget and premium options for shared use.",
+      "feed": {
+        "title": "Together Echo Couples Vibrator with Remote",
+        "vendor": "Together Toys",
+        "productType": "Vibrator",
+        "price": 119,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/80023B_791x791_6c0e8a5b-71bc-4f7d-970f-5fc6a156584d.webp?v=1787665735",
+        "imageWidth": 791,
+        "imageHeight": 791
+      }
+    },
+    {
+      "handle": "we-vibe-shared-touch-couples-grinding-vibrator",
+      "intents": [
+        "couples",
+        "premium"
+      ],
+      "audience": "Couples who want a well-known brand",
+      "features": [
+        "By We-Vibe, a couples-focused brand",
+        "Grinding-style couples vibrator"
+      ],
+      "why": "From a brand known for couples products, in a grinding shape meant to be used together. Compare it with our Lovense vs. We-Vibe guide.",
+      "feed": {
+        "title": "We-Vibe Shared Touch Couples Grinding Vibrator",
+        "vendor": "We-Vibe",
+        "productType": "Vibrator",
+        "price": 129,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/100245A_1000x1000_647c5dcd-78aa-4652-8dd0-954fc7e1cb45.webp?v=1790364139",
+        "imageWidth": 1000,
+        "imageHeight": 1000
+      }
+    },
+    {
+      "handle": "lelo-boomerang-dual-vibrator-for-couples-app-controlled-waterproof-silicone-design",
+      "intents": [
+        "couples",
+        "premium"
+      ],
+      "audience": "Couples who want app control and a waterproof design",
+      "features": [
+        "App-controlled",
+        "Waterproof",
+        "Silicone design",
+        "Dual vibrator for couples"
+      ],
+      "why": "Combines app control, a waterproof silicone build and a couples-focused shape, which is why it sits at the premium end.",
+      "feed": {
+        "title": "LELO Boomerang Dual Vibrator for Couples – App-Controlled, Waterproof Silicone Design",
+        "vendor": "LELO",
+        "productType": "Vibrator",
+        "price": 229,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/99042B_791x791_934bc5e6-b6aa-4b79-8c59-97b5a955bd38.webp?v=1776799691",
+        "imageWidth": 791,
+        "imageHeight": 791
+      }
+    },
+    {
+      "handle": "lelo-switch-double-sided-wand-vibrator-app-controlled-dual-motor-massager",
+      "intents": [
+        "premium"
+      ],
+      "audience": "Buyers who want an app-enabled wand",
+      "features": [
+        "Double-sided wand",
+        "Dual motor",
+        "App-controlled"
+      ],
+      "why": "A premium wand with two motors and app control, for people who already know they like wand-style stimulation.",
+      "feed": {
+        "title": "LELO SWITCH Double-Sided Wand Vibrator – App-Controlled Dual Motor Massager",
+        "vendor": "LELO",
+        "productType": "Vibrator",
+        "price": 209,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/98343B_658x658_2a712457-b62a-4d69-a500-9d6053a0329a.webp?v=1774888265",
+        "imageWidth": 658,
+        "imageHeight": 658
+      }
+    },
+    {
+      "handle": "womanizer-next-liberty-clit-stimulator",
+      "intents": [
+        "premium"
+      ],
+      "audience": "Buyers interested in clitoral stimulation from a well-known brand",
+      "features": [
+        "Clitoral stimulator",
+        "By Womanizer"
+      ],
+      "why": "A clitoral stimulator from a brand known for that style, for buyers who know they prefer external stimulation.",
+      "feed": {
+        "title": "Womanizer Next Liberty Clit Stimulator",
+        "vendor": "Womanizer",
+        "productType": "Vibrator",
+        "price": 139,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/99641A_791x791_0a4325a4-99f2-448c-8795-739a536213c3.webp?v=1785781643",
+        "imageWidth": 791,
+        "imageHeight": 791
+      }
+    },
+    {
+      "handle": "lelo-mona-spectra-g-spot-massager",
+      "intents": [
+        "premium"
+      ],
+      "audience": "Buyers who want an insertable G-spot massager",
+      "features": [
+        "G-spot massager",
+        "By LELO"
+      ],
+      "why": "The highest-priced pick here: an insertable G-spot massager from LELO for buyers who prefer to invest in one product.",
+      "feed": {
+        "title": "LELO MONA Spectra G-Spot Massager",
+        "vendor": "LELO",
+        "productType": "Vibrator",
+        "price": 279,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/99712B_791x791_5bfbf3ba-73be-4a9c-b3b2-1327fcb02ac6.webp?v=1782933694",
+        "imageWidth": 791,
+        "imageHeight": 791
+      }
+    },
+    {
+      "handle": "sliquid-tsunami-water-based-gel-lubricant",
+      "intents": [
+        "care"
+      ],
+      "audience": "Anyone adding a lubricant to a purchase",
+      "features": [
+        "Water-based gel lubricant",
+        "By Sliquid"
+      ],
+      "why": "Water-based lubricants are the usual safe default with silicone toys. See our lube guide for how to choose.",
+      "feed": {
+        "title": "Sliquid Tsunami Water-Based Gel Lubricant",
+        "vendor": "Sliquid",
+        "productType": "Personal Lubricants",
+        "price": 20,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/files/sliquid-tsunami-water-based-gel-lubricant-luxury-toy-x-1.webp?v=1755234008",
+        "imageWidth": 896,
+        "imageHeight": 896
+      }
+    },
+    {
+      "handle": "uber-lube",
+      "intents": [
+        "care"
+      ],
+      "audience": "People who want a silicone-based lubricant",
+      "features": [
+        "Silicone-based lubricant",
+        "By Uber Lube"
+      ],
+      "why": "A silicone-based option. Silicone lube can damage silicone toys, so use it only with toys made of other materials, or without toys.",
+      "caution": "Do not use silicone-based lube with silicone toys.",
+      "feed": {
+        "title": "Uber Lube",
+        "vendor": "Uber Lube",
+        "productType": "Sex Lubricant",
+        "price": 20,
+        "available": true,
+        "image": "https://cdn.shopify.com/s/files/1/0250/4700/7335/products/uber-lube-luxury-toy-x-1.jpg?v=1755190408",
+        "imageWidth": 600,
+        "imageHeight": 600
+      }
+    }
+  ]
+}

@@ -25,10 +25,12 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as BrandsLuxuryToyXRouteImport } from './routes/brands/luxury-toy-x'
 import { Route as CategorySlugRouteImport } from './routes/category/$slug'
 import { Route as EroticaIndexRouteImport } from './routes/erotica/index'
 import { Route as EroticaSlugRouteImport } from './routes/erotica/$slug'
 import { Route as GoHandleRouteImport } from './routes/go/$handle'
+import { Route as GuidesIntimacyAndConnectionRouteImport } from './routes/guides/intimacy-and-connection'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 import { Route as ShopIndexRouteImport } from './routes/shop/index'
 import { Route as ShopSlugRouteImport } from './routes/shop/$slug'
@@ -114,6 +116,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrandsLuxuryToyXRoute = BrandsLuxuryToyXRouteImport.update({
+  id: '/brands/luxury-toy-x',
+  path: '/brands/luxury-toy-x',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CategorySlugRoute = CategorySlugRouteImport.update({
   id: '/category/$slug',
   path: '/category/$slug',
@@ -134,6 +141,12 @@ const GoHandleRoute = GoHandleRouteImport.update({
   path: '/go/$handle',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesIntimacyAndConnectionRoute =
+  GuidesIntimacyAndConnectionRouteImport.update({
+    id: '/guides/intimacy-and-connection',
+    path: '/guides/intimacy-and-connection',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
   id: '/products/$productId',
   path: '/products/$productId',
@@ -171,9 +184,11 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/brands/luxury-toy-x': typeof BrandsLuxuryToyXRoute
   '/category/$slug': typeof CategorySlugRoute
   '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
+  '/guides/intimacy-and-connection': typeof GuidesIntimacyAndConnectionRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -197,9 +212,11 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/brands/luxury-toy-x': typeof BrandsLuxuryToyXRoute
   '/category/$slug': typeof CategorySlugRoute
   '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
+  '/guides/intimacy-and-connection': typeof GuidesIntimacyAndConnectionRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -224,9 +241,11 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/brands/luxury-toy-x': typeof BrandsLuxuryToyXRoute
   '/category/$slug': typeof CategorySlugRoute
   '/erotica/$slug': typeof EroticaSlugRoute
   '/go/$handle': typeof GoHandleRoute
+  '/guides/intimacy-and-connection': typeof GuidesIntimacyAndConnectionRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -252,9 +271,11 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/blog/$slug'
+    | '/brands/luxury-toy-x'
     | '/category/$slug'
     | '/erotica/$slug'
     | '/go/$handle'
+    | '/guides/intimacy-and-connection'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
@@ -278,9 +299,11 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/blog/$slug'
+    | '/brands/luxury-toy-x'
     | '/category/$slug'
     | '/erotica/$slug'
     | '/go/$handle'
+    | '/guides/intimacy-and-connection'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog'
@@ -304,9 +327,11 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/blog/$slug'
+    | '/brands/luxury-toy-x'
     | '/category/$slug'
     | '/erotica/$slug'
     | '/go/$handle'
+    | '/guides/intimacy-and-connection'
     | '/products/$productId'
     | '/shop/$slug'
     | '/blog/'
@@ -331,9 +356,11 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  BrandsLuxuryToyXRoute: typeof BrandsLuxuryToyXRoute
   CategorySlugRoute: typeof CategorySlugRoute
   EroticaSlugRoute: typeof EroticaSlugRoute
   GoHandleRoute: typeof GoHandleRoute
+  GuidesIntimacyAndConnectionRoute: typeof GuidesIntimacyAndConnectionRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
   ShopSlugRoute: typeof ShopSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -456,6 +483,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/brands/luxury-toy-x': {
+      id: '/brands/luxury-toy-x'
+      path: '/brands/luxury-toy-x'
+      fullPath: '/brands/luxury-toy-x'
+      preLoaderRoute: typeof BrandsLuxuryToyXRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/category/$slug': {
       id: '/category/$slug'
       path: '/category/$slug'
@@ -482,6 +516,13 @@ declare module '@tanstack/react-router' {
       path: '/go/$handle'
       fullPath: '/go/$handle'
       preLoaderRoute: typeof GoHandleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/intimacy-and-connection': {
+      id: '/guides/intimacy-and-connection'
+      path: '/guides/intimacy-and-connection'
+      fullPath: '/guides/intimacy-and-connection'
+      preLoaderRoute: typeof GuidesIntimacyAndConnectionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/$productId': {
@@ -531,9 +572,11 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   BlogSlugRoute: BlogSlugRoute,
+  BrandsLuxuryToyXRoute: BrandsLuxuryToyXRoute,
   CategorySlugRoute: CategorySlugRoute,
   EroticaSlugRoute: EroticaSlugRoute,
   GoHandleRoute: GoHandleRoute,
+  GuidesIntimacyAndConnectionRoute: GuidesIntimacyAndConnectionRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
   ShopSlugRoute: ShopSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
