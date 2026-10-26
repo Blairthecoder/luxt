@@ -18,7 +18,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-      { title: `Lingerie, Toys & Confidence for Women | ${SITE.shortName}` },
+      { title: `${SITE.shortName} | Intimacy, Confidence & Thoughtful Finds` },
       { name: 'description', content: SITE.description },
       { name: 'rating', content: 'adult' },
       { name: 'fo-verify', content: 'eb0e8fdc-12dd-4d63-8b08-0deb664480ec' },
@@ -26,10 +26,10 @@ export const Route = createRootRoute({
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { property: 'og:image', content: absoluteUrl('/og-image.jpg') },
-      { property: 'og:image:alt', content: 'Nightstand Supply: lingerie, toys and confidence for women' },
+      { property: 'og:image:alt', content: 'Nightstand Supply: intimacy, confidence and thoughtful finds' },
       { property: 'og:locale', content: 'en_US' },
       { name: 'twitter:image', content: absoluteUrl('/og-image.jpg') },
-      { name: 'theme-color', content: '#ffffff' },
+      { name: 'theme-color', content: '#faf7f3' },
       { name: 'mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-title', content: 'Nightstand' },
@@ -78,13 +78,19 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');
 document.addEventListener('click', function(e){
-  var a = e.target instanceof Element ? e.target.closest('a[href^="/go/"]') : null;
-  if (!a) return;
-  gtag('event', 'affiliate_click', {
-    product_handle: a.getAttribute('href').slice(4).split('?')[0],
-    page_path: location.pathname,
-    link_context: a.getAttribute('data-link-context') || (a.classList.contains('pick-buy') ? 'guide_pick' : 'product_page')
-  });
+  var t = e.target instanceof Element ? e.target : null;
+  if (!t) return;
+  var a = t.closest('a[href^="/go/"]');
+  if (a) {
+    var ctx = a.getAttribute('data-link-context') || (a.classList.contains('pick-buy') ? 'guide_pick' : 'product_page');
+    var handle = a.getAttribute('href').slice(4).split('?')[0];
+    var p = { product_handle: handle, page_path: location.pathname, link_context: ctx, content_cluster: a.getAttribute('data-cluster') || undefined };
+    gtag('event', 'affiliate_click', p);
+    if (/^comparison/.test(ctx) || a.closest('table')) gtag('event', 'comparison_click', p);
+    return;
+  }
+  var c = t.closest('a[data-product-card]');
+  if (c) gtag('event', 'product_card_click', { product_handle: c.getAttribute('data-product-card'), page_path: location.pathname, content_cluster: c.getAttribute('data-cluster') || undefined });
 }, true);`,
           }}
         />

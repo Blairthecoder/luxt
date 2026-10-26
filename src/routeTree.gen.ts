@@ -15,6 +15,8 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DisclosureRouteImport } from './routes/disclosure'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
+import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as ForCouplesRouteImport } from './routes/for-couples'
 import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -28,6 +30,7 @@ import { Route as EroticaIndexRouteImport } from './routes/erotica/index'
 import { Route as EroticaSlugRouteImport } from './routes/erotica/$slug'
 import { Route as GoHandleRouteImport } from './routes/go/$handle'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
+import { Route as ShopIndexRouteImport } from './routes/shop/index'
 import { Route as ShopSlugRouteImport } from './routes/shop/$slug'
 import { Route as BlogTopicTopicRouteImport } from './routes/blog/topic/$topic'
 
@@ -59,6 +62,16 @@ const DisclosureRoute = DisclosureRouteImport.update({
 const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
   id: '/editorial-policy',
   path: '/editorial-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForCouplesRoute = ForCouplesRouteImport.update({
+  id: '/for-couples',
+  path: '/for-couples',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GiftsRoute = GiftsRouteImport.update({
@@ -126,6 +139,11 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
   path: '/products/$productId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopSlugRoute = ShopSlugRouteImport.update({
   id: '/shop/$slug',
   path: '/shop/$slug',
@@ -144,6 +162,8 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/disclosure': typeof DisclosureRoute
   '/editorial-policy': typeof EditorialPolicyRoute
+  '/explore': typeof ExploreRoute
+  '/for-couples': typeof ForCouplesRoute
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
@@ -158,6 +178,7 @@ export interface FileRoutesByFullPath {
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/erotica/': typeof EroticaIndexRoute
+  '/shop/': typeof ShopIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesByTo {
@@ -167,6 +188,8 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/disclosure': typeof DisclosureRoute
   '/editorial-policy': typeof EditorialPolicyRoute
+  '/explore': typeof ExploreRoute
+  '/for-couples': typeof ForCouplesRoute
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
@@ -181,6 +204,7 @@ export interface FileRoutesByTo {
   '/shop/$slug': typeof ShopSlugRoute
   '/blog': typeof BlogIndexRoute
   '/erotica': typeof EroticaIndexRoute
+  '/shop': typeof ShopIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRoutesById {
@@ -191,6 +215,8 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/disclosure': typeof DisclosureRoute
   '/editorial-policy': typeof EditorialPolicyRoute
+  '/explore': typeof ExploreRoute
+  '/for-couples': typeof ForCouplesRoute
   '/gifts': typeof GiftsRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
@@ -205,6 +231,7 @@ export interface FileRoutesById {
   '/shop/$slug': typeof ShopSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/erotica/': typeof EroticaIndexRoute
+  '/shop/': typeof ShopIndexRoute
   '/blog/topic/$topic': typeof BlogTopicTopicRoute
 }
 export interface FileRouteTypes {
@@ -216,6 +243,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/disclosure'
     | '/editorial-policy'
+    | '/explore'
+    | '/for-couples'
     | '/gifts'
     | '/partners'
     | '/privacy'
@@ -230,6 +259,7 @@ export interface FileRouteTypes {
     | '/shop/$slug'
     | '/blog/'
     | '/erotica/'
+    | '/shop/'
     | '/blog/topic/$topic'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -239,6 +269,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/disclosure'
     | '/editorial-policy'
+    | '/explore'
+    | '/for-couples'
     | '/gifts'
     | '/partners'
     | '/privacy'
@@ -253,6 +285,7 @@ export interface FileRouteTypes {
     | '/shop/$slug'
     | '/blog'
     | '/erotica'
+    | '/shop'
     | '/blog/topic/$topic'
   id:
     | '__root__'
@@ -262,6 +295,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/disclosure'
     | '/editorial-policy'
+    | '/explore'
+    | '/for-couples'
     | '/gifts'
     | '/partners'
     | '/privacy'
@@ -276,6 +311,7 @@ export interface FileRouteTypes {
     | '/shop/$slug'
     | '/blog/'
     | '/erotica/'
+    | '/shop/'
     | '/blog/topic/$topic'
   fileRoutesById: FileRoutesById
 }
@@ -286,6 +322,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DisclosureRoute: typeof DisclosureRoute
   EditorialPolicyRoute: typeof EditorialPolicyRoute
+  ExploreRoute: typeof ExploreRoute
+  ForCouplesRoute: typeof ForCouplesRoute
   GiftsRoute: typeof GiftsRoute
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -300,6 +338,7 @@ export interface RootRouteChildren {
   ShopSlugRoute: typeof ShopSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   EroticaIndexRoute: typeof EroticaIndexRoute
+  ShopIndexRoute: typeof ShopIndexRoute
   BlogTopicTopicRoute: typeof BlogTopicTopicRoute
 }
 
@@ -345,6 +384,20 @@ declare module '@tanstack/react-router' {
       path: '/editorial-policy'
       fullPath: '/editorial-policy'
       preLoaderRoute: typeof EditorialPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-couples': {
+      id: '/for-couples'
+      path: '/for-couples'
+      fullPath: '/for-couples'
+      preLoaderRoute: typeof ForCouplesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gifts': {
@@ -438,6 +491,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/$slug': {
       id: '/shop/$slug'
       path: '/shop/$slug'
@@ -462,6 +522,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DisclosureRoute: DisclosureRoute,
   EditorialPolicyRoute: EditorialPolicyRoute,
+  ExploreRoute: ExploreRoute,
+  ForCouplesRoute: ForCouplesRoute,
   GiftsRoute: GiftsRoute,
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
@@ -476,6 +538,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopSlugRoute: ShopSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   EroticaIndexRoute: EroticaIndexRoute,
+  ShopIndexRoute: ShopIndexRoute,
   BlogTopicTopicRoute: BlogTopicTopicRoute,
 }
 export const routeTree = rootRouteImport

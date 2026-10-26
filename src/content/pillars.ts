@@ -1,29 +1,32 @@
 /**
- * The five pillars that organize the site: main navigation, footer columns and
- * the homepage pillar band all read from here. Each pillar points at existing
- * hubs (topic hubs, category and collection pages, the Erotica section), so
- * no URL moves when the menu changes.
+ * Primary navigation: Home | Explore | For Couples | Shop Our Picks |
+ * Nightstand Notes | About. The header, mobile menu, footer and homepage read
+ * from here. Every link points at an existing page or hub, so no indexed URL
+ * moves when the menu changes. Lingerie, Erotica, the Gift Shop and reviews
+ * stay reachable from the dropdowns below.
  */
-import { COLLECTIONS } from '@/content/collections'
-import { STORIES, READING_LISTS } from '@/content/erotica'
+import { STORIES } from '@/content/erotica'
 import { hasShopifyProducts } from '@/content/retired'
+import { EXPLORE_HUB, COUPLES_HUB, PICKS_HUB, type SiteHub } from '@/content/site-hubs'
 
 export interface PillarLink {
   label: string
   /** A route path; links with params use the route template, e.g. '/blog/topic/$topic'. */
   to: string
   params?: Record<string, string>
+  /** In-page section id on the target route. */
+  hash?: string
 }
 
 export interface Pillar {
-  slug: 'lingerie' | 'toys' | 'confidence' | 'intimacy' | 'erotica'
+  slug: 'home' | 'explore' | 'couples' | 'picks' | 'notes' | 'about'
   /** Short label for the main nav. */
   label: string
-  /** Longer name for tiles and footer headings. */
+  /** Longer name for footer headings. */
   name: string
   blurb: string
   href: PillarLink
-  /** Dropdown columns; the Toys pillar uses the full catalog mega menu instead. */
+  /** Dropdown columns; a pillar without columns is a plain link. */
   columns: { title: string; links: PillarLink[] }[]
 }
 
@@ -31,125 +34,124 @@ const topic = (label: string, slug: string): PillarLink => ({ label, to: '/blog/
 const guide = (label: string, slug: string): PillarLink => ({ label, to: '/blog/$slug', params: { slug } })
 const shop = (label: string, slug: string): PillarLink => ({ label, to: '/shop/$slug', params: { slug } })
 
-const lingerieLive = hasShopifyProducts('lingerie')
+const hubAnchors = (hub: SiteHub): PillarLink[] => hub.sections.map((s) => ({ label: s.title, to: hub.path, hash: s.id }))
 
 export const PILLARS: Pillar[] = [
-  ...(lingerieLive
-    ? [
-        {
-          slug: 'lingerie' as const,
-          label: 'Lingerie',
-          name: 'Lingerie',
-          blurb: 'Bodysuits, sets and babydolls in sizes for every body, with honest fit notes so you feel good the moment you put it on.',
-          href: { label: 'Shop All Lingerie', to: '/category/$slug', params: { slug: 'lingerie' } },
-          columns: [
-            {
-              title: 'Shop by Style',
-              links: [
-                { label: 'All Lingerie', to: '/category/$slug', params: { slug: 'lingerie' } },
-                ...COLLECTIONS.filter((c) => c.group === 'Lingerie').map((c) => shop(c.name, c.slug)),
-              ],
-            },
-            {
-              title: 'Wear It With Confidence',
-              links: [
-                guide('How to Feel Confident in Lingerie', 'how-to-feel-confident-in-lingerie'),
-                guide('Boudoir Photoshoot Tips', 'boudoir-photoshoot-tips'),
-                guide('How to Feel Confident in Bed', 'how-to-feel-confident-in-bed'),
-                guide('Lingerie and Toy Gifts for Her', 'sex-toy-gifts-for-her'),
-              ],
-            },
-          ],
-        },
-      ]
-    : []),
   {
-    slug: 'toys',
-    label: 'Toys',
-    name: 'Toys & Reviews',
-    blurb: 'Honest reviews, buying guides and head-to-head comparisons, so you can choose a toy that suits your body and your budget.',
-    href: { label: 'All Toy Reviews', to: '/reviews' },
-    columns: [
-      {
-        title: 'Reviews & Guides',
-        links: [
-          { label: 'All Reviews', to: '/reviews' },
-          topic('Buying Guides', 'buying-guides'),
-          topic('Comparisons', 'comparisons'),
-          guide('Sex Toys for Beginners', 'sex-toys-for-beginners'),
-          topic('Toy Guides for Women', 'for-her'),
-          topic('Toy Guides for Men', 'for-him'),
-        ],
-      },
-    ],
+    slug: 'home',
+    label: 'Home',
+    name: 'Home',
+    blurb: 'Feel Good. Get Closer. Discover More.',
+    href: { label: 'Home', to: '/' },
+    columns: [],
   },
   {
-    slug: 'confidence',
-    label: 'Confidence',
-    name: 'Confidence & Empowerment',
-    blurb: 'Feel at home in your body and own your pleasure, through every chapter of life. Kind, practical guides written for women.',
-    href: topic('Body Confidence Guides', 'body-confidence'),
+    slug: 'explore',
+    label: 'Explore',
+    name: 'Explore',
+    blurb: 'Confidence, self-discovery and beginner-friendly education, at your own pace.',
+    href: { label: 'Explore All Topics', to: EXPLORE_HUB.path },
     columns: [
-      {
-        title: 'Explore',
-        links: [topic('Body Confidence & Self-Pleasure', 'body-confidence'), topic("Women's Empowerment", 'womens-empowerment')],
-      },
+      { title: 'Topic Hubs', links: hubAnchors(EXPLORE_HUB) },
       {
         title: 'Start Here',
         links: [
           guide('How to Feel Confident in Bed', 'how-to-feel-confident-in-bed'),
-          guide('Sexual Empowerment for Women', 'sexual-empowerment-for-women'),
+          guide('Sex Toys for Beginners', 'sex-toys-for-beginners'),
           guide('Self-Pleasure Guide for Women', 'self-pleasure-guide-for-women'),
-          guide('Boudoir Photoshoot Tips', 'boudoir-photoshoot-tips'),
-          guide('Confidence After Divorce', 'sexual-confidence-after-divorce'),
-          guide('Solo Date Night Ideas', 'solo-date-night-ideas'),
+          guide('How to Feel Confident in Lingerie', 'how-to-feel-confident-in-lingerie'),
         ],
       },
     ],
   },
   {
-    slug: 'intimacy',
-    label: 'Sex & Intimacy',
-    name: 'Sex Ed & Intimacy',
-    blurb: 'The sex education most of us never got, plus the conversations and habits that keep couples close.',
-    href: topic('Sex Education Guides', 'sex-education'),
+    slug: 'couples',
+    label: 'For Couples',
+    name: 'For Couples',
+    blurb: 'Connection, communication and shared experiences, with thoughtful product guidance.',
+    href: { label: 'Explore For Couples', to: COUPLES_HUB.path },
     columns: [
-      {
-        title: 'Explore',
-        links: [
-          topic('Sex Education', 'sex-education'),
-          topic('Intimacy & Communication', 'intimacy'),
-          topic('Couples & Relationships', 'couples'),
-          topic('How-To & Care', 'how-to'),
-        ],
-      },
+      { title: 'Topic Hubs', links: hubAnchors(COUPLES_HUB) },
       {
         title: 'Popular Guides',
         links: [
-          guide('How to Orgasm: A Guide for Women', 'how-to-orgasm-for-women'),
-          guide('How to Ask for What You Want in Bed', 'how-to-ask-for-what-you-want-in-bed'),
-          guide('How to Spice Up Your Marriage', 'how-to-spice-up-your-marriage'),
-          guide('Responsive vs. Spontaneous Desire', 'responsive-vs-spontaneous-desire'),
+          guide('How to Talk to Your Partner About Sex Toys', 'how-to-talk-to-your-partner-about-sex-toys'),
           guide('Non-Sexual Intimacy Ideas', 'non-sexual-intimacy-ideas'),
+          guide('Lovense vs. We-Vibe', 'lovense-vs-we-vibe'),
+          guide('Long-Distance Sex Toys', 'long-distance-sex-toys'),
         ],
       },
     ],
   },
   {
-    slug: 'erotica',
-    label: 'Erotica',
-    name: 'Erotica',
-    blurb: 'Original sensual short stories and steamy reading lists. Romantic, grown-up and never graphic. For adults 18+.',
-    href: { label: 'All Erotica', to: '/erotica' },
+    slug: 'picks',
+    label: 'Shop Our Picks',
+    name: 'Shop Our Picks',
+    blurb: 'Editorially curated recommendations by need, sold by our retail partners.',
+    href: { label: 'See All Picks', to: PICKS_HUB.path },
+    columns: [
+      { title: 'By Need', links: hubAnchors(PICKS_HUB) },
+      {
+        title: 'More Ways to Shop',
+        links: [
+          ...(hasShopifyProducts('lingerie') ? [{ label: 'Lingerie', to: '/category/$slug', params: { slug: 'lingerie' } }] : []),
+          { label: 'The Gift Shop', to: '/gifts' },
+          { label: 'All Toy Reviews', to: '/reviews' },
+          topic('Buying Guides', 'buying-guides'),
+          shop('Premium Picks', 'luxury-sex-toys'),
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'notes',
+    label: 'Nightstand Notes',
+    name: 'Nightstand Notes',
+    blurb: 'Guides, comparisons and sex education, written plainly and kindly.',
+    href: { label: 'All Nightstand Notes', to: '/blog' },
     columns: [
       {
-        title: 'Short Stories',
-        links: [{ label: 'All Erotica', to: '/erotica' }, ...STORIES.map((s) => ({ label: s.title, to: '/erotica/$slug', params: { slug: s.slug } }))],
+        title: 'Categories',
+        links: [
+          topic('Buying Guides', 'buying-guides'),
+          topic('Comparisons', 'comparisons'),
+          topic('Gift Guides', 'gift-guides'),
+          topic('Sex Education', 'sex-education'),
+          topic('Intimacy & Communication', 'intimacy'),
+          topic('Body Confidence', 'body-confidence'),
+          topic("Women's Empowerment", 'womens-empowerment'),
+        ],
       },
       {
-        title: 'Reading Lists',
-        links: READING_LISTS.map((s) => ({ label: s.title.split(':')[0], to: '/erotica/$slug', params: { slug: s.slug } })),
+        title: 'More From Nightstand',
+        links: [
+          { label: 'Erotica Short Stories', to: '/erotica' },
+          ...STORIES.slice(0, 2).map((s) => ({ label: s.title, to: '/erotica/$slug', params: { slug: s.slug } })),
+          topic('For Creators', 'creators'),
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'about',
+    label: 'About',
+    name: 'About',
+    blurb: 'Our mission, how we choose products and how we make money.',
+    href: { label: 'About Nightstand Supply', to: '/about' },
+    columns: [
+      {
+        title: 'Trust & Transparency',
+        links: [
+          { label: 'About Nightstand Supply', to: '/about' },
+          { label: 'Editorial Policy', to: '/editorial-policy' },
+          { label: 'Affiliate Disclosure', to: '/disclosure' },
+          { label: 'Privacy Policy', to: '/privacy' },
+          { label: 'Contact', to: '/contact' },
+        ],
       },
     ],
   },
 ]
+
+/** Pillars that open a dropdown (the rest are plain links). */
+export const MENU_PILLARS = PILLARS.filter((p) => p.columns.length > 0)

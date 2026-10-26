@@ -2,9 +2,10 @@ export const SITE = {
   name: 'Nightstand Supply Co.',
   shortName: 'Nightstand Supply',
   url: 'https://nightstandsupply.com',
-  tagline: 'Lingerie, toys, confidence and erotica for feeling sexy on your own terms.',
+  tagline: 'Feel Good. Get Closer. Discover More.',
+  /** Brand positioning, used in meta descriptions and structured data. */
   description:
-    'A judgment-free hub for women who want to feel sexier and more confident: size-inclusive lingerie, honest toy reviews, confidence and sex ed guides, and tasteful erotica.',
+    'Nightstand Supply is a modern destination for intimacy, body confidence, and pleasure, helping women and couples feel more comfortable, connected, and confident through practical guidance and thoughtfully chosen products.',
   guidesName: 'Nightstand Notes',
   /** Byline for guides with no named author. */
   editorialTeam: 'The Nightstand Notes Editors',

@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { SITE } from '@/config/site'
-import { PILLARS, type PillarLink } from '@/content/pillars'
+import { MENU_PILLARS, type PillarLink } from '@/content/pillars'
 import { NewsletterSignup } from '@/components/NewsletterSignup'
 import { Logo } from '@/components/Logo'
 
@@ -8,7 +8,7 @@ import { Logo } from '@/components/Logo'
 function pillarLinks(href: PillarLink, columns: { links: PillarLink[] }[]) {
   const seen = new Set<string>()
   return [href, ...columns.flatMap((c) => c.links)].filter((l) => {
-    const key = `${l.to}${JSON.stringify(l.params ?? {})}`
+    const key = `${l.to}${JSON.stringify(l.params ?? {})}${l.hash ?? ''}`
     if (seen.has(key)) return false
     seen.add(key)
     return true
@@ -30,40 +30,33 @@ export function Footer() {
             <NewsletterSignup source="footer" variant="footer" />
           </div>
 
-          {PILLARS.map((pillar) => (
+          {MENU_PILLARS.map((pillar) => (
             <div key={pillar.slug}>
               <p className={heading}>{pillar.name}</p>
               <ul className={list}>
                 {pillarLinks(pillar.href, pillar.columns)
                   .slice(0, 8)
                   .map((l) => (
-                    <li key={l.label}>
-                      <Link to={l.to as '/'} {...(l.params ? { params: l.params as never } : {})} className={link}>
+                    <li key={`${l.label}:${l.hash ?? ''}`}>
+                      <Link to={l.to as '/'} {...(l.params ? { params: l.params as never } : {})} {...(l.hash ? { hash: l.hash } : {})} className={link}>
                         {l.label}
                       </Link>
                     </li>
                   ))}
-                {pillar.slug === 'toys' && (
-                  <li>
-                    <Link to="/gifts" className={link}>
-                      The Gift Shop
-                    </Link>
-                  </li>
-                )}
               </ul>
             </div>
           ))}
         </div>
         <p className="mt-10 text-xs text-graphite">
           <Link to="/blog" className="text-ink font-medium hover:underline underline-offset-2">
-            All {SITE.guidesName} Guides
+            All {SITE.guidesName}
           </Link>
         </p>
 
         <div className="mt-14 pt-6 border-t border-line space-y-4 text-xs text-graphite">
           <p className="max-w-3xl leading-relaxed">
-            We earn a commission when you buy through our links, at no extra cost to you. Orders are placed and
-            shipped by the retailer you buy from.{' '}
+            Nightstand Supply is an independent affiliate publisher. We may earn a commission when you buy through our
+            links, at no extra cost to you. Products are sold and shipped by the retailer you buy from.{' '}
             <Link to="/disclosure" className="text-ink underline underline-offset-2">
               Disclosure
             </Link>

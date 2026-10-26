@@ -44,6 +44,15 @@ export const Route = createFileRoute('/editorial-policy')({
           ],
         },
         {
+          heading: 'Types of Content',
+          bullets: [
+            'Educational articles answer a real question about bodies, relationships or comfort. They are general information, not professional advice.',
+            'Buying guides and comparisons are research-based: we use manufacturer specifications, manuals and retailer information. We do not claim hands-on testing unless a page says so.',
+            'Hands-on reviews are labeled as such, and only when we actually used the product.',
+            'Sources for factual or health-related claims are cited where we can, and sensitive health topics carry a not-medical-advice note.',
+          ],
+        },
+        {
           heading: 'How We Review',
           body: [
             'Every product review answers the same questions in the same order: who the toy is best for, what we like, what to keep in mind and how to use it. Reviews draw on the manufacturer’s specifications and manuals, published material information, app features and how the toy compares with others in its category.',

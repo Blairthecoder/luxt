@@ -103,6 +103,15 @@ export async function renderPostHtml(
   let html = await marked.parse(post.body.trim())
   // Wide tables scroll inside their own box instead of pushing the page sideways on small screens.
   html = html.split('<table>').join('<div class="table-scroll"><table>').split('</table>').join('</table></div>')
+  // Anchor ids on H2s so the article table of contents (and shared links) can jump to a section.
+  const seenIds = new Set<string>()
+  html = html.replace(/<h2>([\s\S]*?)<\/h2>/g, (_, inner: string) => {
+    const base = inner.replace(/<[^>]+>/g, '').toLowerCase().replace(/&[a-z#0-9]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'section'
+    let id = base
+    for (let n = 2; seenIds.has(id); n++) id = `${base}-${n}`
+    seenIds.add(id)
+    return `<h2 id="${id}">${inner}</h2>`
+  })
 
   html = html.replace(/<p>\[\[picks:([a-z0-9-]+)\]\]<\/p>/g, (_, id: string) => {
     const block = post.picks?.[id]
