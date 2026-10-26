@@ -6,8 +6,8 @@ import { breadcrumbJsonLd, organizationJsonLd, pageHead } from '@/lib/seo'
 export const Route = createFileRoute('/about')({
   head: () =>
     pageHead({
-      title: `About ${SITE.shortName}: Lingerie, Toys & Confidence Guides`,
-      description: `${SITE.name} is an independent, judgment-free hub for women: lingerie, honest toy reviews, confidence and sex ed guides and tasteful erotica, with disclosed affiliate links.`,
+      title: `About ${SITE.shortName}: Our Mission and Standards`,
+      description: `${SITE.name} is an independent affiliate publisher for intimacy, body confidence and sexual wellness education, with clearly disclosed affiliate links and a published editorial policy.`,
       path: '/about',
       jsonLd: [
         organizationJsonLd(),
@@ -21,13 +21,13 @@ export const Route = createFileRoute('/about')({
     <InfoPage
       eyebrow="About"
       title={`About ${SITE.name}`}
-      intro="We help adults choose body-safe toys with confidence: independent reviews, friendly guides and clear comparisons, without the awkwardness."
+      intro={SITE.tagline + ' We help women and couples feel more comfortable, connected and confident through practical guidance and thoughtfully chosen products.'}
       sections={[
         {
           heading: 'What We Do',
           body: [
-            `${SITE.name} is an independent review site for adult toys. We publish product reviews, best-of buying guides, head-to-head comparisons and plain-language how-tos so readers can find the right toy for their body, budget and comfort level.`,
-            `Our editorial section, ${SITE.guidesName}, covers choosing, using and caring for toys, solo or with a partner. Every review carries our own written verdict, who the product suits and its trade-offs. Our editorial policy explains how we review.`,
+            `${SITE.name} is an independent affiliate publisher. We publish education on intimacy, body confidence and sexual wellness, plus buying guides, comparisons and product reviews, so readers can find the right guidance and the right products for their body, budget and comfort level.`,
+            `Our editorial section, ${SITE.guidesName}, covers confidence, relationships, and choosing, using and caring for products, solo or with a partner. Our editorial policy explains how we research and how we separate education, research-based guides and reviews.`,
           ],
         },
         {

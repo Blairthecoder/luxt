@@ -16,6 +16,21 @@ import type { Post } from '@/content/posts'
 import { PostMeta } from '@/components/PostGrid'
 import { ShopTheGuide } from '@/components/ShopTheGuide'
 
+/** What kind of piece this is, so readers know whether it is education, research or a comparison. */
+function guideKind(post: Pick<Post, 'topics'>): { label: string; note?: string } {
+  if (post.topics.includes('comparisons'))
+    return { label: 'Comparison', note: 'Research-based comparison. We compare manufacturer specifications and retailer information; we have not hands-on tested these products.' }
+  if (post.topics.includes('buying-guides'))
+    return { label: 'Buying guide', note: 'Research-based buying guide. Picks come from manufacturer specifications and retailer information, not hands-on testing.' }
+  if (post.topics.includes('gift-guides')) return { label: 'Gift guide' }
+  return { label: 'Educational guide' }
+}
+
+/** H2 anchors from the rendered body, for the table of contents. */
+function headings(html: string): { id: string; text: string }[] {
+  return [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((m) => ({ id: m[1], text: m[2].replace(/<[^>]+>/g, '') }))
+}
+
 /** Home > Nightstand Notes > first topic > guide. */
 function crumbs(post: Pick<Post, 'slug' | 'title' | 'topics'>) {
   const topic = TOPICS_BY_SLUG[post.topics[0]]
@@ -52,6 +67,7 @@ export const Route = createFileRoute('/blog/$slug')({
       description: post.metaDescription,
       path,
       type: 'article',
+      image: absoluteUrl('/og-image.jpg'),
       jsonLd: [
         breadcrumbJsonLd(crumbs(post)),
         {
@@ -74,7 +90,14 @@ export const Route = createFileRoute('/blog/$slug')({
                 },
               }
             : {}),
-          publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+          image: absoluteUrl('/og-image.jpg'),
+          isAccessibleForFree: true,
+          publisher: {
+            '@type': 'Organization',
+            name: SITE.name,
+            url: SITE.url,
+            logo: { '@type': 'ImageObject', url: absoluteUrl('/icon-512.png') },
+          },
         },
         ...(post.faqs?.length
           ? [
@@ -100,6 +123,8 @@ function PostPage() {
   const more = relatedPosts(post, 2)
   const hubs = post.hubs.filter((h) => !(h in RETIRED_HUBS)).map((h) => HUBS_BY_SLUG[h]).filter(Boolean)
   const topics = post.topics.map((t) => TOPICS_BY_SLUG[t]).filter(Boolean)
+  const kind = guideKind(post)
+  const toc = post.readMinutes >= 6 ? headings(html) : []
 
   return (
     <article>
@@ -108,6 +133,8 @@ function PostPage() {
         <div className="mt-16 sm:mt-24 max-w-5xl">
           <p className="text-sm text-graphite rise">
             <span className="text-signal font-semibold">{SITE.guidesName}</span>
+            <span className="mx-2 text-silver">·</span>
+            {kind.label}
             <span className="mx-2 text-silver">·</span>
             {post.updatedAt ? 'Updated ' : ''}
             {formatPostDate(post.updatedAt ?? post.publishedAt)}
@@ -187,6 +214,21 @@ function PostPage() {
                 />
               </div>
             </aside>
+          )}
+          {kind.note && <p className="mb-8 text-sm text-graphite leading-relaxed">{kind.note}</p>}
+          {toc.length >= 4 && (
+            <nav aria-label="In this guide" className="mb-12 rounded-2xl bg-mist p-5 sm:p-6">
+              <p className="text-sm font-semibold">In this guide</p>
+              <ol className="mt-3 space-y-1.5 text-[0.9375rem] list-decimal pl-5 marker:text-graphite">
+                {toc.map((h) => (
+                  <li key={h.id}>
+                    <a href={`#${h.id}`} className="underline underline-offset-4 decoration-silver hover:decoration-ink">
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
           )}
           <div className="prose-notes" dangerouslySetInnerHTML={{ __html: html }} />
           <ShopTheGuide products={products} className="mt-16 pt-12 border-t border-ink" />

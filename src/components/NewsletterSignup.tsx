@@ -1,5 +1,6 @@
 import { useId, useState, type FormEvent } from 'react'
 import { Link } from '@tanstack/react-router'
+import { trackEvent } from '@/lib/events'
 
 type State = 'idle' | 'pending' | 'success' | 'error'
 
@@ -11,11 +12,18 @@ type State = 'idle' | 'pending' | 'success' | 'error'
 export function NewsletterSignup({
   source,
   variant = 'card',
+  title,
+  body,
+  button = 'Subscribe',
   className = '',
 }: {
   /** Where the signup happened, e.g. "footer" or a guide slug. */
   source: string
   variant?: 'card' | 'footer'
+  /** Overrides for the heading, supporting copy and button label. */
+  title?: string
+  body?: string
+  button?: string
   className?: string
 }) {
   const [state, setState] = useState<State>('idle')
@@ -38,6 +46,8 @@ export function NewsletterSignup({
       // A plain preview can return the static registration page with status 200.
       if (/\bdata-netlify\s*=/i.test(await response.text())) throw new Error('Form handling is unavailable')
       setState('success')
+      // Only the form location is sent, never the address.
+      trackEvent('newsletter_signup', { form_location: source.split(':')[0] })
     } catch {
       setState('error')
     }
@@ -54,10 +64,10 @@ export function NewsletterSignup({
         id={`${id}-title`}
         className={compact ? 'text-xs font-semibold text-ink' : 'font-display text-2xl font-semibold tracking-[-0.02em]'}
       >
-        {compact ? 'Get New Guides by Email' : 'Get New Guides by Email.'}
+        {title ?? (compact ? 'Get New Guides by Email' : 'Get New Guides by Email.')}
       </h2>
       <p className={`mt-2 text-graphite ${compact ? 'text-xs leading-relaxed' : 'text-[0.9375rem] leading-relaxed'}`}>
-        Honest guides and good deals, now and then. Unsubscribe any time.
+        {body ?? 'Honest guides and good deals, now and then. Unsubscribe any time.'}
       </p>
 
       {state === 'success' ? (
@@ -102,7 +112,7 @@ export function NewsletterSignup({
               className="h-11 w-full min-w-0 rounded-full border border-line bg-canvas px-5 text-sm"
             />
             <button type="submit" className="btn !min-h-[2.75rem] !text-sm shrink-0">
-              {state === 'pending' ? 'Sending…' : 'Subscribe'}
+              {state === 'pending' ? 'Sending…' : button}
             </button>
           </fieldset>
           {state === 'error' && (
