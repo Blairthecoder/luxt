@@ -139,15 +139,14 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40">
       <div className="bg-plum text-canvas">
-        <div className="wrap flex items-center justify-center sm:justify-between gap-6 h-9 text-xs">
-          <p className="hidden sm:block text-canvas/70">{SITE.tagline}</p>
-          <p className="font-medium">
-            Independent publisher. We may earn a commission.{' '}
-            <Link to="/disclosure" className="underline underline-offset-2">
+        <div className="wrap flex items-center justify-center sm:justify-between gap-6 min-h-9 py-1.5 text-xs">
+          <p className="hidden sm:block text-canvas/80">{SITE.tagline}</p>
+          <p className="text-center font-medium">
+            <span className="max-sm:hidden">Independent publisher. </span>We may earn a commission.{' '}
+            <Link to="/disclosure" className="whitespace-nowrap underline underline-offset-2">
               How We Make Money
             </Link>
           </p>
-          <p className="hidden lg:block text-canvas/70">Discreet, judgment-free guidance.</p>
         </div>
       </div>
 
